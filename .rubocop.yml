@@ -1,0 +1,48 @@
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - bin/**/*
+    - db/**/*.rb
+    - config/**/*
+    - vendor/**/*
+    - spec/factories/**/*
+
+LineLength:
+  Max: 320
+
+MethodLength:
+  CountComments: false
+  Max: 40
+
+StringLiterals:
+  Enabled: false
+
+ParameterLists:
+  Max: 5
+
+FavorSprintf:
+  Enabled: false
+
+AsciiComments:
+  Enabled: false
+
+ReduceArguments:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+# ネストが深すぎる
+BlockNesting:
+  Max: 5
+
+# クラスの行数が多すぎる
+ClassLength:
+  Enabled: false
+
+# 循環的複雑度が高すぎる(ifやforなどを1メソッド内で使いすぎている)
+CyclomaticComplexity:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 40
