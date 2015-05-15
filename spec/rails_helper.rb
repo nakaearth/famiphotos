@@ -4,14 +4,16 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'factory_girl'
 require 'simplecov'
+require 'simplecov-rcov'
 require 'coveralls'
 Coveralls.wear!
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::RcovFormatter,
   Coveralls::SimpleCov::Formatter
 ]
 SimpleCov.start do
-  add_filter '.bundle/'
+  add_filter 'vendor/bundle/'
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -29,6 +31,7 @@ RSpec.configure do |config|
   config.before :suite do
     FactoryGirl.reload
     DatabaseRewinder.clean_all
+    SimpleCov.command_name("rspec_#{Process.pid}#{ENV['TEST_ENV_NUMBER']}")
   end
 
   config.after :each do
