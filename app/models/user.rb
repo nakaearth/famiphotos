@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   after_create :create_group_members
 
   def self.create_account(auth)
-    # Users::Registration.new.regist auth
+    Users::Registration.new.regist auth
   end
 
   protected
