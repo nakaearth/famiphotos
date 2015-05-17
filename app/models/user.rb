@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include IdEncryptable
+
   has_many :group_members, dependent: :destroy
   has_many :my_groups, through: :group_members, source: :group
   has_many :my_photos, class_name: User, inverse_of: :photo
