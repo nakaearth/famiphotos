@@ -11,17 +11,17 @@ class PhotoUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
-  process :convert => 'png'
-  process :tags => ['post_picture']
+  process convert: 'png'
+  process tags: ['post_picture']
 
   version :standard do
-    process :resize_to_fill => [100, 150, :north]
+    process resize_to_fill: [100, 150, :north]
   end
-  
+
   version :thumbnail do
     resize_to_fit(50, 50)
   end
- 
+
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
@@ -59,5 +59,4 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end
