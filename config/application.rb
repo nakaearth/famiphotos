@@ -13,7 +13,7 @@ module Famiphotos
     # -- all .rb files in that directory are automatically loaded.
     config.generators do |g|
       g.orm :active_record
-      g.template_engine :erb
+      g.template_engine :slim
       g.test_framework  :rspec, :fixture => true
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
       g.view_specs true

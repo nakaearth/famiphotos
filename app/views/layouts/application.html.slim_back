@@ -1,0 +1,35 @@
+doctype html
+html lang="ja"
+  head
+    = render partial: 'layouts/meta'
+    = favicon_link_tag 'favicon.ico'
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  body id=( "page-#{controller_name.dasherize}" )
+
+    #pa-container
+      = render 'shared/side_menu'
+
+      .pa-right-column
+
+        = render 'shared/header'
+
+        .pa-contents
+          .pa-contents-inner
+            = render 'shared/ie_non_supported_message'
+            = render 'pa_flash_messages'
+            = render 'alert'
+            = render 'notice'
+            = yield
+
+        = render 'shared/footer'
+
+    / ローディング用
+    = render 'shared/loading'
+
+    / popover用の共通overlay
+    = render 'shared/popover_overlay'
+
+    / GA用
+    = render 'shared/google_analytics'

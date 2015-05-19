@@ -91,6 +91,7 @@ group :development do
   gem "did_you_mean"
 end
 
+gem "slim-rails"
 gem "td"
 gem "td-logger"
 gem "watson-ruby"
