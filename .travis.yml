@@ -22,12 +22,5 @@ before_script:
 - mysql -e 'create database famiphotos_test'
 after_failure:
 - bundle exec rake --version
-deploy:
-  provider: heroku
-  api_key:
-    secure: 3433e2807ccbf3e51e0cd78029462d8b99ed3902
-  app: daphy
-  on:
-    repo: nakaearth/famiphotos
 notifications:
   slack: s-nakamura:70ZBpyKjrkR5Ps3lKy4wLjUu

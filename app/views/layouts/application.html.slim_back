@@ -8,15 +8,15 @@ html lang="ja"
     = csrf_meta_tags
   body id=( "page-#{controller_name.dasherize}" )
 
-    #pa-container
+    #container
       = render 'shared/side_menu'
 
-      .pa-right-column
+      .right-column
 
         = render 'shared/header'
 
-        .pa-contents
-          .pa-contents-inner
+        .contents
+          .contents-inner
             = render 'shared/ie_non_supported_message'
             = render 'pa_flash_messages'
             = render 'alert'
