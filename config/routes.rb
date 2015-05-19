@@ -3,7 +3,14 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'top#index'
+
+ #facebook login
+  get "/:provider/login"  => "sessions#new"
+  get "/logout" => "sessions#destroy"
+  get "/auth/:provider/callback" => "sessions#create" unless Rails.env.development?
+  post "/auth/:provider/callback" => "sessions#create" if Rails.env.development?
+  get "/auth/failure" => "sessions#failuer"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
