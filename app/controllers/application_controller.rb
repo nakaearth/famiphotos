@@ -4,9 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :login?
-  before_action :set_groups
   before_action :current_user
-  before_action :current_group
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
   rescue_from ActionController::RoutingError, with: :render_404
 
@@ -16,15 +14,6 @@ class ApplicationController < ActionController::Base
     logger.info "ユーザ情報がありません: #{ar.message}"
     session[:user_id] = nil
     nil
-  end
-
-  def current_group
-    @current_group ||= current_user.my_groups.first
-  end
-
-  def set_groups
-    @groups = current_user.try(:my_groups)
-    @group_id = params[:group_id].presence || current_user.try(:my_groups[0]).try(:id)
   end
 
   def login?
