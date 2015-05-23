@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post "/auth/:provider/callback" => "sessions#create" if Rails.env.development?
   get "/auth/failure" => "sessions#failuer"
 
+  resources :photos
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     session[:encrypted_user_id] = Base64.encode64(user.id.to_s)
     logger.info user.try(:name)
     flash[:notice] = 'login successfully.'
-    redirect_to controller: 'top', action: 'index'
+    redirect_to controller: 'photos', action: 'index'
   end
 
   def destroy
