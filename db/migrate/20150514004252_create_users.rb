@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, null: false
       t.string :decrypted_password
       t.string :provider, null: false
+      t.string :nickname
       t.string :uid
       t.string :image_url
       t.string :access_token

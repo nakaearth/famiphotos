@@ -1,2 +1,4 @@
-.login_form
-  = link_to 'twitterでログイン', "/twitter/login"
+= unless @current_user
+  .login_form
+    = link_to 'twitterでログイン', "/twitter/login"
+
