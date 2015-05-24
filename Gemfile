@@ -132,5 +132,8 @@ gem 'resque'
 
 gem 'active_hash'
 
+# pagenate
+gem 'kaminari'
+
 # 暗号化
 gem 'attr_encrypted'

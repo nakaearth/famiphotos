@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   def index
+    @photos = @current_user.photos.page(params[:page])
   end
 
   def show
