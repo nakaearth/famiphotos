@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  before_action :set_photo, only: [:new, :edit, :show, :destroy]
+
   def index
     @photos = @current_user.photos.page(params[:page])
   end
@@ -19,5 +21,15 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def set_photo
+    @photo = Photo.new
+  end
+
+  def photo_params
+    require(params[:photo]).permit(:description, :photo)
   end
 end

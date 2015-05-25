@@ -4,13 +4,9 @@
   .left_div
     = select_tag 'group_id', options_from_collection_for_select(@groups, :id, :name, @group_id)
     |    
-    = link_to_unless_current '一覧', { action: 'index', controller: 'daphy/job_cards' }, id: 'list_link'
+    = link_to_unless_current '一覧', photos_path, id: 'list_link'
     |    | 
-    = link_to_unless_current '登録', { action: 'new', controller: 'daphy/job_cards' }, id: 'regist_link'
-    |    | 
-    = link_to_unless_current 'アーカイブ', daphy_group_job_folders_path(current_group)
-    |    | 
-    = link_to_unless_current image_tag('trashbox.png', size: '30x30', board: 0, alt: 'ゴミ箱' ), { action: 'trashed', controller: 'daphy/job_cards' }, id: 'trashed_link'
+    = link_to_unless_current '登録', new_photo_path, id: 'regist_link'
     |    | 
   .right_div
     = link_to_unless_current  image_tag(current_user.image_url, size: '40x40'), { action: 'index', controller: 'admin/top' }
