@@ -1,2 +1,3 @@
-h1 Photos#new
-p Find me in app/views/photos/new.html.slim
+= form_for :photo do |photo_form|
+  = photo_form.hidden_field :photo_cache
+  = photo_form.field_field :photo
