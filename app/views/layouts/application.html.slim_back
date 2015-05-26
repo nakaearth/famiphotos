@@ -8,22 +8,17 @@ html lang="ja"
     = csrf_meta_tags
   body id=( "page-#{controller_name.dasherize}" )
 
-    #pa-container
-      = render 'shared/side_menu'
+    #container
+      = render 'shared/header'
+      .contents
+        .contents-inner
+          = render 'shared/ie_non_supported_message'
+          = render 'pa_flash_messages'
+          = render 'alert'
+          = render 'notice'
+          = yield
 
-      .pa-right-column
-
-        = render 'shared/header'
-
-        .pa-contents
-          .pa-contents-inner
-            = render 'shared/ie_non_supported_message'
-            = render 'pa_flash_messages'
-            = render 'alert'
-            = render 'notice'
-            = yield
-
-        = render 'shared/footer'
+      = render 'shared/footer'
 
     / ローディング用
     = render 'shared/loading'

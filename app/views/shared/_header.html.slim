@@ -1,0 +1,19 @@
+- if current_user
+  menu
+
+  .left_div
+    = select_tag 'group_id', options_from_collection_for_select(@groups, :id, :name, @group_id)
+    |    
+    = link_to_unless_current '一覧', photos_path, id: 'list_link'
+    |    | 
+    = link_to_unless_current '登録', new_photo_path, id: 'regist_link'
+    |    | 
+  .right_div
+    = link_to_unless_current  image_tag(current_user.image_url, size: '40x40'), { action: 'index', controller: 'admin/top' }
+    = current_user.nickname
+    = link_to "ログアウト", logout_path
+  br
+  br
+  hr
+  script[type="text/javascript"]
+    |  $("select#group_id").change(function(){ window.location.href = "/daphy/job_cards?group_id=" + $(this).val(); }); 

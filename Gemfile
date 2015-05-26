@@ -99,6 +99,7 @@ gem "cache_digests"
 gem "versioncake"
 gem "active_decorator"
 gem "carrierwave"
+gem 'cloudinary'
 gem "rmagick"
 gem "cloudinary"
 group :test do
@@ -131,6 +132,9 @@ gem 'parser', '2.2.0.pre.8'
 gem 'resque'
 
 gem 'active_hash'
+
+# pagenate
+gem 'kaminari'
 
 # 暗号化
 gem 'attr_encrypted'
