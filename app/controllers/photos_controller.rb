@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :set_photo, only: [:new, :edit, :show, :destroy]
 
   def index
-    @photos = @current_user.my_photos.page(params[:page])
+    @photos = @current_user.photos.page(params[:page])
   end
 
   def show
