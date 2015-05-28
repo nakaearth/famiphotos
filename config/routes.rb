@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'top#index'
 
-  #facebook login
+  # facebook login
   get "/:provider/login"  => "sessions#new"
   get "/logout" => "sessions#destroy"
   get "/auth/:provider/callback" => "sessions#create" unless Rails.env.development?
