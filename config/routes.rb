@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "/auth/failure" => "sessions#failuer"
 
   resources :photos
-
+  resources :users, only: %i( show edit update )
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
