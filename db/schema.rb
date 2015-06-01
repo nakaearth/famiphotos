@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514035110) do
+ActiveRecord::Schema.define(version: 20150601160949) do
 
   create_table "group_members", force: true do |t|
     t.integer  "group_id",   null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150514035110) do
     t.string   "provider",           null: false
     t.string   "nickname"
     t.string   "uid"
-    t.string   "image_url"
+    t.string   "photo"
     t.string   "access_token"
     t.string   "secret_token"
     t.integer  "group_id",           null: false
