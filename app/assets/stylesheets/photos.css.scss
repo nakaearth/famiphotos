@@ -25,7 +25,6 @@ label {
    font-weight: bold;
    font-size: 10pt;
 	 font-color: #FFFFFF;
-   background-color: #C0C0C0;
    border: 1px solid #000000;
    width: 70%;
 	 height: 50%;
@@ -48,7 +47,6 @@ label {
 .photo_list {
    width: 1000pt;
    height: 500pt;
-   background-color: #C0C0C0;
    visibility: visible;
    position: absolute;
    margin: 4px;
@@ -80,5 +78,3 @@ label {
    @include border-radius(10px,10px);
    @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
 }
-
-
