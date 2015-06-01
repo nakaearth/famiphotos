@@ -41,7 +41,7 @@ label {
      z-index: 1;
      @include border-radius();
      @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
-   }  
+   }
 }
 
 .photo_list {
@@ -78,5 +78,3 @@ label {
    @include border-radius(10px,10px);
    @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
 }
-
-
