@@ -1,5 +1,4 @@
 Jbuilder.encode do |json|
-
   json.photo @photos do |photo|
     json.title photo.title
     json.thumnail photo.photo.url(:thumb)
