@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
     @photo = @current_user.build_photo(photo_params)
 
     if @photo.save
-      redirect_to photos_path, notice: '写真の登録がしました' 
+      redirect_to photos_path, notice: '写真の登録がしました'
     else
       render action: :new, alert: '写真の登録に失敗しました'
     end
