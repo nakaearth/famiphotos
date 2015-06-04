@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.9'
+gem 'rails', '4.1.8'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
@@ -99,8 +99,6 @@ gem "cache_digests"
 gem "versioncake"
 gem "active_decorator"
 gem "carrierwave"
-gem 'cloudinary'
-gem "rmagick"
 gem "cloudinary"
 group :test do
   gem "byebug"
