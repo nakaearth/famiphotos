@@ -100,8 +100,6 @@ gem "versioncake"
 gem "active_decorator"
 gem "carrierwave"
 gem 'cloudinary'
-gem "rmagick"
-gem "cloudinary"
 group :test do
   gem "byebug"
   # gem "nio4r", "0.5.0"
