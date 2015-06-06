@@ -297,7 +297,6 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rmagick (2.15.2)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -485,7 +484,6 @@ DEPENDENCIES
   rake_shared_context
   request_store
   resque
-  rmagick
   rspec-mocks
   rspec-rails
   rspec-request_describer
