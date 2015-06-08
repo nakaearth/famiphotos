@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603163126) do
+ActiveRecord::Schema.define(version: 20150514035110) do
 
   create_table "group_members", force: true do |t|
     t.integer  "group_id",   null: false
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20150603163126) do
     t.integer  "group_id",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "photo",              null: false
   end
 
   add_index "photos", ["group_id"], name: "index_photos_on_group_id", using: :btree
@@ -51,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150603163126) do
     t.string   "provider",           null: false
     t.string   "nickname"
     t.string   "uid"
-    t.string   "photo"
+    t.string   "image_url"
     t.string   "access_token"
     t.string   "secret_token"
     t.integer  "group_id",           null: false

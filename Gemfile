@@ -136,3 +136,6 @@ gem 'kaminari'
 
 # 暗号化
 gem 'attr_encrypted'
+
+# react rails
+gem 'react-rails', '~> 1.0'
