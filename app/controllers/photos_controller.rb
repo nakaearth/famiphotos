@@ -12,7 +12,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = @current_user.build_photo(photo_params)
+    @photo = @current_user.photos.build(photo_params)
 
     if @photo.save
       redirect_to photos_path, notice: '写真の登録がしました'
