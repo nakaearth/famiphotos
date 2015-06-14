@@ -27,5 +27,5 @@ h1 写真一覧
               | });
         | コメント:#{photo.description}
         br/
-        = link_to '編集', action: 'edit', id: photo.id
-        | \&nbsp;&nbsp; | &nbsp;&nbsp; #{link_to '削除', action: 'destroy', id: photo.id}
+        = link_to '拡大', photo_path(photo), remote: true
+        | \&nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', photo_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }
