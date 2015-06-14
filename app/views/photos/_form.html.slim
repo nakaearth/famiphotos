@@ -1,6 +1,6 @@
 #photo_form.photo_form
   #photo_form_div.photo_form_div
-    = form_for @photo, :html => { :multipart => true } do |f|
+    = form_for @photo, html: { multipart: true } do |f|
       .field
         | 画像:#{f.file_field :photo}
         br/

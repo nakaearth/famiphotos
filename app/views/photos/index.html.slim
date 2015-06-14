@@ -13,7 +13,7 @@ h1 写真一覧
             | \#{image_tag photo.photo.url(:original)}
         span id="photo_#{photo.id}"
           = image_tag photo.photo.url(:thumb)
-          | タイトル:#{photo.title}
+          | タイトル:#{photo.photo_file_name}
           br/
           | 投稿日付 #{photo.created_at.strftime("%Y/%m/%d")}
           br/
@@ -28,5 +28,4 @@ h1 写真一覧
         | コメント:#{photo.description}
         br/
         = link_to '編集', action: 'edit', id: photo.id
-        = link_to 'コメントする', lifephoto_photo_comment_index_path(photo)
         | \&nbsp;&nbsp; | &nbsp;&nbsp; #{link_to '削除', action: 'destroy', id: photo.id}
