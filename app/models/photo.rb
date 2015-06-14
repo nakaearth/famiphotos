@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
 
   has_attached_file :photo,  styles: { medium: "300x300>",  thumb: "100x100>" }
 
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
 
   validates :description, length: { maximum: 140 }
    validates_attachment :photo,  content_type: { content_type: ["image/jpg",  "image/jpeg",  "image/png",  "image/gif"] }

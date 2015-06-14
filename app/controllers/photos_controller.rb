@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:new, :edit, :show, :destroy]
+  before_action :set_photo, only: [:edit, :show, :destroy]
 
   def index
     @photos = @current_user.photos.page(params[:page])
@@ -9,6 +9,7 @@ class PhotosController < ApplicationController
   end
 
   def new
+    @photo = @current_user.photos.build
   end
 
   def create
@@ -28,12 +29,14 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+    @photo.destroy
+    redirect_to photos_path, notice: '写真を削除しました'
   end
 
   private
 
   def set_photo
-    @photo = Photo.new
+    @photo = Photo.find(Base64.decode64(params[:id]))
   end
 
   def photo_params
