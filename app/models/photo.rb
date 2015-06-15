@@ -6,6 +6,5 @@ class Photo < ActiveRecord::Base
   belongs_to :user
 
   validates :description, length: { maximum: 140 }
-   validates_attachment :photo,  content_type: { content_type: ["image/jpg",  "image/jpeg",  "image/png",  "image/gif"] }
-
+  validates_attachment :photo,  content_type: { content_type: ["image/jpg",  "image/jpeg",  "image/png",  "image/gif"] }
 end
