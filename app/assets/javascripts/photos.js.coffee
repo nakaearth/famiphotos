@@ -1,14 +1,21 @@
+'use strict'
 
-class PhotoViewer
+$ ->
 
-  constructor: (args)->
-    setEvent()
+  class PhotoViewer
+    selector: '.js-photo-view'
 
-  setEvent: ->
-    view_photo_detail
+    constructor: ->
+      @init();
 
-  view_photo_detail: ->
+    init: ->
+      @setEvents()
+
+    setEvents: ->
+      @view_photo_detail
+
+    view_photo_detail: ->
 
 
-new PhotoView
+  new PhotoView
 
