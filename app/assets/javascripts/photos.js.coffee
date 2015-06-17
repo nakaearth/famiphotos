@@ -6,7 +6,7 @@ $ ->
     selector: '.photo-detail'
 
     constructor: ->
-      @init();
+      @init()
 
     init: ->
       @setEvents()
