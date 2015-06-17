@@ -18,14 +18,14 @@ h1 写真一覧
           | 投稿日付 #{photo.created_at.strftime("%Y/%m/%d")}
           br/
         javascript:
-          | $( '#photo_#{photo.id}' ).click(function (){
-              | $( '#photo_viewer_#{photo.id}' ).fadeIn("slow");
-              | });
+          $( '#photo_#{photo.id}' ).click(function (){
+              $( '#photo_viewer_#{photo.id}' ).fadeIn("slow");
+              });
         javascript:
-          | $( '#photo_viewer_#{photo.id}' ).click(function (){
-              | $( '#photo_viewer_#{photo.id}' ).fadeOut("slow");
-              | });
+          $( '#photo_viewer_#{photo.id}' ).click(function (){
+              $( '#photo_viewer_#{photo.id}' ).fadeOut("slow");
+              });
         | コメント:#{photo.description}
         br/
         = link_to '拡大', photo_path(photo), remote: true
-        | \&nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', photo_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }
+        | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', photo_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }
