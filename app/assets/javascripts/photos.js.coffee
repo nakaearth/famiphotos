@@ -6,7 +6,8 @@ $ ->
     selector: '.photo-detail'
 
     constructor: ->
-      @init();
+      console.log 'hoge'
+      @init()
 
     init: ->
       @setEvents()
@@ -16,5 +17,5 @@ $ ->
         target = $(e.currentTarget)
         console.log(target.id)
 
-  new PhotoView
+  new PhotoViewer
 
