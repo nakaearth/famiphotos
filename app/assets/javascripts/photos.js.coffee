@@ -3,7 +3,7 @@
 $ ->
 
   class PhotoViewer
-    selector: '.js-photo-view'
+    selector: '.photo-detail'
 
     constructor: ->
       @init();
@@ -11,11 +11,10 @@ $ ->
     init: ->
       @setEvents()
 
-    setEvents: ->
-      @view_photo_detail
-
-    view_photo_detail: ->
-
+    setEvents:  ->
+      $.on 'click', (e) =>
+        target = $(e.currentTarget)
+        console.log(target.id)
 
   new PhotoView
 
