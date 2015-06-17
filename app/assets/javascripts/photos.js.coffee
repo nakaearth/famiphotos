@@ -6,6 +6,7 @@ $ ->
     selector: '.photo-detail'
 
     constructor: ->
+      console.log 'hoge'
       @init()
 
     init: ->
@@ -16,5 +17,5 @@ $ ->
         target = $(e.currentTarget)
         console.log(target.id)
 
-  new PhotoView
+  new PhotoViewer
 
