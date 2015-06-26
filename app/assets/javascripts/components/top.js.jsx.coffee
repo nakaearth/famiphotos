@@ -1,6 +1,14 @@
 $ ->
-  CommentBox = React.createClass
+  InformationBox = React.createClass
     render: ->
-      `<div className="CommentBox">Hello, world! I am a CommentBox.</div>`
+      `<div className="InformationBox">
+        Hello, world! 
+        <InformationList data= { this.props.data } />
+        </div>`
 
-  React.render `<CommentBox />`, document.getElementById('famiphoto_message')
+  InformationList = React.createClass
+    render: ->
+      informationNodes = @props.data.map (information) ->
+        '<Information title={ information.title }>{ information.message } </Information>'
+
+  React.render `<InformationBox />`, document.getElementById('famiphoto_message')
