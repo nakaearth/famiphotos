@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
   root 'top#index'
 
   # facebook login
@@ -12,8 +8,15 @@ Rails.application.routes.draw do
   post "/auth/:provider/callback" => "sessions#create" if Rails.env.development?
   get "/auth/failure" => "sessions#failuer"
 
+  # web
   resources :photos
   resources :users, only: %i( show edit update )
+ 
+  # api
+  namespace :api do
+    resources :informations, only: %i( index )
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
