@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   resources :users, only: %i( show edit update )
  
   # api
-  namespace :api, { format: 'json' } do
-    resources :informations, only: %i ( index )
+  namespace :api do
+    resources :informations, only: %i( index )
   end
 
   # Example of regular route:
