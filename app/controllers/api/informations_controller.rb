@@ -1,6 +1,5 @@
 module Api
   class InformationsController < ApplicationController
-
     # ajaxで通信したお知らせの一覧をjson形式で返す
     def index
       @informations = Information.all

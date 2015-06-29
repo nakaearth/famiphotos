@@ -64,6 +64,8 @@ group :test do
   # 良い書き方しているかチェック
   gem 'rails_best_practices'
 
+  # webテスト
+  gem 'capybara'
   # プロファイリング
   # gem 'stackprof'
   # gem 'stackprof-webnav'

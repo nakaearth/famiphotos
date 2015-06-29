@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe PhotosController, type: :controller do
+  render_views
+
+  let(:user) { create(:user) }
+  let(:photo_list) { create(:photo,  user: user) }
+
+  before do
+    allow(controller) .to receive(:current_user) { user }
+    allow(controller) .to receive(:login?) { true }
+  end
+
   describe "GET #index" do
     it "returns http success" do
       get :index
