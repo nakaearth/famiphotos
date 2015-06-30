@@ -1,4 +1,6 @@
 $ ->
+  convert = new Showdown.converter()
+ 
   InformationBox = React.createClass
     render: ->
       `<div className="InformationBox">
@@ -10,5 +12,14 @@ $ ->
     render: ->
       informationNodes = @props.data.map (information) ->
         '<Information title={ information.title }>{ information.message } </Information>'
+
+  Information = React.createClass
+    render: ->
+      rawMarkup = convert
+      `<div className="comment">
+         <h2 className="commentAuthor">{ this.props.author }</h2>
+         <span dangerouslySetInnerHTML={ { __html: rawMarkup } }></span>
+       </div>`
+
 
   React.render `<InformationBox />`, document.getElementById('famiphoto_message')
