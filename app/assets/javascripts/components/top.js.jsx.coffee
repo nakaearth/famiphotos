@@ -21,5 +21,6 @@ $ ->
          <span dangerouslySetInnerHTML={ { __html: rawMarkup } }></span>
        </div>`
 
+  data = $.get("http://localhost:3000/api/informations")
 
-  React.render `<InformationBox />`, document.getElementById('famiphoto_message')
+  React.render `<InformationBox data ={ data } />`, document.getElementById('famiphoto_message')
