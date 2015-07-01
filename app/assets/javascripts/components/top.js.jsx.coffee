@@ -12,15 +12,16 @@ $ ->
     render: ->
       informationNodes = @props.data.map (information) ->
         '<Information title={ information.title }>{ information.message } </Information>'
+        '<div className="informationList">{ informationNodes }</div>'
 
   Information = React.createClass
     render: ->
       rawMarkup = convert
-      `<div className="comment">
-         <h2 className="commentAuthor">{ this.props.author }</h2>
+      `<div className="information">
+         <h2 className="informationAuthor">{ this.props.author }</h2>
          <span dangerouslySetInnerHTML={ { __html: rawMarkup } }></span>
        </div>`
 
   data = $.get("http://localhost:3000/api/informations")
 
-  React.render `<InformationBox data ={ data } />`, document.getElementById('famiphoto_message')
+  React.render `<InformationBox data ={ data } />`, $('#famiphoto_message')
