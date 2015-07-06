@@ -24,4 +24,4 @@ $ ->
 
   data = $.get("http://localhost:3000/api/informations")
 
-  React.render `<InformationBox data ={ data } />`, $('famiphoto_message')
+  React.render `<InformationBox data ={ data } />`, $('#famiphoto_message')[0]
