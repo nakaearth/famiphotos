@@ -5,7 +5,7 @@ RSpec.describe Api::InformationsController, type: :controller do
 
   let(:information) { create_list(:information, 5) }
 
-  describe "GET #index" do
+  describe 'GET #index' do
     before do
       get :index
     end
@@ -15,5 +15,11 @@ RSpec.describe Api::InformationsController, type: :controller do
     end
 
     it { expect(assigns[:informations].size).to eq 5 }
+  end
+
+  describe 'Post #create' do
+    before do
+      post :create, describe: 'hoge'
+    end
   end
 end
