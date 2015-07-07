@@ -3,9 +3,9 @@ $ ->
  
   InformationBox = React.createClass
     render: ->
-      `<div className="InformationBox">
+      `<div className="informationBox">
         Hello, world! 
-        <InformationList data= { this.props.data } />
+        <InformationList data={ this.props.data } />
         </div>`
 
   InformationList = React.createClass
