@@ -6,16 +6,14 @@ $ ->
     selector: '.photo-detail'
 
     constructor: ->
-      console.log 'hoge'
       @init()
 
     init: ->
       @setEvents()
 
     setEvents:  ->
-      $.on 'click', (e) =>
-        target = $(e.currentTarget)
-        console.log(target.id)
+      $("#photo_viewer").click ->
+        console.log 123
 
   new PhotoViewer
 

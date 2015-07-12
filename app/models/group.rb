@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
   include IdEncryptable
 
-  validate :name, presence: true
+  validates :name, presence: true
 end
