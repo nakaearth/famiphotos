@@ -3,4 +3,5 @@ $ ->
     render: ->
       `<div className='informationBox'/>`
 
-  React.render(`<InformationBox url = "/api/informations" pollInterval={ 2000 } />`, $('#famiphoto_page')[0])
+  console.log($('#famiphoto_message')[0])
+  React.render(`<InformationBox url = "/api/informations" pollInterval={ 2000 } />`, $('#information_page')[0])
