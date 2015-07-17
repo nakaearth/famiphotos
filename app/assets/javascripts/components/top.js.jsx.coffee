@@ -15,8 +15,8 @@ $ ->
         dataType: 'json'
       .done (data) =>
         @setState(data: data)
-      .fail (xhr, status, err) =>
-        console.error @props.url, status, err.toString()
+      # .fail (xhr, status, err) =>
+      #   console.error @props.url, status, err.toString()
  
     getInitialState: -> data: []
  
@@ -44,4 +44,4 @@ $ ->
          <span dangerouslySetInnerHTML={ { __html: rawMarkup } }></span>
        </div>`
 
-  React.render(`<InformationBox url='/api/informations' pollInterval= { 2000 } />`, document.getElementById('famiphoto_message'))
+  React.render(`<InformationBox url='/api/informations' pollInterval= { 10000 } />`, document.getElementById('famiphoto_message'))
