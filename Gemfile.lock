@@ -411,6 +411,8 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sprockets-derailleur (0.0.9)
+      sprockets (~> 2)
     sprockets-rails (2.3.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -546,6 +548,7 @@ DEPENDENCIES
   simplecov-rcov
   slim-rails
   spring
+  sprockets-derailleur
   td
   td-logger
   terminal-notifier-guard
