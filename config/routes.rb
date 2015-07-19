@@ -14,7 +14,12 @@ Rails.application.routes.draw do
  
   # api
   namespace :api do
-    resources :informations, only: %i( index create )
+    resources :informations, only: %i( index )
+  end
+
+  # admin
+  namespace :admin do
+    resources :information, only: %i( create )
   end
 
   # Example of regular route:
