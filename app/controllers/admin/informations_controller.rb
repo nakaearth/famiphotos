@@ -1,2 +1,4 @@
-class Admin::InformationsController < Admin::ApplicationController
+module Admin
+  class InformationsController < Admin::ApplicationController
+  end
 end

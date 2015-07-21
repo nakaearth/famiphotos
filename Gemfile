@@ -66,7 +66,7 @@ group :test do
   gem 'rubocop-checkstyle_formatter', require: false
   # 良い書き方しているかチェック
   gem 'rails_best_practices'
-  
+
   gem "byebug"
   # gem "nio4r", "0.5.0"
   gem "rake-compiler"
