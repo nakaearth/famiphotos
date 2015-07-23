@@ -146,3 +146,6 @@ gem 'react-rails', '~> 1.0'
 
 # assets 高速化
 gem 'sprockets-derailleur'
+
+# SQL発行場所を出力させる
+gem 'activerecord-cause'
