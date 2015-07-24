@@ -149,3 +149,7 @@ gem 'sprockets-derailleur'
 
 # SQL発行場所を出力させる
 gem 'activerecord-cause'
+
+# fluentd
+gem 'act-fluent-logger-rails'
+gem 'lograge'
