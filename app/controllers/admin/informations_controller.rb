@@ -14,6 +14,13 @@ module Admin
     end
 
     def create
+      @information = Information.new(create_params)
+
+      if @information.save
+        redirect_to :admin_informations_path, notice: '新たにお知らせを追加しました'
+      else
+        render :new
+      end
     end
 
     def destroy
@@ -26,6 +33,10 @@ module Admin
 
     def set_information
       @information = Information.find(params[:id])
+    end
+
+    def crete_params
+      params.require(:information).permit(:title, :message)
     end
   end
 end
