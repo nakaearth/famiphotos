@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   end
 
   # admin
-  namespace :admin do
+  namespace :admin, constraints: WhitelistConstraints.new do
+  # namespace :admin do
+    get '/' => 'top#index'
     resources :information, only: %i( create )
   end
 

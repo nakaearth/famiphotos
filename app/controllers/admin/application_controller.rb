@@ -18,7 +18,7 @@ module Admin
     end
 
     def login?
-      redirect_to :root if session[:encrypted_user_id].blank?
+      redirect_to :admin if session[:encrypted_user_id].blank?
     end
 
     def render_404
