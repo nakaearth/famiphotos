@@ -1,0 +1,14 @@
+<source>
+  type tail
+  format /^I, \[(?<time>[^\.]+).+\]  INFO -- : \{ \'controller\': \'(?<controller>)\'.*$/
+  time_format %Y-%m-%dT%H:%M:%S
+  path /usr/local/project/daphy/log/access.log
+  pos_file /usr/local/project/daphy/log/access.pos
+  tag rails.access
+</source>
+
+<match rails.access>
+  type file
+  path /usr/local/project/daphy/log/out.log
+</match>
+
