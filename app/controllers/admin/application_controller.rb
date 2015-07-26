@@ -9,16 +9,18 @@ module Admin
     rescue_from ActiveRecord::RecordNotFound, with: :render_404
     rescue_from ActionController::RoutingError, with: :render_404
 
+    # TODO: ここの仕様はまだ未決定
     def current_user
-      @current_user ||=  User.includes(:my_groups).find(Base64.decode64(session[:encrypted_user_id])) if session[:encrypted_user_id]
-    rescue ActiveRecord::RecordNotFound => ar
-      logger.info "ユーザ情報がありません: #{ar.message}"
-      session[:user_id] = nil
-      nil
+      User.all.first
+#      @current_user ||=  User.includes(:my_groups).find(Base64.decode64(session[:encrypted_user_id])) if session[:encrypted_user_id]
+#    rescue ActiveRecord::RecordNotFound => ar
+#      logger.info "ユーザ情報がありません: #{ar.message}"
+#      session[:user_id] = nil
+#      nil
     end
 
     def login?
-      redirect_to :admin if session[:encrypted_user_id].blank?
+      # redirect_to :admin if session[:encrypted_user_id].blank?
     end
 
     def render_404

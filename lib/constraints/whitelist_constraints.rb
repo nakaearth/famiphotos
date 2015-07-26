@@ -1,8 +1,8 @@
 class WhitelistConstraints
-  IP_LIST = %w(127.0.0.1)
+  IP_LIST = %w( 127.0.0.1 )
 
   def initialize
-    @ip_logger = Logger.new("log/ip_logger_#{Rails.env}.log") 
+    @ip_logger = Logger.new("log/ip_logger_#{Rails.env}.log")
   end
 
   def self.matches?(request)

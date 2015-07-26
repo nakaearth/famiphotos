@@ -1,6 +1,6 @@
 module Admin
   class InformationsController < Admin::ApplicationController
-    before_action :set_information, only: [:show, :destroy]
+    before_action :set_information, only: [:show, :edit, :destroy]
 
     def index
       @informations = Information.all
@@ -21,6 +21,14 @@ module Admin
       else
         render :new
       end
+    end
+
+    def edit
+
+    end
+
+    def update
+
     end
 
     def destroy

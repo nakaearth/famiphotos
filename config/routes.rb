@@ -18,10 +18,10 @@ Rails.application.routes.draw do
   end
 
   # admin
-  namespace :admin, constraints: WhitelistConstraints.new do
-  # namespace :admin do
+  # namespace :admin, constraints: WhitelistConstraints.new do
+  namespace :admin do
     get '/' => 'top#index'
-    resources :information, only: %i( create )
+    resources :informations, only: %i( index show new create edit update destroy )
   end
 
   # Example of regular route:
