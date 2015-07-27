@@ -12,11 +12,11 @@ module Admin
     # TODO: ここの仕様はまだ未決定
     def current_user
       User.all.first
-#      @current_user ||=  User.includes(:my_groups).find(Base64.decode64(session[:encrypted_user_id])) if session[:encrypted_user_id]
-#    rescue ActiveRecord::RecordNotFound => ar
-#      logger.info "ユーザ情報がありません: #{ar.message}"
-#      session[:user_id] = nil
-#      nil
+      #      @current_user ||=  User.includes(:my_groups).find(Base64.decode64(session[:encrypted_user_id])) if session[:encrypted_user_id]
+      #    rescue ActiveRecord::RecordNotFound => ar
+      #      logger.info "ユーザ情報がありません: #{ar.message}"
+      #      session[:user_id] = nil
+      #      nil
     end
 
     def login?
