@@ -7,13 +7,13 @@
 <match rails.*>
   host localhost
   port 9201
-  index_name famiphoto 
+  index_name fluentd
   type_name fluentd
   type elasticsearch
 </match>
 
 <match rails.log>
   type file
-  path /usr/local/project/famiphoto/log/out.log
+  path /usr/local/project/daphy/log/out.log
 </match>
 
