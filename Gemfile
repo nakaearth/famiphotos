@@ -153,3 +153,6 @@ gem 'activerecord-cause'
 # fluentd
 gem 'act-fluent-logger-rails'
 gem 'lograge'
+
+# breadcrumbs
+gem "crummy",  "~> 1.8.0"
