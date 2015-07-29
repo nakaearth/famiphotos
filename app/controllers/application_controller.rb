@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :login?
   before_action :current_user
+  before_action :application_log_output
+
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
   rescue_from ActionController::RoutingError, with: :render_404
 
@@ -18,6 +20,12 @@ class ApplicationController < ActionController::Base
 
   def login?
     redirect_to :root if session[:encrypted_user_id].blank?
+  end
+
+  def application_log_output
+    application_log = Logger.new("log/rails_application_#{Rails.env}.log")
+
+    application_log.info "pid: #{$$}, #{request.request_method}, path: #{request.fullpath}, ip: #{request.remote_ip}, uuid: #{request.uuid}"
   end
 
   def render_404
