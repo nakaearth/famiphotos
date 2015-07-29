@@ -38,9 +38,13 @@ gem 'responders', '~> 2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+# db schema関連
+gem 'ridgepole'
+gem 'activerecord-mysql-awesome'
+
+# 認証
 gem 'omniauth-twitter'
+# バッチ処理
 gem 'whenever'
 
 # テスト関連
@@ -81,6 +85,7 @@ group :test do
   # gem 'brakeman', require: false
 end
 
+# 開発, テスト時に使うツール群
 group :development, :test do
   # テスト、コードチェックを自動で別プロセスでやる
   gem 'guard', '~> 2.8'
@@ -93,6 +98,7 @@ group :development, :test do
   gem 'test-queue'
 end
 
+# 開発時に使うツール群
 group :development do
   gem "awesome_print"
   gem "better_errors"
@@ -101,58 +107,58 @@ group :development do
   gem 'web-console', '~> 2.0'
 end
 
+# template engine
 gem "slim-rails"
-gem "td"
-gem "td-logger"
+# TODOのやつだったかな？
 gem "watson-ruby"
+# キャッシュ
 gem "cache_digests"
+# Apiのバージョン管理
 gem "versioncake"
+# decorator
 gem "active_decorator"
+# 画像アップロード
 gem "paperclip"
-
+# 権限チェック
 gem "pundit"
+# fontのライブラリ
 gem "font-awesome-rails"
+# javascriptとRubyの連携
 gem "gon"
+# 本番だけ使うもの
 group :production do
   gem "foreman"
   gem "rails_12factor"
   gem "puma"
   gem "newrelic_rpm"
 end
-
 # heroku連携
 gem 'heroku'
 group :development do
   # travis連携
   gem 'travis'
 end
-
 # css fremework compass
 gem 'compass-rails'
 gem 'parser', '2.2.0.pre.8'
-
+# 非同期処理
 gem 'resque'
 
 gem 'active_hash'
-
 # pagenate
 gem 'kaminari'
-
 # 暗号化
 gem 'attr_encrypted'
-
 # react rails
 gem 'react-rails', '~> 1.0'
-
 # assets 高速化
 gem 'sprockets-derailleur'
-
 # SQL発行場所を出力させる
 gem 'activerecord-cause'
-
-# fluentd
+# ログ収集
+gem "td"
+gem "td-logger"
 gem 'act-fluent-logger-rails'
 gem 'lograge'
-
 # breadcrumbs
 gem "crummy",  "~> 1.8.0"
