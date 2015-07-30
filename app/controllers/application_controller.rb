@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   def application_log_output
     application_log = Logger.new("log/rails_application_#{Rails.env}.log")
 
-    application_log.info "pid: #{$$}, #{request.request_method}, path: #{request.fullpath}, ip: #{request.remote_ip}, uuid: #{request.uuid}"
+    application_log.info "pid: #{$PROCESS_ID}, #{request.request_method}, path: #{request.fullpath}, ip: #{request.remote_ip}, uuid: #{request.uuid}"
   end
 
   def render_404
