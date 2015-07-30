@@ -162,3 +162,6 @@ gem 'act-fluent-logger-rails'
 gem 'lograge'
 # breadcrumbs
 gem "crummy",  "~> 1.8.0"
+# elasticsearch
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
