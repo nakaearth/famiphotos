@@ -72,7 +72,7 @@ module Searchable
   module ClassMethods
     def create_index!(options = {})
       client = __elasticsearch__.client
-      client.indices.delete index: "green_application" rescue nil if options[:force]
+      client.indices.delete index: "green_application" if options[:force]
       client.indices.create index: "green_application",
                             body: {
                               settings: settings.to_hash,
