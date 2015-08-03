@@ -5,9 +5,5 @@ module Searchable
     include Elasticsearch::Model
 
     default_index_name "famiphoto"
-
-
-
   end
-
 end
