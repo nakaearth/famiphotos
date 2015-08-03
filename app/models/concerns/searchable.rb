@@ -14,11 +14,11 @@ module Searchable
         filter: {
           pos_filter: {
             type:     'kuromoji_part_of_speech',
-            stoptags: ['助詞-格助詞-一般', '助詞-終助詞'],
+            stoptags: ['助詞-格助詞-一般', '助詞-終助詞']
           },
           greek_lowercase_filter: {
             type:     'lowercase',
-            language: 'greek',
+            language: 'greek'
           },
           kuromoji_ks: {
             type: 'kuromoji_stemmer',
@@ -33,14 +33,14 @@ module Searchable
             type: 'nGram',
             min_gram: '2',
             max_gram: '3',
-            token_chars: ['letter', 'digit']
+            token_chars: %w(letter digit)
           }
         },
         analyzer: {
           kuromoji_analyzer: {
             type:      'custom',
             tokenizer: 'kuromoji_tokenizer',
-            filter:    ['kuromoji_baseform', 'pos_filter', 'greek_lowercase_filter', 'cjk_width'],
+            filter:    %w(kuromoji_baseform pos_filter greek_lowercase_filter cjk_width)
           },
           ngram_analyzer: {
             tokenizer: "ngram_tokenizer"
@@ -48,36 +48,36 @@ module Searchable
         }
       }
     } do
-      mapping _source: { enabled: true }, 
-_all: { enabled: true, analyzer: "kuromoji_analyzer" } do
+      mapping _source: { enabled: true },
+              _all: { enabled: true, analyzer: "kuromoji_analyzer" } do
         indexes :id, type: 'integer', index: 'not_analyzed'
         indexes :title, type: 'string', analyzer: 'kuromoji_analyzer'
       end
     end
 
-    def as_indexed_json(options={})
-     # hash = self.as_json(
-     #   include: {
-     #     id: { only: [:id] },
-     #     title: { only: [:title] }
-     #   }
-     # )
-     # hash['client_name'] = client.name
+    def as_indexed_json(_options = {})
+      # hash = self.as_json(
+      #   include: {
+      #     id: { only: [:id] },
+      #     title: { only: [:title] }
+      #   }
+      # )
+      # hash['client_name'] = client.name
 
-     # hash
-      self.as_json 
+      # hash
+      as_json
     end
   end
 
   module ClassMethods
-    def create_index!(options={})
+    def create_index!(options = {})
       client = __elasticsearch__.client
       client.indices.delete index: "green_application" rescue nil if options[:force]
       client.indices.create index: "green_application",
-      body: {
-        settings: settings.to_hash,
-        mappings: mappings.to_hash
-      }
+                            body: {
+                              settings: settings.to_hash,
+                              mappings: mappings.to_hash
+                            }
     end
   end
 end

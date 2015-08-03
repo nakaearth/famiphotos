@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   include Searchable
 
   # after_save TODO: save後にelasticsearchにデータいれるようにする
- 
+
   has_attached_file :photo,  styles: { medium: "300x300>",  thumb: "100x100>" }
 
   belongs_to :user
