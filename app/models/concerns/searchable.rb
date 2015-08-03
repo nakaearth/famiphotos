@@ -58,7 +58,8 @@ _all: { enabled: true, analyzer: "kuromoji_analyzer" } do
     def as_indexed_json(options={})
       hash = self.as_json(
         include: {
-          job_types: { only: [:job_type_id] },
+          id: { only: [:id] },
+          title: { only: [:title] }
         }
       )
       hash['client_name'] = client.name
