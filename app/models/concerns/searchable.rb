@@ -6,6 +6,8 @@ module Searchable
 
     index_name "famiphoto"
 
+    after_save :save_search_data
+
     # Set up index configuration and mapping
     settings index: {
       number_of_shards:   2,
@@ -56,16 +58,13 @@ module Searchable
     end
 
     def as_indexed_json(_options = {})
-      # hash = self.as_json(
-      #   include: {
-      #     id: { only: [:id] },
-      #     title: { only: [:title] }
-      #   }
-      # )
-      # hash['client_name'] = client.name
-
-      # hash
       as_json
+    end
+
+    private
+
+    def save_search_data
+      # elsにデータを入れる
     end
   end
 
