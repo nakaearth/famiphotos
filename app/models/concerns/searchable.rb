@@ -56,15 +56,16 @@ _all: { enabled: true, analyzer: "kuromoji_analyzer" } do
     end
 
     def as_indexed_json(options={})
-      hash = self.as_json(
-        include: {
-          id: { only: [:id] },
-          title: { only: [:title] }
-        }
-      )
-      hash['client_name'] = client.name
+     # hash = self.as_json(
+     #   include: {
+     #     id: { only: [:id] },
+     #     title: { only: [:title] }
+     #   }
+     # )
+     # hash['client_name'] = client.name
 
-      hash
+     # hash
+      self.as_json 
     end
   end
 
