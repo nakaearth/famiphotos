@@ -6,7 +6,9 @@ module Searchable
 
     index_name "famiphoto"
 
-    after_save :save_search_data
+    after_save do
+      __elasticsearch__.index_document
+    end
 
     # Set up index configuration and mapping
     settings index: {
@@ -53,26 +55,20 @@ module Searchable
       mapping _source: { enabled: true },
               _all: { enabled: true, analyzer: "kuromoji_analyzer" } do
         indexes :id, type: 'integer', index: 'not_analyzed'
-        indexes :title, type: 'string', analyzer: 'kuromoji_analyzer'
+        indexes :descritpion, type: 'string', analyzer: 'kuromoji_analyzer'
       end
     end
 
     def as_indexed_json(_options = {})
       as_json
     end
-
-    private
-
-    def save_search_data
-      # elsにデータを入れる
-    end
   end
 
   module ClassMethods
     def create_index!(options = {})
       client = __elasticsearch__.client
-      client.indices.delete index: "green_application" if options[:force]
-      client.indices.create index: "green_application",
+      client.indices.delete index: index_name if options[:force]
+      client.indices.create index: index_name,
                             body: {
                               settings: settings.to_hash,
                               mappings: mappings.to_hash

@@ -9,7 +9,7 @@ module Search
     def search(search_word)
       @client.search(
         query: {
-          term: { "title": search_word }
+          term: { "description": "#{search_word}" }
         },
         sort: [
           { created_at: "desc" }
