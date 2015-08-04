@@ -55,7 +55,7 @@ module Searchable
       mapping _source: { enabled: true },
               _all: { enabled: true, analyzer: "kuromoji_analyzer" } do
         indexes :id, type: 'integer', index: 'not_analyzed'
-        indexes :descritpion, type: 'string', analyzer: 'kuromoji_analyzer'
+        indexes :description, type: 'string', analyzer: 'kuromoji_analyzer'
       end
     end
 
