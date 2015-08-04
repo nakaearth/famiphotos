@@ -446,6 +446,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    switch_point (0.6.0)
+      activerecord (>= 3.2.0)
     td (0.11.10)
       hirb (>= 0.4.5)
       msgpack (>= 0.4.4, < 0.6.0, != 0.5.3, != 0.5.2, != 0.5.1, != 0.5.0)
@@ -586,6 +588,7 @@ DEPENDENCIES
   slim-rails
   spring
   sprockets-derailleur
+  switch_point
   td
   td-logger
   terminal-notifier-guard

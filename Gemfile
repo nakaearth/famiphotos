@@ -165,3 +165,6 @@ gem "crummy",  "~> 1.8.0"
 # elasticsearch
 gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
+
+# 複数DB対応
+gem 'switch_point'
