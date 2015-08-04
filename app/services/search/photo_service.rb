@@ -14,7 +14,8 @@ module Search
         sort: [
           { created_at: "desc" }
         ],
-        size: 100
+        size: 100,
+        from: 200
       ).records.to_a
     end
   end
