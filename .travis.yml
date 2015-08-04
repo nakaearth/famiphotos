@@ -1,7 +1,7 @@
 language: ruby
 bundler_args: "--without production --path vendor/bundle"
 rvm:
-- 2.1.5
+- 2.2.1
 gemfile:
 - Gemfile
 env:
