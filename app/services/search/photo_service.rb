@@ -9,13 +9,12 @@ module Search
     def search(search_word)
       @client.search(
         query: {
-          term: { "description": "#{search_word}" }
+          match: { "description": "#{search_word}" }
         },
         sort: [
           { created_at: "desc" }
         ],
-        size: 100,
-        from: 200
+        size: 100
       ).records.to_a
     end
   end
