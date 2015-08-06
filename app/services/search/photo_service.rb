@@ -12,8 +12,8 @@ module Search
           match: { "description": "#{search_word}" }
         },
         filter: {
-          term: { "user_id": "#{user_id}" } 
-        }, 
+          term: { "user_id": "#{user_id}" }
+        },
         sort: [
           { created_at: "desc" }
         ],
