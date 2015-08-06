@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   # web
   resources :photos
+  resource :photo_search, only: %i( create )
+
   resources :users, only: %i( show edit update )
  
   # api
