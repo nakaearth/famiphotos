@@ -1,0 +1,5 @@
+ja:
+  activerecord:
+    attributes:
+      photo_search:
+        search_word: 検索ワード

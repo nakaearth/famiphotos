@@ -180,11 +180,3 @@ ja:
 
       full_messages:
         format: "%{attribute}%{message}"
-    attributes:
-      photo:
-        description: '概要'
-      user:
-        name: 'ニックネーム'
-        email: 'Eメール'
-      group:
-        name: 'グループ名'
