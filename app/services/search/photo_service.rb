@@ -6,10 +6,10 @@ module Search
 
     # TODO: 柔軟生を出すようんいする.titleがカラムにあるかみるようにsuru
     #
-    def search(search_word, user)
+    def search(photo_search, user)
       @client.search(
         query: {
-          match: { "description": "#{search_word}" }
+          match: { "description": "#{photo_search.search_word}" }
         },
         filter: {
           term: { "user_id": "#{user.id}" }

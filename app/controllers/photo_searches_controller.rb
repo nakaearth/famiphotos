@@ -1,8 +1,8 @@
-class PhotoSearchsController < ApplicationController
+class PhotoSearchesController < ApplicationController
   before_action :set_photo_search
 
   def create
-    service = Search::PhotoService.new
+    service = Search::PhotoService.new(Photo)
     @photos = service.search(@photo_search, current_user)
   end
 
