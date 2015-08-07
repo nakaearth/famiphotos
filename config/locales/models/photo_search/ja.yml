@@ -1,5 +1,5 @@
 ja:
-  activerecord:
+  activemodel:
     attributes:
       photo_search:
         search_word: 検索ワード
