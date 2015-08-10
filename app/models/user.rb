@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include IdEncryptable
+  include Searchable
 
   use_switch_point :famiphoto
 
