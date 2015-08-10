@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   include IdEncryptable
 
+  # use_switch_point :famiphoto
+
   has_many :group_members, dependent: :destroy
   has_many :my_groups, through: :group_members, source: :group
   has_many :photos, inverse_of: :user
