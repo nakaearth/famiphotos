@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include IdEncryptable
   include Searchable
 
-  use_switch_point :famiphoto
+  #use_switch_point :famiphotos
 
   has_many :group_members, dependent: :destroy
   has_many :my_groups, through: :group_members, source: :group

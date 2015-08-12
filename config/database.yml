@@ -20,11 +20,11 @@ development:
   <<: *default
   database: famiphotos_development
 
-famiphoto_master_development:
+famiphotos_master_development:
   <<: *default
   database: famiphotos_development
   
-famiphoto_slave_development:
+famiphotos_slave_development:
   <<: *default
   database: famiphotos_development
  
