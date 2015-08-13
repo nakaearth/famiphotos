@@ -15,7 +15,7 @@ module Users
             user.secret_token = auth[:credentials][:secret]
           end
         end
-        @login_user.save!
+        User.with_writable { @login_user.save! }
         @login_user
       end
     end
