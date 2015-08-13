@@ -35,6 +35,10 @@ test:
   <<: *default
   database: famiphotos_test
 
+famiphotos_test:
+  <<: *default
+  database: famiphotos_test
+
 # production:
 #  <<: *default
 #  database: db/production.sqlite3
