@@ -33,5 +33,8 @@ module Famiphotos
 
     # add lib directory
     config.autoload_paths << Rails.root.join('lib', 'constraints')
+
+    # query cache
+    config.middleware.swap ActiveRecord::QueryCache,  SwitchPoint::QueryCache
   end
 end
