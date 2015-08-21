@@ -7,21 +7,15 @@ class Photo < ActiveRecord::Base
   belongs_to :user
 
   validates :description, length: { maximum: 140 }
-  validates_attachment :photo,  content_type: { content_type: ["image/jpg",  "image/jpeg",  "image/png",  "image/gif"] }
-  validates_attachment_size :photo, in: 1..5.megabyte, message: 'ファイルサイズが大きすぎます'
 
-  if Rails.env.production?
-    has_attached_file :photo,  styles: { medium: "300x300>",  thumb: "100x100>" }
-    # has_attached_file :photo,
-    #   :storage => :s3,
-    #   :s3_credentials=>S3_CREDENTIALS,
-    #   :styles => { :medium => "350x350>", :thumb => "100x100>",:original=>"700x700>"},
-    #   :url => ":s3_domain_url",
-    #   :path=>"photos/:id/:style/:filename"
-  else
-    has_attached_file :photo,
-                      url: "/system/img/attaches/:id/:style/:filename",
-                      path: "photos/:id/:style/:filename",
-                      styles: { medium: "350x350>", thumb: "100x100>", original: "700x700>" }
+  has_attached_file :photo,
+                    styles: { medium: "300x300>", thumb: "100x100>", original: "500x500" },
+                    deault_url: "/images/:style/missing.png",
+                    path: "photos/:img_dir_num/:style/:filename"
+
+  validates_attachment :photo,  content_type: { content_type: ["image/jpg",  "image/jpeg",  "image/png",  "image/gif"] }
+
+  Paperclip.interpolates :img_dir_num do |attachment, _style|
+    (attachment.instance.user_id).to_s
   end
 end
