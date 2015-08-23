@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Photo, type: :model do
-  let(:user) { User.with_writable { create(:user) } }
+  let(:user) { create(:user) }
   let(:photo) { Photo.with_readonly { create(:photo, user: user) } }
 
   describe 'association' do

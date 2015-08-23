@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  let!(:user) { User.with_writable { create(:user) } }
+  let!(:user) { create(:user) }
 
   describe 'association' do
     context 'have a relation to user class' do
