@@ -10,8 +10,8 @@ class Photo < ActiveRecord::Base
 
   has_attached_file :photo,
                     styles: { medium: "300x300>", thumb: "100x100>", original: "500x500" },
-                    deault_url: "/images/:style/missing.png",
-                    path: "photos/:img_dir_num/:style/:filename"
+                    url: "/assets/arts/:id/:style/:basename.:extension",
+                    path: "#{Rails.root}/public/assets/arts/:id/:style/:basename.:extension"
 
   validates_attachment :photo,  content_type: { content_type: ["image/jpg",  "image/jpeg",  "image/png",  "image/gif"] }
 
