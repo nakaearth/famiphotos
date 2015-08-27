@@ -8,7 +8,7 @@ module Search
     #
     def search(photo_search, user)
       @client.search(
-        min_score:  0.3,
+        # min_score:  0.3,
         query: {
           match: { "description": "#{photo_search.search_word}" }
         },
