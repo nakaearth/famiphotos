@@ -168,3 +168,6 @@ gem 'elasticsearch-model'
 
 # 複数DB対応
 gem 'switch_point'
+
+# dbスキーマ管理
+gem 'ridgepole'
