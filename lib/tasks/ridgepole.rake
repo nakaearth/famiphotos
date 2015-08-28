@@ -1,10 +1,11 @@
 namespace :ridgepole do
-  task 'db:migrate' => :environment do
+  desc 'ridgepole task'
+  task 'apply' => :environment do
     ENV['RAILS_ENV'] ||= "development"
     sh "bin/ridgepole -E#{ENV['RAILS_ENV']} -c config/database.yml --apply"
   end
 
-  task 'db:migrate' => :environment do
+  task 'dry-run' => :environment do
     ENV['RAILS_ENV'] ||= "development"
     sh "bin/ridgepole -E#{ENV['RAILS_ENV']} -c config/database.yml --apply --dry-run"
   end
