@@ -1,0 +1,6 @@
+create_table "information", force: :cascade do |t|
+  t.text     "message",    limit: 65535
+  t.string   "title",      limit: 255
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
