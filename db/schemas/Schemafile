@@ -1,0 +1,5 @@
+require 'group_members.schema'
+require 'groups.schema'
+require 'information.schema'
+require 'photos.schema'
+require 'users.schema'
