@@ -3,12 +3,9 @@ module Searchable
 
   included do
     include Elasticsearch::Model
+    include Elasticsearch::Model::Callbacks
 
     index_name "famiphoto"
-
-    after_save do
-      __elasticsearch__.index_document
-    end
 
     # Set up index configuration and mapping
     settings index: {
