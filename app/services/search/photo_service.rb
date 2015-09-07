@@ -12,7 +12,16 @@ module Search
       @client.search(
         min_score:  0.3,
         query: {
-          match: { "description": "#{photo_search.search_word}" }
+          bool: {
+            should: [
+              {
+                match: { "description": "#{photo_search.search_word}" }, 
+              }, 
+              {
+                prefix: { "description": "#{photo_search.search_word}" }
+              }
+            ]
+          }, 
         },
         filter: {
           term: { "user_id": "#{user.id}" }
