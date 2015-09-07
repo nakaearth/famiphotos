@@ -15,13 +15,13 @@ module Search
           bool: {
             should: [
               {
-                match: { "description": "#{photo_search.search_word}" }, 
-              }, 
+                match: { "description": "#{photo_search.search_word}" }
+              },
               {
                 prefix: { "description": "#{photo_search.search_word}" }
               }
             ]
-          }, 
+          }
         },
         filter: {
           term: { "user_id": "#{user.id}" }
