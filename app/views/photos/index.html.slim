@@ -15,7 +15,7 @@ h1 写真一覧
         .photo_detail id="photo_viewer_#{photo.id}"
           span id="close_photo_#{photo.id}"
             | 閉じる
-            | \#{image_tag photo.photo.url(:original)}
+            = image_tag photo.photo.url(:original)
         span id="photo_#{photo.id}"
           = image_tag photo.photo.url(:thumb)
           | タイトル:#{photo.photo_file_name}
