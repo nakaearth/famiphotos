@@ -1,19 +1,19 @@
-'use strict'
+class PhotoViewer
+  selector: '.photo-detail'
 
-$ ->
+  constructor: ->
+    @init()
 
-  class PhotoViewer
-    selector: '.photo-detail'
+  init: ->
+    @setEvents()
 
-    constructor: ->
-      @init()
+  setEvents:  ->
+    $("#photo_viewer").click ->
+      console.log 123
 
-    init: ->
-      @setEvents()
 
-    setEvents:  ->
-      $("#photo_viewer").click ->
-        console.log 123
+do ->
+  $photo_viewer = document.querySelectorAll('.photo_list')
 
-  new PhotoViewer
+  new PhotoViewer($photo_viewer)
 
