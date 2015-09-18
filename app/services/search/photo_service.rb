@@ -23,9 +23,18 @@ module Search
             ]
           }
         },
+        highlight: { fields: { description: { } }}, 
         filter: {
           term: { "user_id": "#{user.id}" }
         },
+#        boost: "boost for the whole query",
+#        functions: [
+#          FUNCTION: {
+#            "script_score": {
+#              "script": "_score * doc['my_numeric_field'].value"
+#            }
+#          }
+#        ], 
         sort: [
           { created_at: "desc" }
         ],
