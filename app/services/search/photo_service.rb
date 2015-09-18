@@ -9,43 +9,19 @@ module Search
     end
 
     def search(photo_search, user)
-      @client.search(
+      body =  {
         query: {
-          function_score: {
-            score_mode: 'multiply', 
-            query: {
-              simple_query_string: {
-              query: photo_search.search_word,
-              fields: ['description'],
-              default_operator: :and,
-#               bool: {
-#                should: [
-#                  {
-#                    match: { "description": "#{photo_search.search_word}" }
-#                  },
-#                  {
-#                    prefix: { "description": "#{photo_search.search_word}" }
-#                  }
-#                ]
-              
-            }, 
-            functions: [
+          bool: {
+            should: [
               {
-                filter: {
-                query: {
-                  simple_query_string: {
-                    query: photo_search.search_word,
-                    fields: ['description'],
-                  }
-                }
+                match: { description: photo_search.search_word }
               },
-              weight: 5  
+              {
+                prefix: { description: photo_search.search_word }
               }
             ]
-            }
           }
         },
-        highlight: { fields: { description: { } }}, 
         filter: {
           term: { "user_id": "#{user.id}" }
         },
@@ -53,7 +29,9 @@ module Search
           { created_at: "desc" }
         ],
         size: 100
-      ).records.to_a
+      }.to_json
+
+      @client.search(body).records.to_a
     end
   end
 end
