@@ -33,5 +33,9 @@ module Search
 
       @client.search(body).records.to_a
     end
+
+    def search_order_by_score(photo_search, user)
+      # scor検索をここにかく
+    end
   end
 end
