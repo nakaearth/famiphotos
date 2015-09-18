@@ -10,31 +10,45 @@ module Search
 
     def search(photo_search, user)
       @client.search(
-        min_score:  0.3,
         query: {
-          bool: {
-            should: [
+          function_score: {
+            score_mode: 'multiply', 
+            query: {
+              simple_query_string: {
+              query: photo_search.search_word,
+              fields: ['description'],
+              default_operator: :and,
+#               bool: {
+#                should: [
+#                  {
+#                    match: { "description": "#{photo_search.search_word}" }
+#                  },
+#                  {
+#                    prefix: { "description": "#{photo_search.search_word}" }
+#                  }
+#                ]
+              
+            }, 
+            functions: [
               {
-                match: { "description": "#{photo_search.search_word}" }
+                filter: {
+                query: {
+                  simple_query_string: {
+                    query: photo_search.search_word,
+                    fields: ['description'],
+                  }
+                }
               },
-              {
-                prefix: { "description": "#{photo_search.search_word}" }
+              weight: 5  
               }
             ]
+            }
           }
         },
         highlight: { fields: { description: { } }}, 
         filter: {
           term: { "user_id": "#{user.id}" }
         },
-#        boost: "boost for the whole query",
-#        functions: [
-#          FUNCTION: {
-#            "script_score": {
-#              "script": "_score * doc['my_numeric_field'].value"
-#            }
-#          }
-#        ], 
         sort: [
           { created_at: "desc" }
         ],
