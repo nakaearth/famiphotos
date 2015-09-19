@@ -8,34 +8,63 @@ module Search
       end
     end
 
+#    def search(photo_search, user)
+#      body =  {
+#        query: {
+#          bool: {
+#            should: [
+#              {
+#                match: { description: photo_search.search_word }
+#              },
+#              {
+#                prefix: { description: photo_search.search_word }
+#              }
+#            ]
+#          }
+#        },
+#        filter: {
+#          term: { "user_id": "#{user.id}" }
+#        },
+#        sort: [
+#          { created_at: "desc" }
+#        ],
+#        size: 100
+#      }.to_json
+#
+#      @client.search(body).records.to_a
+#    end
+
     def search(photo_search, user)
-      body =  {
+      body = { 
         query: {
-          bool: {
-            should: [
-              {
-                match: { description: photo_search.search_word }
-              },
-              {
-                prefix: { description: photo_search.search_word }
-              }
-            ]
-          }
-        },
-        filter: {
-          term: { "user_id": "#{user.id}" }
-        },
-        sort: [
-          { created_at: "desc" }
-        ],
-        size: 100
+         function_score: {
+           score_mode: 'multiply',
+           query: {
+             simple_query_string: {
+               query: photo_search.search_word,
+               fields: ['description'],
+               default_operator: :and,
+             }
+           },
+           functions: [
+             {
+                filter: {
+                query: {
+                  simple_query_string: {
+                    query: photo_search.search_word,
+                   fields: ['description'],
+                     default_operator: :and,
+                   }
+                 }
+               },
+               weight: 5
+             },
+           ]
+         }
+        }
       }.to_json
 
       @client.search(body).records.to_a
-    end
-
-    def search_order_by_score(photo_search, user)
-      # scor検索をここにかく
     end
   end
 end
