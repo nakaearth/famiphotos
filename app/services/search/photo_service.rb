@@ -38,7 +38,8 @@ module Search
       body = { 
         query: {
          function_score: {
-           score_mode: 'multiply',
+           score_mode: 'sum',
+           boost_mode: 'multiply', 
            query: {
              simple_query_string: {
                query: photo_search.search_word,
@@ -49,16 +50,24 @@ module Search
            functions: [
              {
                 filter: {
-                query: {
-                  simple_query_string: {
-                    query: photo_search.search_word,
-                   fields: ['description'],
-                     default_operator: :and,
-                   }
-                 }
-               },
-               weight: 5
+                  query: {
+                    simple_query_string: {
+                      query: photo_search.search_word,
+                      fields: ['description'],
+                       default_operator: :and,
+                    }
+                  }
+                },
+                weight: 5
              },
+             {
+                field_value_factor: {
+                  field: "id",
+                  factor: 1.2,
+                  modifier: "sqrt",
+                  missing: 1
+                }
+             }
            ]
          }
         }
