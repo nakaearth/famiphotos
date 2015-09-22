@@ -1,8 +1,6 @@
 h1 写真一覧
 
-= form_for @photo_search, url: photo_search_path do |f|
-  = f.label :search_word
-  = f.text_field :search_word
+= render 'photo_searches/form'
 
 = paginate @photos
 .photo_list
