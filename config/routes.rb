@@ -10,10 +10,11 @@ Rails.application.routes.draw do
 
   # web
   resources :photos
-  resource :photo_search, only: %i( create )
+  resource  :photo_search, only: %i( create )
 
   resources :users, only: %i( show edit update )
- 
+  resource  :user_search, only: %i( create )
+
   # api
   namespace :api do
     resources :informations, only: %i( index )

@@ -9,7 +9,6 @@ module Search
     end
 
     def search
-
     end
   end
 end
