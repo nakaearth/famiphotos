@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resource  :photo_search, only: %i( create )
 
   resources :users, only: %i( show edit update )
-  resource  :user_search, only: %i( create )
+  resources :user_searches, only: %i( index create )
 
   # api
   namespace :api do

@@ -1,9 +1,13 @@
 class UserSearchesController < ApplicationController
   before_action :set_user_search
 
+  def index
+  end
+
   def create
     service = Search::UserService.new(User)
     @users = service.search(@user_search, current_user)
+    redirect_to user_searches_path
   end
 
   private
@@ -17,6 +21,6 @@ class UserSearchesController < ApplicationController
       :search_word
     ]
 
-    params.fetch(:user_search).permit(user_params)
+    params.fetch(:user_search, {}).permit(user_params)
   end
 end
