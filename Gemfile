@@ -82,7 +82,7 @@ group :test do
 
   # 静的解析
   # gem 'rubycritic', require: false
-  # gem 'brakeman', require: false
+  gem 'brakeman', require: false
 end
 
 # 開発, テスト時に使うツール群
