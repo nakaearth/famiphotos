@@ -1,5 +1,5 @@
-create_table "groups", force: :cascade do |t|:w
-  t.integer  "group_id"    limit: 4,  null: false
+create_table "sub_groups", force: :cascade do |t|
+  t.integer  "group_id",     limit: 4,  null: false
   t.string   "name",       limit: 255
   t.datetime "created_at"
   t.datetime "updated_at"
