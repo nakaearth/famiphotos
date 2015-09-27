@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :login?
   before_action :current_user
+  before_action :current_group
   before_action :application_log_output
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
@@ -16,6 +17,11 @@ class ApplicationController < ActionController::Base
     logger.info "ユーザ情報がありません: #{ar.message}"
     session[:user_id] = nil
     nil
+  end
+
+  # TODO: グループ切り替えが必要か
+  def current_group
+    current_user.my_groups.first
   end
 
   def login?

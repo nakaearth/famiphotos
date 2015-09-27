@@ -1,4 +1,4 @@
-h1 写真一覧
+h1 ユーザ一覧
 
 = form_for @user_search, url: user_searches_path do |f|
   = f.label :search_word
@@ -31,7 +31,6 @@ h1 写真一覧
             $( '#user_viewer_#{user.id}' ).click(function (){
                 $( '#user_viewer_#{user.id}' ).fadeOut("slow");
                 });
-          | コメント:#{user.description}
           br/
           = link_to '拡大', user_path(user), remote: true
-          | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', user_path(user), method: :delete,  data: { confirm: '削除しますか？'} }
+          | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '招待', edit_user_path(user) }

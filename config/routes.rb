@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :photos
   resource  :photo_search, only: %i( create )
 
-  resources :users, only: %i( show edit update )
+  resources :users, only: %i( index show new create edit update destroy )
   resources :user_searches, only: %i( index create )
 
   # api

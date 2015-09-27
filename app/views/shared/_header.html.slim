@@ -6,7 +6,7 @@
     |    | 
     = link_to_unless_current '登録', new_photo_path, id: 'regist_link'
     |    | 
-    = link_to_unless_current '管理', admin_path, id: 'admin_link'
+    = link_to_unless_current 'ユーザ設定', users_path, id: 'admin_link'
     |    | 
   .right_div
     = link_to_unless_current  image_tag(@current_user.image_url, size: '40x40'), user_path(@current_user)
