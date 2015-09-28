@@ -5,33 +5,4 @@ h1 ユーザ一覧
   = f.text_field :search_word
   = f.submit '検索'
 
-- if @users
-  .user_list
-    table
-      tr
-        th
-      - @users.each do |user|
-        tr
-        .user_div
-          .user_detail id="user_viewer_#{photo.id}"
-            span id="close_user_#{user.id}"
-              | 閉じる
-              | \#{image_tag user.user.url(:original)}
-          span id="user_#{user.id}"
-            = image_tag user.user.url(:thumb)
-            | タイトル:#{user.user_file_name}
-            br/
-            | 投稿日付 #{user.created_at.strftime("%Y/%m/%d")}
-            br/
-          javascript:
-            $( '#user_#{user.id}' ).click(function (){
-                $( '#user_viewer_#{user.id}' ).fadeIn("slow");
-                });
-          javascript:
-            $( '#user_viewer_#{user.id}' ).click(function (){
-                $( '#user_viewer_#{user.id}' ).fadeOut("slow");
-                });
-          | コメント:#{user.description}
-          br/
-          = link_to '拡大', user_path(user), remote: true
-          | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', user_path(user), method: :delete,  data: { confirm: '削除しますか？'} }
+= render 'user_list'

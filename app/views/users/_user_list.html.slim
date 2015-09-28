@@ -1,0 +1,12 @@
+- if @users
+  .user_list
+    table
+      tr
+        th
+      - @users.each do |user|
+        tr
+        .user_div
+          .user_detail id="user_viewer_#{user.id}"
+              #{image_tag user.image_url}
+              |
+              = user.name
