@@ -6,7 +6,8 @@ class UserSearchesController < ApplicationController
 
   def create
     service = Search::UserService.new(User)
-    @users = service.search(@user_search, current_user)
+    @search_users = service.search(@user_search, current_user)
+
     redirect_to users_path
   end
 

@@ -1,12 +1,27 @@
-- if @users
+.user_list_context
   .user_list
-    table
-      tr
-        th
-      - @users.each do |user|
+    | グループ内ユーザ一覧
+    - if @users
+      table.group_list_table
         tr
-        .user_div
-          .user_detail id="user_viewer_#{user.id}"
-              #{image_tag user.image_url}
-              |
-              = user.name
+          th
+        - @users.each do |user|
+          tr
+          .user_div
+            .user_detail id="user_viewer_#{user.id}"
+                #{image_tag user.image_url}
+                |
+                = user.name
+  .user_list
+    - if @search_users
+      table.search_user_list_table
+        tr
+          th
+        - @search_users.each do |user|
+          tr
+          .user_div
+            .user_detail id="user_viewer_#{user.id}"
+                #{image_tag user.image_url}
+                |
+                = user.name
+
