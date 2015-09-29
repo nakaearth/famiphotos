@@ -13,11 +13,11 @@
                 |
                 = user.name
   .user_list
-    - if @search_users
+    - if @result_users
       table.search_user_list_table
         tr
           th
-        - @search_users.each do |user|
+        - @result_users.each do |user|
           tr
           .user_div
             .user_detail id="user_viewer_#{user.id}"

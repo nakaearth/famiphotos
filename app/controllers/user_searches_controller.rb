@@ -1,14 +1,11 @@
 class UserSearchesController < ApplicationController
   before_action :set_user_search
 
-  def index
-  end
-
   def create
-    service = Search::UserService.new(User)
-    @search_users = service.search(@user_search, current_user)
+    service       = Search::UserService.new(User)
+    @result_users = service.search(@user_search, current_user)
 
-    redirect_to users_path
+    @users        = current_group.users
   end
 
   private

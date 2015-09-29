@@ -1,0 +1,8 @@
+h1 ユーザ一覧
+
+= form_for @user_search, url: user_searches_path do |f|
+  = f.label :search_word
+  = f.text_field :search_word
+  = f.submit '検索'
+
+= render 'users/user_list'

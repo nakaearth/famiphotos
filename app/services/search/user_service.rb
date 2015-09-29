@@ -20,14 +20,13 @@ module Search
             ]
           }
         },
-        filter: {
-          bool: {
-            should: [
-              { term: { "user_id": "#{user.id}" } },
-              { term: { "group_id": "#{user.group_id}" } }
-            ]
-          }
-        },
+        #filter: {
+        #  bool: {
+        #    should: [
+        #      { term: { "user_id": "#{user.id}" } }
+        #    ]
+        #  }
+        #},
         sort: [
           { created_at: "desc" }
         ],
