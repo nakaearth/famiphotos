@@ -1,27 +1,24 @@
 .user_list_context
-  .user_list
-    | グループ内ユーザ一覧
-    - if @users
-      table.group_list_table
-        tr
-          th
-        - @users.each do |user|
-          tr
-          .user_div
-            .user_detail id="user_viewer_#{user.id}"
-                #{image_tag user.image_url}
-                |
-                = user.name
-  .user_list
-    - if @result_users
-      table.search_user_list_table
-        tr
-          th
-        - @result_users.each do |user|
-          tr
-          .user_div
-            .user_detail id="user_viewer_#{user.id}"
-                #{image_tag user.image_url}
-                |
-                = user.name
+  table
+    tr
+      td.group_user_list
+        .user_list
+          = 'グループ内ユーザ一覧'
+          - if @users
+            - @users.each do |user|
+              .user_div
+                .user_detail id="user_viewer_#{user.id}"
+                  #{image_tag user.image_url}
+                  |
+                  = user.name
+      td.search_user_list
+        .user_list 
+          = '検索結果'
+          - if @result_users
+            - @result_users.each do |user|
+              .user_div
+                .user_detail id="user_viewer_#{user.id}"
+                  #{image_tag user.image_url}
+                  |
+                  = user.name
 

@@ -6,12 +6,14 @@
 @import "compass/reset";
 @import "compass";
 
-.group_user_list_table {
+.group_user_list {
   width: 200px;
+  visibility: visible;
 }
 
-.search_user_list_table {
+.search_user_list {
   width: 750px;
+  visibility: visible;
 }
 
 .user_list_context {
@@ -19,8 +21,7 @@
   position: absolute;
 
   .user_list {
-     height: 450pt;
-     visibility: visible;
+     height: 400pt;
      float: left;
      margin: 4px;
      z-index: 0;
