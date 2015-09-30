@@ -1,6 +1,6 @@
 module Search
   class UserService < BaseService
-    def search(user_search, user)
+    def search(user_search, _user)
       body =  {
         query: {
           bool: {
@@ -20,13 +20,13 @@ module Search
             ]
           }
         },
-        #filter: {
+        # filter: {
         #  bool: {
         #    should: [
         #      { term: { "user_id": "#{user.id}" } }
         #    ]
         #  }
-        #},
+        # },
         sort: [
           { created_at: "desc" }
         ],
