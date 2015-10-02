@@ -1,5 +1,4 @@
 class GroupMembersController < ApplicationController
-
   def index
     @users = current_group.users
   end
