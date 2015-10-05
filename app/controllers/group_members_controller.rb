@@ -7,6 +7,7 @@ class GroupMembersController < ApplicationController
   end
 
   def new
+    @group = current_user.build_group
   end
 
   def create
