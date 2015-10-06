@@ -42,4 +42,17 @@ Rails.application.configure do
   # react js
   config.react.variant = :development
   config.react.addons = true
+
+  # メールをGmailを使って送る設定
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    :address => 'smtp.gmail.com',
+    :port => '587',
+    :domain => 'smtp.gmail.com',
+    :authentication => 'plain',
+    :user_name => ENV['FAMIPHOTO_MAILADDRESS'],
+    :password => ENV['FAMIPHOTO_MAILPASS'],
+    :enable_starttls_auto => true,
+  }
 end
