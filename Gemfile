@@ -171,3 +171,8 @@ gem 'switch_point'
 
 # dbスキーマ管理
 gem 'ridgepole'
+
+# 非同期・キューイング処理
+gem 'sidekiq'
+gem 'sinatra',  require: false
+
