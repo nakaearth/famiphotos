@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
 # Use mysql as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', ' ~> 0.3.18'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -96,6 +96,8 @@ group :development, :test do
   gem "pry-doc"
   gem 'pry-byebug'
   gem 'test-queue'
+  # バグの起こりやすい箇所を数値化
+  gem 'bugspots'
 end
 
 # 開発時に使うツール群
@@ -106,7 +108,6 @@ group :development do
   gem "did_you_mean"
   gem 'web-console', '~> 2.0'
 end
-
 # template engine
 gem "slim-rails"
 # TODOのやつだったかな？
@@ -141,9 +142,7 @@ end
 # css fremework compass
 gem 'compass-rails'
 gem 'parser', '2.2.0.pre.8'
-# 非同期処理
-gem 'resque'
-
+# 擬似的なテーブルのように使える
 gem 'active_hash'
 # pagenate
 gem 'kaminari'
@@ -165,13 +164,10 @@ gem "crummy",  "~> 1.8.0"
 # elasticsearch
 gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
-
 # 複数DB対応
 gem 'switch_point'
-
 # dbスキーマ管理
 gem 'ridgepole'
-
 # 非同期・キューイング処理
 gem 'sidekiq'
 gem 'sinatra',  require: false
