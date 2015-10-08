@@ -14,6 +14,13 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.build(user_params)
+    if @user.save
+      # InviteMailer.send_invite_mail(@user)
+      # redirect
+    else
+      # redirect
+    end
   end
 
   def edit
