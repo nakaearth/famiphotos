@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.build(user_params)
     if @user.save
-      # InviteMailer.send_invite_mail(@user)
+      # InviteMailer.send_invite_mail(@user).deliver_later
       # redirect
     else
       # redirect
