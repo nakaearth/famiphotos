@@ -1,7 +1,7 @@
 class MailSenderWorker
   include Sidekiq::Worker
 
-  def perform(*args)
+  def perform(*_args)
     # Do something
   end
 end

@@ -1,4 +1,4 @@
 require 'rails_helper'
-RSpec.describe MailSenderWorker, :type => :worker do
-    pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe MailSenderWorker, type: :worker do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
