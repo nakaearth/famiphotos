@@ -7,4 +7,6 @@ fluent-gem install fluent-plugin-elasticsearch
 fluent-gem install fluent-plugin-slack
 fluent-gem install fluent-plugin-mysqlslowquery
 
+3)起動
+fluentd -c fluentd/fluentd.conf -vv &
 
