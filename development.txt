@@ -1,0 +1,10 @@
+1) fluentdの設定
+
+gem install fluentd
+
+2) プラグインのインストール
+fluent-gem install fluent-plugin-elasticsearch
+fluent-gem install fluent-plugin-slack
+fluent-gem install fluent-plugin-mysqlslowquery
+
+
