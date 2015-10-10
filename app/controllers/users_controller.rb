@@ -15,12 +15,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.build(user_params)
-    # if @user.save
-    #  # InviteMailer.send_invite_mail(@user).deliver_later
-    #  # redirect
-    # else
-    #  # redirect
-    # end
+    if @user.save
+      InviteMailer.send_invite_mail(@user).deliver_later
+      redirect_to users_path, notice: 'ユーザ追加しました。'
+    else
+      render action: :new, alter: 'ユーザの追加に失敗しました'
+    end
   end
 
   def edit
