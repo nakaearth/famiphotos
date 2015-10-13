@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User, type: :model do
+RSpec.describe User, type: :model do
   let!(:user) { create(:user) }
 
   describe 'association' do
@@ -15,8 +15,8 @@ describe User, type: :model do
 
   describe 'Validation' do
     context 'name column' do
-      it { expect validate_presence_of(:name) }
-      it { expect validate_length_of(:name).is_at_most(60) }
+      it { is_expected.to validate_presence_of(:name) }
+      it { expect ensure_length_of(:name).is_at_most(60) }
     end
 
     context 'uid column' do
@@ -24,12 +24,12 @@ describe User, type: :model do
     end
 
     context 'email column' do
-      it { expect validate_length_of(:email).is_at_most(60) }
+      it { expect ensure_length_of(:email).is_at_most(60) }
     end
 
     context 'provider column' do
       it { expect validate_presence_of(:provider) }
-      it { expect validate_length_of(:email).is_at_most(10) }
+      it { expect ensure_length_of(:email).is_at_most(10) }
     end
   end
 end

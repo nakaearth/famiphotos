@@ -88,7 +88,8 @@ end
 # 開発, テスト時に使うツール群
 group :development, :test do
   # テスト、コードチェックを自動で別プロセスでやる
-  gem 'guard', '~> 2.8'
+  # gem 'guard', '~> 2.8'
+  gem 'guard'
   gem 'guard-rspec'
   gem 'guard-rubocop'
   gem 'terminal-notifier-guard'
