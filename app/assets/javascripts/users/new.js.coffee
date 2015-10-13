@@ -1,2 +1,2 @@
-$("#product-modal").html("<%= escape_javascript(render 'new') %>")
-$("#product-modal").modal("show")
+$("#user-modal").html("<%= escape_javascript(render 'new_modal') %>")
+$("#user-modal").modal("show")
