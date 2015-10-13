@@ -150,6 +150,10 @@ GEM
       interception
     diff-lcs (1.2.5)
     docile (1.1.5)
+    dotenv (2.0.2)
+    dotenv-rails (2.0.2)
+      dotenv (= 2.0.2)
+      railties (~> 4.0)
     elasticsearch (1.0.13)
       elasticsearch-api (= 1.0.13)
       elasticsearch-transport (= 1.0.13)
@@ -587,6 +591,7 @@ DEPENDENCIES
   crummy (~> 1.8.0)
   database_rewinder
   did_you_mean
+  dotenv-rails
   elasticsearch-model
   elasticsearch-rails
   factory_girl_rails

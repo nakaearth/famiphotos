@@ -98,6 +98,8 @@ group :development, :test do
   gem 'test-queue'
   # バグの起こりやすい箇所を数値化
   gem 'bugspots'
+  # 環境変数をセット
+  gem 'dotenv-rails'
 end
 
 # 開発時に使うツール群
