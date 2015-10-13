@@ -173,3 +173,5 @@ gem 'ridgepole'
 # 非同期・キューイング処理
 gem 'sidekiq'
 gem 'sinatra',  require: false
+# レイアウト
+gem 'bootstrap-sass'

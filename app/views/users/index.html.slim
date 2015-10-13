@@ -4,5 +4,7 @@ h1 ユーザ一覧
   = f.label :search_word
   = f.text_field :search_word
   = f.submit '検索'
+  
+.modal.fade id="product-modal" tabindex="-1" role="dialog" aria-hidden="true"
 
 = render 'user_list'
