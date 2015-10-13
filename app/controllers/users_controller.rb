@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @user = User.build(user_params)
     if @user.save
       InviteMailer.send_invite_mail(@user).deliver_later
+
       redirect_to users_path, notice: 'ユーザ追加しました。'
     else
       render action: :new, alter: 'ユーザの追加に失敗しました'
@@ -43,5 +44,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
+    params.require(:user).permit(:name, :email)
   end
 end
