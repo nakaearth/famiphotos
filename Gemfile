@@ -29,14 +29,22 @@ gem 'binding_of_caller'
 # responders gem
 gem 'responders', '~> 2.0'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+# rails-assets
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-Font-Awesome'
+  gem 'rails-assets-lodash'
+  gem 'rails-assets-marionette-gem', '2.3.2'
+  gem 'rails-assets-backbone.stickit'
+  gem 'rails-assets-backbone-validation'
+  gem 'rails-assets-backbone.paginator'
+  gem 'rails-assets-jquery-ui'
+  gem 'rails-assets-bootstrap-datepicker'
+  gem 'rails-assets-jquery-validation'
+  gem 'rails-assets-jquery.lazyload'
+  gem 'rails-assets-selectize'
+end
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 # db schema関連
 gem 'ridgepole'
