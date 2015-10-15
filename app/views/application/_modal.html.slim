@@ -1,0 +1,17 @@
+ruby:
+  as    = as || nil
+  size  = size || nil
+  id    = id || nil
+  title = title || nil
+
+div class=( "modal fade #{as}" ) id=id
+  div class=( "modal-dialog modal-#{size}" )
+    .modal-content
+      .modal-header
+        p
+          = "#{title}"
+          = link_to(image_tag('common/icon_close.png'), '', id: 'modal-close-btn', 'data-dismiss' => 'modal')
+
+      .modal-body
+
+        = yield
