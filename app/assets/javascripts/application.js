@@ -10,11 +10,24 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+
+// jQuery プラグイン
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery-validation
+//= require jquery.lazyload
+
 //= require turbolinks
+
+// Bootstrap プラグイン
+//= require bootstrap
+//= require bootstrap-datepicker
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.ja
+
+// react
 //= require react
 //= require react_ujs
 //= require components
-//= require bootstrap
 //= require_tree .
