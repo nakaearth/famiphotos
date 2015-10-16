@@ -8,11 +8,11 @@
 
 .user_list_context {
   width: 1000px;
-  height: 400pt;
   position: absolute;
 
   .group_user_list {
     width: 200px;
+    height: 400pt;
     visibility: visible;
     border: 1px solid #FFFFFF;
     @include border-radius(10px,10px);
@@ -22,8 +22,7 @@
        float: left;
        margin: 4px;
        z-index: 0;
-       @include border-radius(5px,5px);
-       @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
+
       .user_div {
          background-color: #FFFFFF;
          border: 1px solid #FFFFFF;
@@ -41,6 +40,7 @@
 
   .search_user_list {
     width: 750px;
+    height: 400pt;
     visibility: visible;
     border: 1px solid #FFFFFF;
     @include border-radius(10px,10px);
@@ -50,8 +50,7 @@
        float: left;
        margin: 4px;
        z-index: 0;
-       @include border-radius(5px,5px);
-       @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
+
       .user_div {
          background-color: #FFFFFF;
          border: 1px solid #FFFFFF;

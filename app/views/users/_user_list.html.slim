@@ -2,8 +2,8 @@
   table
     tr
       td.group_user_list
+        = 'グループ内ユーザ一覧'
         .user_list
-          = 'グループ内ユーザ一覧'
           - if @users
             - @users.each do |user|
               .user_div
@@ -12,8 +12,8 @@
                   |
                   = user.name
       td.search_user_list
+        = '検索結果'
         .user_list 
-          = '検索結果'
           - if @result_users
             - @result_users.each do |user|
               .user_div
