@@ -2,7 +2,6 @@
   table
     tr
       td.group_user_list
-        = 'グループ内ユーザ一覧'
         .user_list
           - if @users
             - @users.each do |user|
@@ -12,7 +11,6 @@
                   |
                   = user.name
       td.search_user_list
-        = '検索結果'
         .user_list 
           - if @result_users
             - @result_users.each do |user|

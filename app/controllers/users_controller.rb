@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
 
-    render partial: 'users/form'
+    render partial: 'modals/users/form'
   end
 
   def create
