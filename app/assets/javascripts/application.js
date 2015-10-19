@@ -15,14 +15,10 @@
 // jQuery プラグイン
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
-//= require jquery-validation
-//= require jquery.lazyload
 
 // Bootstrap プラグイン
 //= require bootstrap
-//= require bootstrap-datepicker
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.ja
+//= require bootstrap/modal
 
 // react
 //= require react

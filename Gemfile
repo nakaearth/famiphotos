@@ -27,20 +27,6 @@ gem 'binding_of_caller'
 # responders gem
 gem 'responders', '~> 2.0'
 
-# rails-assets
-source 'https://rails-assets.org' do
-  gem 'rails-assets-bootstrap'
-  gem 'rails-assets-Font-Awesome'
-  gem 'rails-assets-lodash'
-  gem 'rails-assets-marionette-gem', '2.3.2'
-  gem 'rails-assets-jquery-ui'
-  gem 'rails-assets-bootstrap-datepicker'
-  gem 'rails-assets-jquery-validation'
-  gem 'rails-assets-jquery.lazyload'
-  gem 'rails-assets-selectize'
-end
-
-
 # db schema関連
 gem 'ridgepole'
 gem 'activerecord-mysql-awesome'
@@ -179,3 +165,4 @@ gem 'sidekiq'
 gem 'sinatra',  require: false
 # レイアウト
 gem 'bootstrap-sass'
+gem "font-awesome-rails"
