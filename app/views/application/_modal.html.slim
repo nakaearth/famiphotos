@@ -1,13 +1,13 @@
 ruby:
   title = title || nil
 
-div class=( js-show-remote-"modal" ) id="modal-id"
+div class=( "js-show-remote-modal" ) id="modal-id"
   div class=( "modal-dialog modal-large" )
     .modal-content
       .modal-header
         p
           = "#{title}"
-          = link_to(image_tag('common/icon_close.png'), '', id: 'modal-close-btn', 'data-dismiss' => 'modal')
+          = link_to_remote_modal('閉じる', new_user_path)
 
       .modal-body
 
