@@ -19,6 +19,6 @@
                   #{image_tag user.image_url}
                   |
                   = user.name
-                  = link_to 'グループ招待', new_user_path,  remote: true
+                  = link_to_remote_modal 'グループ招待', new_user_path,  remote: true
 
 
