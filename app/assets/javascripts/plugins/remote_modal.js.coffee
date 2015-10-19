@@ -13,6 +13,7 @@ $ ->
       @setEvents()
 
     setEvents: ->
+      alert('yoge')
       App.$body.on 'click', @selector, @onClick
 
       App.$body.on 'ajax:success', @selector, @onSuccess

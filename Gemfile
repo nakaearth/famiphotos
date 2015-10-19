@@ -15,8 +15,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -35,9 +33,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-Font-Awesome'
   gem 'rails-assets-lodash'
   gem 'rails-assets-marionette-gem', '2.3.2'
-  gem 'rails-assets-backbone.stickit'
-  gem 'rails-assets-backbone-validation'
-  gem 'rails-assets-backbone.paginator'
   gem 'rails-assets-jquery-ui'
   gem 'rails-assets-bootstrap-datepicker'
   gem 'rails-assets-jquery-validation'

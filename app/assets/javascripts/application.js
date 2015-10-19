@@ -19,8 +19,6 @@
 //= require jquery-validation
 //= require jquery.lazyload
 
-//= require turbolinks
-
 // Bootstrap プラグイン
 //= require bootstrap
 //= require bootstrap-datepicker
