@@ -40,7 +40,7 @@ $ ->
       link_to_remote_modal = e.target
 
       # モーダルの削除イベントを設定する
-      # MEMO: shown だと、開き終わる最中のクリックで、うまくモーダルの削除処理が走らない
+      # MEMO: show だと、開き終わる最中のクリックで、うまくモーダルの削除処理が走らない
       $modal.one 'show.bs.modal', =>
         $modal.on 'click', (e) =>
           # ややこしいけど、 e.currentTarget = $modal[0] で、 e.target はクリックイベントの発火元 DOM
