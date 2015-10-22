@@ -17,7 +17,7 @@ module ApplicationHelper
   def link_to_remote_modal(name = nil, options = {}, html_options = {}, &block)
     html_options, options = options, html_options if block_given?
 
-    html_options[:class]  = "show_remote_modal"
+    html_options[:class]  = "js-show-remote-modal"
     html_options[:data] ||= {}
     html_options[:data][:type] = :html
 
