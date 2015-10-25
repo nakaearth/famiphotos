@@ -10,13 +10,14 @@ class FamiphotoRemoteModal
     @setEvents()
 
   setEvents: ->
-    $('.user_div').on 'click', ->
+    console.log 'hogehoge2'
+    $('.user_div').click ->
       console.log 'ugogugo'
-      @onClick();
+      @onClick()
 
   onClick: (e) =>
     console.log 'hoge'
-    $modal.modal('show');
+    $modal.modal 'show'
 
     # モーダルが表示されたことをグローバルに通知する
     # $.subscribe 'remote_modal:show', ($modal) -> として、
