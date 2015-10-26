@@ -1,5 +1,5 @@
 class FamiphotoRemoteModal
-  selector: '.js-show-remote-modal'
+  selector: '.test-js-show-remote-modal'
 
   modal_count: 0
 
