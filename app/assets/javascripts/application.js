@@ -24,5 +24,4 @@
 //= require react
 //= require react_ujs
 //= require components
-//= require plugins/remote_modal
 //= require_tree .
