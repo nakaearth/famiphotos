@@ -150,6 +150,9 @@ gem 'activerecord-cause'
 gem "td"
 gem "td-logger"
 gem 'act-fluent-logger-rails'
+gem 'fluent-plugin-mysqlslowquery'
+gem 'fluent-plugin-elasticsearch'
+gem 'fluent-plugin-slack'
 gem 'lograge'
 # breadcrumbs
 gem "crummy",  "~> 1.8.0"
