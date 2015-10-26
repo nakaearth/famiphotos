@@ -1,20 +1,24 @@
-class FamiphotoRemoteModal
-  selector: '.js-show-remote-modal'
-  
-  constructor: ->
-    @App  = $(window)
-    @body = $('body')
-    @init()
+'use strict'
 
-  init: ->
-    @openModal()
+$ ->
+  return if $('#users_search_page').length is 0
 
-  openModal: ->
-    console.log 'hogehoge2'
-    console.log @body.find(@selector)
-    return if @body.find(@selector).length is 0
+  class FamiphotoRemoteModal
+    selector: '.js-show-remote-modal'
+    
+    constructor: ->
+      @init()
 
-    @body.find(@selector).modal('show')
+    init: ->
+      console.log 'hogehoge'
+      @openModal()
 
+    openModal: ->
+      console.log 'hogehoge2'
+      $('#user-modal').append("<div>ほげ</div>")
+      console.log App.$body.find(@selector)
+      return if App.$body.find(@selector).length is 0
 
-new FamiphotoRemoteModal
+      App.$body.find(@selector).modal('show')
+
+    new FamiphotoRemoteModal
