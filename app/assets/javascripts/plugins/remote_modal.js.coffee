@@ -2,6 +2,8 @@ class FamiphotoRemoteModal
   selector: '.js-show-remote-modal'
   
   constructor: ->
+    @App  = $(window)
+    @body = $('body')
     @init()
 
   init: ->
@@ -9,10 +11,10 @@ class FamiphotoRemoteModal
 
   openModal: ->
     console.log 'hogehoge2'
-    return if window.document.body.getElementsByClassName(@selector).length is 0
-    return if window.document.body.find(@selector).length is 0
+    console.log @body.find(@selector)
+    return if @body.find(@selector).length is 0
 
-    App.window.document.body.find(@selector).modal('show')
+    @body.find(@selector).modal('show')
 
 
 new FamiphotoRemoteModal

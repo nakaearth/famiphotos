@@ -1,20 +1,20 @@
-$ -> 
-  $('.user_div').click ->
-    console.log 'ugogugo'
-    @onClick()
+class FamiphotoRemoteModal
+  selector: '.js-show-remote-modal'
+  
+  constructor: ->
+    @App  = $(window)
+    @body = $('body')
+    @init()
 
-    onClick: (e) =>
-      console.log 'hoge'
-      $modal.modal 'show'
+  init: ->
+    @openModal()
 
-      # モーダルが表示されたことをグローバルに通知する
-      # $.subscribe 'remote_modal:show', ($modal) -> として、
-      # 表示されたモーダルを取得することができる
-      $modal.one 'shown.bs.modal', =>
-        console.log 'ugogugo2'
-        $.publish 'remote_modal:show', $modal
+  openModal: ->
+    console.log 'hogehoge2'
+    console.log @body.find(@selector)
+    return if @body.find(@selector).length is 0
 
-        # イベント発火元の DOM に設定した limiter を解除する
-        @activateLimiter link_to_remote_modal
+    @body.find(@selector).modal('show')
 
-      return true
+
+new FamiphotoRemoteModal
