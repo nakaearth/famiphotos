@@ -9,9 +9,10 @@ class FamiphotoRemoteModal
 
   openModal: ->
     console.log 'hogehoge2'
-    return if App.$body.find(@selector).length is 0
+    return if window.document.body.getElementsByClassName(@selector).length is 0
+    return if window.document.body.find(@selector).length is 0
 
-    App.$body.find(@selector).modal('show')
+    App.window.document.body.find(@selector).modal('show')
 
 
 new FamiphotoRemoteModal

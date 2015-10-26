@@ -11,6 +11,7 @@ $ ->
       # $.subscribe 'remote_modal:show', ($modal) -> として、
       # 表示されたモーダルを取得することができる
       $modal.one 'shown.bs.modal', =>
+        console.log 'ugogugo2'
         $.publish 'remote_modal:show', $modal
 
         # イベント発火元の DOM に設定した limiter を解除する
