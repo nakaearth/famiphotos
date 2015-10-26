@@ -1,33 +1,17 @@
 class FamiphotoRemoteModal
-  selector: '.test-js-show-remote-modal'
-
-  modal_count: 0
-
+  selector: '.js-show-remote-modal'
+  
   constructor: ->
     @init()
 
   init: ->
-    @setEvents()
+    @openModal()
 
-  setEvents: ->
+  openModal: ->
     console.log 'hogehoge2'
-    $('.user_div').click ->
-      console.log 'ugogugo'
-      @onClick()
+    return if App.$body.find(@selector).length is 0
 
-  onClick: (e) =>
-    console.log 'hoge'
-    $modal.modal 'show'
+    App.$body.find(@selector).modal('show')
 
-    # モーダルが表示されたことをグローバルに通知する
-    # $.subscribe 'remote_modal:show', ($modal) -> として、
-    # 表示されたモーダルを取得することができる
-    $modal.one 'shown.bs.modal', =>
-      $.publish 'remote_modal:show', $modal
-
-      # イベント発火元の DOM に設定した limiter を解除する
-      @activateLimiter link_to_remote_modal
-
-    return true
 
 new FamiphotoRemoteModal
