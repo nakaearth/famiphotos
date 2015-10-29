@@ -153,6 +153,7 @@ gem 'act-fluent-logger-rails'
 gem 'fluent-plugin-mysqlslowquery'
 gem 'fluent-plugin-elasticsearch'
 gem 'fluent-plugin-slack'
+gem 'fluent-plugin-rewrite-tag-filter'
 gem 'lograge'
 # breadcrumbs
 gem "crummy",  "~> 1.8.0"
