@@ -7,7 +7,7 @@ SwitchPoint.configure do |config|
 
   unless Rails.env.test?
     config.define_switch_point :famiphoto,
-      readonly: :"famiphotos_master_#{Rails.env}", 
-      writable: :"famiphotos_slave_#{Rails.env}"
+      readonly: :"famiphotos_slave_#{Rails.env}", 
+      writable: :"famiphotos_master_#{Rails.env}"
   end
 end

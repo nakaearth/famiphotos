@@ -4,7 +4,7 @@ Elasticsearch::Model.client = Elasticsearch::Client.new(
   retry_on_failure: true, 
   reload_connection: true, 
   randomize_hosts: true,
-  request_timeout: 5 * 60, 
+  request_timeout: 10, 
   reload_connections: 500,
   sniffer_timeout: 3, 
   reload_on_failure: true, 
