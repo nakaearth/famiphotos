@@ -16,7 +16,8 @@ class PhotosController < ApplicationController
   def create
     @photo = @current_user.photos.build(photo_params)
 
-    if Photo.with_writable { @photo.save }
+    # if Photo.with_writable { @photo.save }
+    if @photo.save
       redirect_to photos_path, notice: '写真の登録がしました'
     else
       render action: :new, alert: '写真の登録に失敗しました'

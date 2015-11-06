@@ -2,7 +2,7 @@ class Photo < ActiveRecord::Base
   include IdEncryptable
   include Searchable
 
-  use_switch_point :famiphoto
+  # use_switch_point :famiphoto
 
   belongs_to :user
 
