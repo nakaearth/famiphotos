@@ -16,8 +16,7 @@ module Users
           end
         end
 
-        # User.with_writable { @login_user.save! }
-        @login_user.save!
+        User.with_writable { @login_user.save! }
         @login_user
       end
     end
