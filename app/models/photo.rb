@@ -5,6 +5,7 @@ class Photo < ActiveRecord::Base
   use_switch_point :famiphoto
 
   belongs_to :user
+  has_one :photo_geo
 
   validates :description, length: { maximum: 140 }
 
