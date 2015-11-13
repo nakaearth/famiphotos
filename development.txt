@@ -1,3 +1,4 @@
+fulentd
 1) fluentdの設定
 
 gem install fluentd
@@ -10,3 +11,6 @@ fluent-gem install fluent-plugin-mysqlslowquery
 3)起動
 fluentd -c fluentd/fluentd.conf -vv &
 
+ridgepole
+
+bundle exec ridgepole -c config/database.yml -f db/Schemafile --apply

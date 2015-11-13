@@ -114,6 +114,8 @@ gem "active_decorator"
 gem "paperclip"
 # 画像ライブラリ
 gem 'rmagick'
+# 位置情報
+gem 'geokit-rails'
 # 権限チェック
 gem "pundit"
 # fontのライブラリ
