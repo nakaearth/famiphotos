@@ -112,6 +112,8 @@ gem "versioncake"
 gem "active_decorator"
 # 画像アップロード
 gem "paperclip"
+# 画像ライブラリ
+gem 'rmagick'
 # 権限チェック
 gem "pundit"
 # fontのライブラリ
