@@ -4,6 +4,8 @@ class Photo < ActiveRecord::Base
 
   use_switch_point :famiphoto
 
+  after_save :image_geo_location
+
   belongs_to :user
   has_one :photo_geo
 
@@ -19,5 +21,11 @@ class Photo < ActiveRecord::Base
 
   Paperclip.interpolates :img_dir_num do |attachment, _style|
     (attachment.instance.user_id).to_s
+  end
+
+  # アップロードした画像の位置情報を取得
+  def image_geo_location
+    # http://www.iwazer.com/~iwazawa/diary/2013/03/convert-photo-location-to-digits-with-rmagick.html
+    # これを参考にする？
   end
 end
