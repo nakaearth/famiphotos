@@ -9,10 +9,11 @@ class Photo < ActiveRecord::Base
 
   validates :description, length: { maximum: 140 }
 
+  # productionで利用する場合は、ここの設定を環境変数ごとに分けるようにしたほうがいいだろう
   has_attached_file :photo,
                     styles: { medium: "300x300>", thumb: "100x100>", original: "500x500" },
                     url: "/assets/arts/:id/:style/:basename.:extension",
-                    path: "#{Rails.root}/public/assets/arts/:id/:style/:basename.:extension"
+                    path: "#{Rails.root}/public/assets/:img_dir_num/:id/:style/:basename.:extension"
 
   validates_attachment :photo,  content_type: { content_type: ["image/jpg",  "image/jpeg",  "image/png",  "image/gif"] }
 
