@@ -46,6 +46,14 @@ class PhotosController < ApplicationController
 
   def photo_params
     # TODO: nested_attributを使う
-    params.require(:photo).permit(:description, :photo)
+    colums_name = [
+      :description, 
+      :photo, 
+      photo_geo_attributes: [
+        :address
+      ]
+    ]
+
+    params.require(:photo).permit(colums_name)
   end
 end
