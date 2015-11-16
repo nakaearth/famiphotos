@@ -115,7 +115,7 @@ gem "paperclip"
 # 画像ライブラリ
 gem 'rmagick'
 # 位置情報
-gem 'geokit-rails'
+gem 'geocoder'
 # 権限チェック
 gem "pundit"
 # fontのライブラリ

@@ -45,6 +45,7 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
+    # TODO: nested_attributを使う
     params.require(:photo).permit(:description, :photo)
   end
 end

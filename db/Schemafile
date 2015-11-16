@@ -40,6 +40,7 @@ create_table "photo_geos", force: true do |t|
   t.integer "photo_id"
   t.decimal "longitude"
   t.decimal "latitude"
+  t.string  "address", limit: 255
   t.integer "distance"
 
   t.datetime "created_at"
