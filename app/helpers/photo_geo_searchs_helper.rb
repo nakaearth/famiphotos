@@ -1,0 +1,2 @@
+module PhotoGeoSearchsHelper
+end

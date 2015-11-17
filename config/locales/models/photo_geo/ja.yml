@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      photo_geo: 写真の撮影場所
+    attributes:
+      photo_geo:
+        address: 所在

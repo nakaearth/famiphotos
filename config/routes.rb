@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'photo_geo_searchs/index'
+
+  get 'photo_geo_searchs/create'
+
   root 'top#index'
 
   # facebook login
