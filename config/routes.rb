@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'photo_geo_searchs/index'
-
-  get 'photo_geo_searchs/create'
-
   root 'top#index'
 
   # facebook login
@@ -15,6 +11,7 @@ Rails.application.routes.draw do
   # web
   resources :photos
   resource  :photo_search, only: %i( create )
+  resource  :photo_geo_search, only: %i( create )
 
   resources :users, only: %i( index show new create edit update destroy )
   resources :user_searches, only: %i( create )
