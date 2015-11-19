@@ -38,8 +38,8 @@ add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
 create_table "photo_geos", force: true do |t|
   t.integer "photo_id"
-  t.decimal "longitude"
-  t.decimal "latitude"
+  t.decimal "longitude", precision: 11,  scale: 8
+  t.decimal "latitude", precision: 11,  scale: 8
   t.string  "address", limit: 255
   t.integer "distance"
 
