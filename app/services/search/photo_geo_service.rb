@@ -1,7 +1,7 @@
 module Search
   class PhotoGeoService < BaseService
     # geo関数を使って位置情報を使った検索
-    def search(photo_search, _user)
+    def search(photo_gro_search)
       body = {
         query: {
           function_score: {
@@ -9,20 +9,19 @@ module Search
             boost_mode: 'multiply',
             query: {
               simple_query_string: {
-                query: photo_search.search_word,
-                fields: ['description'],
+                query: photo_geo_search.address,
+                fields: ['address'],
                 default_operator: :and
               }
             },
             functions: [
               {
                 filter: {
-                  geo_shape: {
-                    location: {
-                      shape: {
-                        type: 'envelope', 
-                        coordinates: [[13.0,  53.0],  [14.0,  52.0]]
-                      }
+                  geo_distance: {
+                    distance: photo_geo_search.distance, 
+                    'pin.location': {
+                      lat: photo_geo_search.lat, 
+                      lot: photo_geo_search.lot
                     }
                   }
                 }, 
