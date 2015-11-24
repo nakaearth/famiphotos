@@ -3,16 +3,15 @@ require 'rails_helper'
 module Photo
   describe PhotoGeoService do
     let(:photo_geos) { create_list(:photo_geo, 10, address: '東京都渋谷区') }
-    let(:photo_search) { PhotoSearch.new }
+    let(:photo_geo_search) { PhotoGeoSearch.new }
 
     describe '#search' do
-      subject(:searched_photo_geos) { Search::PhotoGeoService.new(PhotoGeo).search(photo_search) }
+      subject(:searched_photo_geos) { Search::PhotoGeoService.new(PhotoGeo).search(photo_geo_search) }
 
       before do
         photo_geos
-        photo_search.distance = '200km'
-        photo_search.lat = 135
-        photo_search.log = 45
+        photo_geo_search.distance = '200km'
+        photo_geo_search.address = '東京都渋谷区'
       end
 
       context '緯度経度検索' do
