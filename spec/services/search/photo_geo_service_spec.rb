@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-module Photo
+module Search
   describe PhotoGeoService do
     let(:photo_geos) { create_list(:photo_geo, 10, address: '東京都渋谷区') }
     let(:photo_geo_search) { PhotoGeoSearch.new }

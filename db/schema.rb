@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 20150623164532) do
     t.datetime "updated_at"
   end
 
+  create_table "photo_geos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer  "photo_id",   limit: 4
+    t.decimal  "longitude",            precision: 10
+    t.decimal  "latitude",             precision: 10
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
   create_table "photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "photo_file_name",    limit: 255
     t.string   "photo_content_type", limit: 255
