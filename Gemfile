@@ -172,5 +172,5 @@ gem 'ridgepole'
 gem 'sidekiq'
 gem 'sinatra',  require: false
 # レイアウト
-gem 'bootstrap-sass'
+gem 'twitter-bootstrap3-rails'
 gem "font-awesome-rails"
