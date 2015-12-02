@@ -1,7 +1,7 @@
 module Users
   class Registration
     def regist(auth)
-      AcitveRecord::Base.transaction do
+      ActiveRecord::Base.transaction do
         @login_user = User.find_or_create_by(name: auth[:info][:name]) do |user|
           user.name  = auth[:info][:name]
           user.email = auth[:info][:email]
@@ -19,9 +19,9 @@ module Users
         User.with_writable { @login_user.save! }
         @login_user
       end
-    rescue Faraday::TimeoutError => e
-      puts 'ELへの登録失敗'
-      puts e.message
+    # rescue Faraday::TimeoutError => e
+    #   puts 'ELへの登録失敗'
+    #   puts e.message
     end
   end
 end
