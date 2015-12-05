@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :photo do
     description "MyString"
-    image_url "MyString"
+    image_path "MyString"
   end
 end
