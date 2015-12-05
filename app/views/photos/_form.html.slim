@@ -2,6 +2,8 @@
   #photo_form_div.photo_form_div
     = form_for @photo, html: { multipart: true } do |f|
       .field
+        - if @photo.image?
+          = image_tag @photo.image.url
         | 画像:#{f.file_field :photo}
         br/
       = f.label :description

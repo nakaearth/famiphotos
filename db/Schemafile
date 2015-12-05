@@ -22,10 +22,7 @@ create_table "information", force: true do |t|
 end
 
 create_table "photos", force: true do |t|
-  t.string   "photo_file_name",    limit: 255
-  t.string   "photo_content_type", limit: 255
-  t.integer  "photo_file_size",    limit: 4
-  t.datetime "photo_updated_at"
+  t.string   "image",    limit: 255
   t.text     "description",        limit: 65535
   t.integer  "user_id",            limit: 4,     null: false
   t.integer  "group_id",           limit: 4,     null: false
