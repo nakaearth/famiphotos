@@ -1,19 +1,48 @@
 module Api
-  class InformationsController < Api::ApplicationController
+  class PhotosController < Api::ApplicationController
+    includes DecryptedUid
+
+    before_action :set_user
+
     # ajaxで通信したお知らせの一覧をjson形式で返す
     def index
-      @informations = Information.all
+      @photos = current.photos
 
-      render json: @informations
+      render json: @phtos
     end
 
     def create
       ActiveRecord::Bae.transaction do
-        @information = Information.create(title: params[:title], message: params[:message])
-        render json: @information
+        Photo::UploadService.execute(@current_user, photo_params)
+
+        render json: @photo
       end
     rescue
       head 500
+    end
+
+    def update
+
+    end
+
+    private
+
+    def set_user
+      @current_user = User.find_by(uid: @uid)
+    rescue
+      head 404
+    end
+
+    def photo_params
+      columns_name = [
+        :photo, 
+        :description, 
+        photo_geo_attributes: [
+          :address
+        ]
+      ]
+
+      params.require(:photo).permit(columns_name)
     end
   end
 end

@@ -111,7 +111,7 @@ gem "versioncake"
 # decorator
 gem "active_decorator"
 # 画像アップロード
-gem "paperclip"
+gem 'carrierwave'
 # 画像ライブラリ
 gem 'rmagick'
 # 位置情報
