@@ -20,6 +20,10 @@ development:
   <<: *default
   database: famiphotos_development
 
+test:
+  <<: *default
+  database: famiphotos_test
+
 famiphotos_master_development:
   <<: *default
   database: famiphotos_development
@@ -27,13 +31,6 @@ famiphotos_master_development:
 famiphotos_slave_development:
   <<: *default
   database: famiphotos_development
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: famiphotos_test
 
 famiphotos_master_test:
   <<: *default
