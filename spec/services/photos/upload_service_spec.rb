@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-module Photo
+module Photos
   describe UploadService do
     let(:user) { create(:user) }
     let(:param) {
@@ -15,7 +15,7 @@ module Photo
 
     context '#upload' do
       before do
-        Photo::UploadService.execute(user, param)
+        Photos::UploadService.execute(user, param)
 
         user.reload
       end
