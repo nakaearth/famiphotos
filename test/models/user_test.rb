@@ -1,0 +1,14 @@
+require "test_helper"
+
+class UserTest < ActiveSupport::TestCase
+  # let(:user) { create(:user) }
+
+  def test_validation
+    user = User.new(name: 'test', uid: '12345abcd', email: 'hoge@gmail.com', provider: 'twitter')
+    value(user).must_be :valid?
+  end
+
+  def test_validation2
+    value(user).must_not_be :valid?
+  end
+end

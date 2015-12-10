@@ -38,5 +38,13 @@ module Famiphotos
     config.middleware.swap ActiveRecord::QueryCache,  SwitchPoint::QueryCache
 
     config.active_job.queue_adapter = :sidekiq # アダプターの設定を追記
+    config.generators do |g|
+      g.orm :active_record, migration: false
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+      g.jbuilder false 
+      g.test_framework :minitest, fixture: false
+    end
   end
 end

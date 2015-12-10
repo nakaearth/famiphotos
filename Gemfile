@@ -38,14 +38,29 @@ gem 'whenever'
 
 # テスト関連
 group :test do
-  gem 'rspec-rails'
-  gem 'rspec-mocks'
+  #gem 'rspec-rails'
+  #gem 'rspec-mocks'
   # rakeのテスト用
-  gem 'rake_shared_context'
+  #gem 'rake_shared_context'
+  #gem 'shoulda-matchers'
+  #gem 'rspec-request_describer'
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
   gem 'database_rewinder'
-  gem 'rspec-request_describer'
+  # 必須
+  gem "minitest"
+  gem "minitest-rails"
+  gem "minitest-spec-rails"
+  gem "minitest-rails-capybara" # capybaraで結合テストできるようにする
+
+  gem "minitest-doc_reporter" # テスト結果の表示を整形
+
+  # 機能追加系
+  gem "minitest-stub_any_instance" # メソッドmockを追加できる様にする
+
+  gem "minitest-bang" # let文で遅延読み込みを使えるようにする
+  gem "minitest-line" # 行番号指定でテスト実行出来る様にする
+
+  gem "factory_girl" # DBのデータのモックを作成
 
   # コードカバレッジ
   gem 'simplecov', require: false
