@@ -9,6 +9,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_validation2
+    user = User.new(name: nil, uid: '12345abcd', email: 'hoge@gmail.com', provider: 'twitter')
     value(user).must_not_be :valid?
   end
 end
