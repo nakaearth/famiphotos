@@ -10,6 +10,6 @@ class UserTest < ActiveSupport::TestCase
 
   def test_validation2
     user = User.new(name: nil, uid: '12345abcd', email: 'hoge@gmail.com', provider: 'twitter')
-    value(user).must_not_be :valid?
+    assert_equal user.valid?, false
   end
 end
