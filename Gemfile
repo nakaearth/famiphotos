@@ -51,8 +51,15 @@ group :test do
   gem "minitest-rails"
   gem "minitest-spec-rails"
   gem "minitest-rails-capybara" # capybaraで結合テストできるようにする
-
-  gem "minitest-doc_reporter" # テスト結果の表示を整形
+  # メソッドmockを追加できる様にする
+  gem "minitest-stub_any_instance"
+  # constをstub出来るようにする
+  gem "minitest-stub-const"
+  # let文で遅延読み込みを使えるようにする
+  gem "minitest-bang"
+  # 行番号指定でテスト実行出来る様にする
+  gem "minitest-line"
+  gem "minitest-reporters" # テスト結果の表示を整形
 
   # 機能追加系
   gem "minitest-stub_any_instance" # メソッドmockを追加できる様にする

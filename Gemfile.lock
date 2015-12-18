@@ -293,9 +293,6 @@ GEM
       capybara (~> 2.2)
       minitest (~> 5.0)
       rake
-    minitest-doc_reporter (0.6.0)
-      ansi
-      minitest (~> 5.0)
     minitest-line (0.6.3)
       minitest (~> 5.0)
     minitest-metadata (0.5.3)
@@ -308,9 +305,15 @@ GEM
       minitest-capybara (~> 0.7.0)
       minitest-metadata (~> 0.5.0)
       minitest-rails (~> 2.1)
+    minitest-reporters (1.1.7)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
     minitest-spec-rails (5.3.0)
       minitest (~> 5.0)
       rails (>= 4.1)
+    minitest-stub-const (0.5)
     minitest-stub_any_instance (1.0.1)
     msgpack (0.5.11)
     multi_json (1.11.2)
@@ -640,11 +643,12 @@ DEPENDENCIES
   lograge
   minitest
   minitest-bang
-  minitest-doc_reporter
   minitest-line
   minitest-rails
   minitest-rails-capybara
+  minitest-reporters
   minitest-spec-rails
+  minitest-stub-const
   minitest-stub_any_instance
   mysql2 (~> 0.3.18)
   newrelic_rpm
