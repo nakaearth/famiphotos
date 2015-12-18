@@ -21,7 +21,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   def test_email_validation_error_case
-    user = User.new(name: 'hoge', uid: '12345abcd', email: 'test12345' * 6 + 'hoge.jp' , provider: 'twitter')
+    user = User.new(name: 'hoge', uid: '12345abcd', email: 'test12345' * 6 + 'hoge.jp', provider: 'twitter')
     assert_equal user.valid?, false
     assert_raise(ActiveRecord::RecordInvalid) { user.save! }
   end

@@ -1,13 +1,12 @@
 class User < ActiveRecord::Base
   include IdEncryptable
-#  include Searchable
+  #  include Searchable
 
   use_switch_point :famiphoto unless Rails.env.test?
 
   has_many :group_members, dependent: :destroy
   has_many :my_groups, through: :group_members, source: :group
   has_many :photos, inverse_of: :user
-
 
   validates :name, presence: true, length: { maximum: 60 }
   validates :uid, presence: true

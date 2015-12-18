@@ -22,7 +22,6 @@ module Api
     end
 
     def update
-
     end
 
     private
@@ -35,8 +34,8 @@ module Api
 
     def photo_params
       columns_name = [
-        :photo, 
-        :description, 
+        :photo,
+        :description,
         photo_geo_attributes: [
           :address
         ]

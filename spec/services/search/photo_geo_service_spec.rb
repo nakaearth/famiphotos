@@ -15,9 +15,8 @@ module Search
       end
 
       context '緯度経度検索' do
-        it { expect(:search_photo_geos).not_to be_nil } 
+        it { expect(:search_photo_geos).not_to be_nil }
       end
     end
   end
 end
-

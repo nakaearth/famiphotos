@@ -3,7 +3,7 @@ require 'rails_helper'
 module Photos
   describe UploadService do
     let(:user) { create(:user) }
-    let(:param) {
+    let(:param) do
       {
         photo: 'spec/fixtures/test.jpg',
         description: 'これはテスト',
@@ -11,7 +11,7 @@ module Photos
           address: '東京都渋谷区'
         ]
       }
-    }
+    end
 
     context '#upload' do
       before do
@@ -20,8 +20,7 @@ module Photos
         user.reload
       end
 
-      it{ expect(user.photos).not_to be_nil }
+      it { expect(user.photos).not_to be_nil }
     end
   end
 end
-

@@ -14,7 +14,7 @@ class PhotoGeoSearchsController < ApplicationController
 
   def photo_params
     photo_params = [
-      :search_word, 
+      :search_word,
       :address
     ]
 

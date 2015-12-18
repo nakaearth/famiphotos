@@ -47,8 +47,8 @@ class PhotosController < ApplicationController
   def photo_params
     # TODO: nested_attributを使う
     colums_name = [
-      :description, 
-      :photo, 
+      :description,
+      :photo,
       photo_geo_attributes: [
         :address
       ]

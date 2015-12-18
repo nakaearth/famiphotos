@@ -38,12 +38,12 @@ gem 'whenever'
 
 # テスト関連
 group :test do
-  #gem 'rspec-rails'
-  #gem 'rspec-mocks'
+  # gem 'rspec-rails'
+  # gem 'rspec-mocks'
   # rakeのテスト用
-  #gem 'rake_shared_context'
-  #gem 'shoulda-matchers'
-  #gem 'rspec-request_describer'
+  # gem 'rake_shared_context'
+  # gem 'shoulda-matchers'
+  # gem 'rspec-request_describer'
   gem 'factory_girl_rails'
   gem 'database_rewinder'
   # 必須
