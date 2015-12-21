@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "/auth/failure" => "sessions#failuer"
 
   # web
-  resources :photos, only: %i( index show )
+  resources :photos, only: %i( index show new create )
   resource  :photo_search, only: %i( create )
   resource  :photo_geo_search, only: %i( create )
 
