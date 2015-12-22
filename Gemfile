@@ -134,6 +134,7 @@ gem "versioncake"
 gem "active_decorator"
 # 画像アップロード
 gem 'carrierwave'
+gem 'mini_magick'
 # 画像ライブラリ
 gem 'rmagick'
 # 位置情報
