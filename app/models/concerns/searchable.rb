@@ -3,7 +3,8 @@ module Searchable
 
   included do
     include Elasticsearch::Model
-    include Elasticsearch::Model::Callbacks
+    # TODO: データをel二入れるところはbachにする
+    # include Elasticsearch::Model::Callbacks
 
     index_name "famiphoto"
 
