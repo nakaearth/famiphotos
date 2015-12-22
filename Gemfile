@@ -34,7 +34,7 @@ gem 'activerecord-mysql-awesome'
 # 認証
 gem 'omniauth-twitter'
 # バッチ処理
-gem 'whenever'
+gem 'whenever',  :require => false
 
 # テスト関連
 group :test do
