@@ -8,7 +8,7 @@ class PhotoViewer
     @$contents = @$el.querySelectorAll('.photo_detail')
     @setEvents()
 
-  setEvents:  ->
+  setEvents: ->
     $("#photo_viewer").click ->
       @showContent()
       console.log 123
