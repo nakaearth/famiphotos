@@ -21,7 +21,7 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 - cp config/database.travis.yml config/database.yml
 - mysql -e 'create database famiphotos_test'
-- bundle exec rake ridgepole:apply
+- bundle exec ridgepole -c config/database.yml -f db/Schemefile -e test --apply
 after_failure:
 - bundle exec rake --version
 notifications:
