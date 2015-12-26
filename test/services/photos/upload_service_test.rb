@@ -4,10 +4,10 @@ class Photos::UploadServiceTest < ActiveSupport::TestCase
   setup do
     @photo_params = {
       description: 'これはテスト', 
-      image: "#{Rails.root}/test/fixtures/test.jpg", 
-      photo_geo_attributes: [
-        address: '東京都港区'
-      ]
+      image: File.open("#{Rails.root}/test/fixtures/test.jpg"), 
+      #photo_geo_attributes: [
+        # address: '東京都港区'
+      #]
     }
   end
 
