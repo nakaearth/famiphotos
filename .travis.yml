@@ -10,7 +10,7 @@ branches:
   only:
   - master
 script:
-- RAILS_ENV=test bundle exec ridgepole -c config/database.yml -f db/Schemafile
+- RAILS_ENV=test bundle exec ridgepole -c config/database.yml -f db/Schemafile --apply
 - bundle exec rubocop app
 - bundle exec rubocop lib
 - bundle exec rubocop spec
