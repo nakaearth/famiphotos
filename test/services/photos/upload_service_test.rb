@@ -3,15 +3,25 @@ require "test_helper"
 class Photos::UploadServiceTest < ActiveSupport::TestCase
   setup do
     @photo_params = {
-      description: 'これはテスト', 
-      image: File.open("#{Rails.root}/test/fixtures/test.jpg"), 
+      description: 'これはテスト',
+      image: File.open("#{Rails.root}/test/fixtures/test.jpg"),
       #photo_geo_attributes: [
         # address: '東京都港区'
       #]
     }
+
+    @user = create(:user)
   end
 
   def test_file_upload
+    assert_nothing_raised { Photos::UploadService.execute(@user, @photo_params) }
+
+    assert_operator @user.photos.count, :>=, 0
+  end
+
+  def test_file_upload_with_address
+    @photo_params.merge({ photo_geo_attributes: [ address: '東京都渋谷区' ] })
+
     assert_nothing_raised { Photos::UploadService.execute(create(:user), @photo_params) }
   end
 end
