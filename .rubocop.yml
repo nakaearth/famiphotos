@@ -20,8 +20,6 @@ Metrics/BlockNesting:
   Enabled: false
 Metrics/ClassLength:
   Enabled: false
-Metrics/ModuleLength:
-  Enabled: false
 Metrics/CyclomaticComplexity:
   Enabled: false
 Metrics/LineLength:
@@ -85,11 +83,11 @@ Style/BracesAroundHashParameters:
   Enabled: false
 HandleExceptions:
   Enabled: false
-Style/SpaceAroundOperators:
-  MultiSpaceAllowedForOperators:
-    - '='
-    - '=>'
-    - '+='
+#Style/SpaceAroundOperators:
+#  MultiSpaceAllowedForOperators:
+#    - '='
+#    - '=>'
+#    - '+='
 Style/RescueModifier:
   Enabled: true
 Style/EmptyElse:

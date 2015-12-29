@@ -76,9 +76,6 @@ group :test do
   gem 'coveralls', require: false
   gem 'request_store'
 
-  # コーディング規約チェック
-  gem 'rubocop', '~> 0.23',  require: false
-  gem 'rubocop-checkstyle_formatter', require: false
   # 良い書き方しているかチェック
   gem 'rails_best_practices'
 
@@ -98,6 +95,8 @@ end
 
 # 開発, テスト時に使うツール群
 group :development, :test do
+  # コーディング規約チェック
+  gem 'rubocop'
   # テスト、コードチェックを自動で別プロセスでやる
   # gem 'guard', '~> 2.8'
   gem 'guard'
