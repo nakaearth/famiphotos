@@ -19,7 +19,7 @@ $ ->
 
     onClick: (e) =>
       $(@selectors['detail']).css 'display', 'block'
-      console.log($(@selectors['detail']).css)
+      console.log($(@selectors['detail']))
       $(@selectors['detail']).fadeIn(3000)
 
 

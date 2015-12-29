@@ -11,9 +11,7 @@ h1 写真一覧
       tr
       .photo_div
         .photo_detail id="photo_viewer_#{photo.id}"
-          span id="close_photo_#{photo.id}"
-            | 閉じる
-            = image_tag photo.image.url
+
         span id="photo_#{photo.id}"
           = image_tag photo.image.thumb.url
           | 投稿日付 #{photo.created_at.strftime("%Y/%m/%d")}

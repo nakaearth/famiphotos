@@ -7,6 +7,9 @@ class PhotosController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html { render partial: 'photos/show' }
+    end
   end
 
   def new
