@@ -15,10 +15,14 @@ $ ->
       @setEvents()
 
     setEvents: ->
+      console.log('hoge')
       $('#page-photos').on 'click', @selectors['open_link'], @onClick
 
     onClick: (e) =>
-      $(@selectors['detail']).css 'display', 'block'
+      $target_photo = $(event.target)
+      $root         = $target_photo.parent()
+
+      $root.find(@selectors['detail']).empty()
       console.log($(@selectors['detail']))
       $(@selectors['detail']).fadeIn(3000)
 
