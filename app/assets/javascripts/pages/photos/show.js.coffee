@@ -15,16 +15,15 @@ $ ->
       @setEvents()
 
     setEvents: ->
-      console.log('hoge')
-      $('#page-photos').on 'click', @selectors['open_link'], @onClick
+      # $('#page-photos').on 'click', @selectors['open_link'], @onClick
+      $('#page-photos').on 'ajax:success', @selectors['open_link'], @onSuccess
 
-    onClick: (e) =>
+    onSuccess: (event,  response,  _xhr_status) =>
       $target_photo = $(event.target)
       $root         = $target_photo.parent()
 
-      $root.find(@selectors['detail']).empty()
       console.log($(@selectors['detail']))
-      $(@selectors['detail']).fadeIn(3000)
+      $root.find(@selectors['detail']).empty().append(response)
 
 
   new PhotoViewer
