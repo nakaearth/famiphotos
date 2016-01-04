@@ -6,11 +6,12 @@ gemfile:
 - Gemfile
 env:
 - DB=mysql
+- RAILS_ENV=test
 branches:
   only:
   - master
 script:
-- bundle exec ridgepole -c config/database.yml -f db/Schemafile --apply RAILS_ENV=test
+- bundle exec ridgepole -c config/database.yml -f db/Schemafile --apply
 - bundle exec rubocop app
 - bundle exec rubocop lib
 - bundle exec rubocop spec
