@@ -11,7 +11,6 @@ branches:
   only:
   - master
 script:
-- bundle exec ridgepole -c config/database.yml -f db/Schemafile --apply
 - bundle exec rubocop app
 - bundle exec rubocop lib
 - bundle exec rubocop spec
@@ -22,6 +21,7 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 - cp config/database.travis.yml config/database.yml
 - mysql -e 'create database famiphotos_test'
+- bundle exec ridgepole -c config/database.yml -f db/Schemafile --apply RAILS_ENV=test
 after_failure:
 - bundle exec rake --version
 notifications:
