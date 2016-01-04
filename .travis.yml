@@ -6,7 +6,6 @@ gemfile:
 - Gemfile
 env:
 - DB=mysql
-- RAILS_ENV=test
 branches:
   only:
   - master
