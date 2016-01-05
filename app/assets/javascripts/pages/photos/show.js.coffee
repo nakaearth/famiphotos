@@ -7,6 +7,7 @@ $ ->
     selectors:
       detail: '.photo-detail',
       open_link: '.open_photo_view'
+      photo_list: '.photo_list'
 
     constructor: ->
       @init()
@@ -22,9 +23,8 @@ $ ->
       $target_photo = $(event.target)
       $root         = $target_photo.parent()
 
-      console.log($root.find(@selectors['detail']))
-      console.log(response)
-      $root.find(@selectors['detail']).empty().append(response)
+      $root.find(@selectors['detail']).empty().append('test test')
+      $(@selectors['photo_list']).empty().append(response)
 
 
   new PhotoViewer

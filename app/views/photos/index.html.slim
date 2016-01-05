@@ -18,5 +18,5 @@ h1 写真一覧
           br/
         | コメント:#{photo.description}
         br/
-        = link_to '拡大', photo_path(photo), remote: true, class: 'open_photo_view'
+        = link_to '拡大', photo_path(photo, format: :html), remote: true, class: 'open_photo_view'
         | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', photo_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }

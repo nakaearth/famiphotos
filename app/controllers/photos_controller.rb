@@ -7,9 +7,10 @@ class PhotosController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html { render partial: 'show' }
-    end
+    #respond_to do |format|
+    #  format.html { render partial: 'show' }
+    #end
+    render partial: 'show', format: :html
   end
 
   def new
