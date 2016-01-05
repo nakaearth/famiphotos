@@ -20,10 +20,6 @@ $ ->
       $('#page-photos').on 'ajax:success', @selectors['open_link'], @onSuccess
 
     onSuccess: (event,  response,  _xhr_status) =>
-      $target_photo = $(event.target)
-      $root         = $target_photo.parent()
-
-      $root.find(@selectors['detail']).empty().append('test test')
       $(@selectors['photo_list']).empty().append(response)
 
 
