@@ -22,7 +22,8 @@ $ ->
       $target_photo = $(event.target)
       $root         = $target_photo.parent()
 
-      console.log($(@selectors['detail']))
+      console.log($root.find(@selectors['detail']))
+      console.log(response)
       $root.find(@selectors['detail']).empty().append(response)
 
 
