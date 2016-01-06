@@ -7,10 +7,13 @@ class PhotosController < ApplicationController
   end
 
   def show
-    #respond_to do |format|
-    #  format.html { render partial: 'show' }
-    #end
     render partial: 'show', format: :html
+  end
+
+  def close
+    @photos = @current_user.photos.page(params[:page])
+
+    render partial: 'close', format: :html
   end
 
   def new

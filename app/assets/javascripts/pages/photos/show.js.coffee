@@ -16,7 +16,6 @@ $ ->
       @setEvents()
 
     setEvents: ->
-      # $('#page-photos').on 'click', @selectors['open_link'], @onClick
       $('#page-photos').on 'ajax:success', @selectors['open_link'], @onSuccess
 
     onSuccess: (event,  response,  _xhr_status) =>
