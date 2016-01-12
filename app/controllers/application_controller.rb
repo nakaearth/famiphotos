@@ -1,3 +1,5 @@
+require 'logstash-logger'
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -29,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def application_log_output
-    application_log = Logger.new("log/rails_application_#{Rails.env}.log")
+    application_log = LogStashLogger.new(type: :file, path: 'log/rails_application.log', sync: true)
 
     application_log.info({ 
       "pid": $PROCESS_ID,

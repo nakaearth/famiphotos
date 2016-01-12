@@ -173,8 +173,11 @@ gem 'sprockets-derailleur'
 # SQL発行場所を出力させる
 gem 'activerecord-cause'
 # ログ収集
+# treasure data
 gem "td"
 gem "td-logger"
+# logstash logger
+gem 'logstash-logger'
 gem 'act-fluent-logger-rails'
 gem 'fluent-plugin-mysqlslowquery'
 gem 'fluent-plugin-elasticsearch'
