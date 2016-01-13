@@ -33,12 +33,13 @@ class ApplicationController < ActionController::Base
   def application_log_output
     application_log = LogStashLogger.new(type: :file, path: 'log/rails_application.log', sync: true)
 
-    application_log.info({
-      "pid": $PROCESS_ID,
-      "method": request.request_method,
-      "path": request.fullpath,
-      "ip": request.remote_ip, "uuid": request.uuid
-    })
+    application_log.info(
+      pid: $PROCESS_ID,
+      method: request.request_method,
+      path: request.fullpath,
+      ip: request.remote_ip,
+      uuid: request.uuid
+    )
   end
 
   def render_404
