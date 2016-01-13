@@ -18,10 +18,10 @@ before_install: gem update bundler
 before_script:
 - export DISPLAY=:99.0
 - export RAILS_ENV=test
-- bundle exec ridgepole -c config/database.yml -f db/Schemafile --apply
 - sh -e /etc/init.d/xvfb start
 - cp config/database.travis.yml config/database.yml
 - mysql -e 'create database famiphotos_test'
+- bundle exec ridgepole -c config/database.yml -f db/Schemafile --apply
 after_failure:
 - bundle exec rake --version
 notifications:
