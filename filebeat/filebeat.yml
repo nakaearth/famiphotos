@@ -12,7 +12,7 @@ filebeat:
       # For each file found under this path, a harvester is started.
       # Make sure not file is defined twice as this can lead to unexpected behaviour.
       paths:
-        - /usr/local/project/famiphotos/log/rails_application*.log
+        - /usr/local/project/famiphotos/log/rails_application.log
       # - c:\programdata\elasticsearch\logs\*
 
       # Configure the file encoding for reading files with international characters
@@ -152,7 +152,7 @@ output:
     # Scheme and port can be left out and will be set to the default (http and 9200)
     # In case you specify and additional path, the scheme is required: http://localhost:9200/path
     # IPv6 addresses should always be defined as: https://[2001:db8::1]:9200
-    hosts: ["192.168.25.50:9200"]
+    hosts: ["192.168.25.30:9200"]
 
     # Optional protocol and basic auth credentials. These are deprecated.
     #protocol: "https"
