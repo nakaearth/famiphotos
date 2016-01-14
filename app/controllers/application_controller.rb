@@ -34,6 +34,7 @@ class ApplicationController < ActionController::Base
     application_log = LogStashLogger.new(type: :file, path: 'log/rails_application.log', sync: true)
 
     application_log.info(
+      message: 'application log', 
       pid: $PROCESS_ID,
       method: request.request_method,
       path: request.fullpath,
