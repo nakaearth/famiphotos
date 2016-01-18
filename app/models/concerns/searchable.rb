@@ -3,8 +3,10 @@ module Searchable
 
   included do
     include Elasticsearch::Model
-    # TODO: データをel二入れるところはbachにする
-    # include Elasticsearch::Model::Callbacks
+
+    # https://github.com/elastic/elasticsearch-rails/tree/master/elasticsearch-model#asynchronous-callbacks
+    after_save { ElPhotoWorker.perform_async(:index, self.id) }
+    after_save { ElPhotoWorker.perform_async(:delete, self.id) }
 
     index_name "famiphoto"
 

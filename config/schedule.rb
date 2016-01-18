@@ -20,7 +20,7 @@
 # Learn more: http://github.com/javan/whenever
 
 # elasticsearchへの同期
-every 1.hours do
-  runner "Photo.import"
-  runner "User.import"
+every 5.minutes do
+  # runner "Photo.import"
+  # runner "User.import"
 end
