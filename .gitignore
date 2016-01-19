@@ -38,3 +38,5 @@ bower.json
 
 # 環境変数
 /.env
+
+.filebeat
