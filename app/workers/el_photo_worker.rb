@@ -1,20 +1,23 @@
 class ElPhotoWorker
  include Sidekiq::Worker
+ include Elasticsearch::Model
+
   sidekiq_options queue: 'elasticsearch', retry: false
 
-  # TODO: 変更すること
-  Logger = Sidekiq.logger.level == Logger::DEBUG ? Sidekiq.logger : nil
-  Client = Elasticsearch::Client.new host: 'localhost:9200', logger: Logger
+  def initialize
+    @logger = Sidekiq.logger.level == Logger::DEBUG ? Sidekiq.logger : nil
+    @client = __elasticsearch__.client logger: @logger
+  end
 
   def perform(operation, record_id)
-    logger.debug [operation, "ID: #{record_id}"]
+    @logger.debug [operation, "ID: #{record_id}"]
 
     case operation.to_s
       when /index/
-        record = Article.find(record_id)
-        Client.index  index: 'famiphotos', type: 'article', id: record.id, body: record.as_indexed_json
+        record = Photo.find(record_id)
+        @client.index  index: 'famiphotos', type: 'article', id: record.id, body: record.as_indexed_json
       when /delete/
-        Client.delete index: 'famiphotos', type: 'article', id: record_id
+        @client.delete index: 'famiphotos', type: 'article', id: record_id
       else raise ArgumentError, "Unknown operation '#{operation}'"
     end
   end
