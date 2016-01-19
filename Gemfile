@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.2'
+gem 'rails', '~> 4.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', ' ~> 0.3.18'
 # Use SCSS for stylesheets
@@ -125,8 +125,6 @@ end
 gem "slim-rails"
 # TODOのやつだったかな？
 gem "watson-ruby"
-# キャッシュ
-gem "cache_digests"
 # Apiのバージョン管理
 gem "versioncake"
 # decorator
