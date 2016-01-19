@@ -118,7 +118,7 @@ group :development do
   gem "awesome_print"
   gem "better_errors"
   gem "quiet_assets"
-  gem "did_you_mean"
+  # gem "did_you_mean"
   gem 'web-console', '~> 2.0'
 end
 # template engine

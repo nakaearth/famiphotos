@@ -4,12 +4,9 @@ class ElPhotoWorker
 
   sidekiq_options queue: 'elasticsearch', retry: false
 
-  def initialize
+  def perform(operation, record_id)
     @logger = Sidekiq.logger.level == Logger::DEBUG ? Sidekiq.logger : nil
     @client = __elasticsearch__.client logger: @logger
-  end
-
-  def perform(operation, record_id)
     @logger.debug [operation, "ID: #{record_id}"]
 
     case operation.to_s
