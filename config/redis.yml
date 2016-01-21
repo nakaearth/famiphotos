@@ -1,0 +1,10 @@
+default: &default
+  host: <%= ENV.fetch('REDIS_HOST', 'localhost') %>
+  port: <%= ENV.fetch('REDIS_PORT', '6379') %>
+  namespace: <%= ENV.fetch('REDIS_NAMESPACE', 'sidekiq') %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
