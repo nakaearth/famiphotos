@@ -196,4 +196,6 @@ gem 'sidekiq'
 gem 'sinatra',  require: false
 # レイアウト
 gem 'twitter-bootstrap3-rails'
+# モーダル
+gem 'bootstrap-modal-rails'
 gem "font-awesome-rails"
