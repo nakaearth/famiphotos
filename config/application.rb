@@ -30,9 +30,9 @@ module Famiphotos
     config.log_level = :info
     config.logger = LTSV::Logger.open("log/rails_application.log")
     # ActFluentLoggerを使う場合の設定
-    #config.logger = ActFluentLoggerRails::Logger.new
-    #config.lograge.enabled = true
-    #config.lograge.formatter = Lograge::Formatters::Json.new
+    # config.logger = ActFluentLoggerRails::Logger.new
+    # config.lograge.enabled = true
+    # config.lograge.formatter = Lograge::Formatters::Json.new
 
     # add lib directory
     config.autoload_paths << Rails.root.join('lib', 'constraints')
