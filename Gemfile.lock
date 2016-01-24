@@ -1,9 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    act-fluent-logger-rails (0.1.10)
-      fluent-logger
-      rails (>= 3.2.0, < 5.0)
     actionmailer (4.2.5)
       actionpack (= 4.2.5)
       actionview (= 4.2.5)
@@ -68,6 +65,8 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-modal-rails (2.2.5)
+      railties (>= 3.1)
     brakeman (3.1.4)
       erubis (~> 2.6)
       fastercsv (~> 1.5)
@@ -268,12 +267,9 @@ GEM
       actionpack (>= 3)
       activesupport (>= 3)
       railties (>= 3)
-    logstash-event (1.2.02)
-    logstash-logger (0.15.2)
-      logstash-event (~> 1.2)
-      stud
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
+    ltsv-logger (0.0.2)
     lumberjack (1.0.10)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
@@ -510,7 +506,6 @@ GEM
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     string-scrub (0.0.5)
-    stud (0.0.22)
     switch_point (0.7.0)
       activerecord (>= 3.2.0)
     td (0.13.1)
@@ -590,7 +585,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  act-fluent-logger-rails
   active_decorator
   active_hash
   activerecord-cause
@@ -599,6 +593,7 @@ DEPENDENCIES
   awesome_print
   better_errors
   binding_of_caller
+  bootstrap-modal-rails
   brakeman
   bugspots
   byebug
@@ -630,7 +625,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   lograge
-  logstash-logger
+  ltsv-logger
   mini_magick
   minitest
   minitest-bang

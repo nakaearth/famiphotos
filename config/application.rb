@@ -25,11 +25,14 @@ module Famiphotos
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    # fluent-D
+    # fluentd
+    # ltsv形式のログ出力
     config.log_level = :info
-    config.logger = ActFluentLoggerRails::Logger.new
-    config.lograge.enabled = true
-    config.lograge.formatter = Lograge::Formatters::Json.new
+    config.logger = LTSV::Logger.open("log/rails_application.log")
+    # ActFluentLoggerを使う場合の設定
+    #config.logger = ActFluentLoggerRails::Logger.new
+    #config.lograge.enabled = true
+    #config.lograge.formatter = Lograge::Formatters::Json.new
 
     # add lib directory
     config.autoload_paths << Rails.root.join('lib', 'constraints')

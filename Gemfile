@@ -174,13 +174,18 @@ gem 'activerecord-cause'
 # treasure data
 gem "td"
 gem "td-logger"
+gem "ltsv-logger"
+
 # logstash logger
-gem 'logstash-logger'
-gem 'act-fluent-logger-rails'
+#gem 'logstash-logger'
+# fluent-logger
+#gem 'act-fluent-logger-rails'
+# fluentの設定
 gem 'fluent-plugin-mysqlslowquery'
 gem 'fluent-plugin-elasticsearch'
 gem 'fluent-plugin-slack'
 gem 'fluent-plugin-rewrite-tag-filter'
+# 
 gem 'lograge'
 # breadcrumbs
 gem "crummy",  "~> 1.8.0"
