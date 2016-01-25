@@ -10,7 +10,7 @@ h1 写真一覧
     - @photos.each do |photo|
       tr
       .photo_div
-        .photo_detail id="photo_viewer_#{photo.id}"
+        = render 'show', photo: photo
 
         span id="photo_#{photo.id}"
           = image_tag photo.image.thumb.url
@@ -18,5 +18,6 @@ h1 写真一覧
           br/
         | コメント:#{photo.description}
         br/
-        = link_to '拡大', photo_path(photo, format: :html), remote: true, class: 'open_photo_view'
+        /= link_to '拡大', photo_path(photo, format: :html), remote: true, class: 'open_photo_view'
+        = link_to '拡大', "#photo_view_#{photo.id}", data: { toggle: "modal", target: ".photo_view_#{photo.id}" }
         | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', photo_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }

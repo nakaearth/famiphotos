@@ -1,3 +1,8 @@
-.photo_detail id="close_photo_#{@photo.id}"
-  = link_to '閉じる', photos_path
-  = image_tag @photo.image.url
+.modal.fade id = "photo_view_#{photo.id}" tabindex="-1" role="dialog"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        = link_to '閉じる', '', id: 'modal-close-btn',  data: { dismiss: :modal }
+
+      .modal-body
+        = image_tag photo.image.url
