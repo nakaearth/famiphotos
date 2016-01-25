@@ -46,7 +46,7 @@ module Famiphotos
       g.stylesheets false
       g.javascripts false
       g.helper false
-      g.jbuilder false 
+      g.jbuilder false
       g.test_framework :minitest, fixture: false
     end
   end
