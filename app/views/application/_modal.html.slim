@@ -1,13 +1,15 @@
 ruby:
+  as    = as || nil
+  id    = id || nil
   title = title || nil
 
-.js-show-remote-modal.modal.fade id="remote-modal-id"
-  .modal-dialog
+div class=( "modal fade #{as}" ) id=id tabindex="-1" role="dialog"
+  div class=( "modal-dialog" )
     .modal-content
       .modal-header
         p
           = "#{title}"
-          = link_to_remote_modal('閉じる', new_user_path)
+          = link_to('X', '', id: 'modal-close-btn', data: { dismiss: :modal })
 
       .modal-body
 
