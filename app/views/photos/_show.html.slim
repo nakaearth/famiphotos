@@ -1,3 +1,3 @@
-= render layout: 'modal',  locals: { title: '画像', as: "photo_view_#{photo.id}", id: "photo_view_#{photo.id}" } do
+= render layout: 'modal',  locals: { title: '画像', as: "photo_view_#{photo.id}" } do
 
-  = image_tag photo.image.url
+  = image_tag photo.image.url, alt: 'img_modal'

@@ -6,12 +6,10 @@ h1 写真一覧
 .photo_list
   table
     tr
-      th
     - @photos.each do |photo|
-      tr
-      .photo_div
-        = render 'show', photo: photo
+      = render 'show', photo: photo
 
+      .photo_div
         span id="photo_#{photo.id}"
           = image_tag photo.image.thumb.url
           | 投稿日付 #{photo.created_at.strftime("%Y/%m/%d")}

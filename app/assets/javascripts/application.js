@@ -15,10 +15,8 @@
 // jQuery プラグイン
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
 
 // Bootstrap プラグイン
-//= require bootstrap
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 

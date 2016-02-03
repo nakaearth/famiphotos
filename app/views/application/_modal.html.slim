@@ -1,12 +1,13 @@
 ruby:
-  as    = as || nil
   id    = id || nil
+  as    = as || nil
   title = title || nil
 
-div class=( "modal fade #{as}" ) id="#{id}" tabindex="-1" role="dialog"
-  div class=( "modal-dialog" )
-    .modal-header
-      = link_to('X', '', id: 'modal-close-btn', data: { dismiss: :modal })
+div class=( "modal fade #{as}" ) id=id
+  .modal-dialog
+    .modal-content
+      .modal-header
+        = link_to('X', '', id: 'modal-close-btn', data: { dismiss: :modal })
 
-    .modal-body
-      = yield
+      .modal-body
+        = yield
