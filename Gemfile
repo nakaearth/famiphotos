@@ -200,5 +200,6 @@ gem 'ridgepole'
 gem 'sidekiq'
 gem 'sinatra',  require: false
 # モーダル
+gem 'twitter-bootstrap-rails'
 gem 'bootstrap-modal-rails'
 gem "font-awesome-rails"
