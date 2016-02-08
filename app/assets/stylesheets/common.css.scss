@@ -36,7 +36,7 @@ body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  -o-background-size: cover; 
+  -o-background-size: cover;
 }
 
 menu {
@@ -92,10 +92,5 @@ header {
     @include float-right;
     cursor: pointer;
   }
-}
-
-// 最大幅モーダル
-.modal-xlg {
-  width: 1100px;
 }
 

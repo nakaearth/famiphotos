@@ -5,3 +5,12 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   */
+
+// 最大幅モーダル
+.modal-xlg {
+  width: 1100px;
+}
+.modal-backdrop {
+  z-index: 1020;
+}
+

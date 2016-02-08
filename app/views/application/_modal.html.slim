@@ -3,11 +3,7 @@ ruby:
   as    = as || nil
   title = title || nil
 
-div class=( "modal fade #{as}" ) id=id
+div class=( "modal fade #{as}" ) id=id tabindex = "-1" role = "dialog" aria-hidden = "true"
   .modal-dialog
     .modal-content
-      .modal-header
-        = link_to('X', '', id: 'modal-close-btn', data: { dismiss: :modal })
-
-      .modal-body
-        = yield
+      = yield

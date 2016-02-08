@@ -10,8 +10,14 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require font-awesome
- *= require_tree .
+ *= require common
+ *= require photos
+ *= require photo_geo_searchs
+ *= require photo_searchs
+ *= require users
+ *= require top
  *= require bootstrap-modal-bs3patch
  *= require bootstrap-modal
+ *= require bootstrap_and_overrides
  *= require_self
  */
