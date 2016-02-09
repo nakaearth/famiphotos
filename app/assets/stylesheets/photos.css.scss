@@ -4,18 +4,18 @@
 @import "compass";
 
 .title {
-	font-weight: bold;
-	font-size: 15pt;
+  font-weight: bold;
+  font-size: 15pt;
 }
 
 label {
    font-size: 10pt;
    font-weight: bold;
-	 font-color: #FFFFFF;
+   font-color: #FFFFFF;
 }
 .div {
    .field{
-	   font-color: #FFFFFF;
+     font-color: #FFFFFF;
      margin:{
        bottom: 10px;
      }
@@ -24,10 +24,10 @@ label {
 .photo_form {
    font-weight: bold;
    font-size: 10pt;
-	 font-color: #FFFFFF;
+   font-color: #FFFFFF;
    border: 1px solid #000000;
    width: 70%;
-	 height: 50%;
+   height: 50%;
    margin: 10px;
    @include border-radius();
    @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
@@ -36,7 +36,7 @@ label {
      border: 1px solid #FFFFFF;
      font-size: 10pt;
      width: 70%;
-	   height: 80%;
+     height: 80%;
      margin: 5px;
      z-index: 1;
      @include border-radius();
@@ -58,10 +58,10 @@ label {
      border: 1px solid #FFFFFF;
      font-size: 10pt;
      width: 300px;
-		 height: 280px;
+     height: 280px;
      margin: 5px;
      z-index: 1;
-     float: left;
+     @include inline-block;
      @include border-radius(10px,10px);
      @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
   }
