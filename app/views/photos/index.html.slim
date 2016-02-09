@@ -7,8 +7,6 @@ h1 写真一覧
   table
     tr
     - @photos.each do |photo|
-      = render 'show', photo: photo
-
       .photo_div
         span id="photo_#{photo.id}"
           = image_tag photo.image.thumb.url
@@ -18,3 +16,5 @@ h1 写真一覧
         br/
         = link_to '拡大', "#photo_view_#{photo.id}", data: { toggle: "modal", target: ".photo_view_#{photo.id}", backdrop: false }
         | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', photo_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }
+
+        = render 'show', photo: photo
