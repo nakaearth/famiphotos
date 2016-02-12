@@ -13,7 +13,8 @@ label {
    font-weight: bold;
    font-color: #FFFFFF;
 }
-.div {
+
+div {
    .field{
      font-color: #FFFFFF;
      margin:{
@@ -21,6 +22,7 @@ label {
      }
   }
 }
+
 .photo_form {
    font-weight: bold;
    font-size: 10pt;
@@ -69,8 +71,10 @@ label {
 
 .photo_detail {
    background-color: #CCFFFF;
-   # position: absolute;
-   margin: 3px;
+   position: fixed;
+   top: 10%;
+   left: 10%;
+   width: 1000px;
    font-size: 12px;
    border: 1px solid #FFFFFF;
    z-index: 2;

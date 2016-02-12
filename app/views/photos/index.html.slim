@@ -3,6 +3,7 @@ h1 写真一覧
 = render 'photo_searches/form'
 
 = paginate @photos
+
 .photo_list
   table
     tr
@@ -10,6 +11,7 @@ h1 写真一覧
       .photo_div
         span id="photo_#{photo.id}"
           = image_tag photo.image.thumb.url
+
           | 投稿日付 #{photo.created_at.strftime("%Y/%m/%d")}
           br/
         | コメント:#{photo.description}
@@ -17,4 +19,4 @@ h1 写真一覧
         = link_to '拡大', "#photo_view_#{photo.id}", data: { toggle: "modal", target: ".photo_view_#{photo.id}", backdrop: false }
         | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', photo_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }
 
-        = render 'show', photo: photo
+      = render 'show', photo: photo
