@@ -16,8 +16,8 @@
  *= require photo_searchs
  *= require users
  *= require top
- *= require bootstrap-modal-bs3patch
- *= require bootstrap-modal
  *= require bootstrap_and_overrides
+ *= require bootstrap-modal
+ *= require bootstrap-modal-bs3patch
  *= require_self
  */
