@@ -4,13 +4,14 @@ module Api
 
     before_action :set_user
 
-    # ajaxで通信したお知らせの一覧をjson形式で返す
+    # 写真一覧をjson形式で返す
     def index
       @photos = current.photos
 
       render json: @phtos
     end
 
+    # 写真を投稿する
     def create
       ActiveRecord::Bae.transaction do
         Photo::UploadService.execute(@current_user, photo_params)
