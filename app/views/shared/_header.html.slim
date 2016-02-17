@@ -7,7 +7,16 @@
     = link_to_unless_current '登録', new_photo_path, id: 'regist_link'
     |    | 
     = link_to_unless_current 'ユーザ設定', users_path, id: 'admin_link'
-    |    | 
+    |    |
+    | [検証中]
+    #slideMenu
+      ul class="slideMenuInner"
+        li
+          = link_to_unless_current '一覧', photos_path, id: 'list_link'
+          ul class = "second-level"
+            li
+              = link_to_unless_current '登録', new_photo_path, id: 'regist_link'
+
   .right_div
     = link_to_unless_current  image_tag(@current_user.image_url, size: '40x40'), user_path(@current_user)
     = @current_user.nickname
