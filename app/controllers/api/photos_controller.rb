@@ -8,7 +8,7 @@ module Api
     def index
       @photos = current.photos
 
-      render json: @phtos
+      render json: @photos
     end
 
     # 写真を投稿する
