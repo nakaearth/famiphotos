@@ -1,6 +1,6 @@
 module Api
   class PhotosController < Api::ApplicationController
-    # includes DecryptedUid
+    includes DecryptedUid
 
     before_action :set_user
 
