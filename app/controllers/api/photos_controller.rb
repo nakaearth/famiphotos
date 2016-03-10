@@ -1,12 +1,12 @@
 module Api
   class PhotosController < Api::ApplicationController
-    includes DecryptedUid
+    include DecryptedUid
 
     before_action :set_user
 
     # 写真一覧をjson形式で返す
     def index
-      @photos = current.photos
+      @photos = @current_user.photos
 
       render json: @photos
     end
@@ -28,7 +28,7 @@ module Api
     private
 
     def set_user
-      @current_user = User.find_by(uid: @uid)
+      @current_user = User.find_by(uid: params[:uid])
     rescue
       head 404
     end
