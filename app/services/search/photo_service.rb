@@ -1,6 +1,6 @@
 module Search
   class PhotoService < BaseService
-    def search(photo_search, _user)
+    def search(photo_search, user)
       body = {
         query: {
           function_score: {
@@ -26,6 +26,19 @@ module Search
                 },
                 weight: 5
               },
+              {
+                filter: {
+                  query: {
+                    simple_query_string: {
+                      query: user.id,
+                      fields: ['user_id'],
+                      default_operator: :and
+                    }
+                  }
+                },
+                weight: 5
+              },
+
               {
                 field_value_factor: {
                   field: "id",
