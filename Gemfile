@@ -203,3 +203,6 @@ gem 'sinatra',  require: false
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-modal-rails'
 gem "font-awesome-rails"
+
+# vue.js
+gem 'vuejs-rails'
