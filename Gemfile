@@ -176,10 +176,6 @@ gem "td"
 gem "td-logger"
 gem "ltsv-logger"
 
-# logstash logger
-#gem 'logstash-logger'
-# fluent-logger
-#gem 'act-fluent-logger-rails'
 # fluentの設定
 gem 'fluent-plugin-mysqlslowquery'
 gem 'fluent-plugin-elasticsearch'
@@ -203,6 +199,5 @@ gem 'sinatra',  require: false
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-modal-rails'
 gem "font-awesome-rails"
-
 # vue.js
 gem 'vuejs-rails'
