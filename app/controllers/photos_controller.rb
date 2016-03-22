@@ -1,4 +1,7 @@
 class PhotosController < ApplicationController
+  include UserAgent
+
+  before_action :set_request_variant
   before_action :set_photo, only: [:edit, :show, :destroy]
   before_action :set_photo_search
 
@@ -42,6 +45,11 @@ class PhotosController < ApplicationController
   end
 
   private
+
+  def set_request_variant
+    request.variant = :tablet if is_tablet?
+    request.variant = :phone if is_mobile?
+  end
 
   def set_photo
     @photo = Photo.find(Base64.decode64(params[:id]))

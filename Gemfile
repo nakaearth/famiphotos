@@ -201,3 +201,5 @@ gem 'bootstrap-modal-rails'
 gem "font-awesome-rails"
 # vue.js
 gem 'vuejs-rails'
+# ブラウザ判定、UA判定に使う
+gem 'browser'
