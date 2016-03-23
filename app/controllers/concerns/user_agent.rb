@@ -1,11 +1,11 @@
 module UserAgent
   extend ActiveSupport::Concern
 
-  def is_mobile?
+  def mobile?
     browser.device.iphone? || browser.platform.android? || browser.platform.windows_phone?
   end
 
-  def is_tablet?
+  def tablet?
     browser.device.tablet?
   end
 end

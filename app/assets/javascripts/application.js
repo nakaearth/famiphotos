@@ -21,6 +21,9 @@
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 
+// VueJS
+//= require vue
+
 // react
 //= require react
 //= require react_ujs

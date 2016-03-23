@@ -47,8 +47,8 @@ class PhotosController < ApplicationController
   private
 
   def set_request_variant
-    request.variant = :tablet if is_tablet?
-    request.variant = :phone if is_mobile?
+    request.variant = :tablet if tablet?
+    request.variant = :phone if mobile?
   end
 
   def set_photo
