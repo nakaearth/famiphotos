@@ -9,8 +9,6 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
-
 
 // jQuery プラグイン
 //= require jquery
@@ -20,7 +18,11 @@
 // Bootstrap プラグイン
 //= require bootstrap
 
+// VueJS
+//= require vue
+
 // PAGES以下
 //= require pages/photos/show
+//= require pages/photos/index_tablet
 
 // require_tree .

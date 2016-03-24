@@ -25,8 +25,9 @@
 //= require vue
 
 // react
-//= require react
-//= require react_ujs
-//= require components
-//= require namespace
-// require_tree .
+// require react
+// require react_ujs
+// require components
+// require namespace
+
+//= require_tree .
