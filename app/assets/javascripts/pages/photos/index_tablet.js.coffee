@@ -6,5 +6,10 @@ $ ->
   new Vue(
     el: '#simple',
     data:
-      msg: 'Hello Vue.js!'
+      msg: 'Hello Vue.js!',
+      font: ""
+    ,
+    methods:
+      magnify:
+        this.font = "font-size:20px;color:red"
   )
