@@ -203,3 +203,6 @@ gem "font-awesome-rails"
 gem 'vuejs-rails'
 # ブラウザ判定、UA判定に使う
 gem 'browser'
+
+# API 解放のため
+gem 'doorkeeper'
