@@ -6,7 +6,12 @@ class PhotosController < ApplicationController
   before_action :set_photo_search
 
   def index
-    @photos = @current_user.photos.page(params[:page])
+    respond_to do |format|
+      @photos = @current_user.photos.page(params[:page])
+      format.html
+
+      format.json { render 'api/photos/index' }
+    end
   end
 
   def show

@@ -27,8 +27,6 @@ class Photo < ActiveRecord::Base
   ####################################################################
 
   def thumb_url
-    image.thumb.url
+    self.image.thumb.url
   end
-
-  alias_method :thumb_url, 'image.thumb.url'.to_sym
 end

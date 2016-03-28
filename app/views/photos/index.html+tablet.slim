@@ -1,17 +1,16 @@
-| tablet端末だよ
+coffee:
+  rails = window.rails = window.rails ? {}
+  rails.objPeople= #{raw @photos.to_json}
+
 div#simple
   span v-text= "msg" v-on="click: magnify" v-attr="style:font"
 
-
-  :coffee
-    rails = window.rails = window.rails ? {}
-    rails.objPeople= #{raw @photos.to_json}
-
-  %table.table.table-striped
-    %thead
-      %tr
-        %th 画像
-    %tbody{'v-repeat' => 'photos'}
-      %tr
-        %td
-          {{photo.thumb_url}
+  .photo_list
+    table.table.table-striped
+      thead
+        tr
+          th 画像
+      tbody v-repeat = "photos"
+        tr
+          td
+            ="{{thumb_url}}"
