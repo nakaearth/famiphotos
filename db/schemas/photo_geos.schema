@@ -1,0 +1,11 @@
+create_table "photo_geos", force: :cascade do |t|
+  t.integer  "photo_id",   limit: 4
+  t.decimal  "longitude",              precision: 11, scale: 8
+  t.decimal  "latitude",               precision: 11, scale: 8
+  t.string   "address",    limit: 255
+  t.integer  "distance",   limit: 4
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "photo_geos", ["photo_id"], name: "index_photo_geos_on_photo_id", unique: true, using: :btree

@@ -1,0 +1,11 @@
+create_table "oauth_applications", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=4" do |t|
+  t.string   "name",         limit: 255,                null: false
+  t.string   "uid",          limit: 255,                null: false
+  t.string   "secret",       limit: 255,                null: false
+  t.text     "redirect_uri", limit: 65535,              null: false
+  t.string   "scopes",       limit: 255,   default: "", null: false
+  t.datetime "created_at",                              null: false
+  t.datetime "updated_at",                              null: false
+end
+
+add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree

@@ -120,6 +120,8 @@ group :development do
   gem "quiet_assets"
   # gem "did_you_mean"
   gem 'web-console', '~> 2.0'
+  # mail test
+  gem 'letter_opener'
 end
 # template engine
 gem "slim-rails"

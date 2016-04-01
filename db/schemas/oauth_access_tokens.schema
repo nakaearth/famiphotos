@@ -1,0 +1,14 @@
+create_table "oauth_access_tokens", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=4" do |t|
+  t.integer  "resource_owner_id", limit: 4
+  t.integer  "application_id",    limit: 4
+  t.string   "token",             limit: 255, null: false
+  t.string   "refresh_token",     limit: 255
+  t.integer  "expires_in",        limit: 4
+  t.datetime "revoked_at"
+  t.datetime "created_at",                    null: false
+  t.string   "scopes",            limit: 255
+end
+
+add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
+add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
+add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
