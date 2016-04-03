@@ -17,7 +17,7 @@ module Api
     end
 
     test 'create controller' do
-
+      # テスト追加
     end
   end
 end
