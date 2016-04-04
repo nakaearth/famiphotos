@@ -28,8 +28,8 @@ module Api
 
       post :create, uid: Base64.strict_encode64('11223344')
 
-      assert response.status, :success
-      assert response.body, Photo.all.order(:id).last.to_json
+      assert_equal :success, response.status
+      assert_equal Photo.all.order(:id).last.to_json, response.body
     end
   end
 end
