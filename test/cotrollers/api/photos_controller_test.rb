@@ -29,6 +29,7 @@ module Api
       post :create, uid: Base64.strict_encode64('11223344')
 
       assert response.status, :success
+      assert response.body, Photo.all.order(:id).last.to_json
     end
   end
 end
