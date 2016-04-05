@@ -18,15 +18,19 @@ module Api
 
     test 'create controller' do
       # テスト追加
-      @photo_params = {
-        description: 'これはテスト',
-        photo: File.open("#{Rails.root}/test/fixtures/test.jpg"),
-        photo_geo_attributes: [
-          '神奈川県横浜市'
-        ]
+      photo_params = {
+        photo: {
+          description: 'これはテスト',
+          image: File.open("#{Rails.root}/test/fixtures/test.jpg"),
+          photo_geo_attributes: [
+            '神奈川県横浜市'
+          ]
+        }, 
+        uid: Base64.strict_encode64('11223344')
       }
 
-      post :create, uid: Base64.strict_encode64('11223344')
+
+      post :create, photo_params
 
       assert_equal :success, response.status
       assert_equal Photo.all.order(:id).last.to_json, response.body

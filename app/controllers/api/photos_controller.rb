@@ -13,12 +13,14 @@ module Api
 
     # 写真を投稿する
     def create
-      ActiveRecord::Bae.transaction do
-        Photo::UploadService.execute(@current_user, photo_params)
+      ActiveRecord::Base.transaction do
+        Photos::UploadService.execute(@current_user, photo_params)
 
         render json: @photo
       end
-    rescue
+    rescue => e
+      logger.error e.message
+      binding.pry
       head 500
     end
 
