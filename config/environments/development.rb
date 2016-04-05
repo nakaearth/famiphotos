@@ -44,4 +44,12 @@ Rails.application.configure do
   # react js
   config.react.variant = :development
   config.react.addons = true
+<<<<<<< 8492e3dfbae32fc48c2030d33c1514f4468c30d8
+=======
+
+  # メールをGmailを使って送る設定
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.raise_delivery_errors = true
+>>>>>>> メール設定を追加
 end

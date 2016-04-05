@@ -208,3 +208,8 @@ gem 'browser'
 
 # API 解放のため
 gem 'doorkeeper'
+
+group :development do
+  gem 'letter_opener'
+end
+
