@@ -20,8 +20,7 @@ module Api
       end
     rescue => e
       logger.error e.message
-      binding.pry
-      head 500
+      head :internal_server_error
     end
 
     def update
@@ -32,13 +31,13 @@ module Api
     def set_user
       @current_user = User.find_by(uid: params[:uid])
     rescue
-      head 404
+      head :not_found
     end
 
     def photo_params
       columns_name = [
-        :photo,
         :description,
+        :image, 
         photo_geo_attributes: [
           :address
         ]
