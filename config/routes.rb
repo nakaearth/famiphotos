@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # api 認証用のroutes
   use_doorkeeper
   root 'top#index'
 
