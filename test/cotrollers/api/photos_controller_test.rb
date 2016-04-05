@@ -22,9 +22,9 @@ module Api
         photo: {
           description: 'これはテスト',
           image: File.open("#{Rails.root}/test/fixtures/test.jpg"),
-          photo_geo_attributes: [
-            '神奈川県横浜市'
-          ]
+          photo_geo_attributes: {
+            address: '神奈川県横浜市'
+          } 
         }, 
         uid: Base64.strict_encode64('11223344')
       }
@@ -32,7 +32,7 @@ module Api
 
       post :create, photo_params
 
-      assert_equal :success, response.status
+      assert_equal 200, response.status
       assert_equal Photo.all.order(:id).last.to_json, response.body
     end
   end
