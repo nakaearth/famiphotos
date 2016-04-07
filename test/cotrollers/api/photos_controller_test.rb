@@ -1,8 +1,9 @@
 require 'test_helper'
+require 'json'
 
 module Api
   class PhotosControllerTest < ActionController::TestCase
-    include DecryptedUid
+    include EncryptionConcern
 
     def setup
       @user = create(:user, uid: Base64.strict_encode64('11223344'))
@@ -33,7 +34,12 @@ module Api
       post :create, photo_params
 
       assert_equal 200, response.status
-      assert_equal Photo.all.order(:id).last.to_json, response.body
+
+      api_photo_json = JSON.parse(response.body)
+      assert_equal 'ok', api_photo_json[:status]
+    end
+
+    test'show controller' do
     end
   end
 end

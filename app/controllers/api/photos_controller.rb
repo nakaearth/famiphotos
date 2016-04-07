@@ -1,8 +1,9 @@
 module Api
   class PhotosController < Api::ApplicationController
-    include DecryptedUid
+    include EncryptionConcern
 
     before_action :set_user
+    before_action :set_photo, only: %i( update show )
 
     # 写真一覧をjson形式で返す
     def index
@@ -11,12 +12,16 @@ module Api
       render json: @photos
     end
 
+    def show
+      render json: @photo
+    end
+
     # 写真を投稿する
     def create
       ActiveRecord::Base.transaction do
         Photos::UploadService.execute(@current_user, photo_params)
 
-        render json: @photo
+        head :ok, { status: 'ok' }
       end
     rescue => e
       logger.error e.message
@@ -29,9 +34,13 @@ module Api
     private
 
     def set_user
-      @current_user = User.find_by(uid: params[:uid])
+      @current_user = User.find_by(uid: encrypted_uid)
     rescue
       head :not_found
+    end
+
+    def set_photo
+      @photo = @current_user.photos.find_by(id: encrypted_id(params[:photo_id]))
     end
 
     def photo_params
