@@ -34,13 +34,13 @@ module Api
     private
 
     def set_user
-      @current_user = User.find_by(uid: encrypted_uid)
+      @current_user = User.find_by(uid: encrypted_by(params[:uid]))
     rescue
       head :not_found
     end
 
     def set_photo
-      @photo = @current_user.photos.find_by(id: encrypted_id(params[:photo_id]))
+      @photo = @current_user.photos.find_by(id: encrypted_by(params[:photo_id]))
     end
 
     def photo_params

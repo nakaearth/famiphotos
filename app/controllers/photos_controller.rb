@@ -46,6 +46,7 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo.destroy
+
     redirect_to photos_path, notice: '写真を削除しました'
   end
 

@@ -6,12 +6,12 @@ module Api
     include EncryptionConcern
 
     def setup
-      @user = create(:user, uid: Base64.strict_encode64('11223344'))
+      @user = create(:user, uid: decrypted_by('11223344'))
       create_list(:photo, 5, user: @user, image: 'test/fixtures/test.png')
     end
 
     test 'index controller' do
-      get :index, uid: Base64.strict_encode64('11223344')
+      get :index, uid: decrypted_by('11223344')
 
       assert_not_nil assigns[:photos]
       assert_equal @user.photos.size,  assigns[:photos].size
@@ -27,7 +27,7 @@ module Api
             address: '神奈川県横浜市'
           } 
         }, 
-        uid: Base64.strict_encode64('11223344')
+        uid: decrypted_by('11223344')
       }
 
 
