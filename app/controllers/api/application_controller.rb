@@ -4,7 +4,7 @@ module Api
     # For APIs, you may want to use :null_session instead.
     # protect_from_forgery with: :exception
 
-    before_action :decrypted_uid
+    # before_action :decrypted
 
     rescue_from ActiveRecord::RecordNotFound, with: :render_404
     rescue_from ActionController::RoutingError, with: :render_404
