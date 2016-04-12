@@ -21,11 +21,12 @@ module Api
       ActiveRecord::Base.transaction do
         Photos::UploadService.execute(@current_user, photo_params)
 
-        head :ok, { status: 'ok' }
+        render json: { status: :ok }
       end
     rescue => e
       logger.error e.message
-      head :internal_server_error
+
+      render json: { status: :error, error_msg: e.message }
     end
 
     def update

@@ -27,15 +27,14 @@ module Api
             address: '神奈川県横浜市'
           } 
         }, 
-        uid: encrypted('11223344')
+        uid: encrypted('11223344aa')
       }
-
 
       post :create, photo_params
 
       assert_equal 200, response.status
 
-      api_photo_json = JSON.parse(response.body)
+      api_photo_json = (JSON.parse(response.body)).with_indifferent_access 
       assert_equal 'ok', api_photo_json[:status]
     end
 
