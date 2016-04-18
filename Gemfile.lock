@@ -522,6 +522,8 @@ GEM
     sshkit (1.9.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    sshkit-sudo (0.1.0)
+      sshkit (~> 1.8)
     string-scrub (0.0.5)
     switch_point (0.7.0)
       activerecord (>= 3.2.0)
@@ -686,6 +688,7 @@ DEPENDENCIES
   slim-rails
   spring
   sprockets-derailleur
+  sshkit-sudo
   switch_point
   td
   td-logger

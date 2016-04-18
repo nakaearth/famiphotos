@@ -215,3 +215,4 @@ end
 
 # deploy tool
 gem 'capistrano'
+gem 'sshkit-sudo'

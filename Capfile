@@ -4,6 +4,9 @@ require 'capistrano/setup'
 # Include default deployment tasks
 require 'capistrano/deploy'
 
+# ssh key にsudo password付き
+require 'sshkit/sudo'
+
 # Include tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
