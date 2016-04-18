@@ -6,7 +6,7 @@ module Api
     include EncryptionConcern
 
     def setup
-      @user = create(:user, uid: encrypted('11223344aa'))
+      @user = create(:user, uid: '11223344aa')
       create_list(:photo, 5, user: @user, image: 'test/fixtures/test.png')
     end
 
