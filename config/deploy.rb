@@ -1,8 +1,21 @@
+require 'rvm1/capistrano3'
+require 'whenever/capistrano'
+
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
 set :application, 'famiphotos'
 set :repo_url, 'git@github.com:nakaearth/famiphotos.git'
+set :deploy_to,  '/home/vagrant'
+set :keep_releases,  5
+
+set :rvm_type,  :system
+set :rvm1_ruby_version,  '2.3.0'
+
+set :linked_dirs, %w{bin log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle}
+set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
+set :bundle_jobs, 4
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -34,7 +47,11 @@ set :repo_url, 'git@github.com:nakaearth/famiphotos.git'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
+  task :restart do
+    invoke 'unicorn:restart'
+  end
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do

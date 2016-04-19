@@ -215,4 +215,8 @@ end
 
 # deploy tool
 gem 'capistrano'
+#gem 'capistrano-rvm'
+gem 'rvm1-capistrano3',  require: false
+gem 'capistrano-rails'
+gem 'capistrano3-unicorn'
 gem 'sshkit-sudo'
