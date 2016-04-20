@@ -9,8 +9,8 @@ set :repo_url, 'git@github.com:nakaearth/famiphotos.git'
 set :deploy_to,  '/home/vagrant'
 set :keep_releases,  5
 
-set :rvm_type,  :system
-set :rvm1_ruby_version,  '2.3.0'
+set :rvm_type, :system
+set :rvm1_ruby_version, '2.3.0'
 
 set :linked_dirs, %w{bin log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle}
 set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
@@ -47,6 +47,16 @@ set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+namespace :app do
+  task :update_rvm_key do
+    execute :gpg, "--keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3"
+  end
+end
+before "rvm1:install:rvm", "app:update_rvm_key"
+
+before 'deploy',  'rvm1:install:rvm'
+before 'deploy',  'rvm1:install:gems'
+
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
@@ -61,5 +71,4 @@ namespace :deploy do
       # end
     end
   end
-
 end
