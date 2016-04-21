@@ -55,7 +55,7 @@ namespace :app do
   end
 end
 before "rvm1:install:rvm", "app:update_rvm_key"
-
+before 'deploy',  'rvm1:install:ruby'
 before 'deploy',  'rvm1:install:rvm'
 before 'deploy',  'rvm1:install:gems'
 
