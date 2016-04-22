@@ -41,11 +41,12 @@ server '192.168.25.30', user: 'vagrant', roles: %w{app db web}
 #
 # Global options
 # --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
+set :ssh_options, {
+  keys: %w(/usr/local/project/itamae_recipe/.vagrant/machines/el2/virtualbox/private_key),
+  forward_agent: true
+  #forward_agent: false,
+  #auth_methods: %w(vagrant)
+}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
