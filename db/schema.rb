@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623164532) do
+ActiveRecord::Schema.define(version: 0) do
+
+  create_table "albums", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string   "title",      limit: 80
+    t.integer  "group_id",   limit: 4,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "albums", ["group_id"], name: "index_albums_on_group_id", using: :btree
 
   create_table "group_members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "group_id",   limit: 4, null: false
@@ -36,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150623164532) do
     t.datetime "updated_at"
   end
 
-  create_table "oauth_access_grants", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=4" do |t|
+  create_table "oauth_access_grants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "resource_owner_id", limit: 4,     null: false
     t.integer  "application_id",    limit: 4,     null: false
     t.string   "token",             limit: 255,   null: false
@@ -49,7 +58,7 @@ ActiveRecord::Schema.define(version: 20150623164532) do
 
   add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
 
-  create_table "oauth_access_tokens", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=4" do |t|
+  create_table "oauth_access_tokens", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "resource_owner_id", limit: 4
     t.integer  "application_id",    limit: 4
     t.string   "token",             limit: 255, null: false
@@ -64,7 +73,7 @@ ActiveRecord::Schema.define(version: 20150623164532) do
   add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
   add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
 
-  create_table "oauth_applications", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=4" do |t|
+  create_table "oauth_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name",         limit: 255,                null: false
     t.string   "uid",          limit: 255,                null: false
     t.string   "secret",       limit: 255,                null: false
@@ -93,10 +102,12 @@ ActiveRecord::Schema.define(version: 20150623164532) do
     t.text     "description", limit: 65535
     t.integer  "user_id",     limit: 4,     null: false
     t.integer  "group_id",    limit: 4,     null: false
+    t.integer  "album_id",    limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "photos", ["album_id"], name: "index_photos_on_album_id", using: :btree
   add_index "photos", ["group_id"], name: "index_photos_on_group_id", using: :btree
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 

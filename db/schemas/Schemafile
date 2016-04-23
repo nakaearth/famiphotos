@@ -1,3 +1,4 @@
+require 'albums.schema'
 require 'group_members.schema'
 require 'groups.schema'
 require 'information.schema'
