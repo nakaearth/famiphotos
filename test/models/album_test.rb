@@ -24,5 +24,9 @@ class AlbumTest < ActiveSupport::TestCase
     album = Album.new(group: group, title: 'abcdefghij' * 8)
 
     value(album).must_be :valid?
+
+    album.save!
+    saved_album = Album.find_by(group: group)
+    assert_equal album.id, saved_album.id
   end
 end
