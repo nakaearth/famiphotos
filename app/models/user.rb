@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   include IdEncryptable
   include Encryptedable
-  #  include Searchable
 
   attr_encrypted :uid
 

@@ -11,10 +11,15 @@ Rails.application.routes.draw do
   get "/auth/failure" => "sessions#failuer"
 
   # web
+  ## アルバム関連
+  resources :groups, only: %i( index ) do
+    resources :albums, only: %i( index show new create edit update destroy )
+  end
+  ## 写真関連
   resources :photos, only: %i( index show new create destroy )
   resource  :photo_search, only: %i( create )
   resource  :photo_geo_search, only: %i( create )
-
+  ## user関連
   resources :users, only: %i( index show new create edit update destroy )
   resources :user_searches, only: %i( create )
 

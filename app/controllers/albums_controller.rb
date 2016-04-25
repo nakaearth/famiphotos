@@ -2,6 +2,7 @@ class AlbumsController < ApplicationController
   include UserAgent
 
   before_action :set_request_variant
+  before_action :set_album, only: %W( show, edit, destroy )
 
   def index
     @albums = @current_group.albums
@@ -12,9 +13,6 @@ class AlbumsController < ApplicationController
   end
 
   def show
-  end
-
-  def close
   end
 
   def new
@@ -39,7 +37,11 @@ class AlbumsController < ApplicationController
     request.variant = :phone if mobile?
   end
 
-#  def photo_params
+  def set_album
+    @album = @current_group.albums.where(id: decrypted_id(params[:album_id])).first
+  end
+
+#  def album_params
 #    # TODO: nested_attributを使う
 #    colums_name = [
 #      :description,
