@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   include UserAgent
+  include DecryptedId
 
   before_action :set_request_variant
   before_action :set_photo, only: [:edit, :show, :destroy]
@@ -58,7 +59,7 @@ class PhotosController < ApplicationController
   end
 
   def set_photo
-    @photo = Photo.find(Base64.decode64(params[:id]))
+    @photo = Photo.find(decrypted_id(params[:id]))
   end
 
   def set_photo_search
