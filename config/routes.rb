@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   ## アルバム関連
   resources :albums, only: %i( index show new create edit update destroy ) do
     ## 写真関連
-    resources :photos, only: %i( index show new create destroy )
+    resources :photos, only: %i( index show destroy )
   end
+  resource :photo, only: %i( new create )
   resource  :photo_search, only: %i( create )
   resource  :photo_geo_search, only: %i( create )
   ## user関連
