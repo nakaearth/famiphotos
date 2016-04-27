@@ -1,22 +1,18 @@
-h1 写真一覧
+h1 アルバム一覧
 
-= render 'photo_searches/form'
+= paginate @albums
 
-= paginate @photos
-
-.photo_list
+.album_list
   table
     tr
-    - @photos.each do |photo|
-      .photo_div
-        span id="photo_#{photo.id}"
-          = image_tag photo.image.thumb.url
+    - @albums.each do |album|
+      .album_div
+        span id="album_#{album.id}"
+          = image_tag album.image.thumb.url
 
-          | 投稿日付 #{photo.created_at.strftime("%Y/%m/%d")}
+          | 投稿日付 #{album.created_at.strftime("%Y/%m/%d")}
           br/
-        | コメント:#{photo.description}
+        = album.name
         br/
-        = link_to '拡大', "#photo_view_#{photo.id}", data: { toggle: "modal", target: ".photo_view_#{photo.id}", backdrop: false }
-        | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', photo_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }
-
-      = render 'show', photo: photo
+        = link_to 'アルバムを見る', album_photos_path(album)
+        | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', album_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }
