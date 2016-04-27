@@ -5,7 +5,11 @@ class AlbumsController < ApplicationController
   before_action :set_album, only: %W( show, edit, destroy )
 
   def index
+    # デフォルトのグループのアルバム
     @albums = @current_group.albums
+
+    # デフォルト以外のグループのアルバム
+    @other_group_albums = @current_user.albums_without_this_group(@current_group)
 
     respond_to do |format|
       format.html

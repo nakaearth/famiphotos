@@ -30,4 +30,19 @@ class UserTest < ActiveSupport::TestCase
     assert_equal user.valid?, false
     assert_raise(ActiveRecord::RecordInvalid) { user.save! }
   end
+
+  def test_albums_without_this_group
+    user = create(:user)
+
+    current_group = create(:group)
+    other_group   = create(:group, name: 'テストグループ')
+    create(:group_member, group: current_group, user: user)
+    create(:group_member, group: other_group, user: user)
+    
+    create_list(:album, 2, group: current_group)
+    create_list(:album, 3, group: other_group)
+
+    assert_equal 3, user.albums_without_this_group(current_group).size
+    assert_equal 2, user.albums_without_this_group(other_group).size
+  end
 end

@@ -17,8 +17,19 @@ class User < ActiveRecord::Base
 
   after_create :create_group_members
 
-  def self.create_account(auth)
-    Users::Registration.new.regist auth
+  ####### クラスメソッド ########
+
+  class << self
+    def create_account(auth)
+      Users::Registration.new.regist auth
+    end
+  end
+
+  ##### インスタンスメソッド ######
+  # 引数で渡されたグループ以外のアルバムを返す
+  def albums_without_this_group(group)
+    other_groups = my_groups.where.not(id: group.id)
+    Album.where(group: other_groups)
   end
 
   protected

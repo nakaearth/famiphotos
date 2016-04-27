@@ -12,9 +12,7 @@ Rails.application.routes.draw do
 
   # web
   ## アルバム関連
-  resources :groups, only: %i( index ) do
-    resources :albums, only: %i( index show new create edit update destroy )
-  end
+  resources :albums, only: %i( index show new create edit update destroy )
   ## 写真関連
   resources :photos, only: %i( index show new create destroy )
   resource  :photo_search, only: %i( create )
