@@ -1,2 +1,2 @@
-class Information < ActiveRecord::Base
+class Information < FamiphotoBase
 end

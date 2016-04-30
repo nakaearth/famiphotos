@@ -8,9 +8,9 @@ h1 アルバム一覧
     - @albums.each do |album|
       .album_div
         span id="album_#{album.id}"
-          = image_tag album.image.thumb.url
+          = image_tag album.top_image_url
 
-          | 投稿日付 #{album.created_at.strftime("%Y/%m/%d")}
+          | 投稿日付 #{album.created_at_ymd}
           br/
         = album.name
         br/

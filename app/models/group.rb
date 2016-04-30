@@ -1,5 +1,4 @@
-class Group < ActiveRecord::Base
-  include IdEncryptable
+class Group < FamiphotoBase
 
   has_many :group_members, dependent: :destroy
   has_many :users, through: :group_members, source: :user
