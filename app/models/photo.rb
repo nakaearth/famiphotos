@@ -1,5 +1,4 @@
-class Photo < ActiveRecord::Base
-  include IdEncryptable
+class Photo < FamiphotoBase
   include Searchable
 
   use_switch_point :famiphoto

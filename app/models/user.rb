@@ -1,5 +1,4 @@
-class User < ActiveRecord::Base
-  include IdEncryptable
+class User < FamiphotoBase
   include Encryptedable
 
   attr_encrypted :uid

@@ -2,7 +2,7 @@ class AlbumsController < ApplicationController
   include UserAgent
 
   before_action :set_request_variant
-  before_action :set_album, only: %W( show, edit, destroy )
+  before_action :set_album, only: %i( show, edit, destroy )
 
   def index
     # デフォルトのグループのアルバム
@@ -20,6 +20,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
+    @album = @current_group.albums.build
   end
 
   def create
@@ -45,16 +46,14 @@ class AlbumsController < ApplicationController
     @album = @current_group.albums.where(id: decrypted_id(params[:album_id])).first
   end
 
-#  def album_params
-#    # TODO: nested_attributを使う
-#    colums_name = [
-#      :description,
-#      :image,
-#      photo_geo_attributes: [
-#        :address
-#      ]
-#    ]
-#
-#    params.require(:photo).permit(colums_name)
-#  end
+  def album_params
+    colums_name = [
+      :id,
+      albums_attributes: [
+        :title
+      ]
+    ]
+
+    params.require(:group).permit(colums_name)
+  end
 end

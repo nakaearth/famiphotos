@@ -1,4 +1,4 @@
-class PhotoGeo < ActiveRecord::Base
+class PhotoGeo < FamiphotoBase
   belongs_to :photo
 
   geocoded_by :address
