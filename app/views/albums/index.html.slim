@@ -1,18 +1,19 @@
 h1 アルバム一覧
 
-= paginate @albums
+- if @albums
+  = paginate @albums
 
-.album_list
-  table
-    tr
-    - @albums.each do |album|
-      .album_div
-        span id="album_#{album.id}"
-          = image_tag album.top_image_url
+  .album_list
+    table
+      tr
+      - @albums.each do |album|
+        .album_div
+          span id="album_#{album.id}"
+            = image_tag album.top_image_url
 
-          | 投稿日付 #{album.created_at_ymd}
+            | 投稿日付 #{album.created_at_ymd}
+            br/
+          = album.name
           br/
-        = album.name
-        br/
-        = link_to 'アルバムを見る', album_photos_path(album)
-        | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', album_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }
+          = link_to 'アルバムを見る', album_photos_path(album)
+          | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', album_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   ## user関連
   resources :users, only: %i( index show new create edit update destroy )
   resources :user_searches, only: %i( create )
+  resources :groups, only: %i( index show new create )
 
   # api
   namespace :api do
