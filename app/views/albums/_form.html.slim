@@ -1,0 +1,8 @@
+#photo_form.photo_form
+  #photo_form_div.photo_form_div
+    = form_for @current_group  do |f|
+      = f.field_for :album do |album|
+        .field
+          = album.title
+          = album.text_field :title
+        = f.submit
