@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+     group_member : グループメンバー
+    attributes:
+      group:
+        role: 権限
+  enumerize:
+    group:
+      role:
+        owner: 管理者
+        member: メンバー

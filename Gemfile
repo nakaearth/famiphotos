@@ -209,6 +209,10 @@ gem 'browser'
 # API 解放のため
 gem 'doorkeeper'
 
+# enumerize
+gem 'enumerize'
+
+# メール送付の確認用に
 group :development do
   gem 'letter_opener'
 end

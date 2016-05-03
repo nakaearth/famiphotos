@@ -31,10 +31,14 @@ class User < FamiphotoBase
     Album.where(group: other_groups)
   end
 
+  def my_owner_groups
+    my_groups.where(id: group_members.role_owner.pluck(:group_id))
+  end
+
   protected
 
   def create_group_members
-    group = Group.find_or_create_by(name: name || 'デフォルト' + ' group')
-    GroupMember.find_or_create_by(user: self, group: group)
+    group = Group.find_or_create_by(name: name || "デフォルト#{name}グループ")
+    GroupMember.find_or_create_by(user: self, group: group, role: 'owner')
   end
 end

@@ -7,7 +7,8 @@ class GroupsController < ApplicationController
 
   def index
     respond_to do |format|
-      @groups = @current_user.groups.page(params[:page])
+      @groups = @current_user.my_groups.page(params[:page])
+
       format.html
     end
   end
@@ -17,13 +18,13 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @group = @current_user.groups.build
+    @group = Group.new
   end
 
   def create
-    @group = @current_user.groups.build(group_params)
+    @group = Group.new(group_params)
 
-    if Group.with_writable { @group.save }
+    if Group.with_writable { @group.save_with_group_member(@current_user, group_params[:group_members_attributes][:role]) }
       redirect_to groups_path, notice: 'グループを作成しました'
     else
       render action: :new, alert: 'グループ作成に失敗しました'
@@ -56,7 +57,10 @@ class GroupsController < ApplicationController
 
   def group_params
     colums_name = [
-      :name
+      :name, 
+      group_members_attributes: [
+        :role
+      ]
     ]
 
     params.require(:group).permit(colums_name)
