@@ -34,7 +34,7 @@ class User < FamiphotoBase
   protected
 
   def create_group_members
-    group = Group.find_or_create_by(name: name || 'デフォルト' + ' group')
-    GroupMember.find_or_create_by(user: self, group: group)
+    group = Group.find_or_create_by(name: name || "デフォルト#{name}グループ")
+    GroupMember.find_or_create_by(user: self, group: group, role: 'owner')
   end
 end

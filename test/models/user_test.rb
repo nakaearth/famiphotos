@@ -37,7 +37,7 @@ class UserTest < ActiveSupport::TestCase
     current_group = create(:group)
     other_group   = create(:group, name: 'テストグループ')
     create(:group_member, group: current_group, user: user)
-    create(:group_member, group: other_group, user: user)
+    create(:group_member, :member, group: other_group, user: user)
     
     create_list(:album, 2, group: current_group)
     create_list(:album, 3, group: other_group)
