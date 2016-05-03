@@ -1,0 +1,8 @@
+.group_form
+  .group_form_div
+    = form_for @group  do |f|
+      .field
+        = f.name
+        = f.text_field :name
+      = f.field_for :group_member do |group_member|
+        = f.submit
