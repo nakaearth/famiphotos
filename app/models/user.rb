@@ -31,6 +31,10 @@ class User < FamiphotoBase
     Album.where(group: other_groups)
   end
 
+  def my_owner_groups
+    my_groups.where(id: group_members.role_owner.pluck(:group_id))
+  end
+
   protected
 
   def create_group_members

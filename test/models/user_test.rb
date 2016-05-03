@@ -31,6 +31,18 @@ class UserTest < ActiveSupport::TestCase
     assert_raise(ActiveRecord::RecordInvalid) { user.save! }
   end
 
+  def test_my_owner_group_method
+    user = create(:user)
+
+    current_group = create(:group)
+    other_group   = create(:group, name: 'テストグループ')
+    create(:group_member, group: current_group, user: user)
+    create(:group_member, :member, group: other_group, user: user)
+
+    my_owner_group_ids = user.my_owner_groups.pluck(:id)
+    assert_equal true, my_owner_group_ids.include?(current_group.id)
+  end
+
   def test_albums_without_this_group
     user = create(:user)
 
