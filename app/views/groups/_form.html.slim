@@ -5,4 +5,6 @@
         = f.name
         = f.text_field :name
       = f.field_for :group_member do |group_member|
-        = f.submit
+        = group_member.collection_radio_button :role, GroupMember.role.options, :last, :first
+
+      = f.submit

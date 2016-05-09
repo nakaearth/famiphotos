@@ -80,6 +80,7 @@ group :test do
   gem 'rails_best_practices'
 
   gem "byebug"
+  gem 'rb-readline'
   # gem "nio4r", "0.5.0"
   gem "rake-compiler"
   # webテスト

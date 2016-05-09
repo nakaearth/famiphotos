@@ -432,6 +432,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    rb-readline (0.5.3)
     rdoc (4.2.2)
       json (~> 1.4)
     react-rails (1.6.2)
@@ -689,6 +690,7 @@ DEPENDENCIES
   rails_12factor
   rails_best_practices
   rake-compiler
+  rb-readline
   react-rails (~> 1.0)
   request_store
   responders (~> 2.0)
@@ -721,4 +723,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.11.2
+   1.12.3
