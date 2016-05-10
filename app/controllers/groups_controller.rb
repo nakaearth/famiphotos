@@ -24,7 +24,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
 
-    if Group.with_writable { @group.save_with_group_member(@current_user, group_params[:group_members_attributes][:role]) }
+    if Group.with_writable { @group.save_with_group_member(@current_user, group_params[:group_member][:role]) }
       redirect_to groups_path, notice: 'グループを作成しました'
     else
       render action: :new, alert: 'グループ作成に失敗しました'
@@ -58,7 +58,7 @@ class GroupsController < ApplicationController
   def group_params
     colums_name = [
       :name, 
-      group_members_attributes: [
+      group_member: [
         :role
       ]
     ]

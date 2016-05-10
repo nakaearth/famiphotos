@@ -2,9 +2,10 @@
   .group_form_div
     = form_for @group  do |f|
       .field
-        = f.name
+        = f.label :name
         = f.text_field :name
-      = f.field_for :group_member do |group_member|
-        = group_member.collection_radio_button :role, GroupMember.role.options, :last, :first
+      = f.fields_for :group_member do |group_member|
+        .field
+          = group_member.collection_radio_buttons :role, GroupMember.role.options, :last, :first
 
       = f.submit

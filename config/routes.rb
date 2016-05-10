@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     ## 写真関連
     resources :photos, only: %i( index show destroy )
   end
-  resource :photo, only: %i( new create )
+  resource :photos, only: %i( new create )
   resource  :photo_search, only: %i( create )
   resource  :photo_geo_search, only: %i( create )
   ## user関連

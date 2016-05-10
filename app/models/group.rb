@@ -1,4 +1,5 @@
 class Group < FamiphotoBase
+  use_switch_point :famiphoto
 
   has_many :group_members, dependent: :destroy
   has_many :users, through: :group_members, source: :user

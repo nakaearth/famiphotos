@@ -6,7 +6,7 @@ ja:
       group:
         role: 権限
   enumerize:
-    group:
+    group_member:
       role:
         owner: 管理者
         member: メンバー
