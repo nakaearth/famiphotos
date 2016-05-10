@@ -3,7 +3,7 @@
 @import "compass/reset";
 @import "compass";
 
-.album_form {
+.group_form {
    font-weight: bold;
    font-size: 10pt;
    font-color: #FFFFFF;
@@ -13,7 +13,7 @@
    margin: 10px;
    @include border-radius();
    @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
-   .album_form_div {
+   .group_form_div {
      background-color: #FFFFFF;
      border: 1px solid #FFFFFF;
      font-size: 10pt;
@@ -26,7 +26,7 @@
    }
 }
 
-.album_list {
+.group_list {
    width: 1000pt;
    height: 500pt;
    visibility: visible;
@@ -35,12 +35,12 @@
    z-index: 0;
    @include border-radius(5px,5px);
    @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
-  .album_div {
+  .group_div {
      background-color: #FFFFFF;
      border: 1px solid #FFFFFF;
      font-size: 10pt;
-     width: 300px;
-     height: 280px;
+     width: 200px;
+     height: 100px;
      margin: 5px;
      z-index: 1;
      @include inline-block;
@@ -49,7 +49,7 @@
   }
 }
 
-.album_detail {
+.group_detail {
    background-color: #CCFFFF;
    position: fixed;
    top: 10%;

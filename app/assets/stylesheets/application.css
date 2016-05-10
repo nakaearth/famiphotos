@@ -11,9 +11,11 @@
  * file per style scope.
  *= require font-awesome
  *= require common
+ *= require albums
  *= require photos
  *= require photo_geo_searchs
  *= require photo_searchs
+ *= require groups
  *= require users
  *= require top
  *= require bootstrap_and_overrides
