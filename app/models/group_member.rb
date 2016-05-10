@@ -1,6 +1,8 @@
 class GroupMember < FamiphotoBase
   extend Enumerize
 
+  use_switch_point :famiphoto
+
   belongs_to :user
   belongs_to :group
 

@@ -6,11 +6,12 @@
           = image_tag @photo.image.url
         | 画像:#{f.file_field :image}
         br/
-      = f.label :description
-      | \:#{f.text_area :description, :size => "40x20"}
-      br/
-      = f.fields_for :photo_geo do |f_photo_geo|
-        = f_photo_geo.label :address
-        = f_photo_geo.text_field :address
+      .field
+        = f.label :description
+        | :#{f.text_area :description, :size => "40x20"}
+      .field
+        = f.fields_for :photo_geo do |f_photo_geo|
+          = f_photo_geo.label :address
+          = f_photo_geo.text_field :address
       .actions
         = f.submit
