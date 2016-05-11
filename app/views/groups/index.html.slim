@@ -1,5 +1,5 @@
 h1 グループ一覧
-
+= link_to 'グループ追加', new_group_path, method: :get
 = paginate @groups
 
 .group_list
@@ -9,7 +9,7 @@ h1 グループ一覧
       .group_div
         span id="group_#{group.id}"
           = group.name
-
+          br/
           | 作成日付 #{group.created_at_ymd}
           br/
         br/
