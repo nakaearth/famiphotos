@@ -3,13 +3,14 @@ class AlbumsController < ApplicationController
 
   before_action :set_request_variant
   before_action :set_album, only: %i( show, edit, destroy )
+  before_action :exists_current_group?, only: %i( new create )
 
   def index
     # groupの設定がそもそもない時は即return
     return unless @current_group
 
     # デフォルトのグループのアルバム
-    @albums = @current_group.albums
+    @albums = @current_group.albums.page(params[:page])
 
     # デフォルト以外のグループのアルバム
     @other_group_albums = @current_user.albums_without_this_group(@current_group)
@@ -19,12 +20,17 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    return redirect_to new_group_path unless @current_group
-
     @album = @current_group.albums.build
   end
 
   def create
+    @album = @current_group.albums.build(album_params)
+
+    if @album.save
+      redirect_to albums_path, notice: 'アルバムを作成しました' 
+    else
+      redirect_to action: :new, alert: 'アルバム作成に失敗しました'
+    end
   end
 
   def edit
@@ -47,14 +53,15 @@ class AlbumsController < ApplicationController
     @album = @current_group.albums.where(id: decrypted_id(params[:album_id])).first
   end
 
+  def exists_current_group?
+    return redirect_to new_group_path unless @current_group
+  end
+
   def album_params
     colums_name = [
-      :id,
-      albums_attributes: [
-        :title
-      ]
+      :title
     ]
 
-    params.require(:group).permit(colums_name)
+    params.fetch(:group, {}).fetch(:album, {}).permit(colums_name)
   end
 end

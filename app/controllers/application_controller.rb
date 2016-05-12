@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   # TODO: グループ切り替えが必要か
   def current_group
-    @current_user.try(:my_groups).try(:first)
+    @current_group ||= @current_user.try(:my_groups).try(:first)
   end
 
   def login?
