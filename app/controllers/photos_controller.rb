@@ -33,7 +33,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = @album.photos.build(photo_params)
+    @photo = @current_user.photos.build(photo_params)
 
     if Photo.with_writable { @photo.save }
       redirect_to album_photos_path(@album), notice: '写真の登録がしました'
@@ -78,6 +78,7 @@ class PhotosController < ApplicationController
   def photo_params
     # TODO: nested_attributを使う
     colums_name = [
+      :album_id, 
       :description,
       :image,
       photo_geo_attributes: [
