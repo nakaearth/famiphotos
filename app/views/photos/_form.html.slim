@@ -10,6 +10,9 @@
         = f.label :description
         | :#{f.text_area :description, :size => "40x20"}
       .field
+        = f.label :album_id
+        = f.collection_select :album_id,  @albums, :id, :title
+      .field
         = f.fields_for :photo_geo do |f_photo_geo|
           = f_photo_geo.label :address
           = f_photo_geo.text_field :address
