@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
 
   before_action :set_request_variant
   before_action :set_album, only: %i( index ) 
-  before_action :set_photo, only: [:edit, :show, :destroy]
+  before_action :set_photo, only: %i( edit show destroy )
   before_action :set_photo_search
 
   def index
@@ -36,7 +36,7 @@ class PhotosController < ApplicationController
     @photo = @current_user.photos.build(photo_params)
 
     if Photo.with_writable { @photo.save }
-      redirect_to album_photos_path(@album), notice: '写真の登録がしました'
+      redirect_to album_photos_path(@photo.album), notice: '写真の登録がしました'
     else
       @albums = @current_group.albums
 

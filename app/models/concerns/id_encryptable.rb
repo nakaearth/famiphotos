@@ -35,7 +35,7 @@ module IdEncryptable
 
       return unless column_value
 
-      ClassMethods.decrypted_id(column_value)
+      ClassMethods.decrypt_id(column_value)
     else
       super
     end
@@ -43,6 +43,10 @@ module IdEncryptable
 
 
   # インスタンスメソッド
+  def encrypted_id
+    Base64.encode64(id.to_s)
+  end
+
   def to_key
     [Base64.encode64(id.to_s)]
   end
