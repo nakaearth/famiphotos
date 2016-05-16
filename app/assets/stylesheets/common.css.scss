@@ -24,7 +24,7 @@ $secondary-color: #0CC;
 $dark-color: #393939;
 $block-container-border-color: rgb(218, 218, 218);
 $block-container-shadow-color: rgb(208, 208, 208);
-
+$active-color: #5176ae;
 
 // 全画面共通設定
 body {
@@ -105,6 +105,31 @@ div {
        bottom: 10px;
      }
   }
+}
+
+.tab {
+  border-bottom: 2px solid #dedede;
+  li {
+    @include inline-block;
+    a {
+      display: block;
+      padding: 13px 5px;
+      min-width: 130px;
+      color: #666;
+      text-align: center;
+      font-weight: bold;
+    }
+    &.active,
+    &:hover {
+      margin-bottom: -2px;
+      a {
+        padding-bottom: 12px;
+        border-bottom: 3px solid $active-color;
+        color: $active-color;
+      }
+    }
+  }
+
 }
 
 
