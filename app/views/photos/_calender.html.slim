@@ -1,1 +1,8 @@
-| calender表示
+= month_calendar events: @photos do |date, photos|
+  = date
+
+  br/
+  - if photos.first
+    = image_tag photos.first.thumb_url
+  - else
+    = image_tag 'np_photo.gif'

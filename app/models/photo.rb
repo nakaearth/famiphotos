@@ -29,4 +29,8 @@ class Photo < FamiphotoBase
   def thumb_url
     self.image.thumb.url
   end
+
+  def start_time
+    self.created_at
+  end
 end

@@ -500,6 +500,8 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       redis (~> 3.2, >= 3.2.1)
     sigdump (0.2.4)
+    simple_calendar (2.1.2)
+      rails (>= 3.0)
     simplecov (0.11.2)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -701,6 +703,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   sidekiq
+  simple_calendar (~> 2.0)
   simplecov
   simplecov-rcov
   sinatra
