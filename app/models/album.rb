@@ -29,8 +29,8 @@ class Album < FamiphotoBase
   ####################################################################
   # [memo] もしかしたら、これはdecoratorにおくべきかな？
   def top_image_url
-    return 'img/np_photo.jpg' if photos.blank?
+    return 'np_photo.gif' if photos.blank?
 
-    photos.order(:id).first.image.thumb.url
+    photos.order(:id).first.thumb_url
   end
 end

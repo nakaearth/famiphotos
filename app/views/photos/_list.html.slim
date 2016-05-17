@@ -6,7 +6,7 @@
     - @photos.each do |photo|
       .photo_div
         span id="photo_#{photo.id}"
-          = image_tag photo.image.thumb.url
+          = image_tag photo.thumb_url
 
           | 投稿日付 #{photo.created_at.strftime("%Y/%m/%d")}
           br/

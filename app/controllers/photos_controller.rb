@@ -5,7 +5,6 @@ class PhotosController < ApplicationController
   before_action :set_request_variant
   before_action :set_album, only: %i( index ) 
   before_action :set_photo, only: %i( edit show destroy )
-  before_action :set_photo_search
 
   def index
     respond_to do |format|
@@ -69,10 +68,6 @@ class PhotosController < ApplicationController
 
   def set_photo
     @photo = Photo.find(decrypted_id(params[:id]))
-  end
-
-  def set_photo_search
-    @photo_search = PhotoSearch.new
   end
 
   def photo_params

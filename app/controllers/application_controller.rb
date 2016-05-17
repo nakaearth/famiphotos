@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :current_user
   before_action :current_group
   before_action :application_log_output
+  before_action :set_photo_search
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
   rescue_from ActionController::RoutingError, with: :render_404
@@ -40,5 +41,10 @@ class ApplicationController < ActionController::Base
 
   def render_404
     render file: "#{Rails.root}/public/404.html", status: 404
+  end
+
+  # 検索ボックスの初期化のため
+  def set_photo_search
+    @photo_search = PhotoSearch.new
   end
 end
