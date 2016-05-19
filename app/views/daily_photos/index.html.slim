@@ -1,0 +1,7 @@
+h1
+  | #{@album.title}の#{@photos.first.created_at_ymd} の写真
+
+li
+  = link_to '戻る', album_photos_path(@album)
+   
+  = render 'photos/list'
