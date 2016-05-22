@@ -3,13 +3,8 @@ h1
 
 ul.tab
   li.active
-    = link_to '全ての写真', '#tab1', data: { toggle: :tab }
-  li
-    = link_to 'カレンダー表示', '#tab2', data: { toggle: :tab }
+    = link_to 'カレンダー表示', '#tab', data: { toggle: :tab }
    
   .tab-content
-    #tab1.tab-pane.active
-      = render 'list'
-
-    #tab2.tab-pane
+    #tab.tab-pane.active
       = render 'calender'
