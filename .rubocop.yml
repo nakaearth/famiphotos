@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - 'bin/*'
+    - 'conf/*'
     - 'bundle_bin/*'
     - 'test/test_helper.rb'
     - 'test/support/**/*'
@@ -19,6 +20,8 @@ Metrics/AbcSize:
 Metrics/BlockNesting:
   Enabled: false
 Metrics/ClassLength:
+  Enabled: false
+Metrics/ModuleLength:
   Enabled: false
 Metrics/CyclomaticComplexity:
   Enabled: false
@@ -56,12 +59,13 @@ Style/PredicateName:
 Style/WordArray:
   Enabled: false
 Style/AndOr:
-  Exclude:
-    - 'app/controllers/**/*'
+  Enabled: false
 Style/BlockComments:
   Enabled: false
 Style/CommentIndentation:
   Enabled: false
+# https://github.com/bbatsov/ruby-style-guide#no-bang-bang
+# 微妙〜＞＜ これは省略してもいい気がする
 Style/DoubleNegation:
   Enabled: false
 Style/AlignParameters:
@@ -72,6 +76,8 @@ Style/IfUnlessModifier:
   Enabled: false
 Lint/AmbiguousOperator:
   Exclude:
+    # eq -1 のような記述をすると、式が曖昧だとrubocopに怒られる
+    # specではそのような書き方は一般的に行うので、許容する
     - 'test/**/*'
 Style/Next:
   Enabled: true
@@ -83,19 +89,18 @@ Style/BracesAroundHashParameters:
   Enabled: false
 HandleExceptions:
   Enabled: false
-#Style/SpaceAroundOperators:
-#  MultiSpaceAllowedForOperators:
-#    - '='
-#    - '=>'
-#    - '+='
+Style/SpaceAroundOperators:
+  MultiSpaceAllowedForOperators:
+    - '='
+    - '=>'
+    - '+='
 Style/RescueModifier:
   Enabled: true
 Style/EmptyElse:
+  Enabled: true
 Style/HashSyntax:
-  Exclude:
-    - 'lib/tasks/**/*'
+  Enabled: true
 Style/MethodCallParentheses:
-  Exclude:
-    - 'test/features/**/*'
+  Enabled: true
 Style/Next:
   Enabled: false

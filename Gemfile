@@ -97,7 +97,7 @@ end
 # 開発, テスト時に使うツール群
 group :development, :test do
   # コーディング規約チェック
-  gem 'rubocop'
+  gem 'rubocop', '0.32.1'
   # テスト、コードチェックを自動で別プロセスでやる
   # gem 'guard', '~> 2.8'
   gem 'guard'
@@ -160,7 +160,7 @@ group :development do
 end
 # css fremework compass
 gem 'compass-rails'
-gem 'parser', '2.2.0.pre.8'
+gem 'parser', '2.2.2.5'
 # 擬似的なテーブルのように使える
 gem 'active_hash'
 # pagenate
