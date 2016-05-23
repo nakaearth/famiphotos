@@ -6,8 +6,8 @@ module Searchable
 
     unless Rails.env.test?
       # https://github.com/elastic/elasticsearch-rails/tree/master/elasticsearch-model#asynchronous-callbacks
-      after_save { ElPhotoWorker.perform_async(:index, self.id) }
-      after_save { ElPhotoWorker.perform_async(:delete, self.id) }
+      after_save { ElPhotoWorker.perform_async(:index, id) }
+      after_save { ElPhotoWorker.perform_async(:delete, id) }
     end
 
     index_name "famiphoto"

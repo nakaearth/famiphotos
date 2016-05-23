@@ -24,7 +24,7 @@ class FamiphotoBase < ActiveRecord::Base
   ####################################################################
   ################### インスタンスメソッド ###########################
   ####################################################################
-  def method_missing(method_name,  *args,  &block)
+  def method_missing(method_name,  *_args,  &_block)
     return unless method_name.to_s.end_with?("_ymd")
 
     method_name_except_format_value = method_name.to_s.sub!(/_ymd/, '')

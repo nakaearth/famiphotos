@@ -1,7 +1,7 @@
 module Search
   class PhotoGeoService < BaseService
     # geo関数を使って位置情報を使った検索
-    def search(photo_gro_search)
+    def search(_photo_gro_search)
       body = {
         query: {
           function_score: {
@@ -18,13 +18,13 @@ module Search
               {
                 filter: {
                   geo_distance: {
-                    distance: photo_geo_search.distance, 
+                    distance: photo_geo_search.distance,
                     'pin.location': {
-                      lat: photo_geo_search.lat, 
+                      lat: photo_geo_search.lat,
                       lot: photo_geo_search.lot
                     }
                   }
-                }, 
+                },
                 weight: 5
               },
               {
@@ -44,4 +44,3 @@ module Search
     end
   end
 end
- 

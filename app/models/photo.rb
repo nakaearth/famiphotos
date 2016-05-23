@@ -27,10 +27,10 @@ class Photo < FamiphotoBase
   ####################################################################
 
   def thumb_url
-    self.image.thumb.url
+    image.thumb.url
   end
 
   def start_time
-    self.created_at
+    created_at
   end
 end

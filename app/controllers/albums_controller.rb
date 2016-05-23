@@ -27,7 +27,7 @@ class AlbumsController < ApplicationController
     @album = @current_group.albums.build(album_params)
 
     if @album.save
-      redirect_to albums_path, notice: 'アルバムを作成しました' 
+      redirect_to albums_path, notice: 'アルバムを作成しました'
     else
       redirect_to action: :new, alert: 'アルバム作成に失敗しました'
     end

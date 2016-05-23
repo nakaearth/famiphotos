@@ -15,7 +15,7 @@ module IdEncryptable
  # encrypted_hoge_idメソッドを動的に生成する
   def method_missing(method_name, *args, &block)
     if method_name =~ /\Aencrypted_(.+)_id\z/
-      association_name = $1
+      association_name = Regexp.last_match(1)
       association_names = self.class.reflect_on_all_associations(:belongs_to).map(&:name)
       return super unless association_name.in? association_names.map(&:to_s)
 
@@ -26,7 +26,7 @@ module IdEncryptable
 
       ClassMethods.encrypt_id(column_value)
     elsif method_name =~ /\Adecrypted_(.+)_id\z/
-      association_name  = $1
+      association_name  = Regexp.last_match(1)
       association_names = self.class.reflect_on_all_associations(:belongs_to).map(&:name)
       return super unless assocation_name.in? association_names.map(&:to_s)
 
@@ -40,7 +40,6 @@ module IdEncryptable
       super
     end
   end
-
 
   # インスタンスメソッド
   def encrypted_id
