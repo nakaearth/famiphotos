@@ -12,10 +12,10 @@ set :keep_releases,  5
 set :rvm_type, :system
 set :rvm1_ruby_version, '2.3.0'
 
-set :linked_dirs, %w{bin log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle}
+set :linked_dirs, %w(bin log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bundle)
 set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
 set :bundle_jobs, 4
-set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

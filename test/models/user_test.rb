@@ -1,7 +1,6 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-
   def test_validation_success_case
     user = User.new(name: 'test', uid: '12345abcd', email: 'hoge@gmail.com', provider: 'twitter')
     value(user).must_be :valid?
@@ -50,7 +49,7 @@ class UserTest < ActiveSupport::TestCase
     other_group   = create(:group, name: 'テストグループ')
     create(:group_member, group: current_group, user: user)
     create(:group_member, :member, group: other_group, user: user)
-    
+
     create_list(:album, 2, group: current_group)
     create_list(:album, 3, group: other_group)
 

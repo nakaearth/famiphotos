@@ -47,7 +47,7 @@ module Api
     def photo_params
       columns_name = [
         :description,
-        :image, 
+        :image,
         photo_geo_attributes: [
           :address
         ]

@@ -5,13 +5,13 @@ module DecryptedId
     Base64.decode64(id)
   rescue
     # TODO: 何か例外クラス作ってそれを投げる
-    fail 'デコード失敗しました'
+    raise 'デコード失敗しました'
   end
 
   def encrypted_id(id)
     Base64.encode64(id)
   rescue
     # TODO: 何か例外クラス作ってそれを投げる
-    fail 'エンコード失敗しました'
+    raise 'エンコード失敗しました'
   end
 end

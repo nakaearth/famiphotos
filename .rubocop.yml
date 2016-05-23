@@ -1,7 +1,7 @@
 AllCops:
   Exclude:
     - 'bin/*'
-    - 'conf/*'
+    - 'config/**/*'
     - 'bundle_bin/*'
     - 'test/test_helper.rb'
     - 'test/support/**/*'

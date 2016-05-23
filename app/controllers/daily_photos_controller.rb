@@ -7,7 +7,7 @@ class DailyPhotosController < ApplicationController
   before_action :set_date_from_created_at_ymd, only: %i( index )
   before_action :set_photos, only: %i( index )
 
-  def index 
+  def index
   end
 
   private

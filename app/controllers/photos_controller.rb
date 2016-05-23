@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   include DecryptedId
 
   before_action :set_request_variant
-  before_action :set_album, only: %i( index ) 
+  before_action :set_album, only: %i( index )
   before_action :set_photo, only: %i( edit show destroy )
 
   def index
@@ -73,7 +73,7 @@ class PhotosController < ApplicationController
   def photo_params
     # TODO: nested_attributを使う
     colums_name = [
-      :album_id, 
+      :album_id,
       :description,
       :image,
       photo_geo_attributes: [

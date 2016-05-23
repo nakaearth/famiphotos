@@ -6,8 +6,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-server '192.168.25.30', user: 'vagrant', roles: %w{app db web}
-
+server '192.168.25.30', user: 'vagrant', roles: %w(app db web)
 
 # role-based syntax
 # ==================
@@ -21,8 +20,6 @@ server '192.168.25.30', user: 'vagrant', roles: %w{app db web}
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
-
-
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
@@ -30,8 +27,6 @@ server '192.168.25.30', user: 'vagrant', roles: %w{app db web}
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
-
-
 
 # Custom SSH Options
 # ==================
@@ -44,8 +39,8 @@ server '192.168.25.30', user: 'vagrant', roles: %w{app db web}
 set :ssh_options, {
   keys: %w(/usr/local/project/itamae_recipe/.vagrant/machines/el2/virtualbox/private_key),
   forward_agent: true
-  #forward_agent: false,
-  #auth_methods: %w(vagrant)
+  # forward_agent: false,
+  # auth_methods: %w(vagrant)
 }
 #
 # The server-based syntax can be used to override options:

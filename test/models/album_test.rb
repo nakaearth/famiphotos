@@ -11,14 +11,14 @@ class AlbumTest < ActiveSupport::TestCase
 
     value(album).must_be :invalid?
   end
-  
+
   def test_title_length_is_over_80
     group = create(:group)
     album = Album.new(group: group, title: ('abcdefghij' * 8).concat('1'))
 
     value(album).must_be :invalid?
   end
-  
+
   def test_valid
     group = create(:group)
     album = Album.new(group: group, title: 'abcdefghij' * 8)

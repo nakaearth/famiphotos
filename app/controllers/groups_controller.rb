@@ -54,10 +54,9 @@ class GroupsController < ApplicationController
     @group = Group.find(decrypted_id(params[:id]))
   end
 
-
   def group_params
     colums_name = [
-      :name, 
+      :name,
       group_member: [
         :role
       ]

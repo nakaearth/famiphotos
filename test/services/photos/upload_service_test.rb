@@ -4,7 +4,7 @@ class Photos::UploadServiceTest < ActiveSupport::TestCase
   setup do
     @photo_params = {
       description: 'これはテスト',
-      image: File.open("#{Rails.root}/test/fixtures/test.jpg"),
+      image: File.open("#{Rails.root}/test/fixtures/test.jpg")
     }
 
     @user = create(:user)

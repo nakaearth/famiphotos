@@ -25,8 +25,8 @@ module Api
           image: File.open("#{Rails.root}/test/fixtures/test.jpg"),
           photo_geo_attributes: {
             address: '神奈川県横浜市'
-          } 
-        }, 
+          }
+        },
         uid: encrypted('11223344aa')
       }
 
@@ -34,11 +34,11 @@ module Api
 
       assert_equal 200, response.status
 
-      api_photo_json = (JSON.parse(response.body)).with_indifferent_access 
+      api_photo_json = (JSON.parse(response.body)).with_indifferent_access
       assert_equal 'ok', api_photo_json[:status]
     end
 
-    test'show controller' do
+    test 'show controller' do
     end
   end
 end
