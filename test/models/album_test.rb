@@ -5,6 +5,7 @@ class AlbumTest < ActiveSupport::TestCase
     @album ||= Album.new
   end
 
+  # バリデーションテスト
   def test_title_is_nil
     group = create(:group)
     album = Album.new(group: group, title: nil)
@@ -12,6 +13,7 @@ class AlbumTest < ActiveSupport::TestCase
     value(album).must_be :invalid?
   end
 
+  # バリデーションテスト
   def test_title_length_is_over_80
     group = create(:group)
     album = Album.new(group: group, title: ('abcdefghij' * 8).concat('1'))
