@@ -40,3 +40,7 @@ bower.json
 /.env
 
 .filebeat
+
+# nodemodule
+/node_modules
+
