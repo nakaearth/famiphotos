@@ -1,6 +1,6 @@
 defaults: &defaults
   adapter: mysql2
-  username: root
+  username:
   password:
   database: famiphotos_<%= ENV['RAILS_ENV'] %>
   pool: 5
