@@ -19,6 +19,7 @@ before_script:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
 - cp config/database.travis.yml config/database.yml
+- mysql -e 'create database famiphotos_development'
 - mysql -e 'create database famiphotos_test'
 - bundle exec rake db:migrate
 after_failure:
