@@ -5,8 +5,6 @@ rvm:
 gemfile:
 - Gemfile
 cache: bundler
-env:
-  - DB=mysql
 services:
 - mysql
 branches:
