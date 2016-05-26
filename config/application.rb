@@ -50,5 +50,8 @@ module Famiphotos
       g.jbuilder false
       g.test_framework :minitest, fixture: false
     end
+
+    # babelを使ってコンパイルするように指定
+    config.browserify_rails.commandline_options = '-t babelify'
   end
 end
