@@ -2,16 +2,18 @@ defaults: &defaults
   adapter: mysql2
   username:
   password:
-  database: famiphotos_<%= ENV['RAILS_ENV'] %>
   pool: 5
   timeout: 5000
   host: localhost
 
 development:
   <<: *defaults
+  database: famiphotos_development
 
 test:
   <<: *defaults
+  database: famiphotos_test
 
 production:
   <<: *defaults
+  database: famiphotos_production
