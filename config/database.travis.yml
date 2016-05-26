@@ -1,19 +1,21 @@
-defaults: &defaults
+mysql: &mysql
   adapter: mysql2
-  username:
+  username: root
   password:
+  database: famiphotos_<%= Rails.env %>
+
+defaults: &defaults
   pool: 5
   timeout: 5000
   host: localhost
+  <<: *<%= ENV['DB'] || "mysql" %>
+
 
 development:
   <<: *defaults
-  database: famiphotos_development
 
 test:
   <<: *defaults
-  database: famiphotos_test
 
 production:
   <<: *defaults
-  database: famiphotos_production

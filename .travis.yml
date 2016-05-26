@@ -5,6 +5,8 @@ rvm:
 gemfile:
 - Gemfile
 cache: bundler
+env:
+  - DB=mysql
 services:
 - mysql
 branches:
@@ -21,7 +23,7 @@ before_script:
 - export RAILS_ENV=test
 - sh -e /etc/init.d/xvfb start
 - cp config/database.travis.yml config/database.yml
-- mysql -e "create database famiphotos_test;" -uroot;
+- mysql -e "create database famiphotos_test;" 
 - bundle exec rake db:migrate
 after_failure:
 - bundle exec rake --version
