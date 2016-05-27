@@ -17,8 +17,11 @@ development:
 test:
   <<: *defaults
 
+production:
+  <<: *defaults
+  
 famiphotos_master_test:
   <<: *defaults
 
-production:
+famiphotos_slave_test:
   <<: *defaults
