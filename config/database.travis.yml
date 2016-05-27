@@ -2,7 +2,7 @@ mysql: &mysql
   adapter: mysql2
   username: root
   password:
-  database: famiphotos_test
+  database: famiphotos_master_test
 
 defaults: &defaults
   pool: 5
