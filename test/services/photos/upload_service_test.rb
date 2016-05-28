@@ -6,7 +6,7 @@ class Photos::UploadServiceTest < ActiveSupport::TestCase
       description: 'これはテスト',
       image: File.open("#{Rails.root}/test/fixtures/test.jpg")
     }
-    
+
     group = create(:group)
 
     @user = create(:user, group: group)
