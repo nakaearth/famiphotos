@@ -1,4 +1,4 @@
-class Photo < FamiphotoBase
+class Photo < FamiphotosPlatform::FamiphotoBase
   include Searchable
 
   use_switch_point :famiphoto

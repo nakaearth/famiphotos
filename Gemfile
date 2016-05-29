@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+# famiphoto gems
+gem 'famiphotos_platform', git: 'git@github.com:nakaearth/famiphotos_platform.git', branch: 'master'
+
+# rails 系のGem
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2'
 # Use mysql as the database for Active Record

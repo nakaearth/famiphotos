@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:nakaearth/famiphotos_platform.git
+  revision: 74b97a16cf0f6723f88f6bdae85d2f31f0060ab6
+  branch: master
+  specs:
+    famiphotos_platform (0.0.1)
+      rails (~> 4.2.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -652,6 +660,7 @@ DEPENDENCIES
   enumerize
   factory_girl
   factory_girl_rails
+  famiphotos_platform!
   fluent-plugin-elasticsearch
   fluent-plugin-mysqlslowquery
   fluent-plugin-rewrite-tag-filter

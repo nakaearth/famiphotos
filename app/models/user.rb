@@ -1,4 +1,4 @@
-class User < FamiphotoBase
+class User < FamiphotosPlatform::FamiphotoBase
   include Encryptedable
 
   attr_encrypted :uid

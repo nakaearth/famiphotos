@@ -38,6 +38,11 @@ Rails.application.routes.draw do
     resources :informations, only: %i( index show new create edit update destroy )
   end
 
+  # ===============================================================================
+  # mount Famiphotos
+  # ===============================================================================
+  mount FamiphotosPlatform::Engine, at: '/'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
