@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # famiphoto gems
-gem 'famiphotos_platform', git: 'git@github.com:nakaearth/famiphotos_platform.git', branch: 'master'
+gem 'famiphotos_platform', git: 'https://github.com/nakaearth/famiphotos_platform.git', branch: 'master'
 
 # rails 系のGem
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

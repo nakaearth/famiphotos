@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:nakaearth/famiphotos_platform.git
+  remote: https://github.com/nakaearth/famiphotos_platform.git
   revision: 74b97a16cf0f6723f88f6bdae85d2f31f0060ab6
   branch: master
   specs:
