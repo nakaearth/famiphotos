@@ -40,6 +40,7 @@ gem 'activerecord-mysql-awesome'
 
 # 認証
 gem 'omniauth-twitter'
+
 # バッチ処理
 gem 'whenever',  :require => false
 
@@ -67,19 +68,17 @@ group :test do
   # 行番号指定でテスト実行出来る様にする
   gem "minitest-line"
   gem "minitest-reporters" # テスト結果の表示を整形
-
   # 機能追加系
   gem "minitest-stub_any_instance" # メソッドmockを追加できる様にする
-
   gem "minitest-bang" # let文で遅延読み込みを使えるようにする
   gem "minitest-line" # 行番号指定でテスト実行出来る様にする
-
   gem "factory_girl" # DBのデータのモックを作成
 
   # コードカバレッジ
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
 
+  # coverallsとの連携
   gem 'coveralls', require: false
   gem 'request_store'
 
@@ -97,7 +96,6 @@ group :test do
   # gem 'stackprof-webnav'
 
   # 静的解析
-  # gem 'rubycritic', require: false
   gem 'brakeman', require: false
 end
 
@@ -105,6 +103,7 @@ end
 group :development, :test do
   # コーディング規約チェック
   gem 'rubocop', '0.32.1'
+  gem 'onkcop'
   # テスト、コードチェックを自動で別プロセスでやる
   # gem 'guard', '~> 2.8'
   gem 'guard'
