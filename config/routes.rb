@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   use_doorkeeper
   root 'top#index'
 
-  # facebook login
+  # twitter login
   get "/:provider/login"  => "sessions#new"
   get "/logout" => "sessions#destroy"
   get "/auth/:provider/callback" => "sessions#create" unless Rails.env.development?
