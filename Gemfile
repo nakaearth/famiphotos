@@ -68,11 +68,6 @@ group :test do
   # 行番号指定でテスト実行出来る様にする
   gem "minitest-line"
   gem "minitest-reporters" # テスト結果の表示を整形
-  # 機能追加系
-  gem "minitest-stub_any_instance" # メソッドmockを追加できる様にする
-  gem "minitest-bang" # let文で遅延読み込みを使えるようにする
-  gem "minitest-line" # 行番号指定でテスト実行出来る様にする
-  gem "factory_girl" # DBのデータのモックを作成
 
   # コードカバレッジ
   gem 'simplecov', require: false
