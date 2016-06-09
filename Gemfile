@@ -34,8 +34,7 @@ gem 'binding_of_caller'
 # responders gem
 gem 'responders', '~> 2.0'
 
-# db schema関連
-gem 'ridgepole'
+# mysql用のpatch
 gem 'activerecord-mysql-awesome'
 
 # 認証
