@@ -22,9 +22,10 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 - cp config/database.travis.yml config/database.yml
 - mysql -e "create database famiphotos_test;"
+- cd ../
 - git clone https://github.com/nakaearth/famiphotos_schema.git
 - cd famiphotos_schema
-- gem install bundle && bundle install --path vendor/bundler && bundle exec rake ridgepole:apply && cd ../
+- gem install bundle && bundle install --path vendor/bundler && bundle exec rake ridgepole:apply && cd ../famiphotos
 after_failure:
 - bundle exec rake --version
 notifications:
