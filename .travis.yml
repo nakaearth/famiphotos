@@ -24,7 +24,7 @@ before_script:
 - mysql -e "create database famiphotos_test;"
 - git clone https://github.com/nakaearth/famiphotos_schema.git
 - cd famiphotos_schema
-- bundle exec rake ridgepole:apply && cd ../
+- gem install bundle && bundle install --path vendor/bundler && bundle exec rake ridgepole:apply && cd ../
 after_failure:
 - bundle exec rake --version
 notifications:
