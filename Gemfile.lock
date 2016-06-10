@@ -651,6 +651,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   compass-rails
+  connection_pool
   coveralls
   crummy (~> 1.8.0)
   database_rewinder
@@ -706,6 +707,7 @@ DEPENDENCIES
   rake-compiler
   rb-readline
   react-rails (~> 1.0)
+  redis
   request_store
   responders (~> 2.0)
   ridgepole

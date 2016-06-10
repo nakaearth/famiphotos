@@ -197,6 +197,11 @@ gem 'switch_point'
 gem 'ridgepole'
 # 非同期・キューイング処理
 gem 'sidekiq'
+# redis
+gem 'redis'
+# connection_pool
+gem 'connection_pool'
+
 gem 'sinatra',  require: false
 # モーダル
 gem 'twitter-bootstrap-rails'
