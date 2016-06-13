@@ -2,6 +2,7 @@
 写真共有アプリのサンプルですー。
 
 == 関連プロジェクト
+
 [famiphotos_platform](https://github.com/nakaearth/famiphotos_platform "famiphotos_platform" )
 
 [famiphotos_schema](https://github.com/nakaearth/famiphotos_schema "famiphotos_schema")
