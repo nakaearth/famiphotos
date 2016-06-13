@@ -25,6 +25,7 @@ before_script:
 - cd db
 - git clone https://github.com/nakaearth/famiphotos_schema.git
 - cd famiphotos_schema
+- cp config/database.travis.yml config/database.yml
 - bundle install --path vendor/bundler && bundle exec rake ridgepole:apply && cd ../
 after_failure:
 - bundle exec rake --version
