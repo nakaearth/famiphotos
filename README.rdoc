@@ -2,8 +2,9 @@
 写真共有アプリのサンプルですー。
 
 == 関連プロジェクト
-<a href='https://github.com/nakaearth/famiphotos_platform'>famiphotos_platform</a><br/>
-<a href='https://github.com/nakaearth/famiphotos_schema'>famiphotos_schema</a><br/>
+[famiphotos_platform](https://github.com/nakaearth/famiphotos_platform)
+
+[famiphotos_schema](https://github.com/nakaearth/famiphotos_schema)
 
 
 == 環境
