@@ -3,6 +3,7 @@ module Api
     include EncryptionConcern
 
     before_action :set_user
+    before_action :user_exist?
     before_action :set_photo, only: %i( update show )
 
     # 写真一覧をjson形式で返す
@@ -36,12 +37,14 @@ module Api
 
     def set_user
       @current_user = User.find_by(uid: params[:uid])
-    rescue
-      head :not_found
+    end
+
+    def user_exist?
+      return head :not_found unless @current_user
     end
 
     def set_photo
-      @photo = @current_user.photos.find_by(id: params[:photo_id])
+      @photo = @current_user.photos.find_by(id: params[:id])
     end
 
     def photo_params

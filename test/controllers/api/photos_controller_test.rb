@@ -7,7 +7,7 @@ module Api
 
     def setup
       @user = create(:user, uid: '11223344aa')
-      create_list(:photo, 5, user: @user, image: 'test/fixtures/test.png')
+      create_list(:photo, 5, user: @user, image: 'test/fixtures/test.png', description: 'テストです')
     end
 
     test 'index controller' do
@@ -17,8 +17,22 @@ module Api
       assert_equal @user.photos.size,  assigns[:photos].size
     end
 
+    test 'index controller(no photos)' do
+      other_user = create(:user, uid: '11223344bb')
+
+      get :index, uid: encrypted('11223344bb')
+
+      assert_not_nil assigns[:photos]
+      assert_equal 0,  assigns[:photos].size
+    end
+
+    test 'index controller(not exist user)' do
+      get :index, uid: encrypted('11223344bb')
+
+      assert_equal 404, response.status
+    end
+
     test 'create controller' do
-      # テスト追加
       photo_params = {
         photo: {
           description: 'これはテスト',
@@ -39,6 +53,15 @@ module Api
     end
 
     test 'show controller' do
+      photo_params = {
+        id: @user.photos[0].id,
+        uid: encrypted('11223344aa')
+      }
+
+      get :show, photo_params
+
+      assert_equal 200, response.status
+      assert_equal @user.photos[0].description, 'テストです'
     end
   end
 end
