@@ -18,7 +18,7 @@ module Api
     end
 
     test 'index controller(no photos)' do
-      other_user = create(:user, uid: '11223344bb')
+      create(:user, uid: '11223344bb')
 
       get :index, uid: encrypted('11223344bb')
 
