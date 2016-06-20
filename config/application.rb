@@ -53,5 +53,9 @@ module Famiphotos
 
     # babelを使ってコンパイルするように指定
     config.browserify_rails.commandline_options = '-t babelify'
+
+    # cache store
+    redis_config = Rails.application.config_for(:redis)
+    config.cache_store = :redis_store, "redis://#{redis_config[:host]}:#{redis_config[:port]}/0/cache", { expires_in: 90.minutes }
   end
 end

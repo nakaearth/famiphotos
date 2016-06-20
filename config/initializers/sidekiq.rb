@@ -1,4 +1,4 @@
-# config/redis.ymlの内容をパースして取得
+# config/redis.ymlの内容をパースして環境毎の値を取得
 redis_config = Rails.application.config_for(:redis)
 
 redis_connection = proc do
