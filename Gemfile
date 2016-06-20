@@ -199,8 +199,10 @@ gem 'ridgepole'
 gem 'sidekiq'
 # redis
 gem 'redis'
-# connection_pool
+# connection_poolの設定
 gem 'connection_pool'
+# redisでキャッシュ
+gem 'redis-rails'
 
 gem 'sinatra',  require: false
 # モーダル
