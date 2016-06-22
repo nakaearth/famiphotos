@@ -3,7 +3,9 @@ module Admin
     before_action :set_user, only: %i( show edit destroy)
 
     def index
-      @users = User.page(params[:page])
+      @users = Rails.cache.fetch(Consts::CACHE_KEYS[:USER_LIST]) do
+        User.page(params[:page])
+      end
     end
 
     def show

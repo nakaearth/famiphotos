@@ -3,7 +3,9 @@ module Admin
     before_action :set_photo, only: %i( show edit destroy)
 
     def index
-      @photos = Photos.page(params[:page])
+      @photos = Rails.cache.fetch(Consts::CACHE_KEYS[:PHOTO_LIST]) do
+        Photos.page(params[:page])
+      end
     end
 
     def show

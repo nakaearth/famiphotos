@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'top#index'
     resources :informations, only: %i( index show new create edit update destroy )
+    resources :users, only: %i( index show new create edit update destroy )
+    resources :photos, only: %i( index show new create edit update destroy )
   end
 
   # ===============================================================================
