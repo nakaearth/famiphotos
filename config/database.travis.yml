@@ -17,11 +17,23 @@ development:
 test:
   <<: *defaults
 
+photo_test:
+  <<: *default
+  database: famiphotos_photo_test
+
 production:
   <<: *defaults
-  
+
 famiphotos_master_test:
   <<: *defaults
 
 famiphotos_slave_test:
   <<: *defaults
+
+famiphotos_photo_master_test:
+  <<: *default
+  database: famiphotos_photo_test
+
+famiphotos_photo_slave_test:
+  <<: *default
+  database: famiphotos_photo_test

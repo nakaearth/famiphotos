@@ -20,9 +20,17 @@ development:
   <<: *default
   database: famiphotos_development
 
+photo_development:
+  <<: *default
+  database: famiphotos_photo_development
+
 test:
   <<: *default
   database: famiphotos_test
+
+photo_test:
+  <<: *default
+  database: famiphotos_photo_test
 
 famiphotos_master_development:
   <<: *default
@@ -39,6 +47,22 @@ famiphotos_master_test:
 famiphotos_slave_test:
   <<: *default
   database: famiphotos_test
+
+famiphotos_photo_master_development:
+  <<: *default
+  database: famiphotos_photo_development
+
+famiphotos_photo_slave_development:
+  <<: *default
+  database: famiphotos_photo_development
+
+famiphotos_photo_master_test:
+  <<: *default
+  database: famiphotos_photo_test
+
+famiphotos_photo_slave_test:
+  <<: *default
+  database: famiphotos_photo_test
 
 # production:
 #  <<: *default

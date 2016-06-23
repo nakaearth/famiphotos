@@ -22,6 +22,7 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 - cp config/database.travis.yml config/database.yml
 - mysql -e "create database famiphotos_test;"
+- mysql -e "create database famiphotos_photo_test;"
 - cd db
 - git clone https://github.com/nakaearth/famiphotos_schema.git
 - cd famiphotos_schema
