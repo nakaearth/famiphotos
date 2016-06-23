@@ -4,7 +4,7 @@ mysql: &mysql
   password:
   database: famiphotos_test
 
-defaults: &defaults
+default: &default
   pool: 5
   timeout: 5000
   host: localhost
@@ -12,23 +12,23 @@ defaults: &defaults
 
 
 development:
-  <<: *defaults
+  <<: *default
 
 test:
-  <<: *defaults
+  <<: *default
 
 photo_test:
   <<: *default
   database: famiphotos_photo_test
 
 production:
-  <<: *defaults
+  <<: *default
 
 famiphotos_master_test:
-  <<: *defaults
+  <<: *default
 
 famiphotos_slave_test:
-  <<: *defaults
+  <<: *default
 
 famiphotos_photo_master_test:
   <<: *default
