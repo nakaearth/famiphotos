@@ -136,7 +136,7 @@ gem "active_decorator"
 gem 'carrierwave'
 gem 'mini_magick'
 # 画像ライブラリ
-gem 'rmagick'
+gem 'rmagick', '~> 2.15.0'
 # 位置情報
 gem 'geocoder'
 # 権限チェック

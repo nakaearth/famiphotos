@@ -2,7 +2,7 @@ module Users
   class Registration
     def regist(auth)
       ActiveRecord::Base.transaction do
-        @login_user = User.find_or_create_by(name: auth[:info][:name]) do |user|
+        @login_user = FamiphotosPlatform::User.find_or_create_by(name: auth[:info][:name]) do |user|
           user.name  = auth[:info][:name]
           user.email = auth[:info][:email]
           user.provider = auth[:provider]
@@ -16,7 +16,7 @@ module Users
           end
         end
 
-        User.with_writable { @login_user.save! }
+        FamiphotosPlatform::User.with_writable { @login_user.save! }
         @login_user
       end
       # rescue Faraday::TimeoutError => e
