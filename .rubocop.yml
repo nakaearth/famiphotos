@@ -35,7 +35,6 @@ Metrics/PerceivedComplexity:
   Enabled: false
 Lint/AmbiguousRegexpLiteral:
   Enabled: false
-# 日本語のコメントを許可
 Style/AsciiComments:
   Enabled: false
 Style/ClassAndModuleChildren: # class Module::Class といった記述方法を許可
@@ -65,7 +64,6 @@ Style/BlockComments:
 Style/CommentIndentation:
   Enabled: false
 # https://github.com/bbatsov/ruby-style-guide#no-bang-bang
-# 微妙〜＞＜ これは省略してもいい気がする
 Style/DoubleNegation:
   Enabled: false
 Style/AlignParameters:
@@ -77,7 +75,6 @@ Style/IfUnlessModifier:
 Lint/AmbiguousOperator:
   Exclude:
     # eq -1 のような記述をすると、式が曖昧だとrubocopに怒られる
-    # specではそのような書き方は一般的に行うので、許容する
     - 'test/**/*'
 Style/Next:
   Enabled: true
