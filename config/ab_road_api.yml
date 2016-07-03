@@ -1,0 +1,2 @@
+default: &default
+  AB_ROAD_KEY: <%= ENV['ab_raod_kay'] %>
