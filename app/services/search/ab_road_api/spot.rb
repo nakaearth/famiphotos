@@ -6,7 +6,7 @@ module Search
       attr_accessor :area_codes, :countries, :cities, :keyword
 
       def search
-        API_URL = Settings.api[:url]
+        Settings.api[:url]
       end
     end
   end
