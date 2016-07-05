@@ -134,6 +134,9 @@ GEM
     compass-rails (2.0.0)
       compass (>= 0.12.2)
     concurrent-ruby (1.0.2)
+    config (1.2.1)
+      activesupport (>= 3.0)
+      deep_merge (~> 1.0, >= 1.0.1)
     connection_pool (2.2.0)
     cool.io (1.4.4)
     coveralls (0.8.13)
@@ -145,6 +148,7 @@ GEM
     crummy (1.8.0)
     database_rewinder (0.6.0)
     debug_inspector (0.0.2)
+    deep_merge (1.0.1)
     diff-lcs (1.2.5)
     docile (1.1.5)
     doorkeeper (3.1.0)
@@ -657,6 +661,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   compass-rails
+  config
   connection_pool
   coveralls
   crummy (~> 1.8.0)

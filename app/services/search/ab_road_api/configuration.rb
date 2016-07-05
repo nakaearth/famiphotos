@@ -1,6 +1,6 @@
 module Search
   module AbRoadApi
-    module Configure
+    module Configuration
       mattr_accessor :key
 
       class << self

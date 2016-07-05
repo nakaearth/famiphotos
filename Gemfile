@@ -234,3 +234,6 @@ gem 'sshkit-sudo'
 
 # カレンダー表示
 gem 'simple_calendar',  '~> 2.0'
+
+# 定数設定
+gem 'config'
