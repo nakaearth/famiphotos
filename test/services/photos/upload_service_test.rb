@@ -24,4 +24,13 @@ class Photos::UploadServiceTest < ActiveSupport::TestCase
     assert_operator @user.photos.count, :>, 0
     assert_not_nil @user.photos.last.photo_geo
   end
+
+  def test_file_upload_error
+    @photo_upload_error_params = {
+      description: 'これはテスト',
+      image: File.open("#{Rails.root}/test/fixtures/test.txt")
+    }
+
+    assert_raise(ActiveRecord::RecordInvalid) { Photos::UploadService.execute(@user, @photo_upload_error_params) }
+  end
 end
