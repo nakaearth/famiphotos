@@ -33,7 +33,7 @@ class Photos::UploadServiceTest < ActiveSupport::TestCase
 
     assert_raise(ActiveRecord::RecordInvalid) { Photos::UploadService.execute(@user, @photo_upload_error_params) }
   end
-  
+
   def test_file_upload_input_error
     @photo_upload_error_params = {
       description: 'これテスト' * 28 + 'だ',
