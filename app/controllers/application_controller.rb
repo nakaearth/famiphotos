@@ -30,7 +30,8 @@ class ApplicationController < ActionController::Base
   end
 
   def application_log_output
-    logger.info({
+    @ltsv_logger ||= LTSV::Logger.open("log/rails_application.log")
+    @ltsv_logger.info({
                   pid: $PROCESS_ID,
                   method: request.request_method,
                   path: request.fullpath,

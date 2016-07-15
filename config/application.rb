@@ -28,8 +28,8 @@ module Famiphotos
 
     # fluentd
     # ltsv形式のログ出力
-    config.log_level = :info
-    config.logger = LTSV::Logger.open("log/rails_application.log")
+    # config.log_level = :info
+    # config.logger = LTSV::Logger.open("log/rails_application.log")
     # ActFluentLoggerを使う場合の設定
     # config.logger = ActFluentLoggerRails::Logger.new
     # config.lograge.enabled = true
