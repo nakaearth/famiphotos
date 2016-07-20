@@ -223,6 +223,7 @@ gem 'enumerize'
 # メール送付の確認用に
 group :development do
   gem 'letter_opener'
+  gem "rubycritic", :require => false
 end
 
 # deploy tool
