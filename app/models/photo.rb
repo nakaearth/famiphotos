@@ -1,7 +1,7 @@
 class Photo < FamiphotosPlatform::FamiphotoBase
   include Searchable
 
-  use_switch_point :famiphoto
+  use_switch_point :famiphoto 
 
   mount_uploader :image,  ImageUploader
 
