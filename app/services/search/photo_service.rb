@@ -38,7 +38,6 @@ module Search
                 },
                 weight: 5
               },
-
               {
                 field_value_factor: {
                   field: "id",
