@@ -224,6 +224,7 @@ gem 'enumerize'
 group :development do
   gem 'letter_opener'
   gem "rubycritic", :require => false
+  gem 'pre-commit'
 end
 
 # deploy tool
