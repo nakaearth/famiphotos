@@ -1,10 +1,11 @@
 language: ruby
-bundler_args: "--without production --path vendor/bundle"
+bundler_args: " --jobs=4 --without production --path vendor/bundle"
 rvm:
 - 2.3.0
 gemfile:
 - Gemfile
-cache: bundler
+cache:
+  bundler: true
 services:
 - mysql
 branches:
@@ -16,6 +17,16 @@ script:
 - bundle exec rubocop test
 - bundle exec rake test
 before_install: gem update bundler
+- curl -sL https://github.com/Itseez/opencv/archive/2.4.13.zip > opencv.zip
+- unzip -qq opencv.zip
+- cd opencv-2.4.13
+- mkdir build
+- cd build/
+- cmake -D BUILD_EXAMPLES=ON -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D BUILD_PYTHON_SUPPORT=ON -D WITH_1394=OFF -D ENABLE_OPENMP=ON ../
+- make -j4  #<= オプション追加
+- sudo make -j4 install  #<= オプション追加
+- sudo ldconfig
+- gem update bundler
 before_script:
 - export DISPLAY=:99.0
 - export RAILS_ENV=test
