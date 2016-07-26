@@ -10,6 +10,13 @@
 2) 位置情報をクラスタ分析する？？
 
 
+写真から顔を認識して、タグつけする
+1) ruby-opencvを入れる
+brew tap homebrew/science
+brew install opencv
+Gemfileに追加しbundle install
+
+
 fulentd
 1) fluentdの設定
 
