@@ -14,7 +14,8 @@
 1) ruby-opencvを入れる
 brew tap homebrew/science
 brew install opencv
-Gemfileに追加しbundle install
+
+gem install opencv -- --with-opencv-dir=usr/local/Cellar/opencv/2.4.13
 
 
 fulentd

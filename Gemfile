@@ -240,7 +240,3 @@ gem 'simple_calendar',  '~> 2.0'
 # 定数設定
 gem 'config'
 
-# opencv
-group :development, :production do
-  gem 'ruby-opencv'
-end
