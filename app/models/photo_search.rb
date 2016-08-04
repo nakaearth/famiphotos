@@ -1,5 +1,5 @@
 class PhotoSearch
   include ActiveModel::Model
 
-  attr_accessor :search_word
+  attr_accessor :keyword
 end

@@ -1,22 +1,15 @@
 class PhotoSearchesController < ApplicationController
-  before_action :set_photo_search
-
   def create
-    service = Search::PhotoService.new(Photo)
-    @photos = service.search(@photo_search, current_user)
+    @photos = Search::Photo.new(Photo, photo_search_params).search
   end
 
   private
 
-  def set_photo_search
-    @photo_search = PhotoSearch.new(photo_params)
-  end
-
-  def photo_params
+  def photo_search_params
     photo_params = [
-      :search_word
+      :keyword
     ]
 
-    params.fetch(:photo_search).permit(photo_params)
+    params.fetch(:photo_search).permit(photo_params).merge({ user: current_user })
   end
 end

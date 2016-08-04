@@ -1,14 +1,20 @@
 module Search
-  class PhotoService < BaseService
-    def search(photo_search, user)
-      body = {
+  class Photo < Base
+    def search
+      @client.search(query).records.to_a
+    end
+
+    private
+
+    def query
+      {
         query: {
           function_score: {
             score_mode: 'sum',
             boost_mode: 'multiply',
             query: {
               simple_query_string: {
-                query: photo_search.search_word,
+                query: @conditions[:keyword],
                 fields: ['description'],
                 default_operator: :and
               }
@@ -18,7 +24,7 @@ module Search
                 filter: {
                   query: {
                     simple_query_string: {
-                      query: photo_search.search_word,
+                      query: @conditions[:keyword],
                       fields: ['description'],
                       default_operator: :and
                     }
@@ -30,7 +36,7 @@ module Search
                 filter: {
                   query: {
                     simple_query_string: {
-                      query: user.id,
+                      query: @conditions[:user].try.id,
                       fields: ['user_id'],
                       default_operator: :and
                     }
@@ -50,8 +56,6 @@ module Search
           }
         }
       }.to_json
-
-      @client.search(body).records.to_a
     end
   end
 end

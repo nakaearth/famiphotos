@@ -1,5 +1,5 @@
 module Search
-  class PhotoGeoService < BaseService
+  class PhotoGeoService < Base
     # geo関数を使って位置情報を使った検索
     def search(_photo_gro_search)
       body = {
