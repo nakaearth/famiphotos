@@ -12,35 +12,17 @@ module Search
           function_score: {
             score_mode: 'sum',
             boost_mode: 'multiply',
-            query: {
-              simple_query_string: {
-                query: @conditions[:keyword],
-                fields: ['description'],
-                default_operator: :and
-              }
-            },
+            query: { FunctionQuery.new(@conditions, ['description']).keyword_query },
             functions: [
               {
                 filter: {
-                  query: {
-                    simple_query_string: {
-                      query: @conditions[:keyword],
-                      fields: ['description'],
-                      default_operator: :and
-                    }
-                  }
+                  query: { FunctionQuery.new(@condtions, ['description']).keyword_query },
                 },
                 weight: 5
               },
               {
                 filter: {
-                  query: {
-                    simple_query_string: {
-                      query: @conditions[:user].try.id,
-                      fields: ['user_id'],
-                      default_operator: :and
-                    }
-                  }
+                  query: { FunctionQuery.new(@conditions, ['user_id']).user_id_query }
                 },
                 weight: 5
               },
