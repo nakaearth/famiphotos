@@ -116,6 +116,8 @@ end
 
 # 開発時に使うツール群
 group :development do
+  # travis連携
+  gem 'travis'
   gem "awesome_print"
   gem "better_errors"
   gem "quiet_assets"
@@ -123,6 +125,9 @@ group :development do
   gem 'web-console', '~> 2.0'
   # mail test
   gem 'letter_opener'
+  # 静的解析
+  gem "rubycritic", :require => false
+  gem 'pre-commit'
 end
 # template engine
 gem "slim-rails"
@@ -154,10 +159,6 @@ group :production do
 end
 # heroku連携
 gem 'heroku'
-group :development do
-  # travis連携
-  gem 'travis'
-end
 # css fremework compass
 gem 'compass-rails'
 gem 'parser', '2.2.2.5'
@@ -219,13 +220,6 @@ gem 'doorkeeper'
 
 # enumerize
 gem 'enumerize'
-
-# メール送付の確認用に
-group :development do
-  gem 'letter_opener'
-  gem "rubycritic", :require => false
-  gem 'pre-commit'
-end
 
 # deploy tool
 gem 'capistrano'
