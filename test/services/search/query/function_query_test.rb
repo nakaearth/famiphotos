@@ -11,7 +11,7 @@ class Search::Query::FunctionQueryTest < ActiveSupport::TestCase
            query: 'test',
            fields: ['description'],
            default_operator: :and
-         } 
+         }
       }
 
     assert_equal FunctionQuery.new(conditions, ['description']).keyword_query, query
@@ -25,7 +25,7 @@ class Search::Query::FunctionQueryTest < ActiveSupport::TestCase
            query: 1,
            fields: ['user_id'],
            default_operator: :and
-         } 
+         }
       }
 
     # assert_equal FunctionQuery.new(conditions, ['user_id']).user_id_query, query
