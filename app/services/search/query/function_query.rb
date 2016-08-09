@@ -14,7 +14,7 @@ module Search
       def user_id_query
         {
           simple_query_string: {
-            query: @conditions[:user].try.id,
+            query: @conditions[:user_id],
             fields: @fields,
             default_operator: :and
           } 
