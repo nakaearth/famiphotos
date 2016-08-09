@@ -28,7 +28,7 @@ class Search::Query::FunctionQueryTest < ActiveSupport::TestCase
          }
       }
 
-    # assert_equal FunctionQuery.new(conditions, ['user_id']).user_id_query, query
+    assert_equal FunctionQuery.new(conditions, ['user_id']).user_id_query, query
   end
 end
 
