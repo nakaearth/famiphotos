@@ -4,31 +4,36 @@ class Search::Query::FunctionQueryTest < ActiveSupport::TestCase
   setup do
   end
 
-  def test_keyword_query
+  def test_match_query_for_keyword_paramas
     conditions = { keyword: 'test' }
-    query = {
-         simple_query_string: {
-           query: 'test',
-           fields: ['description'],
-           default_operator: :and
+    query = [
+      {
+         match: {
+           description: {
+             query: 'test',
+             operator: 'and'
+           }
          }
       }
+    ] 
 
-    assert_equal Search::Query::FunctionQuery.new(conditions, ['description']).keyword_query, query
+    function_query = Search::Query::FunctionQuery.new(conditions, [:description])
+    function_query.match_query
+    assert_equal function_query.functions, query
   end
   
-  def test_user_id_query
+  def test_term_query_for_user_id
     user = create(:user)
-    conditions = { user_id: user.id }
-    query = {
-         simple_query_string: {
-           query: user.id,
-           fields: ['user_id'],
-           default_operator: :and
+    conditions = { user_id: user.id }.with_indifferent_access
+    query = [ {
+         term: {
+           user_id: user.id
          }
-      }
+      } ]
 
-    assert_equal Search::Query::FunctionQuery.new(conditions, ['user_id']).user_id_query, query
+    function_query = Search::Query::FunctionQuery.new(conditions, [:user_id])
+    function_query.term_query
+    assert_equal function_query.functions, query
   end
 end
 

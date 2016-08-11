@@ -12,17 +12,17 @@ module Search
           function_score: {
             score_mode: 'sum',
             boost_mode: 'multiply',
-            query: { FunctionQuery.new(@conditions, ['description']).keyword_query },
+            query: { FunctionQuery.new(@conditions, ['description']).match_query },
             functions: [
               {
                 filter: {
-                  query: { FunctionQuery.new(@condtions, ['description']).keyword_query },
+                  query: { FunctionQuery.new(@condtions, ['description']).match_query },
                 },
                 weight: 5
               },
               {
                 filter: {
-                  query: { FunctionQuery.new(@conditions, ['user_id']).user_id_query }
+                  query: { FunctionQuery.new(@conditions, ['user_id']).term_query }
                 },
                 weight: 5
               },

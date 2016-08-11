@@ -1,35 +1,32 @@
 module Search
   module Query
     class FunctionQuery < Function
-      def keyword_query
-        {
-          simple_query_string: {
-            query: @conditions[:keyword],
-            fields: @fields,
-            default_operator: :and
-          } 
-        }
+      def functions
+        @functions
       end
 
-      def user_id_query
-        {
-          simple_query_string: {
-            query: @conditions[:user_id],
-            fields: @fields,
-            default_operator: :and
-          } 
-        }
+      def match_query
+        @fields.each do |field|
+          @functions << 
+            {
+               match: {
+                 "#{field}": {
+                   query: @conditions[:keyword],
+                   operator: 'and'
+                 }
+               } 
+            }           
+        end
       end
-
-      def query_for(condition_param_name)
-        define_method "#{method_name}_query" do
-          {
-             simple_query_string: {
-               query: @conditions[condition_param_name],
-               fields: @fields,
-               default_operator: :and
-             } 
-          }           
+      
+      def term_query
+        @fields.each do |field|
+          @functions << 
+            {
+               term: {
+                 "#{field}": @conditions["#{field}"]
+               } 
+            }           
         end
       end
     end
