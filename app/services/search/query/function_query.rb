@@ -1,10 +1,6 @@
 module Search
   module Query
     class FunctionQuery < Function
-      def functions
-        @functions
-      end
-
       def match_query
         @fields.each do |field|
           @functions << 
@@ -17,6 +13,8 @@ module Search
                } 
             }           
         end
+
+        @functions.join(',')
       end
       
       def term_query
@@ -28,6 +26,8 @@ module Search
                } 
             }           
         end
+
+        @functions.join(',')
       end
     end
   end

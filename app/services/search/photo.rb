@@ -16,12 +16,6 @@ module Search
             functions: [
               {
                 filter: {
-                  query: { FunctionQuery.new(@condtions, ['description']).match_query },
-                },
-                weight: 5
-              },
-              {
-                filter: {
                   query: { FunctionQuery.new(@conditions, ['user_id']).term_query }
                 },
                 weight: 5
