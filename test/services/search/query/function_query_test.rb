@@ -18,8 +18,7 @@ class Search::Query::FunctionQueryTest < ActiveSupport::TestCase
     ] 
 
     function_query = Search::Query::FunctionQuery.new(conditions, [:description])
-    function_query.match_query
-    assert_equal function_query.functions, query
+    assert_equal function_query.match_query, query
   end
  
   def test_match_query_for_keyword_paramas_with_multi_column
@@ -44,8 +43,7 @@ class Search::Query::FunctionQueryTest < ActiveSupport::TestCase
     ] 
 
     function_query = Search::Query::FunctionQuery.new(conditions, [:description, :title])
-    function_query.match_query
-    assert_equal function_query.functions, query
+    assert_equal function_query.match_query, query
   end
   
   def test_term_query_for_user_id
@@ -58,8 +56,7 @@ class Search::Query::FunctionQueryTest < ActiveSupport::TestCase
       } ]
 
     function_query = Search::Query::FunctionQuery.new(conditions, [:user_id])
-    function_query.term_query
-    assert_equal function_query.functions, query
+    assert_equal function_query.term_query, query
   end
   
   def test_term_query_for_user_id_with_multi_column
@@ -81,8 +78,7 @@ class Search::Query::FunctionQueryTest < ActiveSupport::TestCase
       ]
 
     function_query = Search::Query::FunctionQuery.new(conditions, [:user_id, :group_id])
-    function_query.term_query
-    assert_equal function_query.functions, query
+    assert_equal function_query.term_query, query
   end
 end
 
