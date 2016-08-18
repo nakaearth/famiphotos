@@ -3,28 +3,28 @@ module Search
     class FunctionQuery < Function
       def match_query
         @fields.each do |field|
-          @functions << 
+          @functions <<
             {
-               match: {
-                 "#{field}": {
-                   query: @conditions[:keyword],
-                   operator: 'and'
-                 }
-               } 
-            }           
+              match: {
+                "#{field}": {
+                  query: @conditions[:keyword],
+                  operator: 'and'
+                }
+              }
+            }
         end
 
         @functions
       end
-      
+
       def term_query
         @fields.each do |field|
-          @functions << 
+          @functions <<
             {
-               term: {
-                 "#{field}": @conditions["#{field}"]
-               } 
-            }           
+              term: {
+                "#{field}": @conditions["#{field}"]
+              }
+            }
         end
 
         @functions

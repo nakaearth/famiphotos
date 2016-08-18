@@ -12,9 +12,9 @@ class ElPhotoWorker
     case operation.to_s
     when /index/
       record = Photo.find(record_id)
-      @client.index  index: 'famiphotos', type: 'article', id: record.id, body: record.as_indexed_json
+      @client.index  index: 'famiphotos', type: 'photo', id: record.id, body: record.as_indexed_json
     when /delete/
-      @client.delete index: 'famiphotos', type: 'article', id: record_id
+      @client.delete index: 'famiphotos', type: 'photo', id: record_id
     else fail ArgumentError, "Unknown operation '#{operation}'"
     end
   end
