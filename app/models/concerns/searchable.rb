@@ -3,12 +3,18 @@ module Searchable
 
   included do
     include Elasticsearch::Model
+    include Elasticsearch::Callbacks
 
     unless Rails.env.test?
-      # https://github.com/elastic/elasticsearch-rails/tree/master/elasticsearch-model#asynchronous-callbacks
-      after_save { ElPhotoWorker.perform_async(:index, id) }
-      after_save { ElPhotoWorker.perform_async(:delete, id) }
+      after_save :transfer_to_elasticsearch
+      after_destroy :remove_from_elasticsearch
     end
+
+    # unless Rails.env.test?
+    #   # https://github.com/elastic/elasticsearch-rails/tree/master/elasticsearch-model#asynchronous-callbacks
+    #   after_save { ElPhotoWorker.perform_async(:index, id) }
+    #   after_save { ElPhotoWorker.perform_async(:delete, id) }
+    # end
 
     index_name "famiphoto"
 
@@ -63,6 +69,14 @@ module Searchable
 
     def as_indexed_json(_options = {})
       as_json
+    end
+
+    def transfer_to_elasticsearch
+      __elasticsearch__.client.index  index: 'famiphotos', type: 'photo', id: id, body: as_indexed_json
+    end
+
+    def remove_from_elasticsearch
+      __elasticsearch__.client.delete index: 'famiphotos', type: 'photo', id: id
     end
   end
 
