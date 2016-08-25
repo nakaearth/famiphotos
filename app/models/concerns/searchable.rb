@@ -3,7 +3,7 @@ module Searchable
 
   included do
     include Elasticsearch::Model
-    include Elasticsearch::Callbacks
+    include Elasticsearch::Model::Callbacks
 
     unless Rails.env.test?
       after_save :transfer_to_elasticsearch
@@ -15,8 +15,6 @@ module Searchable
     #   after_save { ElPhotoWorker.perform_async(:index, id) }
     #   after_save { ElPhotoWorker.perform_async(:delete, id) }
     # end
-
-    index_name "famiphoto"
 
     # Set up index configuration and mapping
     settings index: {
@@ -72,23 +70,32 @@ module Searchable
     end
 
     def transfer_to_elasticsearch
-      __elasticsearch__.client.index  index: 'famiphotos', type: 'photo', id: id, body: as_indexed_json
+      __elasticsearch__.client.index  index: index_name, type: 'photo', id: id, body: as_indexed_json
     end
 
     def remove_from_elasticsearch
-      __elasticsearch__.client.delete index: 'famiphotos', type: 'photo', id: id
+      __elasticsearch__.client.delete index: index_name, type: 'photo', id: id
     end
   end
 
   module ClassMethods
     def create_index!(options = {})
       client = __elasticsearch__.client
-      client.indices.delete index: index_name if options[:force]
-      client.indices.create index: index_name,
+      client.indices.delete index: Consts::Elasticsearch[:index_name][:photo] if options[:force]
+      client.indices.create index: Consts::Elasticsearch[:index_name][:photo],
                             body: {
                               settings: settings.to_hash,
                               mappings: mappings.to_hash
                             }
+    end
+
+    def create_alias!
+      client = __elasticsearch__.client
+      if client.indices.exists_alias? name: Consts::Elasticsearch[:alias_name][:photo]
+        client.indices.delete_alias index: Consts::Elasticsearch[:index_name][:photo], alias_name: Consts::Elasticsearch[:alias_name][:photo]
+      end
+
+      client.indices.put_alias index: Consts::Elasticsearch[:index_name][:photo], name: Consts::Elasticsearch[:alias_name][:photo]
     end
   end
 end
