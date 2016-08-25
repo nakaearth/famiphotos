@@ -10,12 +10,6 @@ module Searchable
       after_destroy :remove_from_elasticsearch
     end
 
-    # unless Rails.env.test?
-    #   # https://github.com/elastic/elasticsearch-rails/tree/master/elasticsearch-model#asynchronous-callbacks
-    #   after_save { ElPhotoWorker.perform_async(:index, id) }
-    #   after_save { ElPhotoWorker.perform_async(:delete, id) }
-    # end
-
     # Set up index configuration and mapping
     settings index: {
       number_of_shards:   5,
