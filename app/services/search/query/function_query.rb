@@ -14,7 +14,7 @@ module Search
             }
         end
 
-        @functions
+        @functions.join(',')
       end
 
       def term_query
@@ -27,7 +27,7 @@ module Search
             }
         end
 
-        @functions
+        @functions.join(',')
       end
     end
   end

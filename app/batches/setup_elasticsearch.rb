@@ -9,6 +9,7 @@ class SetupElasticsearch
       Photo.create_index!(force: force)
       Photo.create_alias!
       # importする
+      Photo.bulk_import
     end
 
     private

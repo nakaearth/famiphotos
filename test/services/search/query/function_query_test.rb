@@ -15,7 +15,7 @@ class Search::Query::FunctionQueryTest < ActiveSupport::TestCase
           }
         }
       }
-    ]
+    ].join(',')
 
     function_query = Search::Query::FunctionQuery.new(conditions, [:description])
     assert_equal function_query.match_query, query
@@ -40,7 +40,7 @@ class Search::Query::FunctionQueryTest < ActiveSupport::TestCase
           }
         }
       }
-    ]
+    ].join(',')
 
     function_query = Search::Query::FunctionQuery.new(conditions, [:description, :title])
     assert_equal function_query.match_query, query
@@ -53,7 +53,7 @@ class Search::Query::FunctionQueryTest < ActiveSupport::TestCase
       term: {
         user_id: user.id
       }
-    }]
+    }].join(',')
 
     function_query = Search::Query::FunctionQuery.new(conditions, [:user_id])
     assert_equal function_query.term_query, query
@@ -75,7 +75,7 @@ class Search::Query::FunctionQueryTest < ActiveSupport::TestCase
           group_id: group.id
         }
       }
-    ]
+    ].join(',')
 
     function_query = Search::Query::FunctionQuery.new(conditions, [:user_id, :group_id])
     assert_equal function_query.term_query, query
