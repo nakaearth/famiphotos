@@ -3,9 +3,9 @@ module Searchable
 
   included do
     include Elasticsearch::Model
-    include Elasticsearch::Model::Callbacks
 
     unless Rails.env.test?
+      include Elasticsearch::Model::Callbacks
       after_save :transfer_to_elasticsearch
       after_destroy :remove_from_elasticsearch
     end
