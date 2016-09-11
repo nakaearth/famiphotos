@@ -64,11 +64,11 @@ module Searchable
     end
 
     def transfer_to_elasticsearch
-      __elasticsearch__.client.index  index: index_name, type: 'photo', id: id, body: as_indexed_json
+      __elasticsearch__.client.index  index: Consts::Elasticsearch[:index_name][:photo], type: 'photo', id: id, body: as_indexed_json
     end
 
     def remove_from_elasticsearch
-      __elasticsearch__.client.delete index: index_name, type: 'photo', id: id
+      __elasticsearch__.client.delete index: Consts::Elasticsearch[:index_name][:photo], type: 'photo', id: id
     end
   end
 
