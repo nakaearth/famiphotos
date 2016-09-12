@@ -8,6 +8,7 @@ module Search
 
     def query
       {
+        min_score: 0.5,
         query: {
           function_score: {
             score_mode: 'sum',
