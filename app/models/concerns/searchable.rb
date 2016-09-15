@@ -56,9 +56,12 @@ module Searchable
               _all: { enabled: true, analyzer: "kuromoji_analyzer" } do
         indexes :id, type: 'integer', index: 'not_analyzed'
         indexes :description, type: 'string', analyzer: 'kuromoji_analyzer'
+        indexes :group_id, type: 'integer', index: 'not_analyzed'
+        indexes :tag_name, type: 'string', 'not_analyzed'
       end
     end
 
+    # TODO: groupとtagsてーぐるの値をいれる
     def as_indexed_json(_options = {})
       as_json
     end

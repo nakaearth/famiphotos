@@ -31,7 +31,11 @@ module Search
               }
             ]
           }
-        }
+# TODO: aggregationを設定する
+        # },
+        # args: {
+        #   
+        } 
       }.to_json
     end
   end
