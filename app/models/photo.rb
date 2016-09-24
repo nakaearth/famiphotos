@@ -11,6 +11,7 @@ class Photo < FamiphotosPlatform::FamiphotoBase
   belongs_to :user
   belongs_to :album
   has_one :photo_geo
+  has_many :tags
 
   ####################################################################
   ####################### nested_attributes_for ######################

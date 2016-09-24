@@ -8,7 +8,7 @@ class Tag < FamiphotosPlatform::FamiphotoBase
   ####################################################################
   belongs_to :user
   belongs_to :group
-  has_many :photos
+  belongs_to :photos
 
   ####################################################################
   ####################### Validation #################################

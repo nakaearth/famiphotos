@@ -57,7 +57,7 @@ module Searchable
         indexes :id, type: 'integer', index: 'not_analyzed'
         indexes :description, type: 'string', analyzer: 'kuromoji_analyzer'
         indexes :group_id, type: 'integer', index: 'not_analyzed'
-        indexes :tag_name, type: 'string', 'not_analyzed'
+        indexes :tag_name, type: 'string', index: 'not_analyzed'
       end
     end
 
@@ -105,7 +105,7 @@ module Searchable
           body: entries.map { |entry| { index: { _id: entry.id, data: entry.as_indexed_json } } },
           refresh: (i > 0 && i % 3 == 0), # NOTE: 定期的にrefreshしないとEsが重くなる
         )
-     end
+      end
     end
   end
 end
