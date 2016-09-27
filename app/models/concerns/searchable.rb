@@ -62,8 +62,8 @@ module Searchable
     end
 
     # TODO: groupとtagsてーぐるの値をいれる
-    def as_indexed_json(_options = {})
-      as_json
+    def as_indexed_json(options = {})
+      as_json.merge(as_indexed_json_tag(optoins))
     end
 
     def transfer_to_elasticsearch
@@ -107,5 +107,12 @@ module Searchable
         )
       end
     end
+  end
+
+  private
+
+  def as_indexed_json_tag(options={})
+    # TODO: ダミーデータ
+    { tag_name: "てすと" }
   end
 end

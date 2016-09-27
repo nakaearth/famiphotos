@@ -32,9 +32,14 @@ module Search
             ]
           }
 # TODO: aggregationを設定する
-        # },
-        # args: {
-        #   
+        },
+        args: {
+          tag: {
+            terms: {
+              field: tag_name,
+              size: 50
+            }  
+          }   
         } 
       }.to_json
     end
