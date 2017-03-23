@@ -1,4 +1,5 @@
 AllCops:
+  TargetRubyVersion: 2.4
   Exclude:
     - 'bin/*'
     - 'config/**/*'
@@ -47,7 +48,7 @@ Style/StringLiterals:
   Enabled: false
 Style/Documentation:
   Enabled: false
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: false
 Style/MultilineOperationIndentation:
   Enabled: false
@@ -86,18 +87,13 @@ Style/BracesAroundHashParameters:
   Enabled: false
 HandleExceptions:
   Enabled: false
-Style/SpaceAroundOperators:
-  MultiSpaceAllowedForOperators:
-    - '='
-    - '=>'
-    - '+='
 Style/RescueModifier:
   Enabled: true
 Style/EmptyElse:
   Enabled: true
 Style/HashSyntax:
   Enabled: true
-Style/MethodCallParentheses:
+Style/MethodCallWithoutArgsParentheses:
   Enabled: true
 Style/Next:
   Enabled: false
