@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Photos
   class UploadService
     def self.execute(current_user, photo_params)

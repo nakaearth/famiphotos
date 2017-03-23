@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Search
   class UserService < BaseService
     def search(user_search, _user)

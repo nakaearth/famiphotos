@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Search
   class PhotoGeoService < Base
     # geo関数を使って位置情報を使った検索

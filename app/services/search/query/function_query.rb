@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Search
   module Query
     class FunctionQuery < Function
@@ -22,7 +23,7 @@ module Search
           @functions <<
             {
               term: {
-                "#{field}": @conditions["#{field}"]
+                "#{field}": @conditions[field.to_s]
               }
             }
         end

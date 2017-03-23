@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Search
   class BaseService
     def initialize(search_model_class, params)
