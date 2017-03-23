@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
 
     context 'providerカラム' do
       it { is_expected.to validate_presence_of(:provider) }
-      it { is_expected.to validate_length_of(:provider).is_at_most(60) }
+      it { is_expected.to validate_length_of(:provider).is_at_most(30) }
     end
   end
 end
