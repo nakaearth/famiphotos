@@ -1,0 +1,28 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+.modal {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  width: 1500px;
+  height: 600px;
+  z-index: 1020;
+}
+
+// 最大幅モーダル
+.modal-xlg {
+  width: 1100px;
+  height: 500px;
+}
+.modal-backdrop {
+  z-index: 1020;
+}
+
+.nav > li {
+  display: inline-block;
+}

@@ -1,0 +1,58 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  username: root
+  password:
+  strict: false
+  pool: 5
+  socket: <%= ENV['DAPHY_MYSQL_SOCKET'] || '/tmp/mysql.sock' %>
+  host: localhost
+
+development:
+  <<: *default
+  database: famiphotos_development
+
+photo_development:
+  <<: *default
+  database: famiphotos_photo_development
+
+test:
+  <<: *default
+  database: famiphotos_test
+
+photo_test:
+  <<: *default
+  database: famiphotos_photo_test
+
+famiphotos_master_development:
+  <<: *default
+  database: famiphotos_development
+
+famiphotos_slave_development:
+  <<: *default
+  database: famiphotos_development
+
+famiphotos_master_test:
+  <<: *default
+  database: famiphotos_test
+
+famiphotos_slave_test:
+  <<: *default
+  database: famiphotos_test
+
+famiphotos_photo_master_development:
+  <<: *default
+  database: famiphotos_photo_development
+
+famiphotos_photo_slave_development:
+  <<: *default
+  database: famiphotos_photo_development
+
+famiphotos_photo_master_test:
+  <<: *default
+  database: famiphotos_photo_test
+
+famiphotos_photo_slave_test:
+  <<: *default
+  database: famiphotos_photo_test

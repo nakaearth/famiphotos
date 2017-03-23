@@ -1,0 +1,11 @@
+.group_form
+  .group_form_div
+    = form_for @group  do |f|
+      .field
+        = f.label :name
+        = f.text_field :name
+      = f.fields_for :group_member do |group_member|
+        .field
+          = group_member.collection_radio_buttons :role, GroupMember.role.options, :last, :first
+
+      = f.submit

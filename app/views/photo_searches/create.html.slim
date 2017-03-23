@@ -1,0 +1,33 @@
+h1 写真一覧
+
+= render 'photo_searches/form'
+
+.photo_list
+  table
+    tr
+      th
+    - @photos.each do |photo|
+      tr
+      .photo_div
+        .photo_detail id="photo_viewer_#{photo.id}"
+          span id="close_photo_#{photo.id}"
+            | 閉じる
+            | \#{image_tag photo.photo.url(:original)}
+        span id="photo_#{photo.id}"
+          = image_tag photo.photo.url(:thumb)
+          | タイトル:#{photo.photo_file_name}
+          br/
+          | 投稿日付 #{photo.created_at.strftime("%Y/%m/%d")}
+          br/
+        javascript:
+          $( '#photo_#{photo.id}' ).click(function (){
+              $( '#photo_viewer_#{photo.id}' ).fadeIn("slow");
+              });
+        javascript:
+          $( '#photo_viewer_#{photo.id}' ).click(function (){
+              $( '#photo_viewer_#{photo.id}' ).fadeOut("slow");
+              });
+        | コメント:#{photo.description}
+        br/
+        = link_to '拡大', photo_path(photo), remote: true
+        | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', photo_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }

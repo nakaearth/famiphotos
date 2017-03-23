@@ -1,0 +1,8 @@
+table
+  tr
+    th
+      タイトル
+    - @informations.each do |information|
+      tr
+        td
+          = link_to information.title, edit_admin_information_path(information)

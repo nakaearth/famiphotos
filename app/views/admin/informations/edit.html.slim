@@ -1,0 +1,11 @@
+#admin.information_form
+  #information_form_div.information_form_div
+    = form_for [:admin, @information] do |f|
+      .field
+        |title :#{f.text_field :title}
+        br/
+      .field
+        = f.text_area :message
+      br/
+      .actions
+        = f.submit

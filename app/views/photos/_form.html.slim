@@ -1,0 +1,24 @@
+#photo_form.photo_form
+  #photo_form_div.photo_form_div
+    = form_for @photo, html: { multipart: true } do |f|
+      .field
+        - if @photo.image?
+          = image_tag @photo.image.url
+        | 画像:#{f.file_field :image}
+        br/
+      .field
+        = f.label :description
+        | :#{f.text_area :description, :size => "40x20"}
+      = f.fields_for :tags do |tag_form|
+        .field
+          = tag_form.label :address
+          = tag_form.text_field :name
+      .field
+        = f.label :album_id
+        = f.collection_select :album_id,  @albums, :id, :title
+      .field
+        = f.fields_for :photo_geo do |f_photo_geo|
+          = f_photo_geo.label :address
+          = f_photo_geo.text_field :address
+      .actions
+        = f.submit

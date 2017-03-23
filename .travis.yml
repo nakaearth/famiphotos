@@ -1,0 +1,45 @@
+language: ruby
+bundler_args: " --without production --path vendor/bundle"
+rvm:
+- 2.3.0
+gemfile:
+- Gemfile
+cache:
+  bundler: true
+services:
+- mysql
+branches:
+  only:
+  - master
+script:
+- bundle exec rubocop app
+- bundle exec rubocop lib
+- bundle exec rubocop test
+- bundle exec rake test
+#before_install: gem update bundler
+#- curl -sL https://github.com/Itseez/opencv/archive/2.4.13.zip > opencv.zip
+#- unzip -qq opencv.zip
+#- cd opencv-2.4.13
+#- mkdir build
+#- cd build/
+#- cmake -D BUILD_EXAMPLES=ON -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D BUILD_PYTHON_SUPPORT=ON -D WITH_1394=OFF -D ENABLE_OPENMP=ON ../
+#- make -j4  #<= オプション追加
+#- sudo make -j4 install  #<= オプション追加
+#- sudo ldconfig
+#- gem update bundler
+before_script:
+- export DISPLAY=:99.0
+- export RAILS_ENV=test
+- sh -e /etc/init.d/xvfb start
+- cp config/database.travis.yml config/database.yml
+- mysql -e "create database famiphotos_test;"
+- mysql -e "create database famiphotos_photo_test;"
+- cd db
+- git clone https://github.com/nakaearth/famiphotos_schema.git
+- cd famiphotos_schema
+- cp ../../config/database.travis.yml config/database.yml
+- bundle install --path vendor/bundler && bundle exec rake ridgepole:apply && cd ../../
+after_failure:
+- bundle exec rake --version
+notifications:
+  slack: s-nakamura:70ZBpyKjrkR5Ps3lKy4wLjUu

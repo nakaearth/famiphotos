@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title
+      | Famiphotos
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js'
+    = csrf_meta_tags
+  body id='users_search_page'
+    = render 'shared/header'
+    = yield

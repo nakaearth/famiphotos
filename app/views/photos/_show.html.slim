@@ -1,0 +1,5 @@
+= render layout: 'modal',  locals: { title: '写真の拡大', as: "photo_view_#{photo.id}", id: "photo_view_#{photo.id}" } do
+
+  .photo_detail
+
+    = image_tag photo.image.url, alt: '写真拡大',  data: { dismiss: 'modal' }
