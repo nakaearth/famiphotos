@@ -12,7 +12,7 @@ class Photo < FamiphotosPlatform::FamiphotoBase
   ################# Association ######################################
   ####################################################################
   belongs_to :user
-  belongs_to :album, optional: true
+  belongs_to :album, optional: true, inverse_of: :photos
   has_one :photo_geo
   has_many :tags
 
