@@ -7,7 +7,8 @@ class Album < FamiphotosPlatform::FamiphotoBase
   ####################################################################
   ################# Association ######################################
   ####################################################################
-  has_many :photos, inverse_of: :album
+  # has_many :photos, inverse_of: :album
+  has_many :photos
   belongs_to :group
 
   ####################################################################
@@ -32,6 +33,6 @@ class Album < FamiphotosPlatform::FamiphotoBase
   def top_image_url
     return 'np_photo.gif' if photos.blank?
 
-    photos.order(:id).first.thumb_url
+    photos.first.thumb_url
   end
 end

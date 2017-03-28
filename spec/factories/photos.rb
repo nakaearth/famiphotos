@@ -1,6 +1,8 @@
+include ActionDispatch::TestProcess
+
 FactoryGirl.define do
   factory :photo do
     description "MyString"
-    image "test.jpg"
+    image { fixture_file_upload("#{::Rails.root}/spec/fixtures/dog.jpeg", 'image/png') }
   end
 end

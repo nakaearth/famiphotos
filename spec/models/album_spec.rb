@@ -26,13 +26,12 @@ RSpec.describe Album, type: :model do
     context 'photosにデータがある場合' do
       let(:photo) { create(:photo, user: user, album: album) }
       before do
-        album
-        photo
-        binding.pry
+        album.photos << photo
+        album.save!
       end
 
       # TODO: 一部mockにしないとテストがだめ
-      # it { expect(album.top_image_url).to eq album.photos.order(:id).first.thumb_url }
+      it { expect(album.top_image_url).to eq album.photos.first.thumb_url }
     end
   end
 end

@@ -21,6 +21,9 @@ require 'factory_girl'
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  config.before(:all) do
+      FactoryGirl.reload
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
