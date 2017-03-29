@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Admin
   class InformationsController < Admin::ApplicationController
     before_action :set_information, only: [:show, :edit, :destroy]
@@ -6,8 +7,7 @@ module Admin
       @informations = Information.all
     end
 
-    def show
-    end
+    def show; end
 
     def new
       @information = Information.new
@@ -23,11 +23,9 @@ module Admin
       end
     end
 
-    def edit
-    end
+    def edit; end
 
-    def update
-    end
+    def update; end
 
     def destroy
       @information.destroy

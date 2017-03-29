@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 class AlbumsController < ApplicationController
   include UserAgent
 
   before_action :set_request_variant
-  before_action :set_album, only: %i( show, edit, destroy )
-  before_action :exists_current_group?, only: %i( new create )
+  before_action :set_album, only: %i(show edit destroy)
+  before_action :exists_current_group?, only: %i(new create)
 
   def index
     # groupの設定がそもそもない時は即return
@@ -16,8 +17,7 @@ class AlbumsController < ApplicationController
     @other_group_albums = @current_user.albums_without_this_group(@current_group)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @album = @current_group.albums.build
@@ -33,14 +33,11 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
-  def destroy
-  end
+  def destroy; end
 
   private
 

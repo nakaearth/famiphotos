@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PhotoSearchesController < ApplicationController
   def create
     @photos = Search::Photo.new(Photo, photo_search_params).search

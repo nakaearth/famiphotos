@@ -13,6 +13,12 @@ module IdEncryptable
     end
   end
 
+  private
+
+  def respond_to_missing?(_method_name)
+    false
+  end
+
   # encrypted_hoge_idメソッドを動的に生成する
   def method_missing(method_name, *args, &block)
     if method_name =~ /\Aencrypted_(.+)_id\z/
@@ -23,7 +29,7 @@ module IdEncryptable
       column_name = "#{association_name}_id"
       column_value = read_attribute(column_name)
 
-      return unless column_value
+      return super unless column_value
 
       ClassMethods.encrypt_id(column_value)
     elsif method_name =~ /\Adecrypted_(.+)_id\z/

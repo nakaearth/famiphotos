@@ -1,14 +1,14 @@
+# frozen_string_literal: true
 class DailyPhotosController < ApplicationController
   include UserAgent
   include DecryptedId
 
   before_action :set_request_variant
-  before_action :set_album, only: %i( index )
-  before_action :set_date_from_created_at_ymd, only: %i( index )
-  before_action :set_photos, only: %i( index )
+  before_action :set_album, only: %i(index)
+  before_action :set_date_from_created_at_ymd, only: %i(index)
+  before_action :set_photos, only: %i(index)
 
-  def index
-  end
+  def index; end
 
   private
 

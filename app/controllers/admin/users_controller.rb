@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 module Admin
   class UsersController < Admin::ApplicationController
-    before_action :set_user, only: %i( show edit destroy)
+    before_action :set_user, only: %i(show edit destroy)
 
     def index
       @users = Rails.cache.fetch(CACHE_KEYS[:USER_LIST]) do
@@ -8,8 +9,7 @@ module Admin
       end
     end
 
-    def show
-    end
+    def show; end
 
     def new
       @user = User.new
@@ -25,11 +25,9 @@ module Admin
       end
     end
 
-    def edit
-    end
+    def edit; end
 
-    def update
-    end
+    def update; end
 
     def destroy
       @user.destroy

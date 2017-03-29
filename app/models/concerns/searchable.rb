@@ -100,11 +100,11 @@ module Searchable
       client = __elasticsearch__.client
 
       find_in_batches.with_index do |entries, i|
-        result = client.bulk(
+        client.bulk(
           index: index_name,
           type: document_type,
           body: entries.map { |entry| { index: { _id: entry.id, data: entry.as_indexed_json } } },
-          refresh: (i > 0 && i % 3 == 0), # NOTE: 定期的にrefreshしないとEsが重くなる
+          refresh: (i.positive? && (i % 3).zero?), # NOTE: 定期的にrefreshしないとEsが重くなる
         )
       end
     end

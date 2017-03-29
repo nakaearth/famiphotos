@@ -1,10 +1,11 @@
+# frozen_string_literal: true
 class PhotosController < ApplicationController
   include UserAgent
   include DecryptedId
 
   before_action :set_request_variant
-  before_action :set_album, only: %i( index )
-  before_action :set_photo, only: %i( edit show destroy )
+  before_action :set_album, only: %i(index)
+  before_action :set_photo, only: %i(edit show destroy)
 
   def index
     respond_to do |format|
@@ -43,11 +44,9 @@ class PhotosController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
   def destroy
     @photo.destroy
@@ -79,7 +78,7 @@ class PhotosController < ApplicationController
         :address
       ],
       tags_attributes: [
-       :name
+        :name
       ]
     ]
 

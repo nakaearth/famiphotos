@@ -25,8 +25,14 @@ class FamiphotoBase < ActiveRecord::Base
   ####################################################################
   ################### インスタンスメソッド ###########################
   ####################################################################
+  private
+
+  def respond_to_missing?(_method_name, _include_private = fals)
+    false
+  end
+
   def method_missing(method_name, *_args, &_block)
-    return unless method_name.to_s.end_with?('_ymd')
+    return super unless method_name.to_s.end_with?('_ymd')
 
     method_name_except_format_value = method_name.to_s.sub!(/_ymd/, '')
     column_names = self.class.column_names.select { |column_name| column_name =~ /.*_at/ }

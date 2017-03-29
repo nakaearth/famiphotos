@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class GroupsController < ApplicationController
   include UserAgent
   include DecryptedId
@@ -31,11 +32,9 @@ class GroupsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
   def destroy
     @group.destroy

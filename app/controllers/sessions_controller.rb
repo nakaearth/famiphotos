@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :login?, only: [:new, :create, :destroy, :oauth_failure]
@@ -7,7 +8,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    auth  = request.env['omniauth.auth']
+    auth = request.env['omniauth.auth']
     user = User.find_by(provider: auth[:provider], email: auth[:info][:name]) || User.create_account(auth)
 
     session[:encrypted_user_id] = Base64.encode64(user.id.to_s)

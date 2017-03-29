@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Api
   class InformationsController < Api::ApplicationController
     # ajaxで通信したお知らせの一覧をjson形式で返す

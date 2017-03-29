@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class UserSearchesController < ApplicationController
   before_action :set_user_search
 
