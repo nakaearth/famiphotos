@@ -18,9 +18,6 @@
 // Bootstrap プラグイン
 //= require bootstrap
 
-// VueJS
-//= require vue
-
 // PAGES以下
 //= require pages/photos/show
 //= require pages/photos/index_tablet

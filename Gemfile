@@ -153,5 +153,35 @@ gem 'elasticsearch-model'
 gem 'switch_point'
 # enumerize
 gem 'enumerize'
+# カレンダー表示
+gem 'simple_calendar',  '~> 2.0'
 
+# 定数設定
+gem 'config'
+# ログ収集
+# treasure data
+gem "td"
+gem "td-logger"
+gem "ltsv-logger"
+# モーダル
+gem 'twitter-bootstrap-rails'
+gem 'bootstrap-modal-rails'
+gem "font-awesome-rails"
+# ブラウザ判定、UA判定に使う
+gem 'browser'
+# css fremework compass
+gem 'compass-rails'
+gem 'parser'
+# 擬似的なテーブルのように使える
+gem 'active_hash'
+# pagenate
+gem 'kaminari'
+# 暗号化
+gem 'attr_encrypted'
+# react rails
+gem 'react-rails'
+# assets 高速化
+# gem 'sprockets-derailleur'
+# SQL発行場所を出力させる
+gem 'activerecord-cause'
 
