@@ -2,6 +2,7 @@
 module Searchable
   extend ActiveSupport::Concern
 
+  # rubocop:disable all
   included do
     include Elasticsearch::Model
 
@@ -75,6 +76,7 @@ module Searchable
       __elasticsearch__.client.delete index: Consts::Elasticsearch[:index_name][:photo], type: 'photo', id: id
     end
   end
+  # rubocop:enable all
 
   module ClassMethods
     def create_index!(options = {})

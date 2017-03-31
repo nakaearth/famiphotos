@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Search
   class Photo < Base
     def search
@@ -13,11 +14,11 @@ module Search
           function_score: {
             score_mode: 'sum',
             boost_mode: 'multiply',
-            query: { FunctionQuery.new(@conditions, ['description']).match_query },
+            query: FunctionQuery.new(@conditions, ['description']).match_query,
             functions: [
               {
                 filter: {
-                  query: { FunctionQuery.new(@conditions, ['user_id']).term_query }
+                  query: FunctionQuery.new(@conditions, ['user_id']).term_query
                 },
                 weight: 5
               },

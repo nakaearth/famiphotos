@@ -15,7 +15,7 @@ module IdEncryptable
 
   private
 
-  def respond_to_missing?(_method_name)
+  def respond_to_missing?(_method_name, _include_private = false)
     false
   end
 

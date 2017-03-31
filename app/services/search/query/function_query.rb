@@ -3,32 +3,23 @@ module Search
   module Query
     class FunctionQuery < Function
       def match_query
-        @fields.each do |field|
-          @functions <<
-            {
-              match: {
-                "#{field}": {
-                  query: @conditions[:keyword],
-                  operator: 'and'
-                }
-              }
-            }
-        end
-
-        @functions.join(',')
+        {
+          simple_query_string: {
+            query: @conditions[:keyword],
+            fields: [@fields.join(',').to_s],
+            default_operator: 'and'
+          }
+        }
       end
 
       def term_query
-        @fields.each do |field|
-          @functions <<
-            {
-              term: {
-                "#{field}": @conditions[field.to_s]
-              }
-            }
-        end
-
-        @functions.join(',')
+        {
+          simple_query_string: {
+            query: @conditions[:keyword],
+            fields: [@fields.join(',').to_s],
+            default_operator: 'and'
+          }
+        }
       end
     end
   end

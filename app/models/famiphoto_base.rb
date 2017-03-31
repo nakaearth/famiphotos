@@ -27,7 +27,7 @@ class FamiphotoBase < ActiveRecord::Base
   ####################################################################
   private
 
-  def respond_to_missing?(_method_name, _include_private = fals)
+  def respond_to_missing?(_method_name, _include_private = false)
     false
   end
 

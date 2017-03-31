@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 require 'rails_helper'
 
 RSpec.describe Album, type: :model do
   let!(:user) { create(:user) }
-  let!(:group) { create(:group)}
+  let!(:group) { create(:group) }
   let(:album) { create(:album, group: group) }
 
   describe '幾つかのテーブルと関連を持っている' do
