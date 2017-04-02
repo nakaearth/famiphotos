@@ -34,11 +34,11 @@ before_script:
 - cp config/database.travis.yml config/database.yml
 - mysql -e "create database famiphotos_test;"
 - mysql -e "create database famiphotos_photo_test;"
-- cd db
+- cd ../
 - git clone https://github.com/nakaearth/famiphotos_schema.git
 - cd famiphotos_schema
 - cp ../famiphotos/config/database.travis.yml config/database.yml
-- bundle install --path vendor/bundler && bundle exec rake ridgepole:apply && cd ../../
+- bundle install --path vendor/bundler && bundle exec rake ridgepole:apply && cd ../famiphotos
 after_failure:
 - bundle exec rake --version
 notifications:
