@@ -1,0 +1,25 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  reconnect: false
+  pool: 5
+  username: root
+  password:
+  host: '127.0.0.1'
+
+development:
+  <<: *default
+  database: famiphotos_development
+
+test:
+  <<: *default
+  database: famiphotos_test
+
+famiphotos_master_test:
+  <<: *default
+  database: famiphotos_test
+
+famiphotos_slave_test:
+  <<: *default
+  database: famiphotos_test

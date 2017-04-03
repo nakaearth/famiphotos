@@ -13,13 +13,13 @@ machine:
 dependencies:
   pre:
     - sudo /etc/init.d/mysql stop
-    - > # mysql5.6
+    - > # mysql5.7
       sudo DEBIAN_FRONTEND=noninteractive apt-get remove --yes --purge mysql* &&
       sudo apt-get autoremove &&
       sudo apt-get autoclean &&
       sudo rm -rf /var/lib/mysql &&
       sudo apt-add-repository -y 'deb http://ppa.launchpad.net/ondrej/mysql/experimental/ubuntu precise main' &&
-      sudo apt-get update; sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server-5.6
+      sudo apt-get update; sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server
     - echo "CREATE USER '${CIRCLECI_USER}'@'localhost'" | mysql -u root
     - echo "GRANT ALL PRIVILEGES ON *.* TO '${CIRCLECI_USER}'@'localhost' WITH GRANT OPTION" | mysql -u root
     - echo "CREATE USER 'circle'@'localhost'" | mysql -u root
@@ -36,16 +36,14 @@ dependencies:
 database:
   override:
     - mysql -e "create database famiphotos_test;"
-    - cd ../
-    - git clone git@github.com:nakaearth/famiphotos_schema.git famiphotos_schema
-    - cd famiphotos_schema
-    - bundle install
-    - RAILS_ENV=test bundle exec rake ridgepole:apply
-    - cd ~/famiphotos
+    - git clone git@github.com:nakaearth/famiphotos_schema.git ../famiphotos_schema
+    - cp config/database.ci.yml ../famiphotos_schema/config/database.yml
+    - cd ../famiphotos_schema && gem install bundler && bundle install --jobs=4 && RAILS_ENV=test bundle exec rake ridgepole:apply
 test:
   pre:
-    - bundle exec rubocop
+    - cp config/database.ci.yml config/database.yml
+    - bundle exec rubocop app
       # - bundle exec brakeman --exit-on-warn
       # - bundle exec rails_best_practices -e 'db, */concerns/*, */vendor/*' .
-      # - bundle exec rubycritic app conf lib -p $CIRCLE_ARTIFACTS/rubycritic --mode-ci # -s 85 # TODO: 実装時に最低スコアを導入する
+      # - bundle exec rubycritic app conf lib -p $CIRCLE_ARTIFACTS/rubycritic --mode-ci # -s 85
 

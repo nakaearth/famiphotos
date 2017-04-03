@@ -40,6 +40,6 @@ class User < FamiphotosPlatform::FamiphotoBase
 
   def create_group_members
     group = Group.find_or_create_by(name: name || "デフォルト#{name}グループ")
-    GroupMember.find_or_create_by(user_id: id, group_id: group, role: 'owner')
+    GroupMember.find_or_create_by(user_id: id, group_id: group.id, role: 'owner')
   end
 end
