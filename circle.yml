@@ -37,7 +37,7 @@ database:
   override:
     - mysql -e "create database famiphotos_test;"
     - cd ../
-    - git clone https://github.com/nakaearth/famiphotos_schema famiphotos_schema
+    - git clone git@github.com:nakaearth/famiphotos_schema.git famiphotos_schema
     - cd famiphotos_schema
     - bundle install
     - RAILS_ENV=test bundle exec rake ridgepole:apply
