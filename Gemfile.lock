@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/nakaearth/famiphotos_platform.git
-  revision: 68c2d8a56131ff99d7964c3063760c2e962a8c80
+  revision: 985675a3ecacec47e6350abf1f30aa5079eefa58
   branch: master
   specs:
     famiphotos_platform (0.0.2)
@@ -541,7 +541,7 @@ GEM
       railties (~> 5.0, >= 5.0.1)
     typhoeus (0.8.0)
       ethon (>= 0.8.0)
-    tzinfo (1.2.2)
+    tzinfo (1.2.3)
       thread_safe (~> 0.1)
     tzinfo-data (1.2017.1)
       tzinfo (>= 1.0.0)
