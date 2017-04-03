@@ -35,11 +35,7 @@ dependencies:
 
 database:
   override:
-    - mysql -e "create database classi_test;"
-    - mysql -e "create database school_1_test;"
-    - mysql -e "create database school_2_test;"
-    - mysql -e "create database school_3_test;"
-    - mysql -e "create database school_4_test;"
+    - mysql -e "create database famiphotos_test;"
     - git clone https://github.com/nakaearth/famiphotos_schema ~/famiphotos_schema
     - cd ~/famiphotos_schema && bundle install --jobs=4 && bundle exec rake ridgepole:apply RAILS_ENV=test
     - cd ~/famiphotos
