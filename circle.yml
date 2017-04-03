@@ -1,0 +1,52 @@
+machine:
+  ruby:
+    version: 2.4.0
+  timezone:
+    Asia/Tokyo
+  environment:
+    MYSQL_HOST: localhost
+    MYSQL_USER: ubuntu
+    MYSQL_PASSWORD: ''
+    MYSQL_CONNECTION_LIMIT: 30
+    MYSQL_PORT: 3306
+
+dependencies:
+  pre:
+    - sudo /etc/init.d/mysql stop
+    - > # mysql5.6
+      sudo DEBIAN_FRONTEND=noninteractive apt-get remove --yes --purge mysql* &&
+      sudo apt-get autoremove &&
+      sudo apt-get autoclean &&
+      sudo rm -rf /var/lib/mysql &&
+      sudo apt-add-repository -y 'deb http://ppa.launchpad.net/ondrej/mysql/experimental/ubuntu precise main' &&
+      sudo apt-get update; sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-server-5.6
+    - echo "CREATE USER '${CIRCLECI_USER}'@'localhost'" | mysql -u root
+    - echo "GRANT ALL PRIVILEGES ON *.* TO '${CIRCLECI_USER}'@'localhost' WITH GRANT OPTION" | mysql -u root
+    - echo "CREATE USER 'circle'@'localhost'" | mysql -u root
+    - echo "GRANT ALL PRIVILEGES ON *.* TO 'circle'@'localhost' WITH GRANT OPTION" | mysql -u root
+    - echo "FLUSH PRIVILEGES" | mysql -u root
+    - echo "CREATE DATABASE circle_test" | mysql -u root
+    - sudo apt-get install libmysqlclient-dev
+    - sudo bash -c "echo '[mysqld]' >>  /etc/my.cnf"
+    - sudo bash -c "echo 'innodb_file_format = Barracuda' >>  /etc/my.cnf"
+    - sudo bash -c "echo 'innodb_file_per_table = 1' >>  /etc/my.cnf"
+    - sudo bash -c "echo 'innodb_large_prefix' >>  /etc/my.cnf"
+    - sudo /etc/init.d/mysql restart
+
+database:
+  override:
+    - mysql -e "create database classi_test;"
+    - mysql -e "create database school_1_test;"
+    - mysql -e "create database school_2_test;"
+    - mysql -e "create database school_3_test;"
+    - mysql -e "create database school_4_test;"
+    - git clone https://github.com/nakaearth/famiphotos_schema ~/famiphotos_schema
+    - cd ~/famiphotos_schema && bundle install --jobs=4 && bundle exec rake ridgepole:apply RAILS_ENV=test
+    - cd ~/famiphotos
+test:
+  pre:
+    - bundle exec rubocop
+      # - bundle exec brakeman --exit-on-warn
+      # - bundle exec rails_best_practices -e 'db, */concerns/*, */vendor/*' .
+      # - bundle exec rubycritic app conf lib -p $CIRCLE_ARTIFACTS/rubycritic --mode-ci # -s 85 # TODO: 実装時に最低スコアを導入する
+
