@@ -51,7 +51,7 @@ deployment:
     commands:
       - heroku maintenance:on --app famiphotos
       - git push -f https://git.heroku.com/famiphotos.git $CIRCLE_SHA1:refs/heads/master
-      - heroku run 'rake ridgepole:apply'
+      - heroku run 'RAILS_ENV=production rake ridgepole:apply'
       - heroku maintenance:off --app famiphotos
     heroku:
       appname: famiphotos
