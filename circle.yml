@@ -47,3 +47,9 @@ test:
       # - bundle exec rails_best_practices -e 'db, */concerns/*, */vendor/*' .
       # - bundle exec rubycritic app conf lib -p $CIRCLE_ARTIFACTS/rubycritic --mode-ci # -s 85
 
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: famiphotos
+
