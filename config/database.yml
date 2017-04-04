@@ -8,80 +8,91 @@ default: &default
   strict: false
   pool: 5
   socket: <%= ENV['DAPHY_MYSQL_SOCKET'] || '/tmp/mysql.sock' %>
-  host: localhost
 
 development:
   <<: *default
   database: famiphotos_development
+  host: localhost
 
 photo_development:
   <<: *default
   database: famiphotos_photo_development
+  host: localhost
 
 test:
   <<: *default
   database: famiphotos_test
+  host: localhost
 
 photo_test:
   <<: *default
   database: famiphotos_photo_test
+  host: localhost
 
 production:
   <<: *default
   database: 'heroku_9ea3611a6be5f26'
   username: ENV['DB_USER']
   password: ENV['DB_PASSWORD']
-  host: ENV['CLEARDB_DATABASE_URL']
+  url: ENV['DATABASE_URL']
 
 famiphoto_production:
   <<: *default
   database: 'heroku_9ea3611a6be5f26'
   username: ENV['DB_USER']
   password: ENV['DB_PASSWORD']
-  host: ENV['CLEARDB_DATABASE_URL']
+  url: ENV['DATABASE_URL']
 
 famiphotos_master_development:
   <<: *default
   database: famiphotos_development
+  host: localhost
 
 famiphotos_slave_development:
   <<: *default
   database: famiphotos_development
+  host: localhost
 
 famiphotos_master_test:
   <<: *default
   database: famiphotos_test
+  host: localhost
 
 famiphotos_slave_test:
   <<: *default
   database: famiphotos_test
+  host: localhost
 
 famiphotos_photo_master_development:
   <<: *default
   database: famiphotos_photo_development
+  host: localhost
 
 famiphotos_photo_slave_development:
   <<: *default
   database: famiphotos_photo_development
+  host: localhost
 
 famiphotos_photo_master_test:
   <<: *default
   database: famiphotos_photo_test
+  host: localhost
 
 famiphotos_photo_slave_test:
   <<: *default
   database: famiphotos_photo_test
+  host: localhost
 
 famiphotos_master_production:
   <<: *default
   database: 'heroku_9ea3611a6be5f26'
   username: ENV['DB_USER']
   password: ENV['DB_PASSWORD']
-  host: ENV['CLEARDB_DATABASE_URL']
+  url: ENV['DATABASE_URL']
 
 famiphotos_slave_production:
   <<: *default
   database: 'heroku_9ea3611a6be5f26'
   username: ENV['DB_USER']
   password: ENV['DB_PASSWORD']
-  host: ENV['CLEARDB_DATABASE_URL']
+  url: ENV['DATABASE_URL']
