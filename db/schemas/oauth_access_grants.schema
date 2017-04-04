@@ -1,0 +1,12 @@
+create_table "oauth_access_grants", id: false, force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC" do |t|
+  t.integer  "resource_owner_id", limit: 4,     null: false
+  t.integer  "application_id",    limit: 4,     null: false
+  t.string   "token",             limit: 255,   null: false
+  t.integer  "expires_in",        limit: 4,     null: false
+  t.text     "redirect_uri",      limit: 65535, null: false
+  t.datetime "created_at",                      null: false
+  t.datetime "revoked_at"
+  t.string   "scopes",            limit: 255
+end
+
+add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree

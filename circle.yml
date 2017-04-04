@@ -36,12 +36,10 @@ dependencies:
 database:
   override:
     - mysql -e "create database famiphotos_test;"
-    - git clone git@github.com:nakaearth/famiphotos_schema.git ../famiphotos_schema
-    - cp config/database.ci.yml ../famiphotos_schema/config/database.yml
-    - cd ../famiphotos_schema && gem install bundler && bundle install --jobs=4 && RAILS_ENV=test bundle exec rake ridgepole:apply
+    - cp config/database.ci.yml config/database.yml
+    - RAILS_ENV=test bundle exec rake ridgepole:apply
 test:
   pre:
-    - cp config/database.ci.yml config/database.yml
     - bundle exec rubocop app
       # - bundle exec brakeman --exit-on-warn
       # - bundle exec rails_best_practices -e 'db, */concerns/*, */vendor/*' .
@@ -50,6 +48,11 @@ test:
 deployment:
   production:
     branch: master
+    commands:
+      - heroku maintenance:on --app famiphotos
+      - git push -f git@heroku.com:famiphotos.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run 'rake ridgepole:apply'
+      - heroku maintenance:off --app famiphotos
     heroku:
       appname: famiphotos
 
