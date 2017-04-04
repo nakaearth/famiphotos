@@ -26,6 +26,16 @@ photo_test:
   <<: *default
   database: famiphotos_photo_test
 
+production:
+  <<: *default
+  database: 'heroku_9ea3611a6be5f26'
+  host: ENV['CLEARDB_DATABASE_URL']
+
+famiphoto_production:
+  <<: *default
+  database: 'heroku_9ea3611a6be5f26'
+  host: ENV['CLEARDB_DATABASE_URL']
+
 famiphotos_master_development:
   <<: *default
   database: famiphotos_development
@@ -57,3 +67,13 @@ famiphotos_photo_master_test:
 famiphotos_photo_slave_test:
   <<: *default
   database: famiphotos_photo_test
+
+famiphotos_master_production
+  <<: *default
+  database: 'heroku_9ea3611a6be5f26'
+  host: ENV['CLEARDB_DATABASE_URL']
+
+famiphotos_slave_production:
+  <<: *default
+  database: 'heroku_9ea3611a6be5f26'
+  host: ENV['CLEARDB_DATABASE_URL']
