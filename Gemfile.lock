@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/nakaearth/famiphotos_platform.git
-  revision: 75054dcce35ce69a0cdff398ff7fac84d5c8e981
+  revision: 01437783cf3434708bd4bad2d4b3cb461e59a12c
   branch: master
   specs:
     famiphotos_platform (0.0.2)
