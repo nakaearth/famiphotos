@@ -3,7 +3,7 @@ module Users
   class Registration
     def regist(auth)
       ActiveRecord::Base.transaction do
-        @login_user = FamiphotosPlatform::User.find_or_create_by(name: auth[:info][:name]) do |user|
+        @login_user = User.find_or_create_by(name: auth[:info][:name]) do |user|
           user.name  = auth[:info][:name]
           user.email = auth[:info][:email]
           user.provider = auth[:provider]
