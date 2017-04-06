@@ -31,14 +31,14 @@ class ApplicationController < ActionController::Base
   end
 
   def application_log_output
-    @ltsv_logger ||= LTSV::Logger.open("log/rails_application.log")
-    @ltsv_logger.info({
-                        pid: $PROCESS_ID,
-                        method: request.request_method,
-                        path: request.fullpath,
-                        ip: request.remote_ip,
-                        uuid: request.uuid
-                      })
+    # @ltsv_logger ||= LTSV::Logger.open("log/rails_application.log")
+    # @ltsv_logger.info({
+    #                     pid: $PROCESS_ID,
+    #                     method: request.request_method,
+    #                     path: request.fullpath,
+    #                     ip: request.remote_ip,
+    #                     uuid: request.uuid
+    #                   })
   end
 
   def render_404
