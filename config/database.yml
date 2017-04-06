@@ -31,17 +31,17 @@ photo_test:
 
 production:
   <<: *default
-  database: 'heroku_9ea3611a6be5f26'
+  database: ENV['DB_DATABASE']
   username: ENV['DB_USER']
   password: ENV['DB_PASSWORD']
-  url: ENV['CLEARDB_DATABASE_URL']
+  host: ENV['DB_SERVERNAME']
 
 famiphoto_production:
   <<: *default
-  database: 'heroku_9ea3611a6be5f26'
+  database: ENV['DB_DATABASE']
   username: ENV['DB_USER']
   password: ENV['DB_PASSWORD']
-  url: ENV['CLEARDB_DATABASE_URL']
+  host: ENV['DB_SERVERNAME']
 
 famiphotos_master_development:
   <<: *default
@@ -85,14 +85,14 @@ famiphotos_photo_slave_test:
 
 famiphotos_master_production:
   <<: *default
-  database: 'heroku_9ea3611a6be5f26'
+  database: ENV['DB_DATABASE']
   username: ENV['DB_USER']
   password: ENV['DB_PASSWORD']
-  url: ENV['CLEARDB_DATABASE_URL']
+  host: ENV['DB_SERVERNAME']
 
 famiphotos_slave_production:
   <<: *default
-  database: 'heroku_9ea3611a6be5f26'
+  database: ENV['DB_DATABASE']
   username: ENV['DB_USER']
   password: ENV['DB_PASSWORD']
-  url: ENV['CLEARDB_DATABASE_URL']
+  host: ENV['DB_SERVERNAME']
