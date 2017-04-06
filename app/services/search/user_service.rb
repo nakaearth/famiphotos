@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Search
-  class UserService < BaseService
+  class UserService < Base
     def search(user_search, _user)
       body = {
         query: {
