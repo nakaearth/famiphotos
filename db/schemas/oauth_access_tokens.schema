@@ -9,6 +9,6 @@ create_table "oauth_access_tokens", id: false, force: true, options: "ENGINE=Inn
   t.string   "scopes",            limit: 255
 end
 
-add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
-add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
-add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
+add_index "oauth_access_tokens", ["refresh_token"], name: "idx_oauth_access_tokens01", unique: true, using: :btree
+add_index "oauth_access_tokens", ["resource_owner_id"], name: "idx_oauth_access_tokens02", using: :btree
+add_index "oauth_access_tokens", ["token"], name: "idx_oauth_access_tokens03", unique: true, using: :btree

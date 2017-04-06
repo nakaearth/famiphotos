@@ -31,17 +31,17 @@ photo_test:
 
 production:
   <<: *default
-  database: ENV['DB_DATABASE']
-  username: ENV['DB_USER']
-  password: ENV['DB_PASSWORD']
-  host: ENV['DB_SERVERNAME']
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_SERVERNAME'] %>
 
 famiphoto_production:
   <<: *default
-  database: ENV['DB_DATABASE']
-  username: ENV['DB_USER']
-  password: ENV['DB_PASSWORD']
-  host: ENV['DB_SERVERNAME']
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_SERVERNAME'] %>
 
 famiphotos_master_development:
   <<: *default
@@ -85,14 +85,14 @@ famiphotos_photo_slave_test:
 
 famiphotos_master_production:
   <<: *default
-  database: ENV['DB_DATABASE']
-  username: ENV['DB_USER']
-  password: ENV['DB_PASSWORD']
-  host: ENV['DB_SERVERNAME']
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_SERVERNAME'] %>
 
 famiphotos_slave_production:
   <<: *default
-  database: ENV['DB_DATABASE']
-  username: ENV['DB_USER']
-  password: ENV['DB_PASSWORD']
-  host: ENV['DB_SERVERNAME']
+  database: <%= ENV['DB_DATABASE'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_SERVERNAME'] %>

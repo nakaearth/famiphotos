@@ -9,4 +9,4 @@ create_table "oauth_access_grants", id: false, force: true, options: "ENGINE=Inn
   t.string   "scopes",            limit: 255
 end
 
-add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
+add_index "oauth_access_grants", ["token"], name: "idx_oauth_access_grants01", unique: true, using: :btree
