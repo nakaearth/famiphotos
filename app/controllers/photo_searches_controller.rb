@@ -11,6 +11,6 @@ class PhotoSearchesController < ApplicationController
       :keyword
     ]
 
-    params.fetch(:photo_search).permit(photo_params).merge({ user: current_user })
+    params.fetch(:photo_search).permit(photo_params).merge({ user_id: current_user.id })
   end
 end

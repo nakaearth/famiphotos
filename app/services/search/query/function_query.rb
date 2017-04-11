@@ -4,20 +4,17 @@ module Search
     class FunctionQuery < Function
       def match_query
         {
-          simple_query_string: {
-            query: @conditions[:keyword],
-            fields: [@fields.join(',').to_s],
-            default_operator: 'and'
-          }
-        }
-      end
-
-      def term_query
-        {
-          simple_query_string: {
-            query: @conditions[:keyword],
-            fields: [@fields.join(',').to_s],
-            default_operator: 'and'
+          bool: {
+            must: [
+              { term: { user_id: @conditions[:user_id] } },
+              {
+                simple_query_string: {
+                  query: @conditions[:keyword],
+                  fields: [@fields.join(',').to_s],
+                  default_operator: 'and'
+                }
+              }
+            ]
           }
         }
       end

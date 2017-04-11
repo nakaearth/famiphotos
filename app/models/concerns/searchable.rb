@@ -59,6 +59,8 @@ module Searchable
         indexes :id, type: 'integer', index: 'not_analyzed'
         indexes :description, type: 'string', analyzer: 'kuromoji_analyzer'
         indexes :group_id, type: 'integer', index: 'not_analyzed'
+        indexes :album_id, type: 'integer', index: 'not_analyzed'
+        indexes :good_point, type: 'integer', index: 'not_analyzed'
         indexes :tag_name, type: 'string', index: 'not_analyzed'
       end
     end

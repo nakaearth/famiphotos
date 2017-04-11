@@ -6,13 +6,21 @@ RSpec.describe Search::Query::FunctionQuery do
     let(:function_query) { Search::Query::FunctionQuery.new(conditions, [:description]) }
 
     context '' do
-      let(:conditions) { { keyword: 'test' } }
+      let(:conditions) { { keyword: 'test', user_id: user.id } }
+      let!(:user) { create(:user) }
       let(:query) do
         {
-          simple_query_string: {
-            query: 'test',
-            fields: ['description'],
-            default_operator: 'and'
+          bool: {
+            must: [
+              { term: { user_id: user.id } },
+              {
+                simple_query_string: {
+                  query: 'test',
+                  fields: ['description'],
+                  default_operator: 'and'
+              }
+              }
+            ]
           }
         }
       end

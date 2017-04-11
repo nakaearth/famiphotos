@@ -12,23 +12,31 @@ module Search
         min_score: 0.5,
         query: {
           function_score: {
-            score_mode: 'sum',
-            boost_mode: 'multiply',
+            score_mode: 'sum', # functionsないのスコアの計算方法
+            boost_mode: 'multiply', # クエリの合計スコアとfunctionのスコアの計算方法
             query: FunctionQuery.new(@conditions, ['description']).match_query,
             functions: [
               {
-                filter: {
-                  query: FunctionQuery.new(@conditions, ['user_id']).term_query
+                FUNCTION: {
+                  field_value_factor: {
+                    field: "good_point",
+                    factor: 2.0,
+                    modifier: "square",
+                    missing: 1
+                  }
                 },
-                weight: 5
+                weight: 20
               },
               {
-                field_value_factor: {
-                  field: "id",
-                  factor: 1.2,
-                  modifier: "sqrt",
-                  missing: 1
-                }
+                FUNCTION: {
+                  field_value_factor: {
+                    field: "id",
+                    factor: 1.5,
+                    modifier: "sqrt",
+                    missing: 1
+                  }
+                },
+                weight: 10
               }
             ]
           }
