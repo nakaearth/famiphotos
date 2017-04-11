@@ -5,6 +5,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  include Cloudinary::CarrierWave if Rails.env.production?
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -47,4 +48,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  #
+
+  def public_id
+    model.id
+  end
 end

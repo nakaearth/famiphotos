@@ -116,6 +116,11 @@ group :test do
   gem 'brakeman', require: false
 end
 
+# 本番環境のみ適用
+group :production do
+  gem 'cloudinary'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 

@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: hnbactt5g
+  api_key: '983681461552163'
+  api_secret: XnzX_EBlGeQXKhTA_M-VacmtGFc
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hnbactt5g
+  api_key: '983681461552163'
+  api_secret: XnzX_EBlGeQXKhTA_M-VacmtGFc
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: hnbactt5g
+  api_key: '983681461552163'
+  api_secret: XnzX_EBlGeQXKhTA_M-VacmtGFc
+  enhance_image_tag: true
+  static_image_support: false
