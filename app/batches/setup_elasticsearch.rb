@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 require 'optparse'
 
-#
 # 1) 新規にindexを作成/データのimportをする場合
 # bundle exec rails runner SetupElasticsearch.execute
 # 2) 既にindexがあって、再構築する場合
