@@ -12,6 +12,8 @@ module Searchable
       after_destroy :remove_from_elasticsearch
     end
 
+    index_name = Consts::Elasticsearch[:index_name][:photo]
+
     # Set up index configuration and mapping
     settings index: {
       number_of_shards:   5,
@@ -71,11 +73,11 @@ module Searchable
     end
 
     def transfer_to_elasticsearch
-      __elasticsearch__.client.index  index: Consts::Elasticsearch[:index_name][:photo], type: 'photo', id: id, body: as_indexed_json
+      __elasticsearch__.client.index  index: index_name, type: 'photo', id: id, body: as_indexed_json
     end
 
     def remove_from_elasticsearch
-      __elasticsearch__.client.delete index: Consts::Elasticsearch[:index_name][:photo], type: 'photo', id: id
+      __elasticsearch__.client.delete index: index_name, type: 'photo', id: id
     end
   end
   # rubocop:enable all
@@ -83,8 +85,8 @@ module Searchable
   module ClassMethods
     def create_index!(options = {})
       client = __elasticsearch__.client
-      client.indices.delete index: Consts::Elasticsearch[:index_name][:photo] if options[:force]
-      client.indices.create index: Consts::Elasticsearch[:index_name][:photo],
+      client.indices.delete index: index_name if options[:force]
+      client.indices.create index: index_name,
                             body: {
                               settings: settings.to_hash,
                               mappings: mappings.to_hash
@@ -94,19 +96,19 @@ module Searchable
     def create_alias!
       client = __elasticsearch__.client
       if client.indices.exists_alias? name: Consts::Elasticsearch[:alias_name][:photo]
-        client.indices.delete_alias index: Consts::Elasticsearch[:index_name][:photo], alias_name: Consts::Elasticsearch[:alias_name][:photo]
+        client.indices.delete_alias index: index_name, name: Consts::Elasticsearch[:alias_name][:photo]
       end
 
-      client.indices.put_alias index: Consts::Elasticsearch[:index_name][:photo], name: Consts::Elasticsearch[:alias_name][:photo]
+      client.indices.put_alias index: index_name, name: Consts::Elasticsearch[:alias_name][:photo]
     end
 
     def bulk_import
-      client = __elasticsearch__.client
+      es = __elasticsearch__
 
       find_in_batches.with_index do |entries, i|
-        client.bulk(
-          index: index_name,
-          type: document_type,
+        es.client.bulk(
+          index: es.index_name,
+          type: es.document_type,
           body: entries.map { |entry| { index: { _id: entry.id, data: entry.as_indexed_json } } },
           refresh: (i.positive? && (i % 3).zero?), # NOTE: 定期的にrefreshしないとEsが重くなる
         )

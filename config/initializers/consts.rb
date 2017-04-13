@@ -1,7 +1,7 @@
 module Consts
   Elasticsearch = {
-    index_name: { photo: 'photo_index' },
-    alias_name: { photo: 'photo_search' }
+    index_name: { photo: 'photos' },
+    alias_name: { photo: 'photo_search_alias' }
   }
 
   CACHE_KEYS = {
