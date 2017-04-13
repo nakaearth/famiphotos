@@ -19,25 +19,25 @@ module Search
             functions: [
               {
             #    filter: {
-                  field_value_factor: {
-                    field: "good_point",
-                    factor: 2.0,
-                    modifier: "square",
-                    missing: 1
-                  },
+                field_value_factor: {
+                  field: "good_point",
+                  factor: 2.0,
+                  modifier: "square",
+                  missing: 1
+                },
             #    },
                 weight: 20
               },
               {
             #    filter: {
-                  field_value_factor: {
-                    field: "id",
-                    factor: 1.5,
-                    modifier: "sqrt",
-                    missing: 1
-                  }
-                },
-                weight: 10
+                field_value_factor: {
+                  field: "id",
+                  factor: 1.5,
+                  modifier: "sqrt",
+                  missing: 1
+                }
+              },
+              weight: 10
             #  }
             ]
           }
