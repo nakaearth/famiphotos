@@ -18,7 +18,7 @@ RSpec.describe Search::Query::FunctionQuery do
                   query: 'test',
                   fields: ['description'],
                   default_operator: 'and'
-              }
+                }
               }
             ]
           }

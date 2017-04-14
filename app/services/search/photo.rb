@@ -39,7 +39,7 @@ module Search
                   missing: 1
                 },
                 weight: 10
-              },
+              }
             ]
           }
 # TODO: aggregationを設定する

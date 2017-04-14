@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 namespace :ridgepole do
   desc 'ridgepole apply task'
   task :apply do
