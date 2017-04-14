@@ -6,11 +6,16 @@ module Search
       @client.search(query).records.to_a
     end
 
+    def search_with_hits_data
+      @client.index_name = Consts::Elasticsearch[:index_name][:photo]
+      @client.search(query).records
+    end
+
     private
 
     def query
       {
-        min_score: 0.1,
+        min_score: 20,
         query: {
           function_score: {
             score_mode: 'sum', # functionsないのスコアの計算方法
@@ -18,27 +23,23 @@ module Search
             query: Search::Query::FunctionQuery.new(@conditions, ['description']).match_query,
             functions: [
               {
-            #    filter: {
                 field_value_factor: {
                   field: "good_point",
                   factor: 2.0,
                   modifier: "square",
                   missing: 1
                 },
-            #    },
                 weight: 20
               },
               {
-            #    filter: {
                 field_value_factor: {
                   field: "id",
                   factor: 1.5,
                   modifier: "sqrt",
                   missing: 1
-                }
+                },
+                weight: 10
               },
-              weight: 10
-            #  }
             ]
           }
 # TODO: aggregationを設定する
