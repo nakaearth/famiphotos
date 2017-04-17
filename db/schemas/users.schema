@@ -1,4 +1,4 @@
-create_table "users", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC" do |t|
+create_table "users", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
   t.string   "name",               limit: 255
   t.string   "email",              limit: 255,             null: false
   t.string   "decrypted_password", limit: 255

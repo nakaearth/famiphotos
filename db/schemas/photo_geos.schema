@@ -1,4 +1,4 @@
-create_table "photo_geos", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC" do |t|
+create_table "photo_geos", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
   t.integer  "photo_id",   limit: 4
   t.decimal  "longitude",              precision: 11, scale: 8
   t.decimal  "latitude",               precision: 11, scale: 8

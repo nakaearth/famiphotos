@@ -1,4 +1,4 @@
-create_table "group_members", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC" do |t|
+create_table "group_members", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
   t.integer  "group_id",   limit: 4,                      null: false
   t.integer  "user_id",    limit: 4,                      null: false
   t.string   "role",       limit: 255, default: "member", null: false

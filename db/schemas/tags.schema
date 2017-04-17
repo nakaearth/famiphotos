@@ -1,4 +1,4 @@
-create_table "tags", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC" do |t|
+create_table "tags", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
   t.text     "name",        limit: 30,                null: false
   t.integer  "user_id",     limit: 4,     default: 0, null: false
   t.integer  "photo_id",    limit: 4,     default: 0, null: false

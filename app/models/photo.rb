@@ -14,13 +14,13 @@ class Photo < FamiphotosPlatform::FamiphotoBase
   belongs_to :user
   belongs_to :album, optional: true, inverse_of: :photos
   has_one :photo_geo
-  has_many :tags
+  has_many :tags, inverse_of: :photos
 
   ####################################################################
   ####################### nested_attributes_for ######################
   ####################################################################
-  accepts_nested_attributes_for :photo_geo
-  accepts_nested_attributes_for :tags
+  accepts_nested_attributes_for :photo_geo, allow_destroy: true
+  accepts_nested_attributes_for :tags, allow_destroy: true
 
   ####################################################################
   ####################### Validation #################################

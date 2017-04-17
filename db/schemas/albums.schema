@@ -1,4 +1,4 @@
-create_table "albums", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC" do |t|
+create_table "albums", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
   t.string   "title",      limit: 80
   t.integer  "group_id",   limit: 4,  null: false
   t.datetime "created_at"
