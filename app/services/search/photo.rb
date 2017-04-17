@@ -51,7 +51,7 @@ module Search
         },
         aggs: {
           tag: {
-             terms: {
+            terms: {
               field: 'tag_name',
               size: 50
             }
