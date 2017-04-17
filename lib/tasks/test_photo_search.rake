@@ -13,6 +13,9 @@ namespace :search_testdata do
       puts "#{photo.description}: #{hit._score}"
     end
 
+    aggre_photos = Search::Photo.new(Photo, params).search_with_aggregations
+    p aggre_photos
+
     Rails.logger.info('データ検索完了')
   end
 end

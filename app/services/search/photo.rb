@@ -11,6 +11,11 @@ module Search
       @client.search(query).records
     end
 
+    def search_with_aggregations
+      @client.index_name = Consts::Elasticsearch[:index_name][:photo]
+      @client.search(query).aggregations
+    end
+
     private
 
     def query
@@ -44,14 +49,14 @@ module Search
           }
 # TODO: aggregationを設定する
         },
-        # args: {
-        #   tag: {
-        #     terms: {
-        #       field: 'tag_name',
-        #       size: 50
-        #     }
-        #   }
-        # }
+        aggs: {
+          tag: {
+             terms: {
+              field: 'tag_name',
+              size: 50
+            }
+          }
+        }
       }.to_json
     end
   end
