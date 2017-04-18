@@ -18,4 +18,17 @@ RSpec.describe Photo, type: :model do
       it { is_expected.to validate_length_of(:description).is_at_most(140) }
     end
   end
+
+  describe 'nested_attributeの確認' do
+    context 'user経由でphotoを作成する' do
+      before do
+        @test_photo = user.photos.build({
+                                          description: 'テストほげ',
+                                          image: File.open("#{Rails.root}/spec/fixtures/dog.jpeg")
+                                        })
+      end
+
+      it { expect(@test_photo.save).to eq true }
+    end
+  end
 end
