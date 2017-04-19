@@ -1,19 +1,23 @@
 # frozen_string_literal: true
 module Search
   class Photo < Base
+    attr_accessor :response
+
     def search
       @client.index_name = Consts::Elasticsearch[:index_name][:photo]
-      @client.search(query).records.to_a
+      @response = @client.search(query)
     end
 
-    def search_with_hits_data
-      @client.index_name = Consts::Elasticsearch[:index_name][:photo]
-      @client.search(query).records
+    def result_record
+      @response.records.to_a
     end
 
-    def search_with_aggregations
-      @client.index_name = Consts::Elasticsearch[:index_name][:photo]
-      @client.search(query).aggregations
+    def hits_count
+      @response.records
+    end
+
+    def aggregations
+      @response.aggregations
     end
 
     private

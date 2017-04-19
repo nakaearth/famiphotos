@@ -6,14 +6,16 @@ namespace :search_testdata do
     user = User.all.first
 
     Rails.logger.info '===データ検索開始==='
-    params = { keyword: 'テスト', user_id: user.id }
-    photos = Search::Photo.new(Photo, params).search_with_hits_data
+    params  = { keyword: 'テスト', user_id: user.id }
+    service = Search::Photo.new(Photo, params)
+    service.search
+    photos  = service.hits_count
 
     photos.each_with_hit do |photo, hit|
       puts "#{photo.description}: #{hit._score}"
     end
 
-    aggre_photos = Search::Photo.new(Photo, params).search_with_aggregations
+    aggre_photos = service.aggregations
     p aggre_photos
 
     Rails.logger.info('データ検索完了')
