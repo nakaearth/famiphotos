@@ -22,8 +22,7 @@ namespace :setting_testdata do
         album: album,
         good_point: [*1..10].sample
       )
-      binding.pry
-      Tag.create(name: tag_keys[[*0..2].sample], photo: photo, user: user, group: group)
+      Tag.create(name: tag_keys.sample, photo: photo, user: user, group: group)
     end
 
     Rails.logger.info('データ作成完了')

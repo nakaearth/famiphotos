@@ -16,7 +16,9 @@ namespace :search_testdata do
     end
 
     aggre_photos = service.aggregations
+    puts "=====アグリゲーション====="
     p aggre_photos
+    puts "=============="
 
     Rails.logger.info('データ検索完了')
   end
