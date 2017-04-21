@@ -13,14 +13,17 @@ namespace :setting_testdata do
     group = Group.create(name: 'test group')
     album = Album.create(group: group, title: 'test album')
     Rails.logger.info '===データ作成開始==='
+    tag_keys = ['Test', 'Study', 'Movie']
     1000.times do
       Rails.logger.info "photo data save!"
-      Photo.new(
+      photo = Photo.create(
         description: "これはテスト。#{[*1..100].sample}犬の画像です。",
         user: user,
         album: album,
         good_point: [*1..10].sample
-      ).save!
+      )
+      binding.pry
+      Tag.create(name: tag_keys[[*0..2].sample], photo: photo, user: user, group: group)
     end
 
     Rails.logger.info('データ作成完了')

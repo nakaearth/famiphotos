@@ -15,5 +15,5 @@ h1 アルバム一覧
             br/
           = album.name
           br/
-          = link_to 'アルバムを見る', album_photos_path(album)
-          | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', album_path(album), method: :delete,  data: { confirm: '削除しますか？'} }
+          = link_to 'アルバムを見る', album_photos_path(album_id: album.id)
+          | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', album_path(id: album.id), method: :delete,  data: { confirm: '削除しますか？'} }

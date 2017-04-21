@@ -15,7 +15,7 @@ class User < FamiphotosPlatform::FamiphotoBase
   validates :email, length: { maximum: 60 }
   validates :provider, presence: true, length: { maximum: 30 }
 
-  after_create :create_group_members
+  after_create :create_default_group_and_album
 
   ####### クラスメソッド ########
 
@@ -38,8 +38,10 @@ class User < FamiphotosPlatform::FamiphotoBase
 
   protected
 
-  def create_group_members
-    group = Group.find_or_create_by(name: name || "デフォルト#{name}グループ")
+  def create_default_group_and_album
+    group = Group.find_or_create_by(name: "デフォルト#{name}グループ")
     GroupMember.find_or_create_by(user_id: id, group_id: group.id, role: 'owner')
+
+    Album.find_or_create_by(group: group, title: "#{name}のアルバム")
   end
 end
