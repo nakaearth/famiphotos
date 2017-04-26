@@ -12,10 +12,10 @@ h1 写真一覧
         .photo_detail id="photo_viewer_#{photo.id}"
           span id="close_photo_#{photo.id}"
             | 閉じる
-            | \#{image_tag photo.photo.url(:original)}
+            = image_tag photo.image.url
         span id="photo_#{photo.id}"
-          = image_tag photo.photo.url(:thumb)
-          | タイトル:#{photo.photo_file_name}
+          = image_tag photo.image.url(:thumb)
+          | #{photo.description}
           br/
           | 投稿日付 #{photo.created_at.strftime("%Y/%m/%d")}
           br/
@@ -29,5 +29,5 @@ h1 写真一覧
               });
         | コメント:#{photo.description}
         br/
-        = link_to '拡大', photo_path(photo), remote: true
-        | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', photo_path(photo), method: :delete,  data: { confirm: '削除しますか？'} }
+        = link_to '拡大', album_photo_path(album_id: photo.album_id, id: photo.id), remote: true
+        | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', album_photo_path(album_id: photo.album_id, id: photo.id), method: :delete,  data: { confirm: '削除しますか？'} }

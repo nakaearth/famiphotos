@@ -6,10 +6,10 @@ module Searchable
   included do
     include Elasticsearch::Model
 
-    if Rails.env.production?
+    unless Rails.env.test?
       include Elasticsearch::Model::Callbacks
-      after_save :transfer_to_elasticsearch
-      after_destroy :remove_from_elasticsearch
+      #after_save :transfer_to_elasticsearch
+      #after_destroy :remove_from_elasticsearch
     end
 
     index_name = Consts::Elasticsearch[:index_name][:photo]
