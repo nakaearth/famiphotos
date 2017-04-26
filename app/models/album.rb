@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 class Album < FamiphotosPlatform::FamiphotoBase
-  include Searchable
-
   use_switch_point :famiphoto
 
   ####################################################################
