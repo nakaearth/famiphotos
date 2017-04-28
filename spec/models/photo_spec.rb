@@ -23,9 +23,9 @@ RSpec.describe Photo, type: :model do
     context 'user経由でphotoを作成する' do
       before do
         @test_photo = user.photos.build({
-          description: 'テストほげ',
-          image: File.open("#{Rails.root}/spec/fixtures/dog.jpeg")
-        })
+                                          description: 'テストほげ',
+                                          image: File.open("#{Rails.root}/spec/fixtures/dog.jpeg")
+                                        })
       end
 
       it { expect(@test_photo.save).to eq true }
@@ -34,10 +34,10 @@ RSpec.describe Photo, type: :model do
     context 'user経由でtagを作成する' do
       before do
         @built_photo = user.photos.build({
-          description: 'テストほげ',
-          image: File.open("#{Rails.root}/spec/fixtures/dog.jpeg"),
-          tags_attributes: [{ name: 'test' }]
-        })
+                                           description: 'テストほげ',
+                                           image: File.open("#{Rails.root}/spec/fixtures/dog.jpeg"),
+                                           tags_attributes: [{ name: 'test' }]
+                                         })
       end
 
       it { expect(@built_photo.save).to eq true }
@@ -50,10 +50,10 @@ RSpec.describe Photo, type: :model do
     context 'user経由でphoto_geoを作成する' do
       before do
         @built_photo = user.photos.build({
-          description: 'テストほげ',
-          image: File.open("#{Rails.root}/spec/fixtures/dog.jpeg"),
-          photo_geo_attributes: { address: '東京都港区' }
-        })
+                                           description: 'テストほげ',
+                                           image: File.open("#{Rails.root}/spec/fixtures/dog.jpeg"),
+                                           photo_geo_attributes: { address: '東京都港区' }
+                                         })
       end
 
       it { expect(@built_photo.save).to eq true }

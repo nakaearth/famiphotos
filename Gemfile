@@ -120,6 +120,7 @@ end
 # 本番環境のみ適用
 group :production do
   gem 'cloudinary'
+  gem 'bonsai-elasticsearch-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

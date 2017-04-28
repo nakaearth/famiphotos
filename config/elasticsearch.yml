@@ -1,0 +1,29 @@
+development:
+  master:
+    host:
+      - '127.0.0.1'
+    port:
+      - 9200
+  slave:
+    host:
+      - '127.0.0.1'
+    port:
+      - 9200
+test:
+  master:
+    host:
+      - '127.0.0.1'
+    port:
+      - 9200
+  slave:
+    host:
+      - '127.0.0.1'
+    port:
+      - 9200
+production:
+  master:
+    url:
+      - <%= ENV['BONSAI_URL'] %>
+  slave:
+    url:
+      - <%= ENV['BONSAI_URL'] %>
