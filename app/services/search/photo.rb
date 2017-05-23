@@ -38,16 +38,16 @@ module Search
                   modifier: "square",
                   missing: 1
                 },
-                weight: 20
+                weight: 5
               },
               {
                 field_value_factor: {
                   field: "id",
-                  factor: 1.5,
-                  modifier: "sqrt",
+                  factor: 3,
+                  modifier: "sqrt", # squt: ルート, log: 指数関数
                   missing: 1
                 },
-                weight: 10
+                weight: 2
               }
             ]
           }

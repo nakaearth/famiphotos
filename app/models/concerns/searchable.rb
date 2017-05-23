@@ -58,12 +58,16 @@ module Searchable
     } do
       mapping _source: { enabled: true },
               _all: { enabled: true, analyzer: 'kuromoji_analyzer' } do
-        indexes :id, type: 'integer', index: 'not_analyzed'
+        indexes :id,          type: 'integer', index: 'not_analyzed'
         indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
-        indexes :group_id, type: 'integer', index: 'not_analyzed'
-        indexes :album_id, type: 'integer', index: 'not_analyzed'
-        indexes :good_point, type: 'integer', index: 'not_analyzed'
-        indexes :tag_name, type: 'keyword', index: 'not_analyzed'
+        indexes :group_id,    type: 'integer', index: 'not_analyzed'
+        indexes :album_id,    type: 'integer', index: 'not_analyzed'
+        indexes :good_point,  type: 'integer', index: 'not_analyzed'
+        indexes :tags,        type: 'nested' do
+          indexes :name,      type: 'keyword', index: 'not_analyzed'
+        end
+        indexes :created_at,  type: 'date', format: 'date_time'
+        indexes :updated_at,  type: 'date', format: 'date_time'
       end
     end
 
@@ -105,12 +109,12 @@ module Searchable
     def bulk_import
       es = __elasticsearch__
 
-      find_in_batches.with_index do |entries, i|
+      find_in_batches.with_index do |entries, _i|
         es.client.bulk(
           index: es.index_name,
           type: es.document_type,
           body: entries.map { |entry| { index: { _id: entry.id, data: entry.as_indexed_json } } },
-          refresh: (i.positive? && (i % 3).zero?), # NOTE: 定期的にrefreshしないとEsが重くなる
+          refresh: true, # NOTE: 定期的にrefreshしないとEsが重くなる
         )
       end
     end
@@ -121,8 +125,8 @@ module Searchable
   def as_indexed_json_tag(_options = {})
     return {} unless tags
 
-    tag_maps = tags.map(&:name)
+    tag_maps = tags.map { |tag| { name: tag.name } }
 
-    { tag_name: tag_maps }
+    { tags: tag_maps }
   end
 end
