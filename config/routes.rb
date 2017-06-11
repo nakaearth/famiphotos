@@ -13,11 +13,13 @@ Rails.application.routes.draw do
   resources :albums, only: %i( index show new create edit update destroy ) do
     ## 写真関連
     resources :photos, only: %i( index show destroy )
+    resources :videos, only: %i( index show destroy )
     resources :daily_photos, only: %i( index )
   end
   resource :photos, only: %i( new create )
   resource  :photo_search, only: %i( create )
   resource  :photo_geo_search, only: %i( create )
+  resource :videos, only: %i( new create )
   ## user関連
   resources :users, only: %i( index show new create edit update destroy )
   resources :user_searches, only: %i( create )
