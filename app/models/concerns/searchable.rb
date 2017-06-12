@@ -125,6 +125,6 @@ module Searchable
   def as_indexed_json_tag(_options = {})
     return {} unless tags
 
-    { tags: tags.map{ |tag| tag.attributes } }
+    { tags: tags.map(&:attributes) }
   end
 end
