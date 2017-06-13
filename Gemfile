@@ -196,3 +196,5 @@ gem 'react-rails'
 # SQL発行場所を出力させる
 gem 'activerecord-cause'
 
+# 動画サービス連携
+gem 'Ziggeo'

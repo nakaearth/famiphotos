@@ -12,6 +12,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    Ziggeo (1.01)
     actioncable (5.0.3)
       actionpack (= 5.0.3)
       nio4r (>= 1.2, < 3.0)
@@ -605,6 +606,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  Ziggeo
   active_decorator
   active_hash
   activerecord-cause

@@ -1,10 +1,8 @@
-h1
-  = @album.title
+<ziggeo ziggeo-limit=15
+    ziggeo-width=320
+    ziggeo-height=240>
+</ziggeo>
 
-ul.tab
-  li.active
-    = link_to 'カレンダー表示', '#tab', data: { toggle: :tab }
-
-  .tab-content
-    #tab.tab-pane.active
-      = render 'calender'
+- if @videos
+  - @videos.each do |video|
+    = video.title
