@@ -9,9 +9,10 @@ class VideosController < ApplicationController
 
   def index
     respond_to do |format|
-      @videos = @album.videos.page(params[:page])
-      format.html
+      # @videos = @album.videos.page(params[:page])
+      @videos = @album.videos
 
+      format.html
       format.json { render 'api/videos/index' }
     end
   end
