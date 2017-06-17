@@ -30,7 +30,7 @@ class Album < FamiphotosPlatform::FamiphotoBase
   ####################################################################
   # [memo] もしかしたら、これはdecoratorにおくべきかな？
   def top_image_url
-    return 'np_photo.gif' if photos.blank?
+    return 'no_photo.jpeg' if photos.blank?
 
     photos.first.thumb_url
   end

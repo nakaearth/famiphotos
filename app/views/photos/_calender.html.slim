@@ -5,4 +5,4 @@
   - if photos.first
     = link_to image_tag(photos.first.thumb_url), album_daily_photos_path(album_id: @album.id, created_at_ymd: photos.first.created_at_ymd)
   - else
-    = image_tag 'np_photo.gif'
+    = image_tag 'no_photo.jpeg'
