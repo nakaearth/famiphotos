@@ -21,7 +21,7 @@ RSpec.describe Album, type: :model do
 
   describe '#top_image_Url' do
     context 'photosがからの場合' do
-      it { expect(album.top_image_url).to eq 'np_photo.gif' }
+      it { expect(album.top_image_url).to eq 'no_photo.jpeg' }
     end
 
     context 'photosにデータがある場合' do
