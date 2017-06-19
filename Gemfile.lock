@@ -366,6 +366,7 @@ GEM
       json
       websocket (~> 1.0)
     rack (2.0.3)
+    rack-cors (0.4.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.3)
@@ -659,6 +660,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   pundit
+  rack-cors
   rails (~> 5.0)
   rails_best_practices
   rake (~> 12.0)
