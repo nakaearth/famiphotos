@@ -36,6 +36,9 @@ module Api
     private
 
     def set_user
+      # TODO: 取り敢えず一旦Angularから呼び出すために追加
+      return @current_user = User.last if params['uid'] == 'guest'
+
       @current_user = User.find_by(uid: params[:uid])
     end
 
