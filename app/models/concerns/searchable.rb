@@ -86,7 +86,7 @@ module Searchable
   end
   # rubocop:enable all
 
-  module ClassMethods
+  class_methods do
     def create_index!(options = {})
       client = __elasticsearch__.client
       client.indices.delete index: index_name if options[:force]
