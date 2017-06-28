@@ -20,6 +20,9 @@ Metrics/AbcSize:
   Enabled: false
 Metrics/BlockNesting:
   Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'app/models/concerns/*'
 Metrics/ClassLength:
   Enabled: false
 Metrics/ModuleLength:
