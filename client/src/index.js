@@ -1,13 +1,19 @@
-/*
-/* module
-**/
+import React, { Component } from 'react'
+import { render } from 'react-dom'
 
-/*
-/* es2015
-**/
-class Test {
-  constructor(msg) {
-    conslo.log(msg);
+class App extends Component {
+  render() {
+    const { title } = this.props
+    return (
+      <div>
+        <h1>
+          {title}
+        </h1>
+      </div>
+    )
   }
 }
-let test = new Test('webpack');
+
+render(
+  <App title="Hello React" />,
+  document.getElementById('container'))
