@@ -202,3 +202,6 @@ gem 'activerecord-cause'
 
 # 動画サービス連携
 gem 'Ziggeo'
+
+# プロセス管理
+gem 'foreman'
