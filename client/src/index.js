@@ -5,7 +5,13 @@ class App extends Component {
   render() {
     const { title } = this.props
     const { comment } = this.props
-    const { items } = ['test', 'hoge']
+
+    let  items = ['test', 'hoge']
+    for (let i = 0; i < items.length; i++) {
+      console.log(i);
+      console.log(items[i]);
+    }
+
     return (
       <div>
         <h1>{title}</h1>
