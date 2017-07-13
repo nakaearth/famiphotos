@@ -33,7 +33,7 @@ class App extends Component {
     );
   }
 }
-//
-// render(
-//   <App title="Hello React" comment="ほげホゲホゲ" />,
-//   document.getElementById('container'))
+
+render(
+  <App title="Hello React" comment="ほげホゲホゲ" />,
+  document.getElementById('container'))
