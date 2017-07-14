@@ -16,7 +16,7 @@ class AppList extends Component {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {items: ["hoge","hogehoge","fugaga"]};
+    this.state = {items: [], text: ''};
   }
 
   render() {
@@ -26,14 +26,30 @@ class App extends Component {
 
     return (
       <div>
-        <h1>{title}</h1>
-        <h1>{comment}</h1>
+        <h3>{title}</h3>
+        <h3>{comment}</h3>
+        <form onSubmit={this.handleSubmit.bind(this)} >
+          <input onChange={this.handleChange.bind(this)} value={this.state.text} />
+          <button>Add</button>
+        </form>
         <AppList items={this.state.items} />
       </div>
     );
   }
-}
 
+  handleChange(e) {
+    this.setState({text: e.target.value});
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const newItem = this.state.text;
+    this.setState((prevState) => ({
+      items: prevState.items.concat(newItem),
+      text: ''
+    }));
+  }
+}
 render(
   <App title="Hello React" comment="ほげホゲホゲ" />,
   document.getElementById('container'))
