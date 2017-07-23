@@ -12,7 +12,8 @@ gem 'famiphotos_platform', git: 'https://github.com/nakaearth/famiphotos_platfor
 gem 'rails', '~> 5.0'
 gem 'rake', '~> 12.0'
 # Use mysql as the database for Active Record
-gem 'mysql2', ' ~> 0.3.18'
+#gem 'mysql2', ' ~> 0.3.18'
+gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -47,7 +48,8 @@ gem 'ridgepole'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  # gem 'byebug', platform: :mri
+  gem 'byebug', '~> 9.0.6'
   # コーディング規約チェック
   gem 'rubocop'
   gem 'onkcop'
