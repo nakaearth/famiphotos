@@ -1,10 +1,10 @@
 module.exports = {
   entry: {
-    app: './src/index.js',
+    app: './client/src/index.js',
   },
 
   output: {
-    path: __dirname + '/../app/assets/javascripts/webpack/',
+    path: __dirname + '/app/assets/javascripts/webpack/',
     filename: '[name].js',
   },
 
