@@ -1,3 +1,3 @@
 # Procfile
 rails: bundle exec rails server
-webpack: npm --prefix client run webpack-watch
+webpack: npm run webpack-watch
