@@ -9,7 +9,7 @@ require 'optparse'
 class SetupElasticsearch
   class << self
     def execute
-      logger = ActiveSupport::Logger.new("log/#{class_name}_batch.log", 'daily')
+      logger = ActiveSupport::Logger.new("log/setting_batch.log", 'daily')
       force = args[:force] || false
 
       logger.info('index作成')
