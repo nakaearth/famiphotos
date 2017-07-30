@@ -1,7 +1,7 @@
 task :build_frontend do
   cd "client" do
     sh "npm install"
-    sh "npm run build"
+    sh "npm  build"
   end
 end
 
