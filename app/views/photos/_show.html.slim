@@ -2,4 +2,4 @@
 
   .photo_detail
 
-    = image_tag photo.image.url, alt: '写真拡大',  data: { dismiss: 'modal' }
+    = image_tag photo.image_url(:original), alt: '写真拡大',  data: { dismiss: 'modal' }
