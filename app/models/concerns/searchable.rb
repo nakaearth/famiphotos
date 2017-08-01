@@ -59,12 +59,14 @@ module Searchable
       mapping _source: { enabled: true },
               _all: { enabled: true, analyzer: 'kuromoji_analyzer' } do
         indexes :id,          type: 'integer', index: 'not_analyzed'
-        indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
+        # indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
+        indexes :description, type: 'string', analyzer: 'kuromoji_analyzer'
         indexes :group_id,    type: 'integer', index: 'not_analyzed'
         indexes :album_id,    type: 'integer', index: 'not_analyzed'
         indexes :good_point,  type: 'integer', index: 'not_analyzed'
         indexes :tags,        type: 'nested' do
-          indexes :name,      type: 'keyword', index: 'not_analyzed'
+          # indexes :name,      type: 'keyword', index: 'not_analyzed'
+          indexes :name,      type: 'string', index: 'not_analyzed'
         end
         indexes :created_at,  type: 'date', format: 'date_time'
         indexes :updated_at,  type: 'date', format: 'date_time'
