@@ -207,3 +207,6 @@ gem 'Ziggeo'
 
 # プロセス管理
 gem 'foreman'
+
+# pull request支援
+gem 'danger'
