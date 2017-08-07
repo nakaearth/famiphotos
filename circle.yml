@@ -40,7 +40,7 @@ database:
     - RAILS_ENV=test bundle exec rake ridgepole:apply
 test:
   pre:
-    - bundle exec danger
+    # - bundle exec danger
     - bundle exec rubocop app
       # - bundle exec brakeman --exit-on-warn
       # - bundle exec rails_best_practices -e 'db, */concerns/*, */vendor/*' .
