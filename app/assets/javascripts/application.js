@@ -27,4 +27,6 @@
 // require components
 // require namespace
 
+//= webpack/app
+
 //= require_tree .
