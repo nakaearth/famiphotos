@@ -209,4 +209,4 @@ gem 'Ziggeo'
 gem 'foreman'
 
 # pull request支援
-gem 'danger'
+# gem 'danger'
