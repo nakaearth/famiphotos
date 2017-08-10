@@ -66,10 +66,6 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    babel-source (5.8.35)
-    babel-transpiler (0.7.0)
-      babel-source (>= 4.0, < 6)
-      execjs (~> 2.0)
     backports (3.6.8)
     bonsai-elasticsearch-rails (0.2.0)
       elasticsearch-model (~> 0)
@@ -436,13 +432,6 @@ GEM
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
     rb-readline (0.5.4)
-    react-rails (1.10.0)
-      babel-transpiler (>= 0.7.0)
-      coffee-script-source (~> 1.8)
-      connection_pool
-      execjs
-      railties (>= 3.2)
-      tilt
     reek (3.11)
       codeclimate-engine-rb (~> 0.3.1)
       parser (~> 2.3, >= 2.3.0.6)
@@ -702,7 +691,6 @@ DEPENDENCIES
   rake (~> 12.0)
   rake_shared_context
   rb-readline
-  react-rails
   request_store
   ridgepole
   rmagick
