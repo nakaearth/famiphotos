@@ -195,6 +195,9 @@ gem 'active_hash'
 gem 'kaminari'
 # 暗号化
 gem 'attr_encrypted'
+# react用のgem
+gem 'react-rails'
+
 # assets 高速化
 # gem 'sprockets-derailleur'
 # SQL発行場所を出力させる
