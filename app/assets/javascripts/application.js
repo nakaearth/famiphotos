@@ -21,12 +21,6 @@
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 
-// react
-// require react
-// require react_ujs
-// require components
-// require namespace
-
 //= webpack/app
 
 //= require_tree .
