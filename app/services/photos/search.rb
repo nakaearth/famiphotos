@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-module Search
-  class Photo < Base
+module Photo
+  class Search < Base
     attr_accessor :response
 
     def search

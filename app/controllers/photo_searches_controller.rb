@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 class PhotoSearchesController < ApplicationController
   def create
-    search_service = Search::Photo.new(Photo, photo_search_params)
+    search_service = Photo::Search.new(Photo, photo_search_params)
     search_service.search
 
     @photos            = search_service.result_record
