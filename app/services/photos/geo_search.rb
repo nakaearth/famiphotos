@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-module Search
-  class PhotoGeoService < Base
+module Photos
+  class GeoSearch < Base
     # geo関数を使って位置情報を使った検索
     def search(_photo_gro_search)
       body = {

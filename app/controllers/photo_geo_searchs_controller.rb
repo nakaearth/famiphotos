@@ -3,7 +3,7 @@ class PhotoGeoSearchsController < ApplicationController
   before_action :set_photo_geo_search
 
   def create
-    photo_service = Search::PhotoGeoService.new(Photo)
+    photo_service = Photos::GeoSearch.new(Photo)
     @photos       = photo_service.search(@photo_geo_search)
   end
 

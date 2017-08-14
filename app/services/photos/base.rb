@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 # rubocop:disable all
-module Search
+module Photos
   class Base
     def initialize(search_model_class, params)
       if search_model_class.columns { |column| column.type == 'text' }.any?
