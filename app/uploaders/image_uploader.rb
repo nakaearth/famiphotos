@@ -6,7 +6,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave if Rails.env.production?
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  storage :file unless Rails.env.production?
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
