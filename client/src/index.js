@@ -51,5 +51,5 @@ class App extends Component {
   }
 }
 render(
-  <App title="Hello React" comment="ほげホゲホゲ" />,
+  <App title="Hello React" comment="hello react2" />,
   document.getElementById('container'))
