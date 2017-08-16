@@ -9,4 +9,4 @@ Rails.application.config.assets.version = '1.1'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( photos.js videos.js webpack/app.js )
+Rails.application.config.assets.precompile += %w( photos.js videos.js videos_list.js webpack/app.js )
