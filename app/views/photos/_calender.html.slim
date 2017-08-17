@@ -3,6 +3,6 @@
 
   br/
   - if photos.first
-    = link_to image_tag(photos.first.thumb_url), album_daily_photos_path(album_id: @album.id, created_at_ymd: photos.first.created_at_ymd)
+    = link_to image_tag(photos.first.thumb_url), album_daily_photos_path(album_id: Album.encrypt_id(@album.id.to_s), created_at_ymd: photos.first.created_at_ymd)
   - else
     = image_tag 'no_photo.jpeg'

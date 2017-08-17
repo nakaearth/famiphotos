@@ -47,7 +47,7 @@ class AlbumsController < ApplicationController
   end
 
   def set_album
-    @album = @current_group.albums.where(id: decrypted_id(params[:album_id])).first
+    @album = @current_group.albums.where(id: Album.decrypt_id(params[:album_id])).first
   end
 
   def exists_current_group?

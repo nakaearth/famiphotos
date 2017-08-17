@@ -36,7 +36,7 @@ class PhotosController < ApplicationController
     @photo = @current_user.photos.build(photo_params)
 
     if Photo.with_writable { @photo.save }
-      redirect_to album_photos_path(album_id: @photo.album.id), notice: '写真の登録がしました'
+      redirect_to album_photos_path(album_id: Album.encrypt_id(@photo.album.id.to_s)), notice: '写真の登録がしました'
     else
       @albums = @current_group.albums
 
@@ -62,11 +62,11 @@ class PhotosController < ApplicationController
   end
 
   def set_album
-    @album = @current_group.albums.where(id: params[:album_id]).first
+    @album = @current_group.albums.where(id: Album.decrypt_id(params[:album_id])).first
   end
 
   def set_photo
-    @photo = Photo.find(arams[:id])
+    @photo = Photo.find(params[:id])
   end
 
   def photo_params
