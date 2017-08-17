@@ -13,6 +13,6 @@
         | コメント:#{photo.description}
         br/
         = link_to '拡大', "#photo_view_#{photo.id}", data: { toggle: "modal", target: ".photo_view_#{photo.id}", backdrop: false }
-        | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', album_photo_path(album_id: @album.id, id: photo.id), method: :delete,  data: { confirm: '削除しますか？'} }
+        | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', album_photo_path(album_id: Album.encrypt_id(@album.id.to_s), id: photo.id), method: :delete,  data: { confirm: '削除しますか？'} }
 
       = render 'photos/show', photo: photo

@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   include DecryptedId
 
   before_action :set_request_variant
-  before_action :set_album, only: %i(index)
+  before_action :set_album, only: %i(index destroy)
   before_action :set_photo, only: %i(edit show destroy)
 
   def index
@@ -49,9 +49,10 @@ class PhotosController < ApplicationController
   def update; end
 
   def destroy
+    target_date_ymd = @photo.created_at_ymd
     @photo.destroy
 
-    redirect_to photos_path, notice: '写真を削除しました'
+    redirect_to album_daily_photos_path(album_id: Album.encrypt_id(@album.id.to_s), created_at_ymd: target_date_ymd), notice: '写真を削除しました'
   end
 
   private
