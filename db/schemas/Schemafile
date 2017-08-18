@@ -1,6 +1,4 @@
 require 'albums.schema'
-require 'group_members.schema'
-require 'groups.schema'
 require 'information.schema'
 require 'photo_geos.schema'
 require 'photos.schema'

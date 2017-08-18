@@ -1,6 +1,6 @@
 #photo_form.photo_form
   #photo_form_div.photo_form_div
-    = form_for @current_group, url: albums_path, html: { method: :post } do |f|
+    = form_for @current_user, url: albums_path, html: { method: :post } do |f|
       = f.fields_for :album do |album|
         .field
           = f.label :title

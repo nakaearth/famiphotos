@@ -18,7 +18,7 @@ class DailyPhotosController < ApplicationController
   end
 
   def set_album
-    @album = @current_group.albums.where(id: Album.decrypt_id(params[:album_id])).first
+    @album = @current_user.albums.where(id: Album.decrypt_id(params[:album_id])).first
   end
 
   def set_date_from_created_at_ymd

@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   ## user関連
   resources :users, only: %i( index show new create edit update destroy )
   resources :user_searches, only: %i( create )
-  resources :groups, only: %i( index show new create )
 
   # api
   namespace :api do
@@ -44,6 +43,4 @@ Rails.application.routes.draw do
   # mount Famiphotos
   # ===============================================================================
   mount FamiphotosPlatform::Engine, at: '/'
-
-
 end

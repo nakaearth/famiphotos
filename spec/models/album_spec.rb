@@ -3,13 +3,12 @@ require 'rails_helper'
 
 RSpec.describe Album, type: :model do
   let!(:user) { create(:user) }
-  let!(:group) { create(:group) }
-  let(:album) { create(:album, group: group) }
+  let(:album) { create(:album, user: user) }
 
   describe '幾つかのテーブルと関連を持っている' do
     context 'have a relation tro user class' do
       it { expect have_many(:photos) }
-      it { expect belong_to(:group) }
+      it { expect belong_to(:user) }
     end
   end
 

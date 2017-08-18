@@ -8,7 +8,7 @@ class Album < FamiphotosPlatform::FamiphotoBase
   # has_many :photos, inverse_of: :album
   has_many :photos
   has_many :videos
-  belongs_to :group
+  belongs_to :user
 
   ####################################################################
   ####################### Validation #################################

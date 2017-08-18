@@ -9,8 +9,7 @@ RSpec.describe Photos::UploadService, broken: true do
     }
   end
 
-  let(:group) { create(:group) }
-  let(:user) { create(:user, group: group) }
+  let(:user) { create(:user) }
 
   describe 'file_upload' do
     context '地域情報なし' do

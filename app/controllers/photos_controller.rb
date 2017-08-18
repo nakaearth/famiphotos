@@ -29,7 +29,7 @@ class PhotosController < ApplicationController
   def new
     @photo = @current_user.photos.build
 
-    @albums = @current_group.albums
+    @albums = @current_user.albums
   end
 
   def create
@@ -38,7 +38,7 @@ class PhotosController < ApplicationController
     if Photo.with_writable { @photo.save }
       redirect_to album_photos_path(album_id: Album.encrypt_id(@photo.album.id.to_s)), notice: '写真の登録がしました'
     else
-      @albums = @current_group.albums
+      @albums = @current_user.albums
 
       render action: :new, alert: '写真の登録に失敗しました'
     end
@@ -63,7 +63,7 @@ class PhotosController < ApplicationController
   end
 
   def set_album
-    @album = @current_group.albums.where(id: Album.decrypt_id(params[:album_id])).first
+    @album = @current_user.albums.where(id: Album.decrypt_id(params[:album_id])).first
   end
 
   def set_photo
