@@ -1,19 +1,16 @@
 # frozen_string_literal: true
-class Album < FamiphotosPlatform::FamiphotoBase
+class SharedAlbum < FamiphotosPlatform::FamiphotoBase
   use_switch_point :famiphoto
 
   ####################################################################
   ################# Association ######################################
   ####################################################################
-  # has_many :photos, inverse_of: :album
-  has_many :photos
-  has_one  :shared_album
-  belongs_to :user
+  belongs_to :album
 
   ####################################################################
   ####################### Validation #################################
   ####################################################################
-  validates :title, presence: true, length: { maximum: 80 }
+  validates :password, presence: true, length: { maximum: 30 }
 
   ####################################################################
   ##################### コールバック群 ###############################
@@ -28,10 +25,4 @@ class Album < FamiphotosPlatform::FamiphotoBase
   ####################################################################
   ##################### インスタンスメソッド #########################
   ####################################################################
-  # [memo] もしかしたら、これはdecoratorにおくべきかな？
-  def top_image_url
-    return 'no_photo.jpeg' if photos.blank?
-
-    photos.first.thumb_url
-  end
 end

@@ -13,7 +13,7 @@ RSpec.describe Album, type: :model do
   end
 
   describe '入力チェックをする' do
-    context 'descriptionカラム' do
+    context 'titleカラム' do
       it { is_expected.to validate_length_of(:title).is_at_most(80) }
     end
   end

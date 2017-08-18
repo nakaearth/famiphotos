@@ -9,7 +9,7 @@ namespace :search_testdata do
     params  = { keyword: 'テスト', user_id: user.id }
     service = Search::Photo.new(Photo, params)
     service.search
-    photos  = service.hits_count
+    photos = service.hits_count
 
     photos.each_with_hit do |photo, hit|
       puts "#{photo.description}: #{hit._score}"
