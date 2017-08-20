@@ -17,9 +17,9 @@ Rails.application.routes.draw do
     resources :daily_photos, only: %i( index )
   end
   resource :photos, only: %i( new create )
-  resource  :photo_search, only: %i( create )
-  resource  :photo_geo_search, only: %i( create )
-  resource :videos, only: %i( new create )
+  resource :photo_search, only: %i( create )
+  resource :photo_geo_search, only: %i( create )
+  resource :shared_albums, only: %i( show )
   ## user関連
   resources :users, only: %i( index show new create edit update destroy )
   resources :user_searches, only: %i( create )
