@@ -19,6 +19,6 @@ class SharedAlbumsController < ApplicationController
   end
 
   def set_photos
-    @shared_photos = @shared_album.photos
+    @shared_photos = @shared_album.album.photos
   end
 end
