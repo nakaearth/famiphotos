@@ -3,7 +3,13 @@ class SharedAlbumsController < ApplicationController
   include UserAgent
 
   before_action :set_request_variant
+  before_action :set_album, only: %i(create)
   before_action :set_shared_album, only: %i(show)
+  before_action :set_photos, only: %i(show)
+
+  def create
+    @shared_album = SharedAlbum.create(album: @album, password: random_password)
+  end
 
   def show; end
 
@@ -14,11 +20,20 @@ class SharedAlbumsController < ApplicationController
     request.variant = :phone if mobile?
   end
 
+  def set_album
+    @album = Album.find(params[:album_id])
+  end
+
   def set_shared_album
     @shared_album = SharedAlbum.find(SharedAlbum.decrypt_id(params[:id]))
   end
 
   def set_photos
     @shared_photos = @shared_album.album.photos
+  end
+
+  def random_password
+    # TODO: ランダムでパスワードを生成
+    "hogehoge"
   end
 end
