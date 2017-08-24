@@ -5,9 +5,9 @@ class PhotoViewerList extends Component {
   render() {
     return (
       <ul>
-        { this.props.items.map((item, index) => )
+        { this.props.items.map((item, index) => (
           <li key= {index}>{item}</li>
-        }
+        ))}
       </ul>
     );
   }
