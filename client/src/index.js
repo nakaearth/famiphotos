@@ -1,6 +1,20 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
+class PhotoViewerList extends Component {
+  render() {
+    render() {
+      return (
+        <ul>
+          { this.props.items.map((item, index) => )
+            <li key= {index}>{item}</li>
+          }
+        </ul>
+      );
+    }
+  }
+}
+
 class AppList extends Component {
   render() {
     return (
@@ -10,6 +24,44 @@ class AppList extends Component {
         ))}
       </ul>
     );
+  }
+}
+
+class PhotoViewer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {items: [], text: ''};
+  }
+
+  render() {
+    const { title } = this.props
+    const { comment } = this.props
+    const { items } = this.state.items
+
+    return (
+      <div>
+        <h3>{title}</h3>
+        <h3>{comment}</h3>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <input onChange={this.handleChange.bind(this)} value={this.state.text} />
+          <button>Add</button>
+        </form>
+        <PhotoViewerList items={this.state.items} />
+      </div>
+    );
+  }
+
+  handleChange(e) {
+    this.setState({text: e.target.value});
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const newItem = this.state.text;
+    this.setState((prevState) => ({
+      items: prevState.items.concat(newItem),
+      text: ''
+    }));
   }
 }
 
@@ -50,6 +102,7 @@ class App extends Component {
     }));
   }
 }
-render(
-  <App title="Hello React" comment="ほげホゲホゲ" />,
-  document.getElementById('container'))
+
+//render(
+//  <App title="Hello React" comment="ほげホゲホゲ" />,
+//  document.getElementById('container'))
