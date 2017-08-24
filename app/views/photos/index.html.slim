@@ -1,10 +1,12 @@
 h1
   = @album.title
 
+= form_for @shared_album do |f|
+  = f.submit '共有する'
+
 ul.tab
   li.active
     = link_to '日付ごと', '#tab', data: { toggle: :tab }
-
   .tab-content
     #tab.tab-pane.active
       = render 'calender'

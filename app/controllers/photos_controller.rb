@@ -6,6 +6,7 @@ class PhotosController < ApplicationController
   before_action :set_request_variant
   before_action :set_album, only: %i(index destroy)
   before_action :set_photo, only: %i(edit show destroy)
+  before_action :set_shared_album, only: %i(index)
 
   def index
     respond_to do |format|
@@ -68,6 +69,10 @@ class PhotosController < ApplicationController
 
   def set_photo
     @photo = Photo.find(params[:id])
+  end
+
+  def set_shared_album
+    @shared_album = SharedAlbum.new(album: @album)
   end
 
   def photo_params

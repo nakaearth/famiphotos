@@ -7,6 +7,7 @@ class DailyPhotosController < ApplicationController
   before_action :set_album, only: %i(index)
   before_action :set_date_from_created_at_ymd, only: %i(index)
   before_action :set_photos, only: %i(index)
+  before_action :build_shared_album, only: %i(index)
 
   def index; end
 
@@ -27,5 +28,9 @@ class DailyPhotosController < ApplicationController
 
   def set_photos
     @photos = @album.photos.where(created_at: @selected_date...@selected_date.next_day).page(params[:page])
+  end
+
+  def build_shared_album
+    @shared_album = SharedAlbum.new(album: @album)
   end
 end
