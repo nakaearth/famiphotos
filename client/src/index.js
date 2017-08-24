@@ -3,15 +3,13 @@ import { render } from 'react-dom'
 
 class PhotoViewerList extends Component {
   render() {
-    render() {
-      return (
-        <ul>
-          { this.props.items.map((item, index) => )
-            <li key= {index}>{item}</li>
-          }
-        </ul>
-      );
-    }
+    return (
+      <ul>
+        { this.props.items.map((item, index) => )
+          <li key= {index}>{item}</li>
+        }
+      </ul>
+    );
   }
 }
 
