@@ -21,7 +21,7 @@ class SharedAlbumsController < ApplicationController
   end
 
   def set_album
-    @album = Album.find(params[:album_id])
+    @album = Album.find(Album.decrypt_id(params[:shared_album][:album_id]).to_i)
   end
 
   def set_shared_album

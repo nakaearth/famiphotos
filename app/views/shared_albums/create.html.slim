@@ -1,1 +1,3 @@
-= "#{Rails.root}/shared_albums/#{SharedAlbum.encrypt_id(@shared_album.id)}"
+
+h2
+  | #{famiphoto_url}shared_albums/#{SharedAlbum.encrypt_id(@shared_album.id.to_s)}
