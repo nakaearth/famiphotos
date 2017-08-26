@@ -1,5 +1,5 @@
-.App title="Hello React" comment="ほげホゲホゲ"
-.div id="container"
+#container
+= javascript_include_tag 'webpack/app'
 
 .photo_list
   table
@@ -14,5 +14,6 @@
         | コメント:#{photo.description}
         br/
         = link_to '拡大', "#photo_view_#{photo.id}", data: { toggle: "modal", target: ".photo_view_#{photo.id}", backdrop: false }
-
       = render 'photos/show', photo: photo
+
+App title="Hello React" comment="ほげホゲホゲ"

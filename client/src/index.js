@@ -101,6 +101,6 @@ class App extends Component {
   }
 }
 
-//render(
-//  <App title="Hello React" comment="ほげホゲホゲ" />,
-//  document.getElementById('container'))
+render(
+  <PhotoViewer title="共有写真" comment="ほげホゲホゲ" />,
+  document.getElementById('container'))
