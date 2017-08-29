@@ -28,23 +28,21 @@ class AppList extends Component {
 class PhotoViewer extends Component {
   constructor(props) {
     super(props);
-    this.state = {items: [], text: ''};
+    this.state = {photos: [], text: ''};
   }
 
   render() {
     const { title } = this.props
-    const { comment } = this.props
-    const { items } = this.state.items
+    const { photos } = this.state.photos
 
     return (
       <div>
         <h3>{title}</h3>
-        <h3>{comment}</h3>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input onChange={this.handleChange.bind(this)} value={this.state.text} />
           <button>Add</button>
         </form>
-        <PhotoViewerList items={this.state.items} />
+        <PhotoViewerList photos={this.state.photos} />
       </div>
     );
   }
@@ -71,13 +69,11 @@ class App extends Component {
 
   render() {
     const { title } = this.props
-    const { comment } = this.props
     const { items } = this.state.items
 
     return (
       <div>
         <h3>{title}</h3>
-        <h3>{comment}</h3>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input onChange={this.handleChange.bind(this)} value={this.state.text} />
           <button>Add</button>
@@ -102,5 +98,5 @@ class App extends Component {
 }
 
 render(
-  <PhotoViewer title="共有写真" comment="ほげホゲホゲ" />,
+  <PhotoViewer title="共有写真" url='/api/shared_album'  pollInterval={2000}  />,
   document.getElementById('container'))
