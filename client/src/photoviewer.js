@@ -1,28 +1,27 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import photoviewer from 'photoViewer'
 
-class AppList extends Component {
+class PhotoViewerList extends Component {
   render() {
     return (
       <ul>
-        {this.props.items.map((item, index) => (
-          <li key={index}>{item}</li>
+        { this.props.items.map((item, index) => (
+          <li key= {index}>{item}</li>
         ))}
       </ul>
     );
   }
 }
 
-class App extends Component {
+class PhotoViewer extends Component {
   constructor(props) {
     super(props);
-    this.state = {items: [], text: ''};
+    this.state = {photos: [], text: ''};
   }
 
   render() {
     const { title } = this.props
-    const { items } = this.state.items
+    const { photos } = this.state.photos
 
     return (
       <div>
@@ -31,7 +30,7 @@ class App extends Component {
           <input onChange={this.handleChange.bind(this)} value={this.state.text} />
           <button>Add</button>
         </form>
-        <AppList items={this.state.items} />
+        <PhotoViewerList photos={this.state.photos} />
       </div>
     );
   }
@@ -49,7 +48,3 @@ class App extends Component {
     }));
   }
 }
-
-render(
-  <PhotoViewer title="共有写真" url='/api/shared_album'  pollInterval={2000}  />,
-  document.getElementById('container'))
