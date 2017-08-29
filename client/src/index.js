@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import photoviewer from 'photoViewer'
+import PhotoViewer from './photoViewer.js'
 
 class AppList extends Component {
   render() {
@@ -51,5 +51,5 @@ class App extends Component {
 }
 
 render(
-  <PhotoViewer title="共有写真" url='/api/shared_album'  pollInterval={2000}  />,
+  <PhotoViewer title="共有写真" url='/api/shared_album' />,
   document.getElementById('container'))
