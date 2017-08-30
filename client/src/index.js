@@ -51,5 +51,5 @@ class App extends Component {
 }
 
 render(
-  <PhotoViewer title="共有写真" url='/api/shared_album' />,
+  <PhotoViewer title="共有写真" url='/api/shared_albums' />,
   document.getElementById('container'))
