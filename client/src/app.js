@@ -1,27 +1,27 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
-export class PhotoViewerList extends Component {
+class AppList extends Component {
   render() {
     return (
       <ul>
-        { this.props.photos.map((photo, index) => (
-          <li key= {index}>{photo}</li>
+        {this.props.items.map((item, index) => (
+          <li key={index}>{item}</li>
         ))}
       </ul>
     );
   }
 }
 
-export class PhotoViewer extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {photos: [], text: ''};
+    this.state = {items: [], text: ''};
   }
 
   render() {
     const { title } = this.props
-    const { photos } = this.state.photos
+    const { items } = this.state.items
 
     return (
       <div>
@@ -30,7 +30,7 @@ export class PhotoViewer extends Component {
           <input onChange={this.handleChange.bind(this)} value={this.state.text} />
           <button>Add</button>
         </form>
-        <PhotoViewerList photos={this.state.photos} />
+        <AppList items={this.state.items} />
       </div>
     );
   }
