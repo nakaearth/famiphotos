@@ -5,8 +5,8 @@ export class PhotoViewerList extends Component {
   render() {
     return (
       <ul>
-        { this.props.photos.map((photo, index) => (
-          <li key= {index}>{photo}</li>
+        { this.props.photos.map((photo) => (
+          <li key={photo.id}>{photo.title}</li>
         ))}
       </ul>
     );
@@ -16,7 +16,7 @@ export class PhotoViewerList extends Component {
 export class PhotoViewer extends Component {
   constructor(props) {
     super(props);
-    this.state = {photos: [], text: ''};
+    this.state = {photos: []};
   }
 
   loadCommentsFromServer() {
@@ -25,7 +25,7 @@ export class PhotoViewer extends Component {
       dataType: 'json',
       cache: false,
       success: function(data) {
-        this.setState({data: data});
+        this.setState({photos: data});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -35,7 +35,7 @@ export class PhotoViewer extends Component {
 
   componentDidMount() {
     this.loadCommentsFromServer();
-    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+    //setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   }
 
   render() {
