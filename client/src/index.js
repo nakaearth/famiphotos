@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { PhotoViewer, PhotoViewerList } from './photoViewer.js'
 
+var dir = location.href.split("/");
+// var id = dir[dir.length -1];
+
+console.log(dir)
+var search_url += '/api/shared_albumss/'
 render(
-  <PhotoViewer title="共有写真" url='/api/informations' pollInterval={2000} />,
+  <PhotoViewer title="共有写真" url=search_url pollInterval={2000} />,
   document.getElementById('container'))

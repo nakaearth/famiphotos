@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   # api
   namespace :api do
     resources :photos, only: %i( index show create update destroy )
+    resources :shared_albums, only: %i( show )
     resources :informations, only: %i( index )
   end
 
