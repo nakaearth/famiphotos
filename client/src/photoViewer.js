@@ -6,7 +6,7 @@ export class PhotoViewerList extends Component {
     return (
       <ul>
         { this.props.photos.map((photo) => (
-          <li key={photo.id}>{photo.title}</li>
+          <img src={photo.thumb_url} alt={photo.title} id='{photo.id}_id'/>
         ))}
       </ul>
     );
