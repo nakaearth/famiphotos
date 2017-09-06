@@ -45,10 +45,6 @@ export class PhotoViewer extends Component {
     return (
       <div>
         <h3>{title}</h3>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input onChange={this.handleChange.bind(this)} value={this.state.text} />
-          <button>Add</button>
-        </form>
         <PhotoViewerList photos={this.state.photos} />
       </div>
     );
