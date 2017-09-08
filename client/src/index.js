@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import { PhotoViewer, PhotoViewerList } from './photoViewer.js'
+import { PhotoViewer, PhotoList } from './photoViewer.js'
 
 var dir          = location.href.split("/");
 var id_and_query = dir[dir.length -1];

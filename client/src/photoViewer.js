@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
-export class PhotoViewerList extends Component {
+export class PhotoList extends Component {
   render() {
     return (
       <ul>
         { this.props.photos.map((photo) => (
-          <img src={photo.thumb_url} alt={photo.title} id='{photo.id}_id'/>
+          <div key='photo_view_parent_{photo.id}'>
+            <img src={photo.thumb_url} alt={photo.title} id='{photo.id}_id'/>
+            <div aria-hidden="true" class='modal fade photo_view_{photo.id} photo_default_modal' id='photo_view_{photo.id}' role="dialog" tabIndex="-1">
+              <div class="modal-dialog modal-content photo_detail">
+                <img alt="写真拡大" data-dismiss="modal" src='{photo.original_url}'/>
+              </div>
+            </div>
+          </div>
         ))}
       </ul>
     );
@@ -35,7 +42,6 @@ export class PhotoViewer extends Component {
 
   componentDidMount() {
     this.loadCommentsFromServer();
-    //setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   }
 
   render() {
@@ -45,7 +51,7 @@ export class PhotoViewer extends Component {
     return (
       <div>
         <h3>{title}</h3>
-        <PhotoViewerList photos={this.state.photos} />
+        <PhotoList photos={this.state.photos} />
       </div>
     );
   }
