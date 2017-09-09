@@ -6,11 +6,12 @@ export class PhotoList extends Component {
     return (
       <ul>
         { this.props.photos.map((photo) => (
-          <div key='photo_view_parent_{photo.id}'>
-            <img src={photo.thumb_url} alt={photo.title} id='{photo.id}_id'/>
-            <div aria-hidden="true" class='modal fade photo_view_{photo.id} photo_default_modal' id='photo_view_{photo.id}' role="dialog" tabIndex="-1">
-              <div class="modal-dialog modal-content photo_detail">
-                <img alt="写真拡大" data-dismiss="modal" src='{photo.original_url}'/>
+          <div key={"photo_view_" + photo.id} id={photo.id}>
+            <img src={photo.thumb_url} alt={photo.title} id={"photo_" + photo.id}/>
+            <a data-toggle="modal" data-target={"#photo_view_" + photo.id} data-backdrop="false" href={"#photo_view_" + photo.id}>拡大</a>
+            <div aria-hidden='true' className='modal fade photo_default_modal' id={'photo_view_' + photo.id} role='dialog' tabIndex='-1'>
+              <div className='modal-dialog modal-content photo_detail'>
+                <img src={photo.original_url} alt='写真拡大' data-dismiss='modal'/>
               </div>
             </div>
           </div>
