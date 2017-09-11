@@ -4,9 +4,9 @@ import { render } from 'react-dom'
 export class PhotoList extends Component {
   render() {
     return (
-      <ul>
+      <div className='photo_list'>
         { this.props.photos.map((photo) => (
-          <div key={"photo_view_" + photo.id} id={photo.id}>
+          <div key={"photo_view_" + photo.id} id={photo.id} className='photo_div'>
             <img src={photo.thumb_url} alt={photo.title} id={"photo_" + photo.id}/>
             <a data-toggle="modal" data-target={"#photo_view_" + photo.id} data-backdrop="false" href={"#photo_view_" + photo.id}>拡大</a>
             <div aria-hidden='true' className='modal fade photo_default_modal' id={'photo_view_' + photo.id} role='dialog' tabIndex='-1'>
@@ -16,7 +16,7 @@ export class PhotoList extends Component {
             </div>
           </div>
         ))}
-      </ul>
+      </div>
     );
   }
 }
