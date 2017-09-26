@@ -200,12 +200,11 @@ gem 'attr_encrypted'
 # gem 'sprockets-derailleur'
 # SQL発行場所を出力させる
 gem 'activerecord-cause'
-
-# 動画サービス連携
-gem 'Ziggeo'
-
 # プロセス管理
 gem 'foreman'
-
 # pull request支援
 gem 'danger'
+# GraphQL
+gem 'graphql'
+
+gem 'graphiql-rails', group: :development
