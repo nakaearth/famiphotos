@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'famiphotos_platform', git: 'https://github.com/nakaearth/famiphotos_platform.git', branch: 'master'
+# gem 'famiphotos_platform', git: 'https://github.com/nakaearth/famiphotos_platform.git', branch: 'master'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0'

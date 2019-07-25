@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Album < FamiphotosPlatform::FamiphotoBase
+class Album < FamiphotoBase
   use_switch_point :famiphoto
 
   ####################################################################

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Video < FamiphotosPlatform::FamiphotoBase
+class Video < FamiphotoBase
   use_switch_point :famiphoto
 
   alias_attribute :start_time, :created_at

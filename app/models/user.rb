@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class User < FamiphotosPlatform::FamiphotoBase
+class User < FamiphotoBase
   include Encryptedable
 
   attr_encrypted :uid

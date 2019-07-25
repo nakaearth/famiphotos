@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-class Photo < FamiphotosPlatform::FamiphotoBase
+class Photo < FamiphotoBase
   include Searchable
 
   use_switch_point :famiphoto
