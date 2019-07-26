@@ -9,7 +9,7 @@ end
 # gem 'famiphotos_platform', git: 'https://github.com/nakaearth/famiphotos_platform.git', branch: 'master'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0'
+gem 'rails', '~> 5'
 gem 'rake', '~> 12.0'
 # Use mysql as the database for Active Record
 #gem 'mysql2', ' ~> 0.3.18'
@@ -64,8 +64,6 @@ group :development, :test do
   gem "pry-doc"
   gem 'pry-byebug'
   gem 'test-queue'
-  # バグの起こりやすい箇所を数値化
-  gem 'bugspots'
   # 環境変数をセット
   gem 'dotenv-rails'
 
@@ -78,14 +76,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  # travis連携
-  gem 'travis'
-#  gem "awesome_print"
-#  gem "better_errors"
-#  gem "quiet_assets"
-#  # mail test
+  # mail test
   gem 'letter_opener'
-#  # 静的解析
+  # 静的解析
   gem "rubycritic", :require => false
   gem 'pre-commit'
 end
