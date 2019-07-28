@@ -61,7 +61,6 @@ group :development, :test do
   gem 'guard-rubocop'
   gem 'terminal-notifier-guard'
   gem "pry-rails"
-  gem "pry-doc"
   gem 'pry-byebug'
   gem 'test-queue'
   # 環境変数をセット

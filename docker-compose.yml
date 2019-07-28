@@ -10,6 +10,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
       - "3306:3306"
+
   elasticsearch:
     build:
       context: docker_image/elasticsearch
