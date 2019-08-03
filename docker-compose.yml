@@ -29,8 +29,9 @@ services:
       DB_SERVERNAME: "db"
       ELASTICSEARCH_HOST: "elasticsearch"
     volumes:
-      - .:/withmychild
-    working_dir: "/withmychild"
+      - .:/famiphotos
+      - bundle:/bundle
+    working_dir: "/famiphtos"
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s"
     links:
       - db
@@ -42,4 +43,6 @@ services:
     tty: true
 volumes:
   data:
+    driver: local
+  bundle:
     driver: local

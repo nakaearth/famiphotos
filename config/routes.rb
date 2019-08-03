@@ -44,9 +44,4 @@ Rails.application.routes.draw do
     resources :users, only: %i( index show new create edit update destroy )
     resources :photos, only: %i( index show new create edit update destroy )
   end
-
-  # ===============================================================================
-  # mount Famiphotos
-  # ===============================================================================
-  mount FamiphotosPlatform::Engine, at: '/'
 end
