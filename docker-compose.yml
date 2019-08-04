@@ -1,15 +1,15 @@
 version: "3"
-
 services:
   db:
     image: mysql:5.7
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
-    volumes:
-      - data:/var/lib/mysql
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
       - "3306:3306"
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    env_file:
+      - ./environments/db.env
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./containers/db/conf.d:/etc/mysql/conf.d:ro
 
   elasticsearch:
     build:
@@ -23,15 +23,28 @@ services:
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     ports:
       - 9200:9200
+
   app:
-    build: .
-    environment:
-      DB_SERVERNAME: "db"
-      ELASTICSEARCH_HOST: "elasticsearch"
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    env_file:
+      - ./environments/app.env
     volumes:
-      - .:/famiphotos
-      - bundle:/bundle
-    working_dir: "/famiphtos"
+      - bundle_install:/famiphotos/vendor/bundle
+      - ./app:/famiphotos/app
+      - ./bin:/famiphotos/bin
+      - ./config:/famiphotos/config
+      - ./config.ru:/famiphotos/config.ru
+      - ./db:/famiphotos/db
+      - ./.rubocop.yml:/famiphotos/.rubocop.yml
+      - ./Gemfile:/famiphotos/Gemfile
+      - ./Gemfile.lock:/famiphotos/Gemfile.lock
+      - ./lib:/famiphotos/lib
+      - ./public:/famiphotos/public
+      - ./Rakefile:/famiphotos/Rakefile
+      - ./spec:/famiphotos/spec
+      - ./log:/famiphotos/log
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s"
     links:
       - db
@@ -42,7 +55,6 @@ services:
     stdin_open: true
     tty: true
 volumes:
-  data:
+  db_data:
     driver: local
-  bundle:
-    driver: local
+  bundle_install:

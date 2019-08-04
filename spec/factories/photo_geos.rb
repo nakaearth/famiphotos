@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-FactoryGirl.define do
+FactoryBot.define do
   factory :photo_geo do
-    address "東京都港区芝"
+    address { "東京都港区芝" }
   end
 end

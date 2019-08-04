@@ -18,25 +18,17 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'simpleconv_helper'
-require 'factory_girl'
-require 'database_cleaner'
+require 'factory_bot'
+require 'database_rewinder'
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.before(:all) do
-    FactoryGirl.reload
+    FactoryBot.reload
   end
 
-  config.before(:suite) do
-    DatabaseCleaner[:active_record].strategy = :truncation
-    DatabaseCleaner.clean_with(:truncation)
-    # DatabaseRewinder.clean_all multiple: false
-  end
-
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
+  config.after(:each) do
+    DatabaseRewinder.clean
   end
 
   # config.after(:each) do

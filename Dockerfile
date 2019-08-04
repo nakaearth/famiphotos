@@ -7,7 +7,7 @@ WORKDIR /famiphotos
 
 COPY . .
 
-RUN bundle install
+RUN bundle install --jobs=4
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
   apt-get install nodejs
 RUN npm install webpack webpack-cli --save-dev --no-optional

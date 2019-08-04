@@ -4,8 +4,6 @@ class User < FamiphotoBase
 
   attr_encrypted :uid
 
-  use_switch_point :famiphoto unless Rails.env.test?
-
   has_many :photos, inverse_of: :user
   has_many :albums
 

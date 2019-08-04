@@ -82,19 +82,17 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'rspec-mocks'
+  gem 'capybara', '>= 2.15', '< 4.0'
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
   # rakeのテスト用
   gem 'rake_shared_context'
-  gem 'rspec-request_describer'
-  gem 'factory_girl_rails'
-  # gem 'database_rewinder', '0.6'
-  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'database_rewinder'
   gem 'shoulda-matchers'
-#
   # コードカバレッジ
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
-
   # coverallsとの連携
   gem 'coveralls', require: false
   gem 'request_store'
@@ -103,13 +101,9 @@ group :test do
   gem 'rails_best_practices'
 
   gem 'rb-readline'
-#  gem "rake-compiler"
-  # webテスト
-  gem 'capybara'
   # プロファイリング
   # gem 'stackprof'
   # gem 'stackprof-webnav'
-
   # 静的解析
   gem 'brakeman', require: false
 end
@@ -145,11 +139,6 @@ gem 'rmagick'
 gem 'geocoder'
 # 権限チェック
 gem "pundit"
-# fluentの設定
-gem 'fluent-plugin-mysqlslowquery'
-gem 'fluent-plugin-elasticsearch'
-gem 'fluent-plugin-slack'
-gem 'fluent-plugin-rewrite-tag-filter'
 #
 gem 'lograge'
 # breadcrumbs
@@ -157,8 +146,6 @@ gem "crummy",  "~> 1.8.0"
 # elasticsearch
 gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
-# 複数DB対応
-gem 'switch_point'
 # enumerize
 gem 'enumerize'
 # カレンダー表示

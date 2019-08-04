@@ -12,85 +12,12 @@ default: &default
 development:
   <<: *default
   database: famiphotos_development
-  host: localhost
-
-photo_development:
-  <<: *default
-  database: famiphotos_photo_development
-  host: localhost
 
 test:
   <<: *default
   database: famiphotos_test
-  host: localhost
-
-photo_test:
-  <<: *default
-  database: famiphotos_photo_test
-  host: localhost
 
 production:
-  <<: *default
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_SERVERNAME'] %>
-
-famiphoto_production:
-  <<: *default
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_SERVERNAME'] %>
-
-famiphotos_master_development:
-  <<: *default
-  database: famiphotos_development
-  host: localhost
-
-famiphotos_slave_development:
-  <<: *default
-  database: famiphotos_development
-  host: localhost
-
-famiphotos_master_test:
-  <<: *default
-  database: famiphotos_test
-  host: localhost
-
-famiphotos_slave_test:
-  <<: *default
-  database: famiphotos_test
-  host: localhost
-
-famiphotos_photo_master_development:
-  <<: *default
-  database: famiphotos_photo_development
-  host: localhost
-
-famiphotos_photo_slave_development:
-  <<: *default
-  database: famiphotos_photo_development
-  host: localhost
-
-famiphotos_photo_master_test:
-  <<: *default
-  database: famiphotos_photo_test
-  host: localhost
-
-famiphotos_photo_slave_test:
-  <<: *default
-  database: famiphotos_photo_test
-  host: localhost
-
-famiphotos_master_production:
-  <<: *default
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_SERVERNAME'] %>
-
-famiphotos_slave_production:
   <<: *default
   database: <%= ENV['DB_DATABASE'] %>
   username: <%= ENV['DB_USER'] %>
