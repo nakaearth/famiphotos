@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.6'
+gem 'rails', '5.2'
 gem 'rake', '~> 12.0'
 # Use mysql as the database for Active Record
 gem 'mysql2'
@@ -13,7 +13,7 @@ gem 'hiredis'
 gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'rack-cors'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', require: false
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
