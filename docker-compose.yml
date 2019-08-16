@@ -16,7 +16,9 @@ services:
       context: docker_image/elasticsearch
     container_name: elasticsearch
     environment:
+      - node.name=es_master
       - discovery.type=single-node
+      - discovery.seed_hosts=elasticsearch
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
       - "http.host=0.0.0.0"
