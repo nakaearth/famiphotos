@@ -9,21 +9,63 @@ services:
       - ./environments/db.env
     volumes:
       - db_data:/var/lib/mysql
-      - ./containers/db/conf.d:/etc/mysql/conf.d:ro
+      - ./containers/db/my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - esnet
 
-  elasticsearch:
+  es01:
     build:
       context: docker_image/elasticsearch
-    container_name: elasticsearch
+    container_name: es01
+    hostname: es01
     environment:
-      - discovery.type=single-node
+      - node.name=es01
+      - discovery.seed_hosts=es01,es02
+      - cluster.initial_master_nodes=es01,es02
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
-      - "http.host=0.0.0.0"
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     ports:
       - 9200:9200
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata01:/usr/share/elasticsearch/data
+    networks:
+      - esnet
 
+  es02:
+    build:
+      context: docker_image/elasticsearch
+    container_name: es02
+    hostname: es02
+    environment:
+      - node.name=es02
+      - discovery.seed_hosts=es01,es02
+      - cluster.initial_master_nodes=es01,es02
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    ports:
+      - 9201:9201
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata02:/usr/share/elasticsearch/data
+    networks:
+      - esnet
+
+  headPlugin:
+    image: 'mobz/elasticsearch-head:5'
+    container_name: head
+    ports:
+      - '9100:9100'
+    networks:
+      - esnet
   app:
     build:
       context: .
@@ -48,13 +90,24 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s"
     links:
       - db
-      - elasticsearch
+      - es01
+      - es02
     ports:
       - "3000:3000"
       - "5000:5000"
     stdin_open: true
     tty: true
+    networks:
+      - esnet
+
 volumes:
   db_data:
     driver: local
+  esdata01:
+    driver: local
+  esdata02:
+    driver: local
   bundle_install:
+
+networks:
+  esnet:
