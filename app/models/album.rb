@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Album < FamiphotoBase
-  include Searchable
+  include AlbumSearchable
   ####################################################################
   ################# Association ######################################
   ####################################################################
