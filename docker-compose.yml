@@ -10,6 +10,8 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ./containers/db/conf.d:/etc/mysql/conf.d:ro
+    networks:
+      - esnet
 
   elasticsearch:
     build:
@@ -25,6 +27,16 @@ services:
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     ports:
       - 9200:9200
+    networks:
+      - esnet
+
+  headPlugin:
+    image: 'mobz/elasticsearch-head:5'
+    container_name: head
+    ports:
+      - '9100:9100'
+    networks:
+      - esnet
 
   app:
     build:
@@ -56,7 +68,13 @@ services:
       - "5000:5000"
     stdin_open: true
     tty: true
+    networks:
+      - esnet
+
 volumes:
   db_data:
     driver: local
   bundle_install:
+
+networks:
+  esnet:
