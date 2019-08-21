@@ -5,42 +5,22 @@ end
 
 class ElasticsearchClient
   class << self
-    def master
+    def client
       if Rails.env.production?
-        urls = url('master')
         return connection_to_bonsai urls
       end
 
-      connection_to_local hosts('master')
-    end
-
-    def slave
-      if Rails.env.production?
-        urls = urls('slave')
-        return connection_to_bonsai urls
-      end
-
-      connection_to_local hosts('slave')
+      connection_to_local hosts
     end
 
     private
 
-    def hosts(master_or_slave)
-      hosts = []
-      ElasticsearchConfig::CONFIG[master_or_slave][:host].each_with_index do |host, i|
-        hosts << { host: host, port: ElasticsearchConfig::CONFIG[master_or_slave][:port][i] }
-      end
-
-      hosts
+    def hosts
+      [{ host: ElasticsearchConfig::CONFIG[:host], port: ElasticsearchConfig::CONFIG[:port] }]
     end
 
-    def url(master_or_slave)
-      urls = []
-      ElasticsearchConfig::CONFIG[master_or_slave][:url].each_with_index do |url, i|
-        urls << { url: url }
-      end
-
-      urls
+    def url
+      ENV['BONSAI_URL']
     end
 
 

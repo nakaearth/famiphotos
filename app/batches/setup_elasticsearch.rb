@@ -14,8 +14,6 @@ class SetupElasticsearch
 
       logger.info('index作成')
       Photo.create_index!(force: force)
-      logger.info('alias作成')
-      Photo.create_alias!
       # importする
       logger.info('========= データ登録 =========')
       Photo.bulk_import

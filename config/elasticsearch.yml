@@ -1,6 +1,6 @@
 development:
-  # host: 'elasticsearch'
-  host: 'localhost'
+  host: 'elasticsearch'
+  # host: 'localhost'
   port: 9200
 test:
   host: 'elasticsearch'

@@ -77,42 +77,44 @@ module Searchable
     end
 
     def transfer_to_elasticsearch
-      __elasticsearch__.client.index  index: index_name, type: 'photo', id: id, body: as_indexed_json
+      ElasticsearchClient.client.index  index: index_name, type: '_doc', id: id, body: as_indexed_json
     end
 
     def remove_from_elasticsearch
-      __elasticsearch__.client.delete index: index_name, type: 'photo', id: id
+      ElasticsearchClient.client.delete index: index_name, type: '_doc', id: id
     end
   end
   # rubocop:enable all
 
   class_methods do
     def create_index!(options = {})
-      client = __elasticsearch__.client
+      client = ElasticsearchClient.client
       client.indices.delete index: index_name if options[:force]
-      client.indices.create index: index_name,
-                            body: {
-                              settings: settings.to_hash,
-                              mappings: mappings.to_hash
-                            }
+      client.indices.create(
+        index: index_name,
+        body: {
+          settings: settings.to_hash,
+          mappings: mappings.to_hash
+        }
+      )
     end
 
-    def create_alias!
-      client = __elasticsearch__.client
-      if client.indices.exists_alias? name: Consts::Elasticsearch[:alias_name][:photo]
-        client.indices.delete_alias index: index_name, name: Consts::Elasticsearch[:alias_name][:photo]
-      end
-
-      client.indices.put_alias index: index_name, name: Consts::Elasticsearch[:alias_name][:photo]
-    end
+    # def create_alias!
+    #   client = ElasitcsearchClient.client
+    #   if client.indices.exists_alias? name: Consts::Elasticsearch[:alias_name][:photo]
+    #     client.indices.delete_alias index: index_name, name: Consts::Elasticsearch[:alias_name][:photo]
+    #   end
+    #
+    #    client.indices.put_alias index: index_name, name: Consts::Elasticsearch[:alias_name][:photo]
+    # end
 
     def bulk_import
-      es = __elasticsearch__
+      client = ElasticsearchClient.client
 
       find_in_batches.with_index do |entries, _i|
-        es.client.bulk(
+        client.bulk(
           index: es.index_name,
-          type: es.document_type,
+          type: '_doc',
           body: entries.map { |entry| { index: { _id: entry.id, data: entry.as_indexed_json } } },
           refresh: true, # NOTE: 定期的にrefreshしないとEsが重くなる
         )
