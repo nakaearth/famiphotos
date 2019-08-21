@@ -56,15 +56,14 @@ module Searchable
         }
       }
     } do
-      mapping _source: { enabled: true },
-              _all: { enabled: true, analyzer: 'kuromoji_analyzer' } do
-        indexes :id,          type: 'integer', index: 'not_analyzed'
+      mapping _source: { enabled: true } do
+        indexes :id,          type: 'integer'
         indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
-        indexes :group_id,    type: 'integer', index: 'not_analyzed'
-        indexes :album_id,    type: 'integer', index: 'not_analyzed'
-        indexes :good_point,  type: 'integer', index: 'not_analyzed'
+        indexes :group_id,    type: 'integer'
+        indexes :album_id,    type: 'integer'
+        indexes :good_point,  type: 'integer'
         indexes :tags,        type: 'nested' do
-          indexes :name,      type: 'keyword', index: 'not_analyzed'
+          indexes :name,      type: 'keyword'
         end
         indexes :created_at,  type: 'date', format: 'date_time'
         indexes :updated_at,  type: 'date', format: 'date_time'
@@ -89,9 +88,13 @@ module Searchable
   class_methods do
     def create_index!(options = {})
       client = ElasticsearchClient.client
-      client.indices.delete index: index_name if options[:force]
+      if client.indices.exists? index: index_name
+        client.indices.delete index: index_name
+      end
+
       client.indices.create(
         index: index_name,
+        include_type_name: true,
         body: {
           settings: settings.to_hash,
           mappings: mappings.to_hash
@@ -124,9 +127,9 @@ module Searchable
 
   private
 
-  def as_indexed_json_tag(_options = {})
-    return {} unless tags
-
-    { tags: tags.map(&:attributes) }
-  end
+  # def as_indexed_json_tag(_options = {})
+  #   return {} unless tags
+  #
+  #   { tags: tags.map(&:attributes) }
+  # end
 end
