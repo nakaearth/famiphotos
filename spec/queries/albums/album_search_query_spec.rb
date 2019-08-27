@@ -14,7 +14,7 @@ RSpec.describe Albums::AlbumSearchQuery do
   describe '.call' do
     context '該当するデータがある場合' do
       before do
-        @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword])
+        @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword], user_id: user.id)
       end
 
       it { expect(@results.size).to eq 0 }

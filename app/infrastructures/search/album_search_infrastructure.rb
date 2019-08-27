@@ -2,11 +2,11 @@
 module Search
   class AlbumSearchInfrastructure < BaseSearchInfrastructure
     class << self
-      def call(keyword)
+      def call(keyword, user_id)
         Elasticsearch::Model.client = client
         @client = Album.__elasticsearch__
         @client.index_name = Consts::Elasticsearch[:index_name][:album]
-        response = @client.search(query(keyword))
+        response = @client.search(query(keyword, user_id))
         {
           result_records: response.records.to_a,
           result_count: response.records,
@@ -17,14 +17,21 @@ module Search
       private
 
       # TODO: QueryBuilder以下に移す
-      def query(keyword)
+      def query(keyword, user_id)
         {
           min_score: 20,
           query: {
             function_score: {
               score_mode: 'sum', # functionsないのスコアの計算方法
               boost_mode: 'multiply', # クエリの合計スコアとfunctionのスコアの計算方法
-              query: Search::Query::FunctionQuery.new(@conditions, ['description']).match_query,
+              query: {
+                bool: {
+                  must: [
+                    Search::Query::FunctionQuery.match_query('user_id', user_id),
+                    Search::Query::FunctionQuery.full_text_query('description', keyword)
+                  ]
+                }
+              },
               functions: [
                 {
                   field_value_factor: {

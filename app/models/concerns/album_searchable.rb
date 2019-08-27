@@ -63,7 +63,7 @@ module AlbumSearchable
       mapping _source: { enabled: true } do
         indexes :id,          type: 'integer'
         indexes :title,       type: 'text', analyzer: 'kuromoji_analyzer'
-        indexes :user_id,     type: 'integer',
+        indexes :user_id,     type: 'integer'
         indexes :group_id,    type: 'integer'
         indexes :photos,      type: 'nested' do
           indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'

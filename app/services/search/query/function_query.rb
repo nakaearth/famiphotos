@@ -1,22 +1,21 @@
 # frozen_string_literal: true
 module Search
   module Query
-    class FunctionQuery < Function
-      def match_query
-        {
-          bool: {
-            must: [
-              { term: { user_id: @conditions[:user_id] } },
-              {
-                simple_query_string: {
-                  query: @conditions[:keyword],
-                  fields: [@fields.join(',').to_s],
-                  default_operator: 'and'
-                }
-              }
-            ]
+    class FunctionQuery
+      class << self
+        def match_query(field_name, value)
+          { term: { field_name.to_sym => value } }
+        end
+
+        def full_text_query(field_name, keyword)
+          {
+            simple_query_string: {
+              query: keyword,
+              fields: [field_name],
+              default_operator: 'and'
+            }
           }
-        }
+        end
       end
     end
   end
