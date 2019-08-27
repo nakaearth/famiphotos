@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 module Search
-  class AlbumSearchInfrastructure < Base
+  class AlbumSearchInfrastructure < BaseSearchInfrastructure
     class << self
       def call(keyword)
+        Elasticsearch::Model.client = client
+        @client = Album.__elasticsearch__
         @client.index_name = Consts::Elasticsearch[:index_name][:album]
         response = @client.search(query(keyword))
         {

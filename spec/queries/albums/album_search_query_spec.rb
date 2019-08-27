@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Albums::AlbumSearchQuery do
-  let(params) do
+  let(:params) do
     {
       keyword: 'これはテスト',
     }
@@ -14,7 +14,7 @@ RSpec.describe Albums::AlbumSearchQuery do
   describe '.call' do
     context '該当するデータがある場合' do
       before do
-        @results = Albums::AlbumSearchQuery.call(params)
+        @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword])
       end
 
       it { expect(@results.size).to eq 0 }

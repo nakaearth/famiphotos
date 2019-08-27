@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 module Albums
-  class AlbumSearchQuery < Base
-    def call(keyword: search_keyword)
-      results = Search::AlbumSearchInfrastructure.search(search_keyword)
+  class AlbumSearchQuery
+    class << self
+      def call(keyword:)
+        results = Search::AlbumSearchInfrastructure.call(keyword)
+      end
     end
   end
 end
