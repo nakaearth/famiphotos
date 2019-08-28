@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Search
-  module Query
+  module QueryBuilder
     class FunctionQuery
       class << self
         def match_query(field_name, value)

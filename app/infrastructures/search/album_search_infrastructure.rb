@@ -19,23 +19,23 @@ module Search
       # TODO: QueryBuilder以下に移す
       def query(keyword, user_id)
         {
-          min_score: 20,
+          min_score: 20, # 最低scoreの設定
           query: {
             function_score: {
-              score_mode: 'sum', # functionsないのスコアの計算方法
+              score_mode: 'sum', # functionsのスコアの計算方法
               boost_mode: 'multiply', # クエリの合計スコアとfunctionのスコアの計算方法
               query: {
                 bool: {
                   must: [
-                    Search::Query::FunctionQuery.match_query('user_id', user_id),
-                    Search::Query::FunctionQuery.full_text_query('description', keyword)
+                    Search::QueryBuilder::FunctionQuery.match_query('user_id', user_id),
+                    Search::QueryBuilder::FunctionQuery.full_text_query('description', keyword)
                   ]
                 }
               },
               functions: [
                 {
                   field_value_factor: {
-                    field: "good_point",
+                    field: "total_point",
                     factor: 2.0,
                     modifier: "square",
                     missing: 1
@@ -58,7 +58,7 @@ module Search
           aggs: {
             tag: {
               terms: {
-                field: 'tag_name',
+                field: 'label_name',
                 size: 50
               }
             }

@@ -68,15 +68,21 @@ module AlbumSearchable
         indexes :photos,      type: 'nested' do
           indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
           indexes :user_id,   type: 'integer'
+          indexes :good_point, type: 'integer'
+        end
+        indexes :total_point, type: 'integer'
+        indexes :tags,        type: 'nested' do
+          indexes :label_name, type: 'keyword'
         end
         indexes :created_at,  type: 'date', format: 'date_time'
         indexes :updated_at,  type: 'date', format: 'date_time'
       end
     end
 
-    # TODO: groupとtagsてーぐるの値をいれる
-    def as_indexed_json(_options = {})
-      as_json.merge(as_indexed_json_photos(optoins))
+    def as_indexed_json
+      as_json.merge(as_indexed_json_photos)
+        .merge(as_indexed_json_tags)
+        .merge(as_indexed_json_total_photo_point)
     end
 
     def transfer_to_elasticsearch
@@ -137,9 +143,15 @@ module AlbumSearchable
     { photos: photos.map(&:attributes) }
   end
 
-  # def as_indexed_json_tag(_options = {})
-  #   return {} unless tags
-  #
-  #   { tags: tags.map(&:attributes) }
-  # end
+  def as_indexed_json_tag
+    return {} unless tags
+
+    { tags: tags.map(&:attributes) }
+  end
+
+  def as_indexed_json_total_photo_point
+    return {} unless photos
+
+    { total_point: photos.sum(:good_point) }
+  end
 end

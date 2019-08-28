@@ -3,16 +3,21 @@
 require 'rails_helper'
 
 RSpec.describe Albums::AlbumSearchQuery do
-  let(:params) do
-    {
-      keyword: 'これはテスト',
-    }
-  end
-
-  let(:user) { create(:user) }
-
   describe '.call' do
+    let(:user) { create(:user) }
+    let(:album) { create(:album, title: 'テストalbum', user: user) }
+    let(:photo) { create(:photo, description: 'これは犬の写真です', album: album) }
+    let(:tag) { create(:tag, label_name: '犬', album: album) }
+
+    before do
+      tag
+      Album.create_index!(force: true)
+      Album.bulk_import
+    end
+
     context '該当するデータがある場合' do
+      let(:params) { { keyword: 'テスト' } }
+
       before do
         @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword], user_id: user.id)
       end

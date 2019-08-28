@@ -11,7 +11,6 @@ class Photo < FamiphotoBase
   belongs_to :user
   belongs_to :album, optional: true, inverse_of: :photos
   has_one :photo_geo, dependent: :destroy
-  has_many :tags, inverse_of: :photo
 
   ####################################################################
   ####################### nested_attributes_for ######################
