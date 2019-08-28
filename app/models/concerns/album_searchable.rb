@@ -86,23 +86,23 @@ module AlbumSearchable
     end
 
     def transfer_to_elasticsearch
-      ElasticsearchClient.client.index  index: index_name, type: '_doc', id: id, body: as_indexed_json
+      Elasticsearch::Model.client.index  index: index_name, type: '_doc', id: id, body: as_indexed_json
     end
 
     def remove_from_elasticsearch
-      ElasticsearchClient.client.delete index: index_name, type: '_doc', id: id
+      Elasticsearch::Model.client.delete index: index_name, type: '_doc', id: id
     end
   end
   # rubocop:enable all
 
   class_methods do
     def create_index!(options = {})
-      client = ElasticsearchClient.client
-      if client.indices.exists? index: index_name
-        client.indices.delete index: index_name
+      elasticsearch_client = Elasticsearch::Model.client
+      if elasticsearch_client.indices.exists? index: index_name
+        elasticsearch_client.indices.delete index: index_name
       end
 
-      client.indices.create(
+      elasticsearch_client.indices.create(
         index: index_name,
         include_type_name: true,
         body: {
@@ -122,7 +122,7 @@ module AlbumSearchable
     # end
 
     def bulk_import
-      client = ElasticsearchClient.client
+      client = Elasticsearch::Model.client
 
       find_in_batches.with_index do |entries, _i|
         client.bulk(
