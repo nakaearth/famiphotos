@@ -8,7 +8,7 @@ module Search
 
   class BaseSearchInfrastructure
     class << self
-      def client
+      def client_connection
         if Rails.env.production?
           return connection_to_bonsai urls
         end

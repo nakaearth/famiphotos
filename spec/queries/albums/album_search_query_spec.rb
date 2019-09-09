@@ -11,8 +11,8 @@ RSpec.describe Albums::AlbumSearchQuery do
 
     before do
       tag
-      Album.create_index!(force: true)
-      Album.bulk_import
+      Search::ElasticsearchIndexGateway.create_index('albums')
+      Search::AlbumToElasticsearchInsertGateway.import('albums')
     end
 
     context '該当するデータがある場合' do

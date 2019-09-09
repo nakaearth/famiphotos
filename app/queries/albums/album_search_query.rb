@@ -3,7 +3,7 @@ module Albums
   class AlbumSearchQuery
     class << self
       def call(keyword:, user_id:)
-        results = Search::AlbumSearchInfrastructure.call(keyword, user_id)
+        results = Search::AlbumSearchGateway.execute(keyword, user_id)
       end
     end
   end

@@ -1,17 +1,33 @@
 # frozen_string_literal: true
 module Search
-  class AlbumSearchInfrastructure < BaseSearchInfrastructure
+  class AlbumSearchGateway < BaseSearchInfrastructure
     class << self
-      def call(keyword, user_id)
-        Elasticsearch::Model.client = client
-        @client = Album.__elasticsearch__
-        @client.index_name = Consts::Elasticsearch[:index_name][:album]
-        response = @client.search(query(keyword, user_id))
+      def execute(keyword, user_id)
+        Elasticsearch::Model.client = client_connection
+        album_client = Album.__elasticsearch__
+        album_client.index_name = Consts::Elasticsearch[:index_name][:album]
+        response = album_client.search(query(keyword, user_id))
         {
           result_records: response.records.to_a,
           result_count: response.records,
           aggregations: response.aggregations,
         }
+      end
+
+      def create_index
+        Elasticsearch::Model.client = client_connection
+        if client.indices.exists? index: index_name
+          client.indices.delete index: index_name
+        end
+
+        client.indices.create(
+          index: index_name,
+          include_type_name: true,
+          body: {
+            settings: Album.settings.to_hash,
+            mappings: Album.mappings.to_hash
+          }
+        )
       end
 
       private
