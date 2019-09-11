@@ -2,7 +2,7 @@ development:
   host: <%= ENV['ELASTICSEARCH_HOST'] %>
   port: 9200
 test:
-  host: <%= ENV['ELASTICSEARCH_HOST'] %>
+  host: 'elasticsearch'
   port: 9200
 production:
   url: <%= ENV['BONSAI_URL'] %>

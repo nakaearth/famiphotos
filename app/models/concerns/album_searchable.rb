@@ -143,7 +143,7 @@ module AlbumSearchable
     { photos: photos.map(&:attributes) }
   end
 
-  def as_indexed_json_tag
+  def as_indexed_json_tags
     return {} unless tags
 
     { tags: tags.map(&:attributes) }

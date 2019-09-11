@@ -6,7 +6,7 @@ class Album < FamiphotoBase
   ####################################################################
   # has_many :photos, inverse_of: :album
   has_many :photos
-  has_many :tags, inverse_of: :photo
+  has_many :tags, inverse_of: :album
   has_one  :shared_album
   belongs_to :user
 

@@ -12,7 +12,7 @@ RSpec.describe Albums::AlbumSearchQuery do
     before do
       tag
       Search::ElasticsearchIndexGateway.create_index('albums')
-      Search::AlbumToElasticsearchInsertGateway.import('albums')
+      Search::AlbumToElasticsearchInsertGateway.bulk('albums')
     end
 
     context '該当するデータがある場合' do
