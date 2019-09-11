@@ -7,27 +7,11 @@ module Search
         album_client = Album.__elasticsearch__
         album_client.index_name = Consts::Elasticsearch[:index_name][:album]
         response = album_client.search(query(keyword, user_id))
+
         {
           result_records: response.records.to_a,
-          result_count: response.records,
           aggregations: response.aggregations,
         }
-      end
-
-      def create_index
-        Elasticsearch::Model.client = client_connection
-        if client.indices.exists? index: index_name
-          client.indices.delete index: index_name
-        end
-
-        client.indices.create(
-          index: index_name,
-          include_type_name: true,
-          body: {
-            settings: Album.settings.to_hash,
-            mappings: Album.mappings.to_hash
-          }
-        )
       end
 
       private
@@ -35,7 +19,7 @@ module Search
       # TODO: QueryBuilder以下に移す
       def query(keyword, user_id)
         {
-          min_score: 20, # 最低scoreの設定
+          min_score: 0.5, # 最低scoreの設定
           query: {
             function_score: {
               score_mode: 'sum', # functionsのスコアの計算方法

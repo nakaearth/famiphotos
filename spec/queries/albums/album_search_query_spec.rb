@@ -22,7 +22,12 @@ RSpec.describe Albums::AlbumSearchQuery do
         @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword], user_id: user.id)
       end
 
-      it { expect(@results.size).to eq 0 }
+      it '検索結果と検索結果の総数、アグリゲーションの結果が格納されたHashを返す' do
+        expect(@results.size).to eq 2
+        expect(@results[:result_records].size).to eq 1
+        expect(@results[:aggregations].empty?).to eq true
+
+      end
     end
   end
 end
