@@ -28,7 +28,7 @@ module Search
                 bool: {
                   must: [
                     Search::QueryBuilder::FunctionQuery.match_query('user_id', user_id),
-                    Search::QueryBuilder::FunctionQuery.full_text_query('description', keyword)
+                    Search::QueryBuilder::FunctionQuery.full_text_query('title', keyword)
                   ]
                 }
               },
