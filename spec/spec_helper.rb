@@ -28,7 +28,7 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
-    DatabaseRewinder.clean
+    DatabaseRewinder.clean(multiple: false)
   end
 
   # config.after(:each) do
