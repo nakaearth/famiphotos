@@ -19,7 +19,7 @@ module Search
       # TODO: QueryBuilder以下に移す
       def query(keyword, user_id)
         {
-          min_score: 0.5, # 最低scoreの設定
+          min_score: 0.1, # 最低scoreの設定
           query: {
             function_score: {
               score_mode: 'sum', # functionsのスコアの計算方法
