@@ -10,8 +10,6 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ./containers/db/conf.d:/etc/mysql/conf.d:ro
-    networks:
-      - esnet
 
   elasticsearch:
     build:
