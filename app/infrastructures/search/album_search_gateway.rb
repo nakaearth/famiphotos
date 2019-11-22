@@ -32,11 +32,12 @@ module Search
                   ]
                 }
               },
+              boost: 10,
               functions: [
                 {
                   field_value_factor: {
-                    field: "total_point",
-                    factor: 2.0,
+                    field: "id",
+                    factor: 1.0,
                     modifier: "square",
                     missing: 1
                   },
@@ -45,7 +46,7 @@ module Search
                 {
                   field_value_factor: {
                     field: "id",
-                    factor: 3,
+                    factor: 3.0,
                     modifier: "sqrt", # squt: ルート, log: 指数関数
                     missing: 1
                   },
