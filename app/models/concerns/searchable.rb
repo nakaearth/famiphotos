@@ -16,7 +16,7 @@ module Searchable
 
     # Set up index configuration and mapping
     settings index: {
-      number_of_shards:   5,
+      number_of_shards:   2,
       number_of_replicas: 1,
       analysis: {
         filter: {
@@ -59,6 +59,7 @@ module Searchable
       mapping _source: { enabled: true } do
         indexes :id,          type: 'integer'
         indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
+        indexes :description, type: 'text', analyzer: 'ngram_analyzer'
         indexes :group_id,    type: 'integer'
         indexes :album_id,    type: 'integer'
         indexes :good_point,  type: 'integer'
@@ -72,7 +73,7 @@ module Searchable
 
     # TODO: groupとtagsてーぐるの値をいれる
     def as_indexed_json(_options = {})
-      as_json.merge(as_indexed_json_tag(optoins))
+      as_json.merge(as_indexed_json_keyword_search_field(optoins))
     end
 
     def transfer_to_elasticsearch
@@ -126,6 +127,12 @@ module Searchable
   end
 
   private
+
+  def as_indexed_json_keyword_search_field(options = {})
+    {
+      description2: description
+    }
+  end
 
   # def as_indexed_json_tag(_options = {})
   #   return {} unless tags

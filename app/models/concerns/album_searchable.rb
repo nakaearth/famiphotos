@@ -63,11 +63,19 @@ module AlbumSearchable
       mapping _source: { enabled: true } do
         indexes :id,          type: 'integer'
         indexes :title,       type: 'text', analyzer: 'kuromoji_analyzer'
+<<<<<<< HEAD
         indexes :title2,       type: 'text', analyzer: 'ngram_analyzer'
         indexes :user_id,     type: 'integer'
         indexes :group_id,    type: 'integer'
         indexes :photos,      type: 'nested' do
           indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
+=======
+        indexes :title2,      type: 'text', analyzer: 'ngram_analyzer'
+        indexes :user_id,     type: 'integer'
+        indexes :group_id,    type: 'integer'
+        indexes :photos,      type: 'nested' do
+          indexes :description,  type: 'text', analyzer: 'kuromoji_analyzer'
+>>>>>>> elasticsearch検証。TODOとしては追加したfieldの検索を追加して、function_scoreで重みつけする
           indexes :description2, type: 'text', analyzer: 'ngram_analyzer'
           indexes :user_id,   type: 'integer'
           indexes :good_point, type: 'integer'
@@ -83,7 +91,11 @@ module AlbumSearchable
 
     def as_indexed_json
       as_json.merge(as_indexed_json_photos)
+<<<<<<< HEAD
         .merge({ title2: title})
+=======
+        .merge({ title2: title })
+>>>>>>> elasticsearch検証。TODOとしては追加したfieldの検索を追加して、function_scoreで重みつけする
         .merge(as_indexed_json_tags)
         .merge(as_indexed_json_total_photo_point)
     end
@@ -143,7 +155,11 @@ module AlbumSearchable
   def as_indexed_json_photos
     return {} unless photos
 
+<<<<<<< HEAD
     { photos: photos.map(&:attributes).map { |ph| ph.merge({ description2: ph.description }) }}
+=======
+    { photos: photos.map(&:attributes).map { |m| m.merge({ description2: m.description }) } }
+>>>>>>> elasticsearch検証。TODOとしては追加したfieldの検索を追加して、function_scoreで重みつけする
   end
 
   def as_indexed_json_tags
