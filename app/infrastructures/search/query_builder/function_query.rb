@@ -7,11 +7,11 @@ module Search
           { term: { field_name.to_sym => value } }
         end
 
-        def full_text_query(field_name, keyword)
+        def full_text_query(field_names, keyword)
           {
             simple_query_string: {
               query: keyword,
-              fields: [field_name],
+              fields: field_names,
               default_operator: 'and'
             }
           }
