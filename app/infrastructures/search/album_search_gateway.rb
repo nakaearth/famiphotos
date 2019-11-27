@@ -11,6 +11,7 @@ module Search
         {
           result_records: response.records.to_a,
           aggregations: response.aggregations,
+          results: response.records
         }
       end
 
@@ -28,11 +29,10 @@ module Search
                 bool: {
                   must: [
                     Search::QueryBuilder::FunctionQuery.match_query('user_id', user_id),
-                    Search::QueryBuilder::FunctionQuery.full_text_query(['title', 'title2'], keyword)
+                    Search::QueryBuilder::FunctionQuery.full_text_query(['title^10', 'title2^3'], keyword),
                   ]
                 }
               },
-              boost: 10,
               functions: [
                 {
                   field_value_factor: {
@@ -41,7 +41,7 @@ module Search
                     modifier: "square",
                     missing: 1
                   },
-                  weight: 5
+                  weight: 1
                 },
                 {
                   field_value_factor: {
@@ -50,7 +50,7 @@ module Search
                     modifier: "sqrt", # squt: ルート, log: 指数関数
                     missing: 1
                   },
-                  weight: 2
+                  weight: 1
                 }
               ]
             }

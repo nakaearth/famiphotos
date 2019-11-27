@@ -10,9 +10,9 @@ module Search
         def full_text_query(field_names, keyword)
           {
             simple_query_string: {
-              query: keyword,
+              query: "/'#{keyword}/'",
               fields: field_names,
-              default_operator: 'and'
+              default_operator: 'or'
             }
           }
         end

@@ -24,7 +24,7 @@ RSpec.describe Albums::AlbumSearchQuery do
       end
 
       it '検索結果と検索結果の総数、アグリゲーションの結果が格納されたHashを返す' do
-        expect(@results.size).to eq 2
+        expect(@results.size).to eq 3
         expect(@results[:result_records].size).to eq 1
         expect(@results[:aggregations].empty?).to eq false
       end
@@ -59,7 +59,7 @@ RSpec.describe Albums::AlbumSearchQuery do
       end
 
       it '検索結果と検索結果の総数、アグリゲーションの結果が格納されたHashを返す' do
-        expect(@results.size).to eq 2
+        expect(@results.size).to eq 3
         expect(@results[:result_records].size).to eq 1
         expect(@results[:aggregations].empty?).to eq false
       end
@@ -113,9 +113,13 @@ RSpec.describe Albums::AlbumSearchQuery do
         end
 
         it '検索結果と検索結果の総数、アグリゲーションの結果が格納されたHashを返す' do
-          expect(@results.size).to eq 2
+          expect(@results.size).to eq 3
           expect(@results[:result_records].size).to eq 1
           expect(@results[:aggregations].empty?).to eq false
+
+          @results[:results].each_with_hit do |album, hit|
+            puts "\n#{album.title}: #{hit._score}"
+          end
         end
 
         it 'keywordで指定したものが返ってくる' do
@@ -123,6 +127,47 @@ RSpec.describe Albums::AlbumSearchQuery do
           expect(@results[:result_records][0].title).to eq album1.title
         end
       end
+
+      context '辞書にもある単語で検索する場合' do
+        let(:test_album_title1) { '映画仮面ライダーとホゲホゲ星人の戦い' }
+        let(:test_photo_description1_1) { '戦いの場面1' }
+        let(:test_photo_description1_2) { '戦いの場面2' }
+        let(:test_album_title2) { 'ターミネータ VS 仮面ライダー' }
+        let(:test_photo_description1_1) { 'メイクアップ写真' }
+        let(:test_album_title3) { '新宿料理日記' }
+        let(:other_album_title) { 'ホゲホゲ星人の冒険' }
+        let(:other_photo_description) { '冒険の記録1' }
+        let(:keyword) { '仮面' }
+
+        before do
+          album1
+          album2
+          album3
+          other_user_album
+          tag
+          other_tag
+          Search::AlbumToElasticsearchInsertGateway.bulk('albums')
+          @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword], user_id: user.id)
+        end
+
+        it '検索結果と検索結果の総数、アグリゲーションの結果が格納されたHashを返す' do
+          expect(@results.size).to eq 3
+          expect(@results[:result_records].size).to eq 2
+          expect(@results[:aggregations].empty?).to eq false
+
+          @results[:results].each_with_hit do |album, hit|
+            puts "\n#{album.title}: #{hit._score}"
+          end
+        end
+
+        it 'keywordで指定したものが返ってくる' do
+          expect(@results[:result_records][0].id).to eq album1.id
+          expect(@results[:result_records][0].title).to eq album1.title
+          expect(@results[:result_records][1].id).to eq album2.id
+          expect(@results[:result_records][1].title).to eq album2.title
+        end
+      end
+
     end
   end
 end
