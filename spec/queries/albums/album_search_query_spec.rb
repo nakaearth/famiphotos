@@ -82,6 +82,11 @@ RSpec.describe Albums::AlbumSearchQuery do
       let(:album3) { create(:album, title: '鉄仮面のライダー', user: user) }
       let(:album4) { create(:album, title: 'ライダーが仮面を被ったら', user: user) }
       let(:album5) { create(:album, title: '仮面を被ったライダーの写真', user: user) }
+      let(:photo5_1) { create(:photo, description: 'ライダーの写真',
+                              album: album5, user: user) }
+      let(:album6) { create(:album, title: 'ライダーの写真集', user: user) }
+      let(:photo6_1) { create(:photo, description: '仮面をつけたライダーも写ってます',
+                              album: album6, user: user) }
       let(:other_album) { create(:album, title: 'ホゲホゲ星人の冒険', user: other_user) }
       let(:other_photo) { create(:photo, description: '冒険の記録1',
                                   album: other_album, user: other_user) }
@@ -153,7 +158,7 @@ RSpec.describe Albums::AlbumSearchQuery do
         end
       end
 
-      context 'titleとdescriptinの両方にヒットするワードで検索した場合' do
+      context '辞書にある単語で検索した場合2' do
         let(:keyword) { '戦い' }
 
         before do
@@ -192,6 +197,7 @@ RSpec.describe Albums::AlbumSearchQuery do
           album3
           album4
           album5
+          photo6_1
           other_photo
           tag
           other_tag
@@ -201,7 +207,7 @@ RSpec.describe Albums::AlbumSearchQuery do
 
         it '検索結果と検索結果の総数、アグリゲーションの結果が格納されたHashを返す' do
           expect(@results.size).to eq 3
-          expect(@results[:result_records].size).to eq 5
+          expect(@results[:result_records].size).to eq 6
           expect(@results[:aggregations].empty?).to eq false
 
           @results[:results].each_with_hit do |album, hit|
