@@ -29,7 +29,7 @@ module Search
                 bool: {
                   must: [
                     Search::QueryBuilder::FunctionQuery.match_query('user_id', user_id),
-                    Search::QueryBuilder::FunctionQuery.full_text_query(['title^10', 'title2^3'], keyword),
+                    Search::QueryBuilder::FunctionQuery.full_text_query(['title^10', 'title2^3', 'photos.description^8', 'photos.description2^3'], keyword),
                   ]
                 }
               },
