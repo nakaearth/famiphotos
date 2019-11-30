@@ -189,6 +189,41 @@ RSpec.describe Albums::AlbumSearchQuery do
       end
 
       context 'titleとdescriptinの両方にヒットするワードで検索した場合2' do
+        let(:keyword) { '仮面' }
+
+        before do
+          photo1_1
+          album2
+          album3
+          album4
+          album5
+          photo6_1
+          other_photo
+          tag
+          other_tag
+          Search::AlbumToElasticsearchInsertGateway.bulk('albums')
+          @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword], user_id: user.id)
+        end
+
+        it '検索結果と検索結果の総数、アグリゲーションの結果が格納されたHashを返す' do
+          expect(@results.size).to eq 3
+          expect(@results[:result_records].size).to eq 5
+          expect(@results[:aggregations].empty?).to eq false
+
+          @results[:results].each_with_hit do |album, hit|
+            puts "\n#{album.title}: #{hit._score}"
+          end
+        end
+
+        it 'keywordで指定したものが返ってくる' do
+          expect(@results[:result_records][0].id).to eq album3.id
+          expect(@results[:result_records][0].title).to eq album3.title
+          expect(@results[:result_records][1].id).to eq album4.id
+          expect(@results[:result_records][1].title).to eq album4.title
+        end
+      end
+
+      context 'titleとdescriptinの両方にヒットするワードで検索した場合3' do
         let(:keyword) { '仮面ライダー' }
 
         before do
