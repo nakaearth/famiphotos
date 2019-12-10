@@ -73,39 +73,35 @@ RSpec.describe Albums::AlbumSearchQuery do
     context '指定したユーザが複数のアルバムを作成していた場合' do
       let(:user) { create(:user) }
       let(:other_user) { create(:user) }
-      let(:album1) { create(:album, title: test_album_title1, user: user) }
-      let(:photo1_1) { create(:photo, description: test_photo_description1_1,
+      let(:album1) { create(:album, title: '映画仮面ライダーとホゲホゲ星人の戦い', user: user) }
+      let(:photo1_1) { create(:photo, description: 'ホゲホゲ星人との場面1',
                               album: album1, user: user) }
-      let(:photo1_2) { create(:photo, description: test_photo_description1_2,
-                              album: album1, user: user) }
-      let(:album2) { create(:album, title: test_album_title2, user: user) }
-      let(:photo2_1) { create(:photo, description: test_photo_description2_1,
-                           album: album, user: user) }
-      let(:album3) { create(:album, title: test_album_title3, user: user) }
+      let(:photo1_2) { create(:photo, description: 'ホゲホゲ星人との場面2',
+                               album: album1, user: user) }
+      let(:album2) { create(:album, title: 'ターミネータVS仮面ライダー', user: user) }
+      let(:album3) { create(:album, title: '鉄仮面のライダー', user: user) }
+      let(:album4) { create(:album, title: 'ライダーが仮面を被ったら', user: user) }
+      let(:album5) { create(:album, title: '仮面を被ったライダーの写真', user: user) }
+      let(:photo5_1) { create(:photo, description: 'ライダーの写真',
+                              album: album5, user: user) }
+      let(:album6) { create(:album, title: 'ライダーの写真集', user: user) }
+      let(:photo6_1) { create(:photo, description: '仮面をつけたライダーも写ってます',
+                              album: album6, user: user) }
+      let(:other_album) { create(:album, title: 'ホゲホゲ星人の冒険', user: other_user) }
+      let(:other_photo) { create(:photo, description: '冒険の記録1',
+                                  album: other_album, user: other_user) }
       let(:tag) { create(:tag, label_name: '犬', album: album1) }
-      let(:other_user_album) { create(:album, title: other_album_title, user: other_user) }
-      let(:other_user_photo) { create(:photo, description: other_photo_description,
-                                 album: other_album, user: other_user) }
-      let(:other_tag) { create(:tag, label_name: '犬', album: other_user_album) }
-
+      let(:other_tag) { create(:tag, label_name: '犬', album: other_album) }
       let(:params) { { keyword: keyword } }
 
       context 'kuromojiの辞書に無い単語で検索する場合' do
-        let(:test_album_title1) { '映画仮面ライダーとホゲホゲ星人の戦い' }
-        let(:test_photo_description1_1) { '戦いの場面1' }
-        let(:test_photo_description1_2) { '戦いの場面2' }
-        let(:test_album_title2) { 'ターミネータ VS 仮面ライダー' }
-        let(:test_photo_description1_1) { 'メイクアップ写真' }
-        let(:test_album_title3) { '新宿料理日記' }
-        let(:other_album_title) { 'ホゲホゲ星人の冒険' }
-        let(:other_photo_description) { '冒険の記録1' }
         let(:keyword) { 'ホゲホゲ星人' }
 
         before do
-          album1
+          photo1_1
           album2
           album3
-          other_user_album
+          other_photo
           tag
           other_tag
           Search::AlbumToElasticsearchInsertGateway.bulk('albums')
@@ -129,21 +125,13 @@ RSpec.describe Albums::AlbumSearchQuery do
       end
 
       context '辞書にもある単語で検索する場合' do
-        let(:test_album_title1) { '映画仮面ライダーとホゲホゲ星人の戦い' }
-        let(:test_photo_description1_1) { '戦いの場面1' }
-        let(:test_photo_description1_2) { '戦いの場面2' }
-        let(:test_album_title2) { 'ターミネータ VS 仮面ライダー' }
-        let(:test_photo_description1_1) { 'メイクアップ写真' }
-        let(:test_album_title3) { '新宿料理日記' }
-        let(:other_album_title) { 'ホゲホゲ星人の冒険' }
-        let(:other_photo_description) { '冒険の記録1' }
         let(:keyword) { '仮面' }
 
         before do
-          album1
+          photo1_1
           album2
           album3
-          other_user_album
+          other_photo
           tag
           other_tag
           Search::AlbumToElasticsearchInsertGateway.bulk('albums')
@@ -152,7 +140,41 @@ RSpec.describe Albums::AlbumSearchQuery do
 
         it '検索結果と検索結果の総数、アグリゲーションの結果が格納されたHashを返す' do
           expect(@results.size).to eq 3
-          expect(@results[:result_records].size).to eq 2
+          expect(@results[:result_records].size).to eq 3
+          expect(@results[:aggregations].empty?).to eq false
+
+          @results[:results].each_with_hit do |album, hit|
+            puts "\n#{album.title}: #{hit._score}"
+          end
+        end
+
+        it 'keywordで指定したものが返ってくる' do
+          expect(@results[:result_records][0].id).to eq album3.id
+          expect(@results[:result_records][0].title).to eq album3.title
+          expect(@results[:result_records][1].id).to eq album1.id
+          expect(@results[:result_records][1].title).to eq album1.title
+          expect(@results[:result_records][2].id).to eq album2.id
+          expect(@results[:result_records][2].title).to eq album2.title
+        end
+      end
+
+      context '辞書にある単語で検索した場合2' do
+        let(:keyword) { '戦い' }
+
+        before do
+          photo1_1
+          album2
+          album3
+          other_photo
+          tag
+          other_tag
+          Search::AlbumToElasticsearchInsertGateway.bulk('albums')
+          @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword], user_id: user.id)
+        end
+
+        it '検索結果と検索結果の総数、アグリゲーションの結果が格納されたHashを返す' do
+          expect(@results.size).to eq 3
+          expect(@results[:result_records].size).to eq 1
           expect(@results[:aggregations].empty?).to eq false
 
           @results[:results].each_with_hit do |album, hit|
@@ -163,11 +185,78 @@ RSpec.describe Albums::AlbumSearchQuery do
         it 'keywordで指定したものが返ってくる' do
           expect(@results[:result_records][0].id).to eq album1.id
           expect(@results[:result_records][0].title).to eq album1.title
-          expect(@results[:result_records][1].id).to eq album2.id
-          expect(@results[:result_records][1].title).to eq album2.title
         end
       end
 
+      context 'titleとdescriptinの両方にヒットするワードで検索した場合2' do
+        let(:keyword) { '仮面' }
+
+        before do
+          photo1_1
+          album2
+          album3
+          album4
+          album5
+          photo6_1
+          other_photo
+          tag
+          other_tag
+          Search::AlbumToElasticsearchInsertGateway.bulk('albums')
+          @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword], user_id: user.id)
+        end
+
+        it '検索結果と検索結果の総数、アグリゲーションの結果が格納されたHashを返す' do
+          expect(@results.size).to eq 3
+          expect(@results[:result_records].size).to eq 5
+          expect(@results[:aggregations].empty?).to eq false
+
+          @results[:results].each_with_hit do |album, hit|
+            puts "\n#{album.title}: #{hit._score}"
+          end
+        end
+
+        it 'keywordで指定したものが返ってくる' do
+          expect(@results[:result_records][0].id).to eq album3.id
+          expect(@results[:result_records][0].title).to eq album3.title
+          expect(@results[:result_records][1].id).to eq album4.id
+          expect(@results[:result_records][1].title).to eq album4.title
+        end
+      end
+
+      context 'titleとdescriptinの両方にヒットするワードで検索した場合3' do
+        let(:keyword) { '仮面ライダー' }
+
+        before do
+          photo1_1
+          album2
+          album3
+          album4
+          album5
+          photo6_1
+          other_photo
+          tag
+          other_tag
+          Search::AlbumToElasticsearchInsertGateway.bulk('albums')
+          @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword], user_id: user.id)
+        end
+
+        it '検索結果と検索結果の総数、アグリゲーションの結果が格納されたHashを返す' do
+          expect(@results.size).to eq 3
+          expect(@results[:result_records].size).to eq 6
+          expect(@results[:aggregations].empty?).to eq false
+
+          @results[:results].each_with_hit do |album, hit|
+            puts "\n#{album.title}: #{hit._score}"
+          end
+        end
+
+        it 'keywordで指定したものが返ってくる' do
+          expect(@results[:result_records][0].id).to eq album2.id
+          expect(@results[:result_records][0].title).to eq album2.title
+          expect(@results[:result_records][1].id).to eq album1.id
+          expect(@results[:result_records][1].title).to eq album1.title
+        end
+      end
     end
   end
 end
