@@ -79,6 +79,10 @@ RSpec.describe Albums::AlbumSearchQuery do
       let(:photo1_2) { create(:photo, description: 'ホゲホゲ星人との場面2',
                                album: album1, user: user) }
       let(:album2) { create(:album, title: 'ターミネータVS仮面ライダー', user: user) }
+      let(:photo2_1) { create(:photo, description: 'ターミネータとホゲホゲ星人の戦いの場面',
+                              album: album2, user: user) }
+      let(:photo2_2) { create(:photo, description: 'ホゲホゲ星人を助ける仮面ライダーの場面',
+                              album: album2, user: user) }
       let(:album3) { create(:album, title: '鉄仮面のライダー', user: user) }
       let(:album4) { create(:album, title: 'ライダーが仮面を被ったら', user: user) }
       let(:album5) { create(:album, title: '仮面を被ったライダーの写真', user: user) }
@@ -99,7 +103,9 @@ RSpec.describe Albums::AlbumSearchQuery do
 
         before do
           photo1_1
-          album2
+          photo1_2
+          photo2_1
+          photo2_2
           album3
           other_photo
           tag
@@ -113,8 +119,9 @@ RSpec.describe Albums::AlbumSearchQuery do
           expect(@results[:result_records].size).to eq 1
           expect(@results[:aggregations].empty?).to eq false
 
+          puts 'keyword: ホゲホゲ星人'
           @results[:results].each_with_hit do |album, hit|
-            puts "\n#{album.title}: #{hit._score}"
+            puts "#{album.title}: #{hit._score}"
           end
         end
 
@@ -210,6 +217,7 @@ RSpec.describe Albums::AlbumSearchQuery do
           expect(@results[:result_records].size).to eq 5
           expect(@results[:aggregations].empty?).to eq false
 
+          puts 'keyword: 仮面'
           @results[:results].each_with_hit do |album, hit|
             puts "\n#{album.title}: #{hit._score}"
           end
@@ -245,6 +253,7 @@ RSpec.describe Albums::AlbumSearchQuery do
           expect(@results[:result_records].size).to eq 6
           expect(@results[:aggregations].empty?).to eq false
 
+          puts 'keyword: 仮面ライダー'
           @results[:results].each_with_hit do |album, hit|
             puts "\n#{album.title}: #{hit._score}"
           end
@@ -255,6 +264,42 @@ RSpec.describe Albums::AlbumSearchQuery do
           expect(@results[:result_records][0].title).to eq album2.title
           expect(@results[:result_records][1].id).to eq album1.id
           expect(@results[:result_records][1].title).to eq album1.title
+        end
+      end
+
+      context 'titleとdescriptinの両方にヒットするワードで検索した場合4' do
+        let(:keyword) { 'ライダー' }
+
+        before do
+          photo1_1
+          album2
+          album3
+          album4
+          album5
+          photo6_1
+          other_photo
+          tag
+          other_tag
+          Search::AlbumToElasticsearchInsertGateway.bulk('albums')
+          @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword], user_id: user.id)
+        end
+
+        it '検索結果と検索結果の総数、アグリゲーションの結果が格納されたHashを返す' do
+          expect(@results.size).to eq 3
+          expect(@results[:result_records].size).to eq 6
+          expect(@results[:aggregations].empty?).to eq false
+
+          puts 'keyword: ライダー'
+          @results[:results].each_with_hit do |album, hit|
+            puts "\n#{album.title}: #{hit._score}"
+          end
+        end
+
+        it 'keywordで指定したものが返ってくる' do
+          expect(@results[:result_records][0].id).to eq album3.id
+          expect(@results[:result_records][0].title).to eq album3.title
+          expect(@results[:result_records][1].id).to eq album6.id
+          expect(@results[:result_records][1].title).to eq album6.title
         end
       end
     end

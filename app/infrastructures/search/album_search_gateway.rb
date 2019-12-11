@@ -34,24 +34,24 @@ module Search
                 }
               },
               functions: [
-                {
-                  field_value_factor: {
-                    field: "id",
-                    factor: 1.0,
-                    modifier: "square",
-                    missing: 1
-                  },
-                  weight: 1
-                },
-                {
-                  field_value_factor: {
-                    field: "id",
-                    factor: 3.0,
-                    modifier: "sqrt", # squt: ルート, log: 指数関数
-                    missing: 1
-                  },
-                  weight: 1
-                }
+                # {
+                #   field_value_factor: {
+                #     field: "id",
+                #     factor: 1.0,
+                #     modifier: "square",
+                #     missing: 1
+                #   },
+                #   weight: 0
+                # },
+                # {
+                #   field_value_factor: {
+                #     field: "id",
+                #     factor: 3.0,
+                #     modifier: "sqrt", # squt: ルート, log: 指数関数
+                #     missing: 1
+                #   },
+                #   weight: 0
+                # }
               ]
             }
   # TODO: aggregationを設定する
