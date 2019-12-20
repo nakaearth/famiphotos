@@ -4,7 +4,7 @@ default: &default
   charset: utf8mb4
   pool: 5
   reconnect: false
-  host: <%= ENV['DB_SERVERNAME'] %>
+  host: <%= ENV['DB_SERVERNAME'] || 'localhost' %>
   username: <%= ENV.fetch('DB_USERNAME') { 'root' } %>
   password: <%= ENV.fetch('DB_PASSWORD') { '' } %>
   strict: false
