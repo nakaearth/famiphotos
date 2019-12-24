@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class Photo < FamiphotoBase
-  include Searchable
   # mount_uploader :image, ImageUploader
 
   alias_attribute :start_time, :created_at

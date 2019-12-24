@@ -17,7 +17,7 @@ module Users
           end
         end
 
-        FamiphotosPlatform::User.with_writable { @login_user.save! }
+        @login_user.save!
         @login_user
       end
       # rescue Faraday::TimeoutError => e
