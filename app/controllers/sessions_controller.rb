@@ -9,7 +9,9 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env['omniauth.auth']
-    user = User.find_by(provider: auth[:provider], email: auth[:info][:name]) || UserRegistratioInfrastructure.new(auth).call
+    user =
+      User.find_by(provider: auth[:provider], email: auth[:info][:name]) ||
+      UserRegistration::TwitterAccountRegistration.call(auth)
 
     session[:encrypted_user_id] = Base64.encode64(user.id.to_s)
     logger.info user.try(:name)
