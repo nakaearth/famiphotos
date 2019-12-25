@@ -5,7 +5,8 @@ class User < FamiphotoBase
   attr_encrypted :uid
 
   has_many :photos, inverse_of: :user
-  has_many :albums
+  has_many :albums, inverse_of: :user
+  has_many :groups, inverse_of: :user
 
   validates :name, presence: true, length: { maximum: 60 }
   validates :uid, presence: true
