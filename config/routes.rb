@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
-  end
-
-  post "/graphql", to: "graphql#execute"
   root 'top#index'
 
   # twitter login
@@ -18,7 +13,6 @@ Rails.application.routes.draw do
   resources :albums, only: %i( index show new create edit update destroy ) do
     ## 写真関連
     resources :photos, only: %i( index show destroy )
-    resources :videos, only: %i( index show destroy )
     resources :daily_photos, only: %i( index )
   end
   resource :photos, only: %i( new create )
