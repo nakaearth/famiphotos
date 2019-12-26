@@ -81,11 +81,11 @@ module AlbumSearchable
       end
     end
 
-    def as_indexed_json(options={})
-      as_json.merge(as_indexed_json_photos(options))
+    def as_indexed_json
+      as_json.merge(as_indexed_json_photos)
         .merge({ title2: title})
-        .merge(as_indexed_json_tags(options))
-        .merge(as_indexed_json_total_photo_point(options))
+        .merge(as_indexed_json_tags)
+        .merge(as_indexed_json_total_photo_point)
     end
 
     def transfer_to_elasticsearch
