@@ -21,9 +21,9 @@ module UserRegistration
           @login_user.save!
           @login_user
         end
-        # rescue Faraday::TimeoutError => e
-        #   puts 'ELへの登録失敗'
-        #   puts e.message
+      rescue Faraday::TimeoutError => e
+         puts 'ELへの登録失敗'
+         puts e.message
       end
     end
   end

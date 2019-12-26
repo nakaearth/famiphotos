@@ -1,0 +1,6 @@
+create_table "groups", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
+  t.string   "name", limit: 80
+  t.integer  "owner"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end

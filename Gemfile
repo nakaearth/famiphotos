@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby '2.6.3'
+ruby '2.6.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.2'
@@ -126,8 +126,8 @@ gem 'lograge'
 # breadcrumbs
 gem "crummy",  "~> 1.8.0"
 # elasticsearch
-gem 'elasticsearch-rails'
-gem 'elasticsearch-model'
+gem 'elasticsearch-rails', '~> 6'
+gem 'elasticsearch-model', '~> 6'
 # enumerize
 gem 'enumerize'
 # カレンダー表示
