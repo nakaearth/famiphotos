@@ -1,5 +1,5 @@
 create_table "albums", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
-  t.string   "title",      limit: 80
+  t.string   "title", limit: 80
   t.integer  "user_id"
   t.datetime "created_at"
   t.datetime "updated_at"
