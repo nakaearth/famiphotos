@@ -10,7 +10,6 @@ module Search
 
         Elasticsearch::Model.client.indices.create(
           index: index_name,
-          include_type_name: true,
           body: {
             settings: Album.settings.to_hash,
             mappings: Album.mappings.to_hash

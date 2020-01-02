@@ -1,37 +1,26 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-ruby '2.6.4'
+ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2'
-gem 'rake', '~> 12.0'
+gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
 gem 'hiredis'
 gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'rack-cors'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', require: false
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
+gem 'bootsnap', '>= 1.4.2', require: false
+gem 'jbuilder', '~> 2.7'
+gem 'puma', '~> 4.1'
 # スキーマ管理
 gem 'ridgepole'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug', platform: :mri
-  gem 'byebug', '~> 9.0.6'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # コーディング規約チェック
   gem 'rubocop'
   gem 'onkcop'
@@ -76,8 +65,6 @@ group :test do
   # コードカバレッジ
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
-  # coverallsとの連携
-  gem 'coveralls', require: false
   gem 'request_store'
 
   # 良い書き方しているかチェック
@@ -121,33 +108,20 @@ gem 'rmagick'
 gem 'geocoder'
 # 権限チェック
 gem "pundit"
-#
-gem 'lograge'
+
 # breadcrumbs
 gem "crummy",  "~> 1.8.0"
 # elasticsearch
-gem 'elasticsearch-rails', '~> 6'
-gem 'elasticsearch-model', '~> 6'
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
 # enumerize
 gem 'enumerize'
-# カレンダー表示
-gem 'simple_calendar',  '~> 2.0'
 
-# 定数設定
-gem 'config'
 # ログ収集
-# treasure data
-gem "td"
-gem "td-logger"
 gem "ltsv-logger"
-# モーダル
-gem 'twitter-bootstrap-rails'
-gem 'bootstrap-modal-rails'
 gem "font-awesome-rails"
 # ブラウザ判定、UA判定に使う
 gem 'browser'
-# css fremework compass
-gem 'compass-rails'
 gem 'parser'
 # 擬似的なテーブルのように使える
 gem 'active_hash'
@@ -161,9 +135,3 @@ gem 'attr_encrypted'
 gem 'activerecord-cause'
 # プロセス管理
 gem 'foreman'
-# pull request支援
-gem 'danger'
-# GraphQL
-gem 'graphql'
-
-gem 'graphiql-rails', group: :development
