@@ -6,7 +6,9 @@ class User < FamiphotoBase
 
   has_many :photos, inverse_of: :user
   has_many :albums, inverse_of: :user
-  has_many :groups, inverse_of: :user
+  has_many :my_groups, class_name: 'Group'
+  has_many :user_groups
+  has_many :groups, through: :user_groups
 
   validates :name, presence: true, length: { maximum: 60 }
   validates :uid, presence: true

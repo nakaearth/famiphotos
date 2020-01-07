@@ -1,8 +1,8 @@
 # frozen_string_literal: true
-class Group < FamiphotoBase
+class UserGroup < FamiphotoBase
   belongs_to :owner, class_name: 'User'
-  has_many :user_groups
-  has_many :users, through: :user_groups
+  belongs_to :user
+  belongs_to :group
 
   validates :name, presence: true, length: { maximum: 80 }
 end
