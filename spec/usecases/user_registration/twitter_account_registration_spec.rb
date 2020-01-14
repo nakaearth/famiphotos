@@ -25,7 +25,7 @@ RSpec.describe UserRegistration::TwitterAccountRegistration do
       end
 
       before do
-        @user = UserRegistration::TwitterRegistration.call(params)
+        @user = UserRegistration::TwitterAccountRegistration.call(params)
       end
 
       it 'パラメータで渡された値でUser登録される' do
