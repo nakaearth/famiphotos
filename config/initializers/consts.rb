@@ -1,6 +1,6 @@
 module Consts
   Elasticsearch = {
-    index_name: { photo: 'photos' },
+    index_name: { photo: 'photos', album: 'albums' },
     alias_name: { photo: 'photo_search_alias' }
   }
 
