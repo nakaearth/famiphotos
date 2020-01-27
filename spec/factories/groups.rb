@@ -2,10 +2,10 @@
 FactoryBot.define do
   factory :group do
     name { 'myファミリー' }
-    type { 'parent' }
+    dir_id { 0 }
   end
 
   trait :child do
-    type { 'child' }
+    dir_id { 1 }
   end
 end

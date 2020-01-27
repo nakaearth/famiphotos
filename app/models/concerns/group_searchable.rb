@@ -71,7 +71,13 @@ module GroupSearchable
     end
 
     def as_indexed_json
-      as_json.merge({ name: name })
+      if dir_id > 0
+        type = 'group'
+      else
+        type = 'event'
+      end
+
+      as_json.merge({ name2: name, group_join_field: type })
     end
 
     def transfer_to_elasticsearch
