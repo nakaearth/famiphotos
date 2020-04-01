@@ -10,7 +10,7 @@ RSpec.describe Albums::AlbumGroupSearchQuery do
 
     context '1件だけ指定したユーザが作成したアルバムがある場合' do
       let(:user) { create(:user) }
-      let(:params) { { keyword: 'Familyグループ' } }
+      let(:params) { { keyword: 'グループ' } }
 
       before do
         group = create(:group, owner_id: user.id, name: 'myFamilyグループ')

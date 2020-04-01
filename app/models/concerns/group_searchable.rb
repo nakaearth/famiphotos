@@ -64,20 +64,32 @@ module GroupSearchable
         indexes :name, type: 'text', analyzer: 'kuromoji_analyzer'
         indexes :name2, type: 'text', analyzer: 'ngram_analyzer'
         indexes :owner_user_id, type: 'integer'
-        indexes :group_join_field, type: 'join', relations: { 'group': 'event' }
+        indexes :events, type: 'nested' do
+          indexes :user_id, tppe: 'integer'
+          indexes :group_id, type: 'integer'
+          indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
+          indexes :description2, type: 'text', analyzer: 'ngram_analyzer'
+        end
         indexes :created_at,  type: 'date', format: 'date_time'
         indexes :updated_at,  type: 'date', format: 'date_time'
       end
     end
 
     def as_indexed_json
-      if dir_id > 0
-        type = 'group'
-      else
-        type = 'event'
-      end
-
-      as_json.merge({ name2: name, group_join_field: type })
+      as_json.merge({ name2: name }).merge(as_indexed_group_events)
+    end
+      
+    def as_indexed_group_events
+      events_json = 
+        events.map do |e|
+        {
+           user_id: e.user_id,
+           group_id: e.group_id,
+           description: e.description,
+           description2: e.description,
+        }
+       end
+      { events: events_json }
     end
 
     def transfer_to_elasticsearch

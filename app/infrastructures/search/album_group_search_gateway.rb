@@ -19,7 +19,7 @@ module Search
       # TODO: QueryBuilder以下に移す
       def query(keyword, owner_user_id)
         {
-          min_score: 0.1, # 最低scoreの設定
+          # min_score: 0.1, # 最低scoreの設定
           query: {
             function_score: {
               score_mode: 'sum', # functionsのスコアの計算方法
@@ -29,6 +29,7 @@ module Search
                   must: [
                     Search::QueryBuilder::FunctionQuery.match_query('owner_user_id', owner_user_id),
                     Search::QueryBuilder::FunctionQuery.full_text_query(['name^7', 'name2^3'], keyword),
+                    # Search::QueryBuilder::FunctionQuery.full_text_query(['events.description^7', 'events.description2^3'], keyword),
                   ]
                 }
               },

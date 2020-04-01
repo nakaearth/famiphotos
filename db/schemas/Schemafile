@@ -1,4 +1,5 @@
 require 'albums.schema'
+require 'events.schema'
 require 'groups.schema'
 require 'information.schema'
 require 'photo_geos.schema'
