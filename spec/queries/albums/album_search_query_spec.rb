@@ -10,15 +10,17 @@ RSpec.describe Albums::AlbumSearchQuery do
 
     context '1件だけ指定したユーザが作成したアルバムがある場合' do
       let(:user) { create(:user) }
-      let(:album) { create(:album, title: 'テスト犬album', user: user) }
-      let(:photo) { create(:photo, description: 'これは犬の写真です',
-                           album: album, user: user) }
-      let(:tag) { create(:tag, label_name: '犬', album: album) }
+      let(:album) do
+        create(:album, title: 'テスト犬album', user: user).tap do |al|
+          create(:photo, description: 'これは犬の写真です',album: al, user: user)
+          create(:tag, label_name: '犬', album: al)
+        end
+      end
+
       let(:params) { { keyword: '犬' } }
 
       before do
-        tag
-        photo
+        album
         Search::AlbumToElasticsearchInsertGateway.bulk('albums')
         @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword], user_id: user.id)
       end
@@ -38,22 +40,24 @@ RSpec.describe Albums::AlbumSearchQuery do
     context '指定したユーザ以外が作成したアルバムもある場合' do
       let(:user) { create(:user) }
       let(:other_user) { create(:user) }
-      let(:album) { create(:album, title: 'テスト犬album', user: user) }
-      let(:photo) { create(:photo, description: 'これは犬の写真です',
-                           album: album, user: user) }
-      let(:tag) { create(:tag, label_name: '犬', album: album) }
-      let(:other_album) { create(:album, title: 'テスト犬album2', user: other_user) }
-      let(:other_photo) { create(:photo, description: 'これは最近買った犬の写真です',
-                                 album: other_album, user: other_user) }
-      let(:other_tag) { create(:tag, label_name: '犬', album: other_album) }
+      let(:album) do
+        create(:album, title: 'テスト犬album', user: user).tap do |al|
+          create(:photo, description: 'これは犬の写真です',album: al, user: user)
+          create(:tag, label_name: '犬', album: al)
+        end
+      end
+      let(:other_album) do
+        create(:album, title: 'テスト犬album2', user: other_user).tap do |oal|
+          create(:photo, description: 'これは最近買った犬の写真です',album: oal, user: other_user)
+          create(:tag, label_name: '犬', album: oal)
+        end
+      end
 
       let(:params) { { keyword: '犬' } }
 
       before do
-        photo
-        other_photo
-        tag
-        other_tag
+        album
+        other_album
         Search::AlbumToElasticsearchInsertGateway.bulk('albums')
         @results = Albums::AlbumSearchQuery.call(keyword: params[:keyword], user_id: user.id)
       end
