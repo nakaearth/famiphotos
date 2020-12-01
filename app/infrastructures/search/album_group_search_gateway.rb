@@ -29,7 +29,7 @@ module Search
                   must: [
                     Search::QueryBuilder::FunctionQuery.match_query('owner_user_id', owner_user_id),
                     Search::QueryBuilder::FunctionQuery.full_text_query(['name^7', 'name2^3'], keyword),
-                    # Search::QueryBuilder::FunctionQuery.full_text_query(['events.description^7', 'events.description2^3'], keyword),
+                    Search::QueryBuilder::FunctionQuery.full_text_query(['events.description^7', 'events.description2^3'], keyword),
                   ]
                 }
               },
