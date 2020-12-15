@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 module Search
-  class AlbumSearchGateway < BaseSearchInfrastructure
+  class AsyncSearchGateway < BaseSearchInfrastructure
     class << self
-      def execute(keyword, user_id)
+      def search_async(keyword, user_id)
         Elasticsearch::Model.client = client_connection
         album_client = Album.__elasticsearch__
         album_client.index_name = Consts::Elasticsearch[:index_name][:album]
@@ -13,6 +13,11 @@ module Search
           aggregations: response.aggregations,
           results: response.records
         }
+      end
+
+
+      def get_result(sync_id)
+
       end
 
       private
